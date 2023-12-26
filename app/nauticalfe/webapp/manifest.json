@@ -162,27 +162,9 @@
                   "TargetTrChangeVoyage"
               ]
           },
-          {
-              "name": "TrVoyageOptions",
-              "pattern": "vo",
-              "target": [
-                  "TargetTrVoyageOptions"
-              ]
-          },
-          {
-              "name": "TrCaptureVoyage",
-              "pattern": "cvoy",
-              "target": [
-                  "TargetTrCaptureVoyage"
-              ]
-          },
-          {
-              "name": "TrCaptureVoyagePlan",
-              "pattern": "cvoy",
-              "target": [
-                  "TargetTrCaptureVoyagePlan"
-              ]
-          },
+         
+          
+         
          
          {
               "name": "RoutePortLocMaster",
@@ -447,13 +429,7 @@
               "viewId": "TrChangeVoyage",
               "viewName": "TrChangeVoyage"
           },
-          "TargetTrVoyageOptions": {
-              "viewType": "XML",
-              "transition": "slide",
-              "clearControlAggregation": false,
-              "viewId": "TrVoyageOptions",
-              "viewName": "TrVoyageOptions"
-          },
+          
           "TargetTrCaptureVoyage": {
               "viewType": "XML",
               "transition": "slide",

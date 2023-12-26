@@ -125,30 +125,28 @@
 }
 
 /************************************** Master Dashboard Screen  ***************************************/
-.one,.two,.three,.four,.five{
+.one,.three,.five{
+    width: 30%;
     margin-left: 2%;
     margin-top: 5%;
 }
-.one,.three,.five{
-    width: 30%;
-}
-.two,.four{
-    width: 8%;
-}
+
 .nauticalimg1{
     margin-top: 10%;
     position: fixed;
 }
 
-/*********************************Voyage Type Screen ********************************************/
-.table{
-    margin-left: 1%;
+
+/************************************** Transaction data Dashboard  **************************************/
+.two{
+    width: 35%;
+    margin-left: 10%;
+    margin-top: 8%;
 }
 
-/************************************** Transaction data  **************************************/
-.voy,.right,.FS {
-    margin: 5%;
-}
+
+
+/* ************************************************ */
 /* for voyage option page */
  
 .buttonSpacing{

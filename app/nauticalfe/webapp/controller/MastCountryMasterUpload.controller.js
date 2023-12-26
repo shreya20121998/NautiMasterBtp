@@ -71,7 +71,7 @@ sap.ui.define([
             },
             onBackPressHome: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteView1");
+                oRouter.navTo("RouteHome");
             },
             backPress:function(){
                 const oHistory = History.getInstance();

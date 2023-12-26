@@ -267,8 +267,10 @@
 
             <!-- start of vessel plan section -->
             <Panel id="p2" >
+                        
+                        <ScrollContainer id="_IDGenScrollContainer2" horizontal="true"  vertical="false" class="scrollContainer">
                         <Text id="_IDGenText3" text="Plan Info Details" class="heading"/>
-                        <HBox id="_IDHBox11" class="planOperations">
+                        <HBox id="_IDHBox11" class="planOperations" >
                         <FlexBox id="_IDGenFlexBox1" alignContent="Stretch" >
                         <Button id="_IDGenButton10" icon="sap-icon://sys-minus"/>
                         <FlexBox id="_IDGenFlexBox2" alignContent="Stretch" class="infoinputs">
@@ -299,24 +301,23 @@
                         </FlexBox>                          
                         </FlexBox>
                         </HBox>
-                        
-                        <Table id="_IDGenTable1"  >
+                        <Table id="_IDGenTable1"   fixedLayout="false" >
                             <columns  >
-                                
+                               
                                 <Column id="_IDColumn6" >
                                     <Label id="_IDGebel15" text="LegID" ></Label>
                                 </Column>
-                                <Column id="_IDGenlumn6" width="90px" >
-                                    <Label id="_IDGLabel15" text="Port Cost" wrappingType="Hyphenated" wrapping="true" ></Label>
+                                <Column id="_IDGenlumn6"  >
+                                    <Label id="_IDGLabel15" text="Port Cost"  ></Label>
                                 </Column>
                                 <Column id="_IDGenColumn7"  >
                                     <Label id="_IDGenLabel16" text="Events" ></Label>
                                 </Column>
-
+ 
                                 <Column id="_IDGenColumn6" >
                                     <Label id="_IDGenLabel15" text="Port name" ></Label>
                                 </Column>
-                                
+                               
                                 <Column id="_IDGenColumn8"  >
                                     <Label id="_IDGenLabel17" text="Other Cost" ></Label>
                                 </Column>
@@ -371,11 +372,13 @@
                                 </ColumnListItem>
                             </items>
                         </Table>
+                        </ScrollContainer>
+                 <ScrollContainer id="_IDGenScrollContainer3" horizontal="true"  vertical="false" class="scrollContainer">
                          
                     <Text id="_IDGenText4" text="Actual Info Details" class="heading"/>
                     <!-- for plan info header buttons  -->
                     <HBox id="_IDHBox12" class="planOperations ">
-                            
+                           
                     <FlexBox id="_IDGenFlexBox8" alignContent="Stretch">
                     <Button id="_IDGenBton11" icon="sap-icon://sys-minus"/>
                     <FlexBox id="_IDGenFlexBox9" alignContent="Stretch" class="infoinputs">
@@ -406,8 +409,8 @@
                     </FlexBox>                          
                 </FlexBox>
                     </HBox>
-
-                    <Table id="_IDGenTable2"  >
+ 
+                    <Table id="_IDGenTable2"  fixedLayout="false">
                     <columns>
                         <Column id="_IDGenColumn19" >
                             <Label id="_IDGenLabel35" text=" "></Label>
@@ -460,8 +463,10 @@
                             </ColumnListItem>
                         </items>
                     </Table>
-
+                        </ScrollContainer>
+ 
             </Panel>
+            
             <!-- end of vessel plan section  -->
             <!-- start of bid detail section -->
             <Panel id="p3"  >

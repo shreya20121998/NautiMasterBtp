@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<Menu itemSelected="onMenuAction">
+		<MenuItem text="Capture Voyage Detail">
+        <items>
+				<MenuItem text="Plan Info Details" press="onPlan"/>
+				<MenuItem text="Actual Info Details"/>
+				
+			</items>
+        </MenuItem>
+		<MenuItem text="change Voyage Details"/>
+		<MenuItem text="Display Voyage Details"/>
+        <MenuItem text="Maintain Events"/>
+        <MenuItem text="Voyage Approval"/>
+			
+		
+		
+	</Menu>
+</core:FragmentDefinition>
