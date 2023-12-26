@@ -3,7 +3,7 @@
         <content>
             <Text  text="This application needs a file to upload to SAP System"></Text>
             <HBox  class="MastDialogButtonAlign">
-                <unified:FileUploader id="fileUploader" uploadUrl="yourBackendUploadUrl" class="masterbuttonsalign"/>
+                <unified:FileUploader id="fileUploader" uploadUrl="yourBackendUploadUrl" class="masterbuttonsalign" change="onFileSelect"/>
                 <Button  text="Exit" class="masterbuttonsalign" press="exitDialog"></Button>
             </HBox>
         </content>

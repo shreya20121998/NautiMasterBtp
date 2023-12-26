@@ -22,7 +22,7 @@ service Nautical{
     entity VOYTYP as projection on NAUTI_MAS.VOYTYP;
     entity CARTYP as projection on NAUTI_MAS.CARTYP;
     entity CURR as projection on NAUTI_MAS.CURR;
-    entity MAS_BID as projection on NAUTI_MAS.MAS_BID;
+    entity MAS as projection on NAUTI_MAS.BIDMASTER;
     entity NAVOYGUOM as projection on NAUTI_MAS.NAVOYGUOM;
     entity NAVOYGC as projection on NAUTI_MAS.NAVOYGC;
     entity EVENT_MAS as projection on NAUTI_MAS.EVENT_MAS;

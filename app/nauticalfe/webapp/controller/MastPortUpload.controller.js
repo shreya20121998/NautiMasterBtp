@@ -109,12 +109,13 @@ sap.ui.define([
         }
     },
     onFileSelect:function(oEvent){
+      console.log("selected");
       var oFileUploader = oEvent.getSource();
       var sFileName = oFileUploader.getValue();
       console.log(sFileName)
 
       // Set the file name to the Input field
-      var oFileNameInput = this.byId("fileName");
+      var oFileNameInput = this.byId("_IDGenInput1");
       oFileNameInput.setValue(sFileName);
 
       this.exitDialog();

@@ -57,11 +57,8 @@ sap.ui.define(
 
         };
        
-       
-
-
-       
         var JsonData = JSON.stringify(data)
+        console.log(JsonData);
         let EndPoint = "/odata/v4/nautical/MAS";
         fetch(EndPoint, {
           method: 'POST',
