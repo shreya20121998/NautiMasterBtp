@@ -361,6 +361,20 @@
         "target": [
             "TargetSaveAsVariant"
         ]
+      },
+      {
+        "name": "RouteTrCaptureVoyagePlan",
+        "pattern": "TrCaptureVoyagePlan",
+        "target": [
+            "TargetTrCaptureVoyagePlan"
+        ]
+      },
+      {
+        "name": "RouteTrCaptureVoyageActual",
+        "pattern": "TrCaptureVoyageActual",
+        "target": [
+            "TargetTrCaptureVoyageActual"
+        ]
     }
 
      
@@ -436,14 +450,6 @@
               "clearControlAggregation": false,
               "viewId": "TrCaptureVoyage",
               "viewName": "TrCaptureVoyage"
-          },
-         
-          "TargetTrCaptureVoyagePlan": {
-              "viewType": "XML",
-              "transition": "slide",
-              "clearControlAggregation": false,
-              "viewId": "TrCaptureVoyagePlan",
-              "viewName": "TrCaptureVoyagePlan"
           },
          
           "TargetPortLocMaster": {
@@ -602,41 +608,56 @@
           "viewId": "MastCountryMaster",
           "viewName": "MastCountryMaster"
       },
-      "TargetCountryMasterUpd": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "MastCountryMasterUpload",
-          "viewName": "MastCountryMasterUpload"
-      },
-      "TargetMarineDisUpd": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "MastMarineDisUpd",
-          "viewName": "MastMarineDisUpd"
-      },
-      "TargetMarinePathUpd": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "MastMarinePathUpd",
-          "viewName": "MastMarinePathUpd"
-      },
-      "TargetPortUpload": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "MastPortUpload",
-          "viewName": "MastPortUpload"
-      },
-      "TargetSaveAsVariant": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "MastSaveAsVariant",
-        "viewName": "MastSaveAsVariant"
-    }
+            "TargetCountryMasterUpd": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "MastCountryMasterUpload",
+                "viewName": "MastCountryMasterUpload"
+            },
+            "TargetMarineDisUpd": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "MastMarineDisUpd",
+                "viewName": "MastMarineDisUpd"
+            },
+            "TargetMarinePathUpd": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "MastMarinePathUpd",
+                "viewName": "MastMarinePathUpd"
+            },
+            "TargetPortUpload": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "MastPortUpload",
+                "viewName": "MastPortUpload"
+            },
+            "TargetSaveAsVariant": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "MastSaveAsVariant",
+                "viewName": "MastSaveAsVariant"
+            },
+            "TargetTrCaptureVoyagePlan": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrCaptureVoyagePlan",
+                "viewName": "TrCaptureVoyagePlan"
+            },
+            "TargetTrCaptureVoyageActual": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrCaptureVoyageActual",
+                "viewName": "TrCaptureVoyageActual"
+            }
+
 
 
        

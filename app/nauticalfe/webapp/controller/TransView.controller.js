@@ -92,7 +92,11 @@ sap.ui.define(
       
       onPlan: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteTrChangeVoyage");
+        oRouter.navTo("RouteTrCaptureVoyagePlan");
+      },
+      onActual: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrCaptureVoyageActual");
       }
       });
     }

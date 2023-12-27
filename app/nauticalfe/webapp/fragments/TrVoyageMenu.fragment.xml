@@ -5,7 +5,7 @@
 		<MenuItem text="Capture Voyage Detail">
         <items>
 				<MenuItem text="Plan Info Details" press="onPlan"/>
-				<MenuItem text="Actual Info Details"/>
+				<MenuItem text="Actual Info Details " press="onActual"/>
 				
 			</items>
         </MenuItem>

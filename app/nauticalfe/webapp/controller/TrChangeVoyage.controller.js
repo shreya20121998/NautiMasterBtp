@@ -65,51 +65,7 @@ sap.ui.define(
             navCon2.setVisible(!currentVisibility);
             bar2.setVisible(!currentVisibility);
         },
-        // Event handler for adding a row
-        onAddRow: function() {
-          var oTable = this.getView().byId("vesselRefDetails1");
-          var oModel = oTable.getModel("Vdata");
-          var oData = oModel.getProperty("/TechnicalBidding");
-
-          // Create a new row with default values for properties
-          var newEntry = {
-              Heads: "",
-
-              
-          };
-
-          // Add the new row to your data array
-          oData.push(newEntry);
-          // oModel.push(newEntry);
-
-          // Set the updated data to the model
-          oModel.setProperty("/TechnicalBidding", oData);
-      },
-      onDeleteRow: function() {
-        var oTable = this.getView().byId("vesselRefDetails1");
-        var oModel = oTable.getModel("Vdata");
-        var aSelectedItems = oTable.getSelectedItems();
-    
-        if (aSelectedItems.length > 0) {
-            var aData = oModel.getProperty("/TechnicalBidding"); // Assuming "/TechnicalBidding" is the path to your array data
-    
-            aSelectedItems.forEach(function(oItem) {
-                var oContext = oItem.getBindingContext("Vdata");
-                var sPath = oContext.getPath();
-                var iIndex = parseInt(sPath.split("/").pop()); // Extract the index from the path
-    
-                aData.splice(iIndex, 1); // Remove the item from the array
-            });
-    
-            oModel.setProperty("/TechnicalBidding", aData); // Set the updated array back to the model
-    
-            oTable.removeSelections(); // Clear the selection after deletion
-        } else {
-            // Alert when no row is selected
-            alert("Please select a row to delete");
-        }
-    }
-    
+        
     
     
     
