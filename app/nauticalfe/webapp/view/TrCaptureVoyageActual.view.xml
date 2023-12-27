@@ -233,8 +233,8 @@
 
             
             <!-- start of vessel detail section -->
-            <Panel id="p1"  >
-                <Text id="_IDGenText12" text="Enter Details" class="vgheading1"/>
+            <Panel id="p1"  class="voyagePanel" >
+                <Text id="_IDGenText12" text="Enter Details" class="vgheading"/>
                         <FlexBox id="vdsection1" class="vdsection" alignContent="Center">
                             <Label id="_IDGenLabel1" text="Vessel Name:"></Label>
                             <Input id="_IDGenInput1" width="170px"></Input>
@@ -246,7 +246,7 @@
                             <Input id="_IDGenInput2" width="170px"></Input>
                         </FlexBox>
                        
-                            <Text id="_IDGenText1" text="Reference Details" ></Text>
+                            <Text id="_IDGenText1" text="Reference Details" class="vgheading" ></Text>
                             <Table id="_IDGenTable3" width="60%" fixedLayout="false" mode="SingleSelectLeft" class="table">
                                 <columns>
                                    
@@ -312,7 +312,7 @@
             <!-- end of vessel detail section -->
 
             <!-- start of vessel plan section -->
-            <Panel id="p2" >
+            <Panel id="p2" class="voyagePanel">
                         
                         <ScrollContainer id="_IDGenScrollContainer2" horizontal="true"  vertical="false" class="scrollContainer">
                         <Text id="_IDGenText3" text="Plan Info Details" class="heading"/>
@@ -534,7 +534,7 @@
             <!-- end of vessel plan section  -->
            
             <!-- start of bid detail section -->
-            <Panel id="p3"  >
+            <Panel id="p3"  class="voyagePanel">
                 <HBox id="HBox1" width="100%">
                     <FlexBox id="Flex1" width="50%" class="flexbidtable">
                         <Table  id="vesselRefDetails1" class="table" mode="SingleSelectLeft"
@@ -655,13 +655,13 @@
 
             </Panel>
             <!-- end of bid detail section -->
-            <Panel id="p4" >
+            <Panel id="p4" class="voyagePanel" >
 				     
                     <Label text="Long Text"></Label>
                     <TextArea id="TextArea1" value=""  class="longtxt" width="100%" > </TextArea>   
                                  
 			</Panel>
-             <Panel id="p5" >
+             <Panel id="p5" class="voyagePanel" >
 				     
                     <l:VerticalLayout id="_IDGenVerticalLayout1">
                   <u:FileUploader
@@ -698,7 +698,7 @@
            >
 
             <!-- Panel for ButtonA -->
-            <Panel id="panelA" height="600px" class="navigationPanel">
+            <Panel id="panelA" height="600px" class="voyagePanel">
                    <Text id="_IDGenText14" text="Plan Details" class="vgheading"></Text>
                     
                     <Table id="Table5" class="costplantables" mode="MultiSelect" >
@@ -801,7 +801,7 @@
             </Panel>
 
             <!-- Panel for ButtonB -->
-            <Panel id="panelB" height="600px" class="navigationPanel">
+            <Panel id="panelB" height="600px" class="voyagePanel">
                 <HBox class="footeractualplanbutton" width= "100%">
                             <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
                             <Button icon="sap-icon://sort-ascending"  class="footeractualplanbutton"/>

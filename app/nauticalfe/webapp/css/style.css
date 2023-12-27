@@ -1,6 +1,6 @@
 
 .page{
-    background-color: rgba(245, 245, 245, 0.898);
+    background-color: rgba(246, 246, 245, );
 }
 .pageFooter{
     border: 1px solid rgb(194, 193, 193);
@@ -173,6 +173,10 @@
 }
 .vdsection2{
     margin-left: 7.4rem;
+}
+.voyagePanel{
+    background-color: white;
+    margin: 1%;
 }
  
  
