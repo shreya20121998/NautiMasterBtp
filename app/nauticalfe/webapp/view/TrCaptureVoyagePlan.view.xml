@@ -731,7 +731,7 @@
                                     
                                     <Text id="_IDGenText15" text=""/>
                                     <Input id="cost"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCost" />
-                                    <Input id="_IDGenTe"  value="" showValueHelp="true"/>
+                                    <Input id="_IDGenTe"  value="" />
                                      <Select id="Select4"
                                             width="200px"
                                             forceSelection="false"
@@ -779,7 +779,7 @@
                                     
                                     <Text id="_IenText15" text=""/>
                                     <Input id="cost1"  value="" showValueHelp="true"  valueHelpRequest="showValueHelpDialogCost"/>
-                                    <Input id="_IDGTe"  value="" showValueHelp="true"/>
+                                    <Input id="_IDGTe"  value="" />
                                     <Select
                      
                                         id="Select5"

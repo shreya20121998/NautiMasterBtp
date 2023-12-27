@@ -127,62 +127,70 @@ sap.ui.define(
           oDialog.open();
         },
         showValueHelpDialogCost: function (oEvent) {
+
           let oData = oEvent.getSource();
           console.log(oData);
-          // Create a dialog
+          let vv= oEvent.getSource().oParent.getCells()[2];
           console.log("clicked Currency type");
+          // Create a dialog
+
           var oDialog = new sap.m.Dialog({
-            title: "Select: Cost Types",
-            contentWidth: "60%",
-            contentHeight: "60%",
-            content: new sap.m.Table({
-              mode: sap.m.ListMode.SingleSelectMaster,
-  
-              columns: [
-                new sap.m.Column({
-                  header: new sap.m.Text({ text: "Cost Code" }),
-                }),
-                new sap.m.Column({
-                  header: new sap.m.Text({ text: "Cost Description" }),
-                }),
-              ],
-  
-              selectionChange: function (oEvent) {
-                var oSelectedItem = oEvent.getParameter("listItem");
-                var oSelectedValue = oSelectedItem.getCells()[0].getText();
-                var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
-                this.populateInputField(inputVoyageType, oSelectedValue);
-                oDialog.close();
-              }.bind(this),
-            }),
-            beginButton: new sap.m.Button({
-              text: "Cancel",
-              type: "Reject",
-              press: function () {
-                oDialog.close();
-              },
-            }),
-  
+              title: "Select: Cost Types",
+              contentWidth: "60%",
+              contentHeight: "60%",
+              content: new sap.m.Table({
+                  mode: sap.m.ListMode.SingleSelectMaster,
+
+                  columns: [
+                      new sap.m.Column({
+                          header: new sap.m.Text({ text: "Cost Code" }),
+                      }),
+                      new sap.m.Column({
+                          header: new sap.m.Text({ text: "Cost Description" }),
+                      }),
+                  ],
+
+                  selectionChange: function (oEvent) {
+                      var oSelectedItem = oEvent.getParameter("listItem");
+                      var oSelectedValue1 = oSelectedItem.getCells()[0].getText();
+                      var oSelectedValue2 = oSelectedItem.getCells()[1].getText();
+                      console.log(oSelectedValue1, oSelectedValue2, vv);
+                      var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
+                      this.populateInputField(inputVoyageType, oSelectedValue1);
+                      this.populateInputField(vv, oSelectedValue2);
+                      oDialog.close();
+                  }.bind(this),
+              }),
+              beginButton: new sap.m.Button({
+                  text: "Cancel",
+                  type: "Reject",
+                  press: function () {
+                      oDialog.close();
+                  },
+              }),
+
           });
-  
+
           let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
-  
+
           oValueHelpTable.bindItems({
-            path: "/NAVOYGC", // Replace with your entity set
-            template: new sap.m.ColumnListItem({
-              cells: [
-                new sap.m.Text({ text: "{COSTCODE}" }),
-                new sap.m.Text({ text: "{CSTCODES}" }),
-              ],
-            }),
+              path: "/NAVOYGC", // Replace with your entity set
+              template: new sap.m.ColumnListItem({
+                  cells: [
+                      new sap.m.Text({ text: "{COSTCODE}" }),
+                      new sap.m.Text({ text: "{CSTCODES}" }),
+                  ],
+              }),
           });
           // Bind the dialog to the view
           this.getView().addDependent(oDialog);
-  
+
           // Open the dialog
           oDialog.open();
-        }
-    
+      }
+
+
+
     
         
       });
