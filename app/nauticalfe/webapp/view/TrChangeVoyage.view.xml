@@ -5,7 +5,47 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout"
       
     xmlns="sap.m">
-    
+    <Page id="page">
+        <headerContent>
+           <Bar class="customHeader">
+          <contentLeft>
+              <core:Icon
+                  src="sap-icon://nav-back"
+                  class="size1"
+                  color="#FFFFFF"
+                  press="onBackPress"
+              />
+              <Image
+                  src="./images/ignxlogo.png"
+                  height="75%"
+              />
+              <Text
+                  class="textBid"
+                  text="Create Voyage (Plan)"
+              />
+          </contentLeft>
+          <contentRight>
+              <core:Icon
+                  src="sap-icon://search"
+                  class="size1"
+                  color="#FFFFFF"
+              >
+                  <core:layoutData>
+                      <FlexItemData growFactor="1" />
+                  </core:layoutData>
+              </core:Icon>
+              <core:Icon
+                  src="sap-icon://SAP-icons-TNT/user"
+                  class="size1"
+                  color="#FFFFFF"
+              >
+                  <core:layoutData>
+                      <FlexItemData growFactor="1" />
+                  </core:layoutData>
+              </core:Icon>
+          </contentRight>
+           </Bar>
+        </headerContent>
     
     
         <Bar id="navbar">
@@ -23,12 +63,7 @@
             </Select>
         </contentLeft>
         </Bar>
-        <ScrollContainer id="_IDGenScrollContainer1"
-		height="100%"
-		width="100%"
-		vertical="true"
-        horizontal="false"
-		focusable="true">
+        
 
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
         <!-- For Header Section -->
@@ -50,7 +85,7 @@
                 <Label id="Label3" text="Voyage Type:"/>
                 <Select id="Select2" width="200px">
                 <items>
-                    <core:Item id="Item2" text="Text"/>
+                    <core:Item id="Item2" text="TEST"/>
                 </items>
                 </Select>
                 </HBox>
@@ -58,7 +93,7 @@
                 <Label id="_Label4" text="Vessel Type:"/>
                 <Select id="_Select3" width="200px">
                 <items>
-                    <core:Item id="_Item3" text="Text"/>
+                    <core:Item id="_Item3" text="TEST"/>
                 </items>
                 </Select>
                 </HBox>
@@ -186,14 +221,15 @@
         <NavContainer
                 navigationFinished="onNavigationFinished"
                 id="navCon"
+                height="auto"
                 
         >
 
 
             
             <!-- start of vessel detail section -->
-            <Panel id="p1" height="400px" class="navigationPanel">
-                <Text id="_IDGenText12" text="Enter Details" class="vdheading"/>
+            <Panel id="p1"  >
+                <Text id="_IDGenText12" text="Enter Details" class="vgheading1"/>
                         <FlexBox id="vdsection1" class="vdsection" alignContent="Center">
                             <Label id="_IDGenLabel1" text="Vessel Name:"></Label>
                             <Input id="_IDGenInput1" width="170px"></Input>
@@ -204,29 +240,26 @@
                             <Label id="_IDGenLabel2" text="Vessel IMO No:"></Label>
                             <Input id="_IDGenInput2" width="170px"></Input>
                         </FlexBox>
-                        
-                            <Text id="_IDGenText1" text="Reference Details" class="heading"></Text>
-                            <Table id="_IDGenTable3" width="30%" class="vesselRefDetails">
+                       
+                            <Text id="_IDGenText1" text="Reference Details" ></Text>
+                            <Table id="_IDGenTable3" width="60%" fixedLayout="false" mode="SingleSelectLeft" class="table">
                                 <columns>
-                                    <Column id="_IDGenColumn1" width="40px">
-                                        <Label id="_IDGenLabel4" text=" "></Label>
-                                    </Column>
-                                    <Column id="_IDGenColumn2" width="200px">
+                                   
+                                    <Column id="_IDGenColumn2" width="30%">
                                         <Label id="_IDGenLabel5" text="Document Indicator"></Label>
                                     </Column>
-                                    <Column id="_IDGenColumn3" width="200px">
+                                    <Column id="_IDGenColumn3" width="50%">
                                         <Label id="_IDGenLabel6"  text="Reference Docuement No"></Label>
                                     </Column>
-                                    <Column id="_IDGenColumn31" width="310px">
+                                    <Column id="_IDGenColumn31" width="20%">
                                         <Label id="_IDGenLabel41" text=" "></Label>
                                     </Column>
-                                                
+                                               
                                 </columns>
                                 <items>
                                 <ColumnListItem id="_IDGenColumnListItem1" >
                                     <cells>
-                                        <RadioButton id="_IDGenRadioButton1" ></RadioButton>
-                                        <Select id="_IDGenSelect5" width="200px">
+                                        <Select id="_IDGenSelect5">
                                             <items>
                                                 <core:Item id="_IDGenItem8"  text=""></core:Item>
                                                 <core:Item id="_IDGenItem9"  text="G - SALES CONTRACT"></core:Item>
@@ -238,27 +271,35 @@
                                         </Select>
                                     </cells>
                                 </ColumnListItem>
-                                <ColumnListItem id="ColumnListItem6" >
+                                <ColumnListItem id="_IDGenColumnListItem12" >
                                     <cells>
-                                        <RadioButton id="_IDGenRadioButton2" ></RadioButton>
+                                        <Select id="_IDGenSelect14">
+                                            <items>
+                                                <core:Item id="_IDItem8"  text=""></core:Item>
+                                                <core:Item id="_IDItem19"  text="G - SALES CONTRACT"></core:Item>
+                                                <core:Item id="_IDItem10"  text="K - PURCHASE CONTRACT"></core:Item>
+                                                <core:Item id="_IDItem11"  text="P - PURCHASE ORDER"></core:Item>
+                                                <core:Item id="_IDItem12"  text="S - SALES ORDER"></core:Item>
+                                                <core:Item id="_IDItem13"  text="Z - NOMINATION KEY"></core:Item>
+                                            </items>
+                                        </Select>
                                     </cells>
                                 </ColumnListItem>
-                                <ColumnListItem id="ColumnListItem7" >
+                                <ColumnListItem id="_IDGenlumnListItem12" >
                                     <cells>
-                                        <RadioButton id="_IDGenRadioButton3" ></RadioButton>
+                                        <Select id="_IDGenSelt14">
+                                            <items>
+                                                <core:Item id="_IDIem8"  text=""></core:Item>
+                                                <core:Item id="_IDIem19"  text="G - SALES CONTRACT"></core:Item>
+                                                <core:Item id="_IDIem10"  text="K - PURCHASE CONTRACT"></core:Item>
+                                                <core:Item id="_IDIem11"  text="P - PURCHASE ORDER"></core:Item>
+                                                <core:Item id="_IDIem12"  text="S - SALES ORDER"></core:Item>
+                                                <core:Item id="_IDIem13"  text="Z - NOMINATION KEY"></core:Item>
+                                            </items>
+                                        </Select>
                                     </cells>
                                 </ColumnListItem>
-                                <ColumnListItem id="ColumnListItem8" >
-                                    <cells>
-                                        <RadioButton id="_IDGenRadioButton4" ></RadioButton>
-                                    </cells>
-                                </ColumnListItem>
-                                <ColumnListItem id="ColumnListItem9" >
-                                    <cells>
-                                        <RadioButton id="_IDGenRadioButton5" ></RadioButton>
-                                    </cells>
-                                </ColumnListItem>
-                            
+                           
                             </items>
                             </Table>
                             <Button id="DocButton" icon="sap-icon://sys-minus" class="buttonSpacing"></Button>
@@ -301,31 +342,31 @@
                         </FlexBox>                          
                         </FlexBox>
                         </HBox>
-                        <Table id="_IDGenTable1"   fixedLayout="false" >
+                        <Table id="_IDGenTable10"   fixedLayout="false" >
                             <columns  >
                                
-                                <Column id="_IDColumn6" >
-                                    <Label id="_IDGebel15" text="LegID" ></Label>
+                                <Column id="_IDColum" >
+                                    <Label id="_IDGel15" text="LegID" ></Label>
                                 </Column>
-                                <Column id="_IDGenlumn6"  >
-                                    <Label id="_IDGLabel15" text="Port Cost"  ></Label>
+                                <Column id="_IDGenln6"  >
+                                    <Label id="_IDGLal15" text="Port Cost"  ></Label>
                                 </Column>
-                                <Column id="_IDGenColumn7"  >
-                                    <Label id="_IDGenLabel16" text="Events" ></Label>
+                                <Column id="_IDGenComn7"  >
+                                    <Label id="_IDGenbel16" text="Events" ></Label>
                                 </Column>
  
-                                <Column id="_IDGenColumn6" >
-                                    <Label id="_IDGenLabel15" text="Port name" ></Label>
+                                <Column id="_IDGenColn6" >
+                                    <Label id="_IDGenLel15" text="Port name" ></Label>
                                 </Column>
                                
-                                <Column id="_IDGenColumn8"  >
-                                    <Label id="_IDGenLabel17" text="Other Cost" ></Label>
+                                <Column id="_IDGenColn8"  >
+                                    <Label id="_IDGenLal17" text="Other Cost" ></Label>
                                 </Column>
-                                <Column id="_IDGenColumn9"  >
-                                    <Label id="_IDGenLabel18" text="Frieght Cost" ></Label>
+                                <Column id="_IDGenClumn9"  >
+                                    <Label id="_IDGenabel18" text="Frieght Cost" ></Label>
                                 </Column>
-                                <Column id="_IDGenColumn10"  >
-                                    <Label id="_IDGenLabel19" text="Total Cost" ></Label>
+                                <Column id="_IDGenColmn10"  >
+                                    <Label id="_IDGenabel19" text="Total Cost" ></Label>
                                 </Column>
                                 <Column id="_IDGenColumn11"  >
                                     <Label id="_IDGenLabel20" text="Cargo Size" ></Label>
@@ -410,59 +451,77 @@
                 </FlexBox>
                     </HBox>
  
-                    <Table id="_IDGenTable2"  fixedLayout="false">
-                    <columns>
-                        <Column id="_IDGenColumn19" >
-                            <Label id="_IDGenLabel35" text=" "></Label>
-                        </Column>
-                        <Column id="_IDGenColumn20" >
-                            <Label id="_IDGenLabel36" text="Port name" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn21" >
-                            <Label id="_IDGenLabel37" text="Events" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn22"  >
-                            <Label id="_IDGenLabel38" text="Other Cost" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn23"  >
-                            <Label id="_IDGenLabel39" text="Frieght Cost" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn24"  >
-                            <Label id="_IDGenLabel40" text="Total Cost" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn25"  >
-                            <Label id="_IDGabel41" text="Cargo Size" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn26" >
-                            <Label id="_IDGabel42" text="Unit" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn27" >
-                            <Label id="_IDGabel43" text="Distance" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn28" >
-                            <Label id="_IDGabel44" text="UOM" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenColumn29">
-                            <Label id="_IDGabel45" text="Port Days" textAlign="Begin" ></Label>
-                        </Column>
-                        <Column id="_IDGenColumn30" >
-                            <Label id="_IDGebel46" text="Weather" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGolumn31"  >
-                            <Label id="_IDGenLabel47" text="Sea Days" textAlign="Begin"></Label>
-                        </Column>
-                        <Column id="_IDGenumn32"  >
-                            <Label id="_IDGenLabel48" text="ETA" textAlign="Begin"></Label>
-                        </Column>
-                    </columns>
-                    <items>
-                            <ColumnListItem id="_IDGenColumnListItem5">
-                                <cells>
-                                    <CheckBox id="_IDGenCheckBox2"></CheckBox>
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
+                    <Table id="_IDGenTable1"   fixedLayout="false" >
+                            <columns  >
+                               
+                                <Column id="_IDColumn6" >
+                                    <Label id="_IDGebel15" text="LegID" ></Label>
+                                </Column>
+                                <Column id="_IDGenlumn6"  >
+                                    <Label id="_IDGLabel15" text="Port Cost"  ></Label>
+                                </Column>
+                                <Column id="_IDGenColumn7"  >
+                                    <Label id="_IDGenLabel16" text="Events" ></Label>
+                                </Column>
+ 
+                                <Column id="_IDGenColumn6" >
+                                    <Label id="_IDGenLabel15" text="Port name" ></Label>
+                                </Column>
+                               
+                                <Column id="_IDGenColumn8"  >
+                                    <Label id="_IDGenLabel17" text="Other Cost" ></Label>
+                                </Column>
+                                <Column id="_IDGenColumn9"  >
+                                    <Label id="_IDGenLabel18" text="Frieght Cost" ></Label>
+                                </Column>
+                                <Column id="_IDGenColumn10"  >
+                                    <Label id="_IDGenLabel19" text="Total Cost" ></Label>
+                                </Column>
+                                <Column id="_IDGenClumn11"  >
+                                    <Label id="_IDGnLabel20" text="Cargo Size" ></Label>
+                                </Column>
+                                <Column id="_IDGenCoumn12">
+                                    <Label id="_IDGnLabel21" text="Unit" ></Label>
+                                </Column>
+                                <Column id="_IDGenCoumn13" >
+                                    <Label id="_IDGenabel22" text="Distance"  ></Label>
+                                </Column>
+                                <Column id="_IDGenCoumn14" >
+                                    <Label id="_IDGeLabel23" text="UOM" ></Label>
+                                </Column>
+                                <Column id="_IDGenCoumn15" >
+                                    <Label id="_IDGenabel24" text="Port Days" ></Label>
+                                </Column>
+                                <Column id="_IDGenClumn16" >
+                                    <Label id="_IDGnLabel25" text="Weather" ></Label>
+                                </Column>
+                                <Column id="_IDGenClumn17"  >
+                                    <Label id="_IDGnLabel26" text="Sea Days" ></Label>
+                                </Column>
+                                <Column id="_IDGenColmn18"  >
+                                    <Label id="_IDGenLbel27" text="ETA" ></Label>
+                                </Column>
+                                <Column id="_IDGnColn18"  >
+                                    <Label id="_IDenLel27" text="Time" ></Label>
+                                </Column>
+                                <Column id="_IDl18"  >
+                                    <Label id="_nel27" text="ETD" ></Label>
+                                </Column>
+                                <Column id="Genoln18"  >
+                                    <Label id="GeLel27" text="Time" ></Label>
+                                </Column>
+                                <Column id="_on18"  >
+                                    <Label id="_Il27" text="Status" ></Label>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="_IDGenCoumnListItem4">
+                                    <cells>
+                                        <CheckBox id="_IDGenChecBox1"></CheckBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
                         </ScrollContainer>
  
             </Panel>
@@ -802,5 +861,6 @@
             </Panel>
 
         </NavContainer>
-    </ScrollContainer>
+   
+</Page>
 </mvc:View>
