@@ -597,14 +597,14 @@
                                     <cells>
                                     <Text id="in1" text="DEMURRAGE" ></Text>
                                     <CheckBox id="checkbox1" select="onCheckBoxSelect"></CheckBox>
-                                    <Text id="in2" text="" />
+                                    <Input id="Curr3"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenClumnListItem2">
                                     <cells>
                                     <Text id="in4" text="FREIGHT" ></Text>
                                     <CheckBox id="checkox1" select="onCheckBoxSelect"></CheckBox>
-                                    <Text id="in3" text="" />
+                                    <Input id="Curr5"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenumnListItem2">
@@ -797,24 +797,24 @@
 
             <!-- Panel for ButtonB -->
             <Panel id="panelB" height="600px" class="voyagePanel">
-                <HBox class="footeractualplanbutton" width= "100%">
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-ascending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-descending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://search"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://filter" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://sum"  class="footeractualplanbutton"/>
-                            <Button icon="../images/subtotals.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://print"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://detail-view"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="../images/Export.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://table-chart"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://message-information" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://full-screen" class="footeractualplanbutton"/>
+                <HBox  >
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-ascending"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-descending"  class="btnIcon"/>
+                            <Button icon="sap-icon://search"  class="btnIcon"/>
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://filter" class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://sum"  class="btnIcon"/>
+                            <Button icon="../images/subtotals.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://print"  class="btnIcon"/>
+                            <Button icon="sap-icon://detail-view"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="../images/Export.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://table-chart"  class="btnIcon"/>
+                            <Button icon="sap-icon://message-information" class="btnIcon"/>
+                            <Button icon="sap-icon://full-screen" class="btnIcon"/>
                         </HBox>
                         <Table width="100%" class="costplantables">
                             <columns>
@@ -850,24 +850,24 @@
                                 </Column>
                             </columns>
                         </Table>
-                         <HBox class="footeractualplanbutton">
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-ascending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-descending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://search"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://filter" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://sum"  class="footeractualplanbutton"/>
-                            <Button icon="../images/subtotals.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://print"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://detail-view"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="../images/Export.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://table-chart"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://message-information" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://full-screen" class="footeractualplanbutton"/>
+                         <HBox >
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-ascending"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-descending"  class="btnIcon"/>
+                            <Button icon="sap-icon://search"  class="btnIcon"/>
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://filter" class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://sum"  class="btnIcon"/>
+                            <Button icon="../images/subtotals.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://print"  class="btnIcon"/>
+                            <Button icon="sap-icon://detail-view"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="../images/Export.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://table-chart"  class="btnIcon"/>
+                            <Button icon="sap-icon://message-information" class="btnIcon"/>
+                            <Button icon="sap-icon://full-screen" class="btnIcon"/>
                         </HBox>
                         <Table width="100%" class="costplantables">
                             <columns>

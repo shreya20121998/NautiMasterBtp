@@ -534,77 +534,126 @@
             
             <!-- end of vessel plan section  -->
             <!-- start of bid detail section -->
-            <Panel id="p3" class="voyagePanel" >
-		        <HBox id="HBox1" class="table_box">
-                    <Table width="500px" items="{Vdata>/TechnicalBidding}" id="vesselRefDetails1" mode="SingleSelectLeft" headerText="Technical Bidding Details">
-                        <columns>
-                            
-                            <Column id="Column32" width="200px">
-                                <Label id="Label42" text="Heads" textAlign="Begin"></Label>
-                            </Column>
-                            <Column id="nColumn33" width="100px">
-                                <Label id="Label43" text="Relavance"></Label>
-                            </Column>
-                            <Column id="_IDGolumn34" width="200px">
-                                <Label id="Label44"  text="Possible Value"></Label>
-                            </Column>              
-                        </columns>
-                        <items>
-                            <ColumnListItem id="_IDGenColumnListItem2">
-                                <cells>
-                                    
-                                <Input id="in1" value="{Vdata>Heads}" ></Input>
-                                <CheckBox id="checkbox1" select="onCheckBoxSelect"></CheckBox>
-                                <Input id="in2" value="" />
-                                </cells>
-                            </ColumnListItem>  
-                        </items>
-                    </Table>
-        
-                    <Table width="500px" items="{Vdata>/CommercialBidding}" id="commercialbiddingdetails" headerText="Commercial Bidding Details" mode="SingleSelectLeft" class="second_table">
-                        <columns>
-                            
-                            <Column id="_IDGenColumn36" width="200px">
-                                <Label id="Label46" text="Heads"></Label>
-                            </Column>
-                            <Column id="_IDGenColumn37" width="200px">
-                                <Label id="Label47" text="Relavance"></Label>
-                            </Column>
-                            <Column id="_IDGenColumn38" width="150px">
-                                <Label id="Label48"  text="Possible Value"></Label>
-                            </Column>              
-                        </columns>
-                        <items>
-                            <ColumnListItem id="_IDGenColumnListItem3">
-                                <cells>
-                                    
-                                <Text id="_IDnText11" text="{Vdata>Heads}" ></Text>
-                                    <CheckBox id="checkbox"></CheckBox>
-                                </cells>
-                            </ColumnListItem>
-                        </items>  
-                    </Table>
+            <Panel id="p3"  class="voyagePanel">
+                <HBox id="HBox1" width="100%">
+                    <FlexBox id="Flex1" width="50%" class="flexbidtable">
+                        <Table  id="vesselRefDetails1" class="table" mode="SingleSelectLeft"
+                         headerText="Technical Bidding Details">
+                            <columns>
+                                <Column id="Column32" width="50%">
+                                    <Label id="Label42" text="Heads" textAlign="Begin"></Label>
+                                </Column>
+                                <Column id="nColumn33" width="10%">
+                                    <Label id="Label43" text="Relevance"></Label>
+                                </Column>
+                                <Column id="_IDGolumn34" width="40%">
+                                    <Label id="Label44"  text="Possible Value"></Label>
+                                </Column>              
+                            </columns>
+                            <items>
+                             
+                                <ColumnListItem id="_IDGenColumnListItem3">
+                                    <cells>
+                                        <Text id="_IDnText11" text="LAST CLEANING DATE 2" />
+                                        <CheckBox id="checkbox"></CheckBox>
+                                        <Text id="_IDnText12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenColumnLstItem3">
+                                    <cells>
+                                        <Text id="_IDnTet11" text="CLASS OF VESSEL" />
+                                        <CheckBox id="checbox"></CheckBox>
+                                        <Text id="_IDnTet12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenCoumnLstItem3">
+                                    <cells>
+                                        <Text id="_IDTet11" text="COUNTRY OF ORIGIN" />
+                                        <CheckBox id="chebox"></CheckBox>
+                                        <Text id="_IDnet12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenCmnLstItem3">
+                                    <cells>
+                                        <Text id="_IDT11" text="LAST PORT OF CALL" />
+                                        <CheckBox id="chbox"></CheckBox>
+                                        <Text id="_IDt12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox >
+                    <FlexBox id="Flex2" width="50%" class="flexbidtable">
+                        <Table  id="commercialbiddingdetails" class="table"
+                         headerText="Commercial Bidding Details" mode="SingleSelectLeft" >
+                            <columns>
+                                <Column id="_IDGenColumn36" width="50%" >
+                                    <Label id="Label46" text="Heads"></Label>
+                                </Column>
+                                <Column id="_IDGenColumn37" width="10%">
+                                    <Label id="Label47" text="Relevance"></Label>
+                                </Column>
+                                <Column id="_IDGenColumn38" width="40%">
+                                    <Label id="Label48"  text="Currency"></Label>
+                                </Column>              
+                            </columns>
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem2">
+                                    <cells>
+                                    <Text id="in1" text="DEMURRAGE" ></Text>
+                                    <CheckBox id="checkbox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Input id="Curr2"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenClumnListItem2">
+                                    <cells>
+                                    <Text id="in4" text="FREIGHT" ></Text>
+                                    <CheckBox id="checkox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Input id="Curr5"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenumnListItem2">
+                                    <cells>
+                                    <Text id="i4" text="" ></Text>
+                                    <CheckBox id="chckox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Text id="i3" text="" />
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenuListItem2">
+                                    <cells>
+                                    <Text id="ids4" text="" ></Text>
+                                    <CheckBox id="chkox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Text id="ids3" text="" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>  
+                        </Table>
+                    </FlexBox>
                 </HBox>
-        
-                <HBox id="HBox2" class="techbutton">
-                    <Button id="add" icon="sap-icon://sys-add" press=".onAddRow"></Button>
-                    <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow"></Button>
-                </HBox>
-                <HBox id="HBox3" class="techdropdown">
-                    <Label id="_IDGenLabel49" text="Select Profile:"/>
-                    <Select id="_IDGenSelect4" width="120px">
-                        <items>
-                            <core:Item id="_IDGenItem7" ></core:Item>
-                        </items>
-                    </Select>
-                </HBox>
-            
-                <HBox id="HBox4" class="commercialbutton" >
-                    <Button id="_IDGenBuon13" icon="sap-icon://sys-add" ></Button>
-                    <Button id="_IDGenBuon14" icon="sap-icon://sys-minus"></Button>
+       
+                <HBox id="HBox2" width="100%">
+                    <FlexBox width="10%" class="flexbtn">
+                        <Button id="add" icon="sap-icon://sys-add" press=".onAddRow" type="Reject"></Button>
+                        <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow" type="Reject"></Button>
+                    </FlexBox>
+                     <FlexBox width="20%">
+                        <Button id="saveprofileId" type="Reject" text="Save Profile"></Button>
+                    </FlexBox>
+                    <FlexBox width="20%">
+                        <Label id="_IDGenLabel49" text="Select Profile:"/>
+                        <Select id="_IDGenSelect4" width="120px">
+                            <items>
+                                <core:Item id="_IDGenItem7" ></core:Item>
+                            </items>
+                        </Select>
+                    </FlexBox>
+                    <FlexBox width="30%" >
+                        <Button id="_IDGenBuon13" icon="sap-icon://sys-add" type="Reject"></Button>
+                        <Button id="_IDGenBuon14" icon="sap-icon://sys-minus" type="Reject"></Button>
+                    </FlexBox>
                 </HBox>
 
-	        </Panel>
+            </Panel>
             <!-- end of bid detail section -->
             <Panel id="p4" class="voyagePanel">
 				     
@@ -753,24 +802,25 @@
 
             <!-- Panel for ButtonB -->
             <Panel id="panelB" height="600px" class="voyagePanel">
-                <HBox class="footeractualplanbutton" width= "100%">
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-ascending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-descending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://search"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://filter" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://sum"  class="footeractualplanbutton"/>
-                            <Button icon="../images/subtotals.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://print"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://detail-view"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="../images/Export.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://table-chart"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://message-information" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://full-screen" class="footeractualplanbutton"/>
+                <HBox  >
+
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-ascending"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-descending"  class="btnIcon"/>
+                            <Button icon="sap-icon://search"  class="btnIcon"/>
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://filter" class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://sum"  class="btnIcon"/>
+                            <Button icon="../images/subtotals.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://print"  class="btnIcon"/>
+                            <Button icon="sap-icon://detail-view"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="../images/Export.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://table-chart"  class="btnIcon"/>
+                            <Button icon="sap-icon://message-information" class="btnIcon"/>
+                            <Button icon="sap-icon://full-screen" class="btnIcon"/>
                         </HBox>
                         <Table width="100%" class="costplantables">
                             <columns>
@@ -807,23 +857,23 @@
                             </columns>
                         </Table>
                          <HBox class="footeractualplanbutton">
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-ascending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://sort-descending"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://search"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://zoom-in"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://filter" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://sum"  class="footeractualplanbutton"/>
-                            <Button icon="../images/subtotals.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://print"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://detail-view"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="../images/Export.png"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://slim-arrow-down" class="footeractualplanbuttonfilter"/>
-                            <Button icon="sap-icon://table-chart"  class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://message-information" class="footeractualplanbutton"/>
-                            <Button icon="sap-icon://full-screen" class="footeractualplanbutton"/>
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-ascending"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-descending"  class="btnIcon"/>
+                            <Button icon="sap-icon://search"  class="btnIcon"/>
+                            <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
+                            <Button icon="sap-icon://filter" class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://sum"  class="btnIcon"/>
+                            <Button icon="../images/subtotals.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://print"  class="btnIcon"/>
+                            <Button icon="sap-icon://detail-view"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="../images/Export.png"  class="btnIcon"/>
+                            <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
+                            <Button icon="sap-icon://table-chart"  class="btnIcon"/>
+                            <Button icon="sap-icon://message-information" class="btnIcon"/>
+                            <Button icon="sap-icon://full-screen" class="btnIcon"/>
                         </HBox>
                         <Table width="100%" class="costplantables">
                             <columns>
