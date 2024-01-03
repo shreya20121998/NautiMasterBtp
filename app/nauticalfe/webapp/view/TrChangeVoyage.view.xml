@@ -67,57 +67,64 @@
 
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
         <!-- For Header Section -->
-            <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
-
+           <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
+ 
                 <VBox id="_IDGenVBox1" alignItems="End">
-                <HBox id="_IDGenHBox2" alignItems="End">
-                <Label id="Label1" text="Voyage No:  "/>
+                <HBox id="_IDGenHBox2"  >
+                <Label id="Label1" text="Voyage No:"/>
                 <Input id="Input1" width="200px"/>
                 </HBox>
-
-                <HBox id="_IDGenHBox3" alignItems="End">
+ 
+                <HBox id="_IDGenHBox3" >
                 <Label id="Label2" text="Voyage Name:"/>
                 <Input id="Input2" width="200px"/>
                 </HBox>
                 </VBox>
-                <VBox id="_IDGenVBox2" >
-                <HBox id="_IDGenHBox4" alignItems="End" class="vdButton" >
+                <VBox id="_IDGenVBox2" alignItems="End" >
+                <HBox id="_IDGenHBox4">
                 <Label id="Label3" text="Voyage Type:"/>
-                <Select id="Select2" width="200px">
-                <items>
-                    <core:Item id="Item2" text="TEST"/>
-                </items>
+                <Select
+                       id="Select2"
+                        width ="200px"
+                        forceSelection="false"
+               
+                        items="{
+                            path: '/VOYTYP'
+                        }">
+                    <core:Item  id="_Item2" key="{VOYCD}" text="{VOYDES}" />
                 </Select>
                 </HBox>
-                <HBox id="_IDGenHBox5" alignItems="End" >
+                <HBox id="_IDGenHBox5">
                 <Label id="_Label4" text="Vessel Type:"/>
-                <Select id="_Select3" width="200px">
-                <items>
-                    <core:Item id="_Item3" text="TEST"/>
-                </items>
+                <Select id="Select3" width="200px" forceSelection="false"
+           
+                    items="{
+                        path: '/CARTYP'
+                    }">
+                    <core:Item  id="_Item3" key="{CARCD}" text="{CARDES}" />
                 </Select>
                 </HBox>
                 </VBox>
-                <VBox id="_IDGenVBox3"  >
-                <HBox id="_IDGenHBox6" alignItems="End" >
-                <Label id="Label5" text="Currency:  "/>
+                <VBox id="_IDGenVBox3" alignItems="End" >
+                <HBox id="_IDGenHBox6">
+                <Label id="Label5" text="Currency:"/>
                 <Input id="Input3" width="100px"/>
                 </HBox>
-
-                <HBox id="_IDGenHBox7" alignItems="End" >
-                <Label id="Label6" text="Historical Frieght Cost Name:"/>
-                <Input id="Input4" width="100px"/>
+ 
+                <HBox id="_IDGenHBox7">
+                <Label id="Label6" text="Historical Frieght Cost Name:" />
+                <Input id="Input4" width="100px" />
                 </HBox>
                 </VBox>
-                <VBox id="_IDGenVBox4"  >
-                <HBox id="_IDGenHBox8"  alignItems="End">
-                <Label id="Label7" text="Bid Type:  "/>
+                <VBox id="_IDGenVBox4" alignItems="End">
+                <HBox id="_IDGenHBox8">
+                <Label id="Label7" text="Bid Type:"/>
                 <Input id="Input5" />
                 </HBox>
-
-                <HBox id="_IDGenHBox9"  alignItems="End">
+ 
+                <HBox id="_IDGenHBox9">
                 <Label id="Label8" text="Status:"/>
-                <Input id="Input6" width="200px"/>
+                <Input id="Input6"/>
                 </HBox>
                 </VBox>
             </HBox>
@@ -228,8 +235,8 @@
 
             
             <!-- start of vessel detail section -->
-            <Panel id="p1"  >
-                <Text id="_IDGenText12" text="Enter Details" class="vgheading1"/>
+            <Panel id="p1"  class="voyagePanel" >
+                <Text id="_IDGenText12" text="Enter Details" class="vgheading"/>
                         <FlexBox id="vdsection1" class="vdsection" alignContent="Center">
                             <Label id="_IDGenLabel1" text="Vessel Name:"></Label>
                             <Input id="_IDGenInput1" width="170px"></Input>
@@ -241,7 +248,7 @@
                             <Input id="_IDGenInput2" width="170px"></Input>
                         </FlexBox>
                        
-                            <Text id="_IDGenText1" text="Reference Details" ></Text>
+                            <Text id="_IDGenText1" text="Reference Details" class="vgheading" ></Text>
                             <Table id="_IDGenTable3" width="60%" fixedLayout="false" mode="SingleSelectLeft" class="table">
                                 <columns>
                                    
@@ -307,7 +314,7 @@
             <!-- end of vessel detail section -->
 
             <!-- start of vessel plan section -->
-            <Panel id="p2" >
+            <Panel id="p2" class="voyagePanel">
                         
                         <ScrollContainer id="_IDGenScrollContainer2" horizontal="true"  vertical="false" class="scrollContainer">
                         <Text id="_IDGenText3" text="Plan Info Details" class="heading"/>
@@ -528,85 +535,134 @@
             
             <!-- end of vessel plan section  -->
             <!-- start of bid detail section -->
-            <Panel id="p3"  >
-		        <HBox id="HBox1" class="table_box">
-                    <Table width="500px" items="{Vdata>/TechnicalBidding}" id="vesselRefDetails1" mode="SingleSelectLeft" headerText="Technical Bidding Details">
-                        <columns>
-                            
-                            <Column id="Column32" width="200px">
-                                <Label id="Label42" text="Heads" textAlign="Begin"></Label>
-                            </Column>
-                            <Column id="nColumn33" width="100px">
-                                <Label id="Label43" text="Relavance"></Label>
-                            </Column>
-                            <Column id="_IDGolumn34" width="200px">
-                                <Label id="Label44"  text="Possible Value"></Label>
-                            </Column>              
-                        </columns>
-                        <items>
-                            <ColumnListItem id="_IDGenColumnListItem2">
-                                <cells>
-                                    
-                                <Input id="in1" value="{Vdata>Heads}" ></Input>
-                                <CheckBox id="checkbox1" select="onCheckBoxSelect"></CheckBox>
-                                <Input id="in2" value="" />
-                                </cells>
-                            </ColumnListItem>  
-                        </items>
-                    </Table>
-        
-                    <Table width="500px" items="{Vdata>/CommercialBidding}" id="commercialbiddingdetails" headerText="Commercial Bidding Details" mode="SingleSelectLeft" class="second_table">
-                        <columns>
-                            
-                            <Column id="_IDGenColumn36" width="200px">
-                                <Label id="Label46" text="Heads"></Label>
-                            </Column>
-                            <Column id="_IDGenColumn37" width="200px">
-                                <Label id="Label47" text="Relavance"></Label>
-                            </Column>
-                            <Column id="_IDGenColumn38" width="150px">
-                                <Label id="Label48"  text="Possible Value"></Label>
-                            </Column>              
-                        </columns>
-                        <items>
-                            <ColumnListItem id="_IDGenColumnListItem3">
-                                <cells>
-                                    
-                                <Text id="_IDnText11" text="{Vdata>Heads}" ></Text>
-                                    <CheckBox id="checkbox"></CheckBox>
-                                </cells>
-                            </ColumnListItem>
-                        </items>  
-                    </Table>
+            <Panel id="p3"  class="voyagePanel">
+                <HBox id="HBox1" width="100%">
+                    <FlexBox id="Flex1" width="50%" class="flexbidtable">
+                        <Table  id="vesselRefDetails1" class="table" mode="SingleSelectLeft"
+                         headerText="Technical Bidding Details">
+                            <columns>
+                                <Column id="Column32" width="50%">
+                                    <Label id="Label42" text="Heads" textAlign="Begin"></Label>
+                                </Column>
+                                <Column id="nColumn33" width="10%">
+                                    <Label id="Label43" text="Relevance"></Label>
+                                </Column>
+                                <Column id="_IDGolumn34" width="40%">
+                                    <Label id="Label44"  text="Possible Value"></Label>
+                                </Column>              
+                            </columns>
+                            <items>
+                             
+                                <ColumnListItem id="_IDGenColumnListItem3">
+                                    <cells>
+                                        <Text id="_IDnText11" text="LAST CLEANING DATE 2" />
+                                        <CheckBox id="checkbox"></CheckBox>
+                                        <Text id="_IDnText12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenColumnLstItem3">
+                                    <cells>
+                                        <Text id="_IDnTet11" text="CLASS OF VESSEL" />
+                                        <CheckBox id="checbox"></CheckBox>
+                                        <Text id="_IDnTet12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenCoumnLstItem3">
+                                    <cells>
+                                        <Text id="_IDTet11" text="COUNTRY OF ORIGIN" />
+                                        <CheckBox id="chebox"></CheckBox>
+                                        <Text id="_IDnet12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenCmnLstItem3">
+                                    <cells>
+                                        <Text id="_IDT11" text="LAST PORT OF CALL" />
+                                        <CheckBox id="chbox"></CheckBox>
+                                        <Text id="_IDt12" text=""/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox >
+                    <FlexBox id="Flex2" width="50%" class="flexbidtable">
+                        <Table  id="commercialbiddingdetails" class="table"
+                         headerText="Commercial Bidding Details" mode="SingleSelectLeft" >
+                            <columns>
+                                <Column id="_IDGenColumn36" width="50%" >
+                                    <Label id="Label46" text="Heads"></Label>
+                                </Column>
+                                <Column id="_IDGenColumn37" width="10%">
+                                    <Label id="Label47" text="Relevance"></Label>
+                                </Column>
+                                <Column id="_IDGenColumn38" width="40%">
+                                    <Label id="Label48"  text="Currency"></Label>
+                                </Column>              
+                            </columns>
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem2">
+                                    <cells>
+                                    <Text id="in1" text="DEMURRAGE" ></Text>
+                                    <CheckBox id="checkbox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Input id="Curr3"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenClumnListItem2">
+                                    <cells>
+                                    <Text id="in4" text="FREIGHT" ></Text>
+                                    <CheckBox id="checkox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Input id="Curr5"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenumnListItem2">
+                                    <cells>
+                                    <Text id="i4" text="" ></Text>
+                                    <CheckBox id="chckox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Text id="i3" text="" />
+                                    </cells>
+                                </ColumnListItem>
+                                <ColumnListItem id="_IDGenuListItem2">
+                                    <cells>
+                                    <Text id="ids4" text="" ></Text>
+                                    <CheckBox id="chkox1" select="onCheckBoxSelect"></CheckBox>
+                                    <Text id="ids3" text="" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>  
+                        </Table>
+                    </FlexBox>
                 </HBox>
-        
-                <HBox id="HBox2" class="techbutton">
-                    <Button id="add" icon="sap-icon://sys-add" press=".onAddRow"></Button>
-                    <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow"></Button>
-                </HBox>
-                <HBox id="HBox3" class="techdropdown">
-                    <Label id="_IDGenLabel49" text="Select Profile:"/>
-                    <Select id="_IDGenSelect4" width="120px">
-                        <items>
-                            <core:Item id="_IDGenItem7" ></core:Item>
-                        </items>
-                    </Select>
-                </HBox>
-            
-                <HBox id="HBox4" class="commercialbutton" >
-                    <Button id="_IDGenBuon13" icon="sap-icon://sys-add" ></Button>
-                    <Button id="_IDGenBuon14" icon="sap-icon://sys-minus"></Button>
+       
+                <HBox id="HBox2" width="100%">
+                    <FlexBox width="10%" class="flexbtn">
+                        <Button id="add" icon="sap-icon://sys-add" press=".onAddRow" type="Reject"></Button>
+                        <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow" type="Reject"></Button>
+                    </FlexBox>
+                     <FlexBox width="20%">
+                        <Button id="saveprofileId" type="Reject" text="Save Profile"></Button>
+                    </FlexBox>
+                    <FlexBox width="20%">
+                        <Label id="_IDGenLabel49" text="Select Profile:"/>
+                        <Select id="_IDGenSelect4" width="120px">
+                            <items>
+                                <core:Item id="_IDGenItem7" ></core:Item>
+                            </items>
+                        </Select>
+                    </FlexBox>
+                    <FlexBox width="30%" >
+                        <Button id="_IDGenBuon13" icon="sap-icon://sys-add" type="Reject"></Button>
+                        <Button id="_IDGenBuon14" icon="sap-icon://sys-minus" type="Reject"></Button>
+                    </FlexBox>
                 </HBox>
 
-	        </Panel>
+            </Panel>
             <!-- end of bid detail section -->
-            <Panel id="p4" >
+            <Panel id="p4" class="voyagePanel" >
 				     
                     <Label text="Long Text"></Label>
                     <TextArea id="TextArea1" value=""  class="longtxt" width="100%" > </TextArea>   
                                  
 			</Panel>
-             <Panel id="p5" >
+            <Panel id="p5" class="voyagePanel" >
 				     
                     <l:VerticalLayout id="_IDGenVerticalLayout1">
                   <u:FileUploader
@@ -621,6 +677,7 @@
                 </l:VerticalLayout>
                                  
 			</Panel>
+
 
         </NavContainer>
      <!-- header detail ends here -->

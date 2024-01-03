@@ -658,7 +658,7 @@
             <Panel id="p4" class="voyagePanel">
 				     
                     <Label text="Long Text"></Label>
-                    <TextArea id="TextArea1" value=""  class="longtxt" width="100%" > </TextArea>   
+                    <TextArea id="TextArea1" value=""  height= "300px" width="100%" > </TextArea>   
                                  
 			</Panel>
              <Panel id="p5" class="voyagePanel">
