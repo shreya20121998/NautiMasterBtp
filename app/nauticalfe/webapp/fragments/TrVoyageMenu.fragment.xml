@@ -10,7 +10,7 @@
 			</items>
         </MenuItem>
 		<MenuItem text="change Voyage Details" press="onChange"/>
-		<MenuItem text="Display Voyage Details"/>
+		<MenuItem text="Display Voyage Details" press="onDisplay"/>
         <MenuItem text="Maintain Events"/>
         <MenuItem text="Voyage Approval"/>
 			

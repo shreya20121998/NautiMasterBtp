@@ -101,6 +101,10 @@ sap.ui.define(
       onChange: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteTrChangeVoyage");
+      },
+      onDisplay: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrDisplayVoyage");
       }
       });
     }

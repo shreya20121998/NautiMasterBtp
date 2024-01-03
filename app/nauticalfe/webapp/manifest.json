@@ -157,7 +157,7 @@
           },
           {
               "name": "RouteTrChangeVoyage",
-              "pattern": "fr",
+              "pattern": "changeVoyage",
               "target": [
                   "TargetTrChangeVoyage"
               ]
@@ -375,7 +375,14 @@
         "target": [
             "TargetTrCaptureVoyageActual"
         ]
-    }
+      },
+      {
+        "name": "RouteTrDisplayVoyage",
+        "pattern": "TrDisplayVoyage",
+        "target": [
+            "TargetTrDisplayVoyage"
+        ]
+      }
 
      
       ],
@@ -656,6 +663,13 @@
                 "clearControlAggregation": false,
                 "viewId": "TrCaptureVoyageActual",
                 "viewName": "TrCaptureVoyageActual"
+            },
+            "TargetTrDisplayVoyage": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrDisplayVoyage",
+                "viewName": "TrDisplayVoyage"
             }
 
 
