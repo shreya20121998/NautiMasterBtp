@@ -63,22 +63,22 @@
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
         <!-- For Header Section -->
             <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
-
+ 
                 <VBox id="_IDGenVBox1" alignItems="End">
-                <HBox id="_IDGenHBox2" alignItems="End">
-                <Label id="Label1" text="Voyage No:  "/>
+                <HBox id="_IDGenHBox2"  >
+                <Label id="Label1" text="Voyage No:"/>
                 <Input id="Input1" width="200px"/>
                 </HBox>
-
-                <HBox id="_IDGenHBox3" alignItems="End">
+ 
+                <HBox id="_IDGenHBox3" >
                 <Label id="Label2" text="Voyage Name:"/>
                 <Input id="Input2" width="200px"/>
                 </HBox>
                 </VBox>
-                <VBox id="_IDGenVBox2" >
-                <HBox id="_IDGenHBox4" alignItems="End" class="vdButton" >
+                <VBox id="_IDGenVBox2" alignItems="End" >
+                <HBox id="_IDGenHBox4">
                 <Label id="Label3" text="Voyage Type:"/>
-                 <Select
+                <Select
                        id="Select2"
                         width ="200px"
                         forceSelection="false"
@@ -89,41 +89,37 @@
                     <core:Item  id="_Item2" key="{VOYCD}" text="{VOYDES}" />
                 </Select>
                 </HBox>
-                <HBox id="_IDGenHBox5" alignItems="End" >
+                <HBox id="_IDGenHBox5">
                 <Label id="_Label4" text="Vessel Type:"/>
-                <Select
-                     
-                       id="Select3"
-                         width="200px"
-                        forceSelection="false"
-               
-                        items="{
-                            path: '/CARTYP'
-                        }">
+                <Select id="Select3" width="200px" forceSelection="false"
+           
+                    items="{
+                        path: '/CARTYP'
+                    }">
                     <core:Item  id="_Item3" key="{CARCD}" text="{CARDES}" />
                 </Select>
                 </HBox>
                 </VBox>
-                <VBox id="_IDGenVBox3"  >
-                <HBox id="_IDGenHBox6" alignItems="End" >
-                <Label id="Label5" text="Currency:  "/>
+                <VBox id="_IDGenVBox3" alignItems="End" >
+                <HBox id="_IDGenHBox6">
+                <Label id="Label5" text="Currency:"/>
                 <Input id="Input3" width="100px"/>
                 </HBox>
-
-                <HBox id="_IDGenHBox7" alignItems="End" >
-                <Label id="Label6" text="Historical Frieght Cost Name:"/>
-                <Input id="Input4" width="100px"/>
+ 
+                <HBox id="_IDGenHBox7">
+                <Label id="Label6" text="Historical Frieght Cost Name:" />
+                <Input id="Input4" width="100px" />
                 </HBox>
                 </VBox>
-                <VBox id="_IDGenVBox4"  >
-                <HBox id="_IDGenHBox8"  alignItems="End">
-                <Label id="Label7" text="Bid Type:  "/>
+                <VBox id="_IDGenVBox4" alignItems="End">
+                <HBox id="_IDGenHBox8">
+                <Label id="Label7" text="Bid Type:"/>
                 <Input id="Input5" />
                 </HBox>
-
-                <HBox id="_IDGenHBox9"  alignItems="End">
+ 
+                <HBox id="_IDGenHBox9">
                 <Label id="Label8" text="Status:"/>
-                <Input id="Input6" width="200px"/>
+                <Input id="Input6"/>
                 </HBox>
                 </VBox>
             </HBox>

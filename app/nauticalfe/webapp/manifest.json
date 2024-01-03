@@ -382,6 +382,34 @@
         "target": [
             "TargetTrDisplayVoyage"
         ]
+      },
+      {
+        "name": "RouteTrMaintainEvent",
+        "pattern": "MaintainEvent",
+        "target": [
+            "TargetTrMaintainEvent"
+        ]
+      },
+      {
+        "name": "RouteTrRequestQuotation",
+        "pattern": "RequestQuotation",
+        "target": [
+            "TargetTrRequestQuotation"
+        ]
+      },
+      {
+        "name": "RouteTrCompareRequestQuotation",
+        "pattern": "CompareRequestQuotation",
+        "target": [
+            "TargetTrCompareRequestQuotation"
+        ]
+      },
+      {
+        "name": "RouteTrInviteLiveFrieghtNego",
+        "pattern": "InviteLiveFrieghtNego",
+        "target": [
+            "TargetTrInviteLiveFrieghtNego"
+        ]
       }
 
      
@@ -670,7 +698,36 @@
                 "clearControlAggregation": false,
                 "viewId": "TrDisplayVoyage",
                 "viewName": "TrDisplayVoyage"
+            },
+            "TargetTrMaintainEvent": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrMaintainEvent",
+                "viewName": "TrMaintainEvent"
+            },
+            "TargetTrRequestQuotation": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrRequestQuotation",
+                "viewName": "TrRequestQuotation"
+            },
+            "TargetTrCompareRequestQuotation": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrCompareRequestQuotation",
+                "viewName": "TrCompareRequestQuotation"
+            },
+            "TargetTrInviteLiveFrieghtNego": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrInviteLiveFrieghtNego",
+                "viewName": "TrInviteLiveFrieghtNego"
             }
+
 
 
 

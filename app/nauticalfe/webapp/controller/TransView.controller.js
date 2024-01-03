@@ -105,6 +105,27 @@ sap.ui.define(
       onDisplay: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteTrDisplayVoyage");
+      },
+      onMaintain: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrMaintainEvent");
+      },
+
+      onFrieghtPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrChangeVoyage");
+      },
+      onReqQuotationPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrRequestQuotation");
+      },
+      onCompareReqQuotPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrCompareRequestQuotation");
+      },
+      onInvitelivefrieghtNegoPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrInviteLiveFrieghtNego");
       }
       });
     }

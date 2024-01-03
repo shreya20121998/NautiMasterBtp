@@ -61,11 +61,11 @@
                 <ObjectListItem id="_IDGenObjectListItem1"  intro=" voyage transaction data" class="headerTxt" ></ObjectListItem>
 
                 <Button id="VoyButton" class="two"  type="Reject" text="Voyage"   press="onVoyPress" ariaHasPopup="Menu"></Button>            
-                <Button id="FrieghtButton" class="two" type="Reject"  text="Freight Simulator"   ></Button>
+                <Button id="FrieghtButton" class="two" type="Reject"  text="Freight Simulator"  press="onFrieghtPress" ></Button>
                 <Button id="ChartButton" class="two" type="Reject" text="Chartering" icon="sap-icon://bar-chart" press="onChartPress" ariaHasPopup="Menu"></Button>
-                <Button id="_IDGenButton7" class="two" type="Reject"  text="Request for Quotation"></Button>
-                <Button id="_IDGenButton8" class="two" type="Reject" text="Compare Request for Quotation" ></Button>               
-                <Button id="_IDGenButton10" class="two" type="Reject" text="Invite for Live Freight Negotiation"></Button>
+                <Button id="_IDGenButton7" class="two" type="Reject"  text="Request for Quotation" press="onReqQuotationPress"></Button>
+                <Button id="_IDGenButton8" class="two" type="Reject" text="Compare Request for Quotation" press="onCompareReqQuotPress" ></Button>               
+                <Button id="_IDGenButton10" class="two" type="Reject" text="Invite for Live Freight Negotiation" press="onInvitelivefrieghtNegoPress"></Button>
                 <Button id="_IDGenButton11" class="two" type="Reject"  text="Compare Live Freight Negotiation" ></Button>
                 <Button id="RejectButton" class="two" type="Reject" text="Reports" press="onReportPress" ariaHasPopup="Menu" ></Button>
             </Panel>   

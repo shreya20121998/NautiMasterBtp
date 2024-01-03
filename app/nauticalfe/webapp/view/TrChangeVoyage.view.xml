@@ -67,7 +67,7 @@
 
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
         <!-- For Header Section -->
-           <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
+            <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
  
                 <VBox id="_IDGenVBox1" alignItems="End">
                 <HBox id="_IDGenHBox2"  >

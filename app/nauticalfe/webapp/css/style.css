@@ -304,3 +304,8 @@
 .sapMBtnIcon {
     color: rgb(194, 65, 65);
 }
+/* request for quotation */
+
+.reqQuotation{
+    padding: 2%;
+}
