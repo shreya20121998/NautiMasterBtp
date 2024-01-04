@@ -126,6 +126,10 @@ sap.ui.define(
       onInvitelivefrieghtNegoPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteTrInviteLiveFrieghtNego");
+      },
+      onCompareLiveFrieghtReportPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrCompareLiveFrieghtReport");
       }
       });
     }

@@ -66,7 +66,7 @@
                 <Button id="_IDGenButton7" class="two" type="Reject"  text="Request for Quotation" press="onReqQuotationPress"></Button>
                 <Button id="_IDGenButton8" class="two" type="Reject" text="Compare Request for Quotation" press="onCompareReqQuotPress" ></Button>               
                 <Button id="_IDGenButton10" class="two" type="Reject" text="Invite for Live Freight Negotiation" press="onInvitelivefrieghtNegoPress"></Button>
-                <Button id="_IDGenButton11" class="two" type="Reject"  text="Compare Live Freight Negotiation" ></Button>
+                <Button id="_IDGenButton11" class="two" type="Reject"  text="Compare Live Freight Negotiation" press="onCompareLiveFrieghtReportPress" ></Button>
                 <Button id="RejectButton" class="two" type="Reject" text="Reports" press="onReportPress" ariaHasPopup="Menu" ></Button>
             </Panel>   
 

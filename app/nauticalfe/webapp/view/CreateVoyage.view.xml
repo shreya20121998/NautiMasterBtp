@@ -94,7 +94,7 @@ xmlns:form="sap.ui.layout.form"
           </contentRight>
         </Bar>
 
-        <Table id="table" class="tableLayout"  growing="true" growingThreshold="10"  >
+        <Table id="portmastertable" class="tableLayout"  growing="true" growingThreshold="10"  >
           <columns>
            <Column id="heading1">
              <Text id="text1" text="Port Name"/>
