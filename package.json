@@ -16,5 +16,49 @@
   "scripts": {
     "start": "cds-serve",
     "watch-nauticalfe": "cds watch --open nauticalfe/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "ZBTP_NAUTI_MARINE_DM_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_NAUTI_MARINE_DM_CDS",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_Server",
+            "path": "/sap/opu/odata/sap/ZBTP_NAUTI_MARINE_DM_CDS"
+          }
+        }
+      },
+      "ZBTP_NAUTI_CREATEVOYAGE_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_NAUTI_CREATEVOYAGE_CDS",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_Server",
+            "path": "/sap/opu/odata/sap/ZBTP_NAUTI_CREATEVOYAGE_CDS"
+          }
+        }
+      },
+      "ZBTP_NAUTI_PORTMASTER_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_NAUTI_PORTMASTER_CDS",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_Server",
+            "path": "/sap/opu/odata/sap/ZBTP_NAUTI_PORTMASTER_CDS"
+          }
+        }
+      },
+      "ZBTP_NAUTI_VOY_DOC_UPD_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_NAUTI_VOY_DOC_UPD_CDS",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_Server",
+            "path": "/sap/opu/odata/sap/ZBTP_NAUTI_VOY_DOC_UPD_CDS"
+          }
+        }
+      }
+    }
   }
 }
