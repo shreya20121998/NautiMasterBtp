@@ -464,19 +464,89 @@ sap.ui.define([
           );
           sea_daysdestination = updatedvalueSea;
           data.sea_daysdestination = sea_daysdestination;
-          console.log(sea_daysdestination, data.sea_daysdestination);
+          // console.log(sea_daysdestination, data.sea_daysdestination);
+
           // Calculate Arrival Date and Time at Destination Port(s)
+
           var arrivaldatedestination = this.calculatearrivaldatedestination(
               data.departuredateorigin,
               data.sea_daysdestination
           );
+          this.getView().byId("arrivaltimeorigin").setValue(departuretimeorigin);
+
+          let {hours, minutes} = this.extractTimeFromDay(sea_daysdestination);
+          console.log("jjjj--", departuretimeorigin);
+
+          let arrTime = this.addTimeTo12HourFormat('5:00:00 PM', 18, minutes);
+          console.log(arrTime, hours, minutes);
+     
     
-        // console.log("arrivaldateorigin", arrivaldateorigin);
-        // console.log("arrivaldatedestination", arrivaldatedestination);
+    },
+    addTimeTo12HourFormat : function(time, additionalHours, additionalMinutes) {
+      console.log(time, typeof time);
+      // Split the time into hours, minutes, seconds, and AM/PM
+      const [timeStr, ampm] = time.split(' ');
+  const [hoursStr, minutesStr, secondsStr] = timeStr.split(':');
+
+  let hours = parseInt(hoursStr, 10);
+  let minutes = parseInt(minutesStr, 10);
+
+  // Convert AM/PM to uppercase for consistency
+  const isPM = ampm.toUpperCase() === 'PM';
+
+  // Adjust the hours based on AM/PM
+  if (isPM && hours !== 12) {
+    hours += 12;
+  } else if (!isPM && hours === 12) {
+    hours = 0;
+  }
+
+  // Add the additional hours and minutes
+  hours += additionalHours;
+  minutes += additionalMinutes;
+
+  // Adjust hours and minutes if minutes overflow to hours
+  hours += Math.floor(minutes / 60);
+  minutes %= 60;
+
+  // Calculate days carried over
+  const daysCarriedOver = Math.floor(hours / 24);
+  hours %= 24;
+
+  // Convert hours back to 12-hour format
+  const formattedHours = (hours % 12) || 12;
+  const formattedAMPM = hours < 12 ? 'AM' : 'PM';
+
+  // Format the new time
+  const newTime = `${formattedHours.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}:${secondsStr} ${formattedAMPM}`;
+
+  return daysCarriedOver > 0
+    ? `${daysCarriedOver}, ${newTime}` // Append days carried over
+    : newTime;
+    },
     
-        // console.log("sea_daysdestination", sea_daysdestination);
-        // console.log("overallTotalDays", overallTotalDays);
+    // Example usage:
+    // const initialTime = '04:30:45 PM';
+    // const newTime = addTimeTo12HourFormat(initialTime, 2, 15); // Add 2 hours and 15 minutes
+
+    extractTimeFromDay :function (day) {
+      // Extract the fractional part from the day
+      const fractionalPart = day % 1;
+      
+      // Convert fractional part to hours and minutes
+      const totalHours = Math.floor(fractionalPart * 24);
+      const remainingMinutes = Math.round((fractionalPart * 24 - totalHours) * 60);
     
+      // Split hours and minutes
+      const hours = Math.floor(totalHours);
+      const minutes = remainingMinutes;
+    
+      return {
+        hours,
+        minutes
+      };
     },
     
     calculatearrivaldateorigin: function (departuredateorigin, portdaysorigin) {

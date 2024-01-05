@@ -147,9 +147,9 @@ xmlns:form="sap.ui.layout.form"
               <Input id="sea_daysorigin" value ="0" enabled="false"/>
               <Input id="portdaysorigin" value =""/>
               <Input id="arrivaldateorigin" placeholder="Enter Date"  change="handleChange" width="auto" value="" editable="false" />
-              <TimePicker id="arrivaltimeorigin" change="handleChange" input="handleInput" formatPattern="HH:mm:ss" enabled="false" ></TimePicker>
+              <Input id="arrivaltimeorigin" change="handleChange"    value="" editable="false"/>
               <DatePicker id="departuredateorigin" placeholder="Enter Date"  change="handleChange"/>
-              <TimePicker id="departuretimeorigin" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
+              <TimePicker id="departuretimeorigin" change="handleChange"  ></TimePicker>
              
              </cells>
              
