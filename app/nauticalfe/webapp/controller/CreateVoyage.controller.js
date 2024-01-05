@@ -11,20 +11,7 @@ sap.ui.define([
       onInit: function () {
         var oView = this.getView();
  
-        // Button event handlers
-        // oView.byId("_IDGenButton1").attachPress(function () {
-        //   alert("Create Voyage button clicked!");
-        // });
- 
- 
- 
-        // oView.byId("_IDGenButton3").attachPress(function () {
-        //   alert("Calculate button clicked!");
-        // });
- 
-        // oView.byId("_IDGenButton4").attachPress(function () {
-        //   alert("Refresh button clicked!");
-        // });
+        
       },
       onFreightSimulator: function () {
         const oRouter = this.getOwnerComponent().getRouter();
@@ -466,21 +453,23 @@ sap.ui.define([
             data.portdaysorigin
         );
     
-        // Calculate Arrival Date and Time at Destination Port(s)
-        // var arrivaldatedestination = this.calculatearrivaldatedestination(
-        //     data.departuredateorigin,
-        //     data.sea_daysdestination
-        // );
-    
+        
         // Calculate Overall Total Number of Days
-        this.calculateOverallTotalDays(
+        let updatedvalueSea = this.calculateOverallTotalDays(
           data.distanceorigin,
-            data.distancedestination,
-            data.portdaysorigin,
-            data.portdaysdestination,
-            data.speedorigin
-        );
-    
+          data.distancedestination,
+          data.portdaysorigin,
+          data.portdaysdestination,
+          data.speedorigin
+          );
+          sea_daysdestination = updatedvalueSea;
+          data.sea_daysdestination = sea_daysdestination;
+          console.log(sea_daysdestination, data.sea_daysdestination);
+          // Calculate Arrival Date and Time at Destination Port(s)
+          var arrivaldatedestination = this.calculatearrivaldatedestination(
+              data.departuredateorigin,
+              data.sea_daysdestination
+          );
     
         // console.log("arrivaldateorigin", arrivaldateorigin);
         // console.log("arrivaldatedestination", arrivaldatedestination);
@@ -497,12 +486,7 @@ sap.ui.define([
         return arrivalDateOrigin;
     },
     
-    calculatearrivaldatedestination: function (departuredateorigin, sea_daysdestination) {
-        var departuredate = new Date(departuredateorigin);
-        var arrivaldatedestination = new Date(departuredate.getTime() - sea_daysdestination * 24 * 60 * 60 * 1000);
-        this.getView().byId('arrivaldatedestination').setValue(arrivaldatedestination.toString().slice(0,15));
-        return arrivaldatedestination;
-    },
+    
     
     calculateOverallTotalDays: function ( distanceorigin, distancedestination,portdaysorigin,portdaysdestination,speedorigin) {
 
@@ -516,8 +500,14 @@ sap.ui.define([
       
         
         
-        return overallTotalDays1;
+        return sea_daysdestination;
     
-    }
+    },
+    calculatearrivaldatedestination: function (departuredateorigin, sea_daysdestination) {
+      var departuredate = new Date(departuredateorigin);
+      var arrivaldatedestination = new Date(departuredate.getTime() + sea_daysdestination * 24 * 60 * 60 * 1000);
+      this.getView().byId('arrivaldatedestination').setValue(arrivaldatedestination.toString().slice(0,15));
+      return arrivaldatedestination;
+  },
   }) 
   });
