@@ -58,6 +58,16 @@
             "path": "/sap/opu/odata/sap/ZBTP_NAUTI_VOY_DOC_UPD_CDS"
           }
         }
+      },
+      "ZBTP_NAUTICAL_MARIDISTANCE_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_NAUTICAL_MARIDISTANCE_CDS",
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_Server",
+            "path": "/sap/opu/odata/sap/ZBTP_NAUTICAL_MARIDISTANCE_CDS"
+          }
+        }
       }
     }
   }

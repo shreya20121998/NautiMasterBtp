@@ -3,52 +3,52 @@ xmlns:form="sap.ui.layout.form"
  xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
  controllerName="nauticalfe.controller.CreateVoyage"
     xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
-
+ 
   <Page id="pageId">
     <headerContent>
-      <Bar class="customHeader">
+      <Bar id="_IDGenBar1" class="customHeader">
           <contentLeft>
-              <core:Icon
+              <core:Icon id="_IDGenIcon1"
                   src="sap-icon://nav-back"
                   class="size1"
                   color="#FFFFFF"
                   press="onBackPress"
               />
-              <Image
+              <Image id="_IDGenImage1"
                   src="./images/ignxlogo.png"
                   height="75%"
               />
-              <Text
+              <Text id="_IDGenText1"
                   class="textBid"
                   text="Create Voyage"
               />
           </contentLeft>
           <contentRight>
-              <core:Icon
+              <core:Icon id="_IDGenIcon2"
                   src="sap-icon://search"
                   class="size1"
                   color="#FFFFFF"
               >
                   <core:layoutData>
-                      <FlexItemData growFactor="1" />
+                      <FlexItemData id="_IDGenFlexItemData1" growFactor="1" />
                   </core:layoutData>
               </core:Icon>
-              <core:Icon
+              <core:Icon id="_IDGenIcon3"
                   src="sap-icon://SAP-icons-TNT/user"
                   class="size1"
                   color="#FFFFFF"
               >
                   <core:layoutData>
-                      <FlexItemData growFactor="1" />
+                      <FlexItemData id="_IDGenFlexItemData2" growFactor="1" />
                   </core:layoutData>
               </core:Icon>
           </contentRight>
       </Bar>
     </headerContent>
-    
-    <VBox >
+   
+    <VBox id="_IDGenVBox2" >
       <HBox id="_IDGenVBox1" width="100%" height="400px" class="crthreebox">
-        <FlexBox width="18%" class="threeFlex">
+        <FlexBox id="_IDGenFlexBox1" width="18%" class="threeFlex">
           <form:SimpleForm id="_IDSimpleForm1" title="Create Voyage">
               <!-- Add your form elements here -->
               <Label id="_IDLabel1" text="voyage Name"/>
@@ -64,15 +64,15 @@ xmlns:form="sap.ui.layout.form"
               <!-- Add more form elements as needed -->
           </form:SimpleForm>
         </FlexBox>
-    
-        <FlexBox  width="47%" class="threeFlex">
+   
+        <FlexBox id="_IDGenFlexBox2"  width="47%" class="threeFlex">
         </FlexBox>
-
-        <FlexBox width="35%" class="threeFlex">
+ 
+        <FlexBox id="_IDGenFlexBox3" width="35%" class="threeFlex">
         </FlexBox>
       </HBox>
-
-      <Panel >
+ 
+      <Panel id="_IDGenPanel1" >
         <Bar id="TableUpperBar">
           <contentLeft>
             <CheckBox id="_IDGenChBox1" text="Suez" />
@@ -82,19 +82,19 @@ xmlns:form="sap.ui.layout.form"
           <contentMiddle>
             <Label id="_IDGenLab6" text="Speed" />
             <Input id="_IDGenIn6" width="10%"/>
-            <Label id="_IDGenLab8" text="NM/HRS" />
+            <Label id="_IDGenLab8" text="NM/HR" />
             <Label id="_IDGenLab7" text="Total Days" />
-            <Input id="_IDGenInp7" width="10%"/>
+            <Input id="totaldays" width="10%" value=""/>
           </contentMiddle>
           <contentRight >
             <Button id="_IDGenButn1" text="Create Voyage"  press="onChangeVoyage" type="Reject"/>
             <Button id="_IDGenButn2" text="Freight Simulator" press="onFreightSimulator" type="Reject" />
-            <Button id="_IDGenButn3"  text="Calculate"  type="Negative" icon="none" />
+            <Button id="_IDGenButn3"  text="Calculate"  type="Negative"  icon="none"  press="calculateVoyage" />
             <Button id="_IDGenButn4" icon="sap-icon://refresh" type="Reject" />
           </contentRight>
         </Bar>
-
-        <Table id="portmastertable" class="tableLayout"  growing="true" growingThreshold="10"  >
+ 
+        <Table id="table" class="tableLayout"  growing="true" growingThreshold="10"  >
           <columns>
            <Column id="heading1">
              <Text id="text1" text="Port Name"/>
@@ -133,43 +133,43 @@ xmlns:form="sap.ui.layout.form"
              <Text id="text12" text="Departure Time"/>
            </Column>
           </columns>
-
+ 
          <items>
            <ColumnListItem id="coloumnlist"  >
              <cells>
-              <Input id="field1" value ="Mumbai"/>
-              <Input id="field8" value ="1090.00"/>
-              <Input id="field2" value ="0"/>
-              <Input id="field3" value ="1000"/>
-              <Input id="field4" value ="10"/>
-              <Input id="field5" value ="768.6"/>
-               <Input id="field6" value ="3"/>
-              <Input id="field7" value ="5"/>
-              
-              <DatePicker id="DP4"	placeholder="Enter Date"	change="handleChange"	width="auto" />
-                <TimePicker id="TP1" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
-              <DatePicker id="DP3"	placeholder="Enter Date"	change="handleChange"/>
-              <TimePicker id="TP2" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
-              
+              <Input id="portfromorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelp"/>
+              <!-- <Input id="field2" value="" showValueHelp="true" valueHelpRequest="onValueHelp1" enabled="false"/> -->
+             <Input id="distanceorigin" value="0"  enabled="false"/>
+              <Input id="weatherorigin" value ="0" enabled="false"/>
+              <Input id="cargo_sizeorigin" value =""/>
+              <Input id="unitorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelp2"/>
+              <Input id="speedorigin" value =""/>
+              <Input id="sea_daysorigin" value ="0" enabled="false"/>
+              <Input id="portdaysorigin" value =""/>
+              <Input id="arrivaldateorigin" placeholder="Enter Date"  change="handleChange" width="auto" value="" editable="false" />
+              <TimePicker id="arrivaltimeorigin" change="handleChange" input="handleInput" formatPattern="HH:mm:ss" enabled="false" ></TimePicker>
+              <DatePicker id="departuredateorigin" placeholder="Enter Date"  change="handleChange"/>
+              <TimePicker id="departuretimeorigin" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
+             
              </cells>
              
            </ColumnListItem>
-           <ColumnListItem id="coloumnist"  >
+              <ColumnListItem id="coloumnlist1"  >
              <cells>
-              <Input id="field18" value ="Mumbai"/>
-              <Input id="field9" value ="1090.00"/>
-              <Input id="field12" value ="0"/>
-              <Input id="field13" value ="1000"/>
-              <Input id="field14" value ="10"/>
-              <Input id="field15" value ="768.6"/>
-               <Input id="field16" value ="3"/>
-              <Input id="field17" value ="5"/>
-              
-              <DatePicker id="DP14"	placeholder="Enter Date"	change="handleChange"	width="auto" />
-                <TimePicker id="TP11" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
-              <DatePicker id="DP13"	placeholder="Enter Date"	change="handleChange"/>
-              <TimePicker id="TP12" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
-              
+              <Input id="portdestination" value="" editable="false"/>
+              <Input id="distancedestination" value="" editable="false"/>
+              <Input id="weatherdestination" value ="0" enabled="false"/>
+              <Input id="cargo_sizedestination" value =""/>
+              <Input id="unitdestination" value="" showValueHelp="true" valueHelpRequest="onValueHelp2" enabled="false"/>
+              <Input id="speeddestination" value ="" />
+              <Input id="sea_daysdestination" value ="" enabled="false"/>
+              <Input id="portdaysdestination" value =""/>
+             
+              <Input id="arrivaldatedestination"   change="handleChange" width="auto" value="" editable="false"/>
+                <TimePicker id="arrivaltimedestination" change="handleChange" input="handleInput" formatPattern="HH:mm:ss" enabled="false"></TimePicker>
+              <DatePicker id="departuredatedestination" placeholder="Enter Date"  change="handleChange"/>
+              <TimePicker id="departuretimedestination" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
+             
              </cells>
              
            </ColumnListItem>

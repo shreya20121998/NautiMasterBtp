@@ -1,9 +1,22 @@
 const cds = require('@sap/cds');
 
 module.exports = cds.service.impl(async function (srv) {
+    const ZBTP_NAUTI_CREATEVOYAGE_CDS = await cds.connect.to("ZBTP_NAUTI_CREATEVOYAGE_CDS"); 
+    srv.on('READ', 'ZBTP_NAUTI_CreateVoyage', req => ZBTP_NAUTI_CREATEVOYAGE_CDS.run(req.query));
+
+    const ZBTP_NAUTI_MARINE_DM_CDS = await cds.connect.to("ZBTP_NAUTI_MARINE_DM_CDS"); 
+    srv.on('READ', 'ZBTP_NAUTI_Marine_DM', req => ZBTP_NAUTI_MARINE_DM_CDS.run(req.query)); 
+
+    const ZBTP_NAUTI_VOY_DOC_UPD_CDS = await cds.connect.to("ZBTP_NAUTI_VOY_DOC_UPD_CDS"); 
+    srv.on('READ', 'ZBTP_Nauti_Voy_DOC_UPD', req => ZBTP_NAUTI_VOY_DOC_UPD_CDS.run(req.query)); 
+
+    const ZBTP_NAUTICAL_MARIDISTANCE_CDS = await cds.connect.to("ZBTP_NAUTICAL_MARIDISTANCE_CDS"); 
+      srv.on('READ', 'ZBTP_NAUTICAL_MariDistance', req => ZBTP_NAUTICAL_MARIDISTANCE_CDS.run(req.query)); 
+
+      
     this.before('CREATE', 'NAVOYGIP', async (req, res) => {
         try {
-            let table = await srv.read('create_voyage.NAVOYGIP');
+            let table = await srv.read('create_voyage.C');
             function findObjectByVOYNM(voynm) {
                 return table.find((item) => item.VOYNM === voynm);
             }
@@ -113,5 +126,9 @@ module.exports = cds.service.impl(async function (srv) {
 
 
         }
-    });
+    }
+   
+    
+    
+    );
 });

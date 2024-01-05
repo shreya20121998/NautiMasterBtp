@@ -1,10 +1,11 @@
+
 <mvc:View xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards"
 xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
  controllerName="nauticalfe.controller.FreightSimulator"
     xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
-
+ 
   <Page id="freightSimlulatorId" class="freightSimulatorPage">
-
+ 
     <headerContent>
       <Bar class="customHeader">
           <contentLeft>
@@ -45,13 +46,13 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
           </contentRight>
       </Bar>
     </headerContent>
-
+ 
     <Bar >
       <contentMiddle>
         <Text text="Freight Simulator"></Text>
       </contentMiddle>
     </Bar>
-
+ 
     <Bar class="fsBar2" >
       <contentLeft >
         <Text text="Freight(Per TON)" class="fsBarTxt1"></Text>
@@ -62,9 +63,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
         <contentLeft >
           <FlexBox id="_IDFlexBox1"  >
             <Label id="_IDLabel1" text="Proposed Freight Cost:" class="labelTxt"></Label>
-            <Input id="ProposedFreightCost"></Input>
+            <Input id="ProposedFreightCostPerTon" liveChange="freightCostPerTon"></Input>
             <Label id="_IDGen2" text="Total Cost:" class="labelTxt"></Label>
-            <Input id="inputCost"></Input>
+            <Input id="inputCostPerTon"></Input>
           </FlexBox>
         </contentLeft>
       </Bar>
@@ -90,32 +91,32 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
              <Text id="text7" text="total Projected Cost Per Port"/>
            </Column>
             </columns>
-
+ 
          <items>
            <ColumnListItem id="coloumnlist1">
              <cells>
               <Input id="field1" value ="Mumbai"/>
               <Input id="field2" value ="1971.0"/>
               <Input id="field3" value ="0.000"/>
-              <Input id="field4" value =""/>
-              <Input id="field5" value =""/>
-              <Input id="field6" value =""/>
+              <Input id="field4" value ="0.00"/>
+              <Input id="field5" value ="0.00"/>
+              <Input id="field6" value ="0.00"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist2">
              <cells>
-              <Input id="field7" value ="Mumbai"/>
-              <Input id="field8" value ="1971.0"/>
-              <Input id="field9" value ="0.000"/>
+              <Input id="field7" value ="Vishakapatanam"/>
+              <Input id="field8" value ="1765.0"/>
+              <Input id="field9" value ="1000.000"/>
               <Input id="field10" value =""/>
-              <Input id="field11" value =""/>
+              <Input id="field11" value ="0.00"/>
               <Input id="field12" value =""/>
              </cells>
            </ColumnListItem>
              </items>
         </Table>
     </Panel>
-
+ 
     <Bar class="fsBar2" >
       <contentLeft >
         <Text text="Freight(Lumpsum)" class="fsBarTxt1"></Text>
@@ -126,9 +127,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
         <contentLeft >
           <FlexBox id="_IDFlBox1"  >
             <Label id="_IDLbel1" text="Proposed Freight Cost:" class="labelTxt"></Label>
-            <Input id="PropodFreightCost"></Input>
+            <Input id="ProposedFreightCostLumpsum" liveChange="freightCostLumpsum"></Input>
             <Label id="_IDGn2" text="Total Cost:" class="labelTxt"></Label>
-            <Input id="inpCost"></Input>
+            <Input id="inputCostLumpsum"></Input>
           </FlexBox>
         </contentLeft>
       </Bar>
@@ -154,32 +155,32 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
              <Text id="tex7" text="total Projected Cost Per Port"/>
            </Column>
             </columns>
-
+ 
          <items>
            <ColumnListItem id="colonlist1">
              <cells>
               <Input id="fild1" value ="Mumbai"/>
               <Input id="fild2" value ="1971.0"/>
               <Input id="fild3" value ="0.000"/>
-              <Input id="fild4" value =""/>
-              <Input id="fild5" value =""/>
-              <Input id="feld6" value =""/>
+              <Input id="fild4" value ="0.00"/>
+              <Input id="fild5" value ="0.0"/>
+              <Input id="fild6" value ="0.00"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="columnlist2">
              <cells>
-              <Input id="fild7" value ="Mumbai"/>
-              <Input id="fild8" value ="1971.0"/>
-              <Input id="fild9" value ="0.000"/>
+              <Input id="fild7" value ="Vishakapatanam"/>
+              <Input id="fild8" value ="1765.0"/>
+              <Input id="fild9" value ="1000.000"/>
               <Input id="fild10" value =""/>
-              <Input id="fild11" value =""/>
+              <Input id="fild11" value ="0.00"/>
               <Input id="fild12" value =""/>
              </cells>
            </ColumnListItem>
              </items>
         </Table>
     </Panel>
-
+ 
     <Bar class="fsBar2" >
       <contentLeft >
         <Text text="Freight(TO/NM)" class="fsBarTxt1"></Text>
@@ -190,9 +191,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
         <contentLeft >
           <FlexBox id="FlexBox1"  >
             <Label id="IDLabel1" text="Proposed Freight Cost:" class="labelTxt"></Label>
-            <Input id="PropoedFreightCost"></Input>
+            <Input id="ProposedFreightCostToNm" liveChange="freightCostPoNm"></Input>
             <Label id="Gen2" text="Total Cost:" class="labelTxt"></Label>
-            <Input id="iCost"></Input>
+            <Input id="inputCostToNm"></Input>
           </FlexBox>
         </contentLeft>
       </Bar>
@@ -218,37 +219,30 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
              <Text id="txt7" text="total Projected Cost Per Port"/>
            </Column>
             </columns>
-
+ 
          <items>
            <ColumnListItem id="colomnlist1">
              <cells>
               <Input id="fild20" value ="Mumbai"/>
               <Input id="field21" value ="1971.0"/>
               <Input id="field22" value ="0.000"/>
-              <Input id="field23" value =""/>
-              <Input id="field24" value =""/>
-              <Input id="field25" value =""/>
+              <Input id="field23" value ="0.00"/>
+              <Input id="field24" value ="0.00"/>
+              <Input id="field25" value ="0.00"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlt2">
              <cells>
-              <Input id="field26" value ="Mumbai"/>
-              <Input id="field27" value ="1971.0"/>
-              <Input id="field28" value ="0.000"/>
+              <Input id="field26" value ="Vishakapatanam"/>
+              <Input id="field27" value ="1765.0"/>
+              <Input id="field28" value ="1000.000"/>
               <Input id="field29" value =""/>
-              <Input id="field30" value =""/>
+              <Input id="field30" value ="0.00"/>
               <Input id="field31" value =""/>
              </cells>
            </ColumnListItem>
              </items>
         </Table>
     </Panel>
- 
-
-  
-
-    
-    
-
     </Page>
 </mvc:View>

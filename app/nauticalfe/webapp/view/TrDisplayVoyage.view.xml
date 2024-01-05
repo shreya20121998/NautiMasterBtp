@@ -546,33 +546,32 @@
                                 </Column>              
                             </columns>
                             <items>
-                             
                                 <ColumnListItem id="_IDGenColumnListItem3">
                                     <cells>
                                         <Text id="_IDnText11" text="LAST CLEANING DATE 2" />
                                         <CheckBox id="checkbox"></CheckBox>
-                                        <Text id="_IDnText12" text=""/>
+                                        <Input id="_IDnText12" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogLastCleaning"/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenColumnLstItem3">
                                     <cells>
                                         <Text id="_IDnTet11" text="CLASS OF VESSEL" />
                                         <CheckBox id="checbox"></CheckBox>
-                                        <Text id="_IDnTet12" text=""/>
+                                         <Input id="_IDnTxt12" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogClassMaster"/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenCoumnLstItem3">
                                     <cells>
                                         <Text id="_IDTet11" text="COUNTRY OF ORIGIN" />
                                         <CheckBox id="chebox"></CheckBox>
-                                        <Text id="_IDnet12" text=""/>
+                                        <Input id="_IDnet12" value=""/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenCmnLstItem3">
                                     <cells>
                                         <Text id="_IDT11" text="LAST PORT OF CALL" />
-                                        <CheckBox id="chbox"></CheckBox>
-                                        <Text id="_IDt12" text=""/>
+                                        <CheckBox id="chbox1"></CheckBox>
+                                        <Input id="_IDt12" value=""/>
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -597,28 +596,28 @@
                                     <cells>
                                     <Text id="in1" text="DEMURRAGE" ></Text>
                                     <CheckBox id="checkbox1" select="onCheckBoxSelect"></CheckBox>
-                                    <Input id="Curr2"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
+                                    <Input id="in2" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenClumnListItem2">
                                     <cells>
                                     <Text id="in4" text="FREIGHT" ></Text>
                                     <CheckBox id="checkox1" select="onCheckBoxSelect"></CheckBox>
-                                    <Input id="Curr5"  value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
+                                    <Input id="in3" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialogCurr"/>
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenumnListItem2">
                                     <cells>
                                     <Text id="i4" text="" ></Text>
                                     <CheckBox id="chckox1" select="onCheckBoxSelect"></CheckBox>
-                                    <Text id="i3" text="" />
+                                    <Input id="i3" value="" />
                                     </cells>
                                 </ColumnListItem>
                                 <ColumnListItem id="_IDGenuListItem2">
                                     <cells>
                                     <Text id="ids4" text="" ></Text>
                                     <CheckBox id="chkox1" select="onCheckBoxSelect"></CheckBox>
-                                    <Text id="ids3" text="" />
+                                    <Input id="ids3" value="" />
                                     </cells>
                                 </ColumnListItem>
                             </items>  
@@ -628,8 +627,8 @@
        
                 <HBox id="HBox2" width="100%">
                     <FlexBox width="10%" class="flexbtn">
-                        <Button id="add" icon="sap-icon://sys-add" press=".onAddRow" type="Reject"></Button>
-                        <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow" type="Reject"></Button>
+                        <Button id="add" icon="sap-icon://sys-add" press=".onAddRow1" type="Reject"></Button>
+                        <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow1" type="Reject"></Button>
                     </FlexBox>
                      <FlexBox width="20%">
                         <Button id="saveprofileId" type="Reject" text="Save Profile"></Button>
@@ -643,8 +642,8 @@
                         </Select>
                     </FlexBox>
                     <FlexBox width="30%" >
-                        <Button id="_IDGenBuon13" icon="sap-icon://sys-add" type="Reject"></Button>
-                        <Button id="_IDGenBuon14" icon="sap-icon://sys-minus" type="Reject"></Button>
+                        <Button id="_IDGenBuon13" icon="sap-icon://sys-add" press=".onAddRow2" type="Reject"></Button>
+                        <Button id="_IDGenBuon14" icon="sap-icon://sys-minus" press=".onDeleteRow2" type="Reject"></Button>
                     </FlexBox>
                 </HBox>
 

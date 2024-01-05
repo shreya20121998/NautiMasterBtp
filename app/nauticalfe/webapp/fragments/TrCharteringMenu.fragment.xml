@@ -2,10 +2,10 @@
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core">
 	<Menu itemSelected="onMenuAction">
-		<MenuItem text="Create Chartering"/>
-        <MenuItem text="Change Chartering"/>
-		<MenuItem text="Display Chartering"/>
-        <MenuItem text="Chartering  Approval"/>
+		<MenuItem text="Create Chartering" press="onCreateChartering"/>
+        <MenuItem text="Change Chartering" press="onChangeChartering"/>
+		<MenuItem text="Display Chartering" press="onDisplayChartering"/>
+        <MenuItem text="Chartering  Approval" press="onCharteringApproval"/>
 			
 		
 		

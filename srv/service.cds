@@ -11,6 +11,12 @@ using { voyage_approval } from '../db/approval_voyage_schema';
 using {create_chartering} from '../db/chartering_schema';
 using {submit_quotation} from '../db/submit_quotation_schema';
 using {compare_quotation} from '../db/compare_quotaion_schema';
+using ZBTP_NAUTI_CREATEVOYAGE_CDS from './external/ZBTP_NAUTI_CREATEVOYAGE_CDS.cds';
+using ZBTP_NAUTI_MARINE_DM_CDS from './external/ZBTP_NAUTI_MARINE_DM_CDS.cds';
+using ZBTP_NAUTI_VOY_DOC_UPD_CDS from './external/ZBTP_NAUTI_VOY_DOC_UPD_CDS.cds';
+using ZBTP_NAUTICAL_MARIDISTANCE_CDS from './external/ZBTP_NAUTICAL_MARIDISTANCE_CDS.cds';
+
+
 service Nautical{
     entity EPATH as projection on api_url.EPATH;
     entity BP_MAS_DASH as projection on businessPartner.BP_MAS_DASH;
@@ -20,6 +26,7 @@ service Nautical{
     entity ZVOY_RELVoyage as projection on release_strategy_voyage.ZVOY_REL;
     entity ZVOY_RELChartering as projection on release_strategy_chartering.ZVOY_REL;
     entity VOYTYP as projection on NAUTI_MAS.VOYTYP;
+    entity BidTYP as projection on NAUTI_MAS.BIDMASTER;
     entity CARTYP as projection on NAUTI_MAS.CARTYP;
     entity CURR as projection on NAUTI_MAS.CURR;
     entity MAS as projection on NAUTI_MAS.BIDMASTER;
@@ -38,5 +45,19 @@ service Nautical{
     entity VEND_BID as projection on submit_quotation.VEND_BID;
     entity BID_SCORE as projection on compare_quotation.BID_SCORE;
     entity VEND_FBID as projection on compare_quotation.VEND_FBID; 
-    entity ZPORT as projection on NAUTI_MAS.ZPORT;    
+    entity ZPORT as projection on NAUTI_MAS.ZPORT; 
+    entity ZBTP_NAUTI_CreateVoyage as projection on ZBTP_NAUTI_CREATEVOYAGE_CDS.ZBTP_NAUTI_CreateVoyage
+    {        key Vlegn, Portc, Portn, Pdist, Medst, Vspeed, Ppdays, Vsdays, Vetad, Vetat, Vetdd, Vetdt, Vwead, Pstat, Matnr, Maktx, Cargs, Cargu, Othco, Frcost, Totco     }    
+;
+ entity ZBTP_NAUTI_Marine_DM as projection on ZBTP_NAUTI_MARINE_DM_CDS.ZBTP_NAUTI_Marine_DM
+    {        key start_port, key end_port, key route_id, key location_id, latitude, longitude     }    
+;
+ entity ZBTP_Nauti_Voy_DOC_UPD as projection on ZBTP_NAUTI_VOY_DOC_UPD_CDS.ZBTP_Nauti_Voy_DOC_UPD
+    {        key sl_no, key voyno, key filename, file_content     }    
+;
+entity ZBTP_NAUTICAL_MariDistance as projection on ZBTP_NAUTICAL_MARIDISTANCE_CDS.ZBTP_NAUTICAL_MariDistance
+    {        key from_port, key to_port, key distance     }    
+;
+
+       
 }

@@ -24,26 +24,22 @@
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="ZBTP_NAUTI_MARINE_DM_CDS" xml:lang="en" sap:schema-version="1"
+        <Schema Namespace="ZBTP_NAUTICAL_MARIDISTANCE_CDS" xml:lang="en" sap:schema-version="1"
             xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="ZBTP_NAUTI_Marine_DMType" sap:label="Marine dm" sap:content-version="1">
+            <EntityType Name="ZBTP_NAUTICAL_MariDistanceType" sap:label="Marine distance" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="start_port"/>
-                    <PropertyRef Name="end_port"/>
-                    <PropertyRef Name="route_id"/>
-                    <PropertyRef Name="location_id"/>
+                    <PropertyRef Name="from_port"/>
+                    <PropertyRef Name="to_port"/>
+                    <PropertyRef Name="distance"/>
                 </Key>
-                <Property Name="start_port" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Port ID" sap:quickinfo="Port ID for Vessel Route"/>
-                <Property Name="end_port" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Port ID" sap:quickinfo="Port ID for Vessel Route"/>
-                <Property Name="route_id" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Route ID"/>
-                <Property Name="location_id" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Location ID"/>
-                <Property Name="latitude" Type="Edm.String" MaxLength="10" sap:label="Latitude"/>
-                <Property Name="longitude" Type="Edm.String" MaxLength="10" sap:label="Longitude"/>
+                <Property Name="from_port" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Port ID" sap:quickinfo="Port ID for Vessel Route"/>
+                <Property Name="to_port" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Port ID" sap:quickinfo="Port ID for Vessel Route"/>
+                <Property Name="distance" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Distance" sap:quickinfo="Port Distance"/>
             </EntityType>
-            <EntityContainer Name="ZBTP_NAUTI_MARINE_DM_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="ZBTP_NAUTI_Marine_DM" EntityType="ZBTP_NAUTI_MARINE_DM_CDS.ZBTP_NAUTI_Marine_DMType" sap:content-version="1"/>
+            <EntityContainer Name="ZBTP_NAUTICAL_MARIDISTANCE_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZBTP_NAUTICAL_MariDistance" EntityType="ZBTP_NAUTICAL_MARIDISTANCE_CDS.ZBTP_NAUTICAL_MariDistanceType" sap:content-version="1"/>
             </EntityContainer>
-            <Annotations Target="ZBTP_NAUTI_MARINE_DM_CDS.ZBTP_NAUTI_MARINE_DM_CDS_Entities"
+            <Annotations Target="ZBTP_NAUTICAL_MARIDISTANCE_CDS.ZBTP_NAUTICAL_MARIDISTANCE_CDS_Entities"
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Aggregation.ApplySupported">
                     <Record>
@@ -58,9 +54,9 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <atom:link rel="self" href="http://ingenx:3000/sap/opu/odata/sap/ZBTP_NAUTI_MARINE_DM_CDS/$metadata"
+            <atom:link rel="self" href="http://ingenx:3000/sap/opu/odata/sap/ZBTP_NAUTICAL_MARIDISTANCE_CDS/$metadata"
                 xmlns:atom="http://www.w3.org/2005/Atom"/>
-                <atom:link rel="latest-version" href="http://ingenx:3000/sap/opu/odata/sap/ZBTP_NAUTI_MARINE_DM_CDS/$metadata"
+                <atom:link rel="latest-version" href="http://ingenx:3000/sap/opu/odata/sap/ZBTP_NAUTICAL_MARIDISTANCE_CDS/$metadata"
                     xmlns:atom="http://www.w3.org/2005/Atom"/>
                 </Schema>
             </edmx:DataServices>

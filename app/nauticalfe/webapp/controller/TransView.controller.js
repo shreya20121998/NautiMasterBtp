@@ -118,6 +118,26 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteTrBiddingHistoryReport");
       },
+      onCreateChartering: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrCreateChartering");
+      },
+      onChangeChartering: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrChangeChartering");
+      },
+      onDisplayChartering: function(){
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrDisplayChartering");
+      },
+      onCharteringApproval: function(){
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrCharteringApproval");
+      },
+      onVoyageApproval: function(){
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrVoyageApproval");
+      },
 
       onFrieghtPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
