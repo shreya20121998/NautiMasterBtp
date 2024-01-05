@@ -417,6 +417,20 @@
         "target": [
             "TargetTrCompareLiveFrieghtReport"
         ]
+      },
+      {
+        "name": "RouteTrContractAwardStatusReport",
+        "pattern": "TrContractAwardStatusReport",
+        "target": [
+            "TargetTrContractAwardStatusReport"
+        ]
+      },
+      {
+        "name": "RouteTrBiddingHistoryReport",
+        "pattern": "TrBiddingHistoryReport",
+        "target": [
+            "TargetTrBiddingHistoryReport"
+        ]
       }
 
 
@@ -741,7 +755,22 @@
                 "clearControlAggregation": false,
                 "viewId": "TrCompareLiveFrieghtReport",
                 "viewName": "TrCompareLiveFrieghtReport"
+            },
+            "TargetTrContractAwardStatusReport": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrContractAwardStatusReport",
+                "viewName": "TrContractAwardStatusReport"
+            },
+            "TargetTrBiddingHistoryReport": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "TrBiddingHistoryReport",
+                "viewName": "TrBiddingHistoryReport"
             }
+            
 
 
 

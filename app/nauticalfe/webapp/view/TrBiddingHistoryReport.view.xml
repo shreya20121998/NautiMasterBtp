@@ -1,5 +1,5 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:cards="sap.f.cards" xmlns:tnt="sap.tnt" controllerName="nauticalfe.controller.TrCompareLiveFrieghtReport"
-    xmlns:html="http://www.w3.org/1999/xhtml" 
+<mvc:View xmlns:core="sap.ui.core" xmlns:cards="sap.f.cards" xmlns:tnt="sap.tnt" controllerName="nauticalfe.controller.TrBiddingHistoryReport"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m" >
      <Page >
@@ -25,7 +25,7 @@
                     />
                     <Text
                         class="textBid"
-                        text="Compare Live Frieght Report"
+                        text="Bidding History Report"
                     />
                 </contentLeft>
                 <contentRight>
@@ -66,7 +66,7 @@
         </HBox>
         <HBox id="_IDGenHBox2" alignItems="Center" class="BPdetailsContent">
              <Label id="_IDGenLabel2" text="Vendors" required="true" ></Label>
-             <SearchField value=""  search="openDialogWithNavContainer"></SearchField>
+             <Input id="Input" width="80%" required="true"  showValueHelp="true"   change="handleInputPress"></Input>
         </HBox>
         <footer>
                 <OverflowToolbar id="_IDGenOverflowToolbar1" design="Solid">

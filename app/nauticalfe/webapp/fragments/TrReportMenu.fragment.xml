@@ -2,8 +2,8 @@
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core">
 	<Menu itemSelected="onMenuAction">
-		<MenuItem text="Contract Award Status Report" />
-        <MenuItem text="Bidding History Report"/>
+		<MenuItem text="Contract Award Status Report" press="onContractAwardStatusReport" />
+        <MenuItem text="Bidding History Report" press="onBiddingHistoryReport"/>
 		
 			
 		

@@ -110,6 +110,14 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteTrMaintainEvent");
       },
+      onContractAwardStatusReport: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrContractAwardStatusReport");
+      },
+      onBiddingHistoryReport: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrBiddingHistoryReport");
+      },
 
       onFrieghtPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
