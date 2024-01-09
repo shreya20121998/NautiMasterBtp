@@ -81,7 +81,7 @@ xmlns:form="sap.ui.layout.form"
           </contentLeft>
           <contentMiddle>
             <Label id="_IDGenLab6" text="Speed" />
-            <Input id="_IDGenIn6" width="10%"/>
+           <Input id="speed" width="10%" liveChange=".speedUpdate"/>
             <Label id="_IDGenLab8" text="NM/HR" />
             <Label id="_IDGenLab7" text="Total Days" />
             <Input id="totaldays" width="10%" value=""/>
@@ -166,9 +166,9 @@ xmlns:form="sap.ui.layout.form"
               <Input id="portdaysdestination" value =""/>
              
               <Input id="arrivaldatedestination"   change="handleChange" width="auto" value="" editable="false"/>
-                <TimePicker id="arrivaltimedestination" change="handleChange" input="handleInput" formatPattern="HH:mm:ss" enabled="false"></TimePicker>
+              <Input id="arrivaltimedestination" change="handleChange"    value="" editable="false"/>
               <DatePicker id="departuredatedestination" placeholder="Enter Date"  change="handleChange"/>
-              <TimePicker id="departuretimedestination" change="handleChange" input="handleInput" formatPattern="HH:mm:ss"></TimePicker>
+              <TimePicker id="departuretimedestination" change="handleChange"></TimePicker>
              
              </cells>
              
