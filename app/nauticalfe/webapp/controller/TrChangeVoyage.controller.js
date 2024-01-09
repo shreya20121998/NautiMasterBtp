@@ -189,140 +189,73 @@ sap.ui.define(
         // Open the dialog
         oDialog.open();
       },
-      showValueHelpDialogCost: function (oEvent) {
-        let oData = oEvent.getSource();
-        console.log(oData);
-        // Create a dialog
-        console.log("clicked Currency type");
-        var oDialog = new sap.m.Dialog({
-          title: "Select: Cost Types",
-          contentWidth: "60%",
-          contentHeight: "60%",
-          content: new sap.m.Table({
-            mode: sap.m.ListMode.SingleSelectMaster,
-
-            columns: [
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Cost Code" }),
+      
+     showValueHelpDialogCost: function (oEvent) {
+ 
+          let oData = oEvent.getSource();
+          console.log(oData);
+          let vv= oEvent.getSource().oParent.getCells()[2];
+          console.log("clicked Currency type");
+          // Create a dialog
+ 
+          var oDialog = new sap.m.Dialog({
+              title: "Select: Cost Types",
+              contentWidth: "60%",
+              contentHeight: "60%",
+              content: new sap.m.Table({
+                  mode: sap.m.ListMode.SingleSelectMaster,
+ 
+                  columns: [
+                      new sap.m.Column({
+                          header: new sap.m.Text({ text: "Cost Code" }),
+                      }),
+                      new sap.m.Column({
+                          header: new sap.m.Text({ text: "Cost Description" }),
+                      }),
+                  ],
+ 
+                  selectionChange: function (oEvent) {
+                      var oSelectedItem = oEvent.getParameter("listItem");
+                      var oSelectedValue1 = oSelectedItem.getCells()[0].getText();
+                      var oSelectedValue2 = oSelectedItem.getCells()[1].getText();
+                      console.log(oSelectedValue1, oSelectedValue2, vv);
+                      var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
+                      this.populateInputField(inputVoyageType, oSelectedValue1);
+                      this.populateInputField(vv, oSelectedValue2);
+                      oDialog.close();
+                  }.bind(this),
               }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Cost Description" }),
+              beginButton: new sap.m.Button({
+                  text: "Cancel",
+                  type: "Reject",
+                  press: function () {
+                      oDialog.close();
+                  },
               }),
-            ],
-
-            selectionChange: function (oEvent) {
-              var oSelectedItem = oEvent.getParameter("listItem");
-              var oSelectedValue = oSelectedItem.getCells()[0].getText();
-              var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
-              this.populateInputField(inputVoyageType, oSelectedValue);
-              oDialog.close();
-            }.bind(this),
-          }),
-          beginButton: new sap.m.Button({
-            text: "Cancel",
-            type: "Reject",
-            press: function () {
-              oDialog.close();
-            },
-          }),
-
-        });
-
-        let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
-
-        oValueHelpTable.bindItems({
-          path: "/NAVOYGC", // Replace with your entity set
-          template: new sap.m.ColumnListItem({
-            cells: [
-              new sap.m.Text({ text: "{COSTCODE}" }),
-              new sap.m.Text({ text: "{CSTCODES}" }),
-            ],
-          }),
-        });
-        // Bind the dialog to the view
-        this.getView().addDependent(oDialog);
-
-        // Open the dialog
-        oDialog.open();
+ 
+          });
+ 
+          let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
+ 
+          oValueHelpTable.bindItems({
+              path: "/NAVOYGC", // Replace with your entity set
+              template: new sap.m.ColumnListItem({
+                  cells: [
+                      new sap.m.Text({ text: "{COSTCODE}" }),
+                      new sap.m.Text({ text: "{CSTCODES}" }),
+                  ],
+              }),
+          });
+          // Bind the dialog to the view
+          this.getView().addDependent(oDialog);
+ 
+          // Open the dialog
+          oDialog.open();
       },
-
-      showValueHelpDialogClassMaster1: function (oEvent) {
-        let oData = oEvent.getSource();
-        console.log(oData);
-        // Create a dialog
-        console.log("clicked Currency type");
-        var oDialog = new sap.m.Dialog({
-          title: "Value(1)",
-          contentWidth: "60%",
-          contentHeight: "60%",
-          content: new sap.m.Table({
-            mode: sap.m.ListMode.SingleSelectMaster,
-
-            columns: [
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Value" }),
-              }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Field Description" }),
-              }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Good To Have" }),
-              }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Mandatory" }),
-              }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Must Not Have" }),
-              }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Max Score" }),
-              }),
-              new sap.m.Column({
-                header: new sap.m.Text({ text: "Min Score" }),
-              }),
-            ],
-
-            selectionChange: function (oEvent) {
-              var oSelectedItem = oEvent.getParameter("listItem");
-              var oSelectedValue = oSelectedItem.getCells()[0].getText();
-              var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
-              this.populateInputField(inputVoyageType, oSelectedValue);
-              oDialog.close();
-            }.bind(this),
-          }),
-          beginButton: new sap.m.Button({
-            text: "Cancel",
-            type: "Reject",
-            press: function () {
-              oDialog.close();
-            },
-          }),
-
-        });
-
-        let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
-
-        oValueHelpTable.bindItems({
-          path: "/CLASS", // Replace with your entity set
-          template: new sap.m.ColumnListItem({
-            cells: [
-              new sap.m.Text({ text: "{ZF_VALUE}" }),
-              new sap.m.Text({ text: "{ZF_DESC}" }),
-            ],
-          }),
-        });
-        // Bind the dialog to the view
-        this.getView().addDependent(oDialog);
-
-        // Open the dialog
-        oDialog.open();
-      },
-
-
-    
+ 
       showValueHelpDialogClassMaster: function (oEvent) {
         let oData = oEvent.getSource();
-    
+       
         // Create a dialog
         var oDialog = new sap.m.Dialog({
             title: "Value(1)",
@@ -336,7 +269,6 @@ sap.ui.define(
                         header: new sap.m.Text({ text: "Value" }),
                         width: "150px"
                     }),
-                    
                     new sap.m.Column({
                         header: new sap.m.Text({ text: "Good To Have" }),
                     }),
@@ -346,57 +278,58 @@ sap.ui.define(
                     new sap.m.Column({
                         header: new sap.m.Text({ text: "Must Not Have" }),
                     }),
-                    new sap.m.Column({
-                        header: new sap.m.Text({ text: "Max Score" }),
-                    }),
-                    new sap.m.Column({
-                        header: new sap.m.Text({ text: "Min Score" }),
-                    }),
                 ],
-                items : [new sap.m.ColumnListItem({
-                  cells: [
-                    new sap.m.Select({
-                                    items:{ 
-                                      path: '/CLASS',
-                                      template: new sap.ui.core.Item({
-                                        key: "{ZF_VALUE}",
-                                        text: " {ZF_VALUE} - {ZF_DESC}"
-                                      }),
-                                    }
-                                  }),
-                                  new sap.m.RadioButton({
-                                  groupName: "GoodToHaveGroup",
-                                  select: function () {
-                                      // Handle radio button selection
-
-                                  }
-                                  }),
-                                  new sap.m.RadioButton({
-                                    groupName: "Mandatory",
-                                    select: function () {
-                                        // Handle radio button selection
-
-                                    }
-                                  }),
-                                  new sap.m.RadioButton({
-                                    groupName: "MustNotHave",
-                                    select: function () {
-                                        // Handle radio button selection
-
-                                    }
-                                  }),             
-                  ],
-              }),
-             ],
-              selectionChange: function (oEvent) {
-              var oSelectedItem = oEvent.getParameter("listItem");
-              var oSelectedValue = oSelectedItem.getCells()[0].getText();
-              var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
-              this.populateInputField(inputVoyageType, oSelectedValue);
-              oDialog.close();
-              }.bind(this),
+                items: [new sap.m.ColumnListItem({
+                    cells: [
+                        new sap.m.Select({
+                            items: {
+                                path: '/CLASS',
+                                template: new sap.ui.core.Item({
+                                    key: "{ZF_VALUE}",
+                                    text: " {ZF_VALUE} - {ZF_DESC}"
+                                }),
+                               
+                            }
+                           
+                        }),
+                      new sap.m.RadioButton({
+                        groupName: "Group1", // Unique group name for Good To Have
+                        select: function () {
+                            // Handle radio button selection
+                        }
+                      }),
+                      new sap.m.RadioButton({
+                          groupName: "Group1", // Unique group name for Mandatory
+                          select: function () {
+                              // Handle radio button selection
+                          }
+                      }),
+                      new sap.m.RadioButton({
+                          groupName: "Group1", // Unique group name for Must Not Have
+                          select: function () {
+                              // Handle radio button selection
+                          }
+                      }),
+                    ],
+                }),
+                ],
+                selectionChange: function (oEvent) {
+                    var oSelectedItem = oEvent.getParameter("listItem");
+                    var oSelectedValue = oSelectedItem.getCells()[0].getSelectedItem().getKey();
+                    // No need to close the dialog here as it's done in the "OK" button press event
+                }.bind(this),
             }),
             beginButton: new sap.m.Button({
+                text: "OK",
+                type: "Accept",
+                press: function () {
+                    var inputVoyageType = this.getView().byId(oData.getId()); // Input field for Voyage Type
+                    var selectedValue = oDialog.getContent()[0].getItems()[0].getCells()[0].getSelectedItem().getKey();
+                    this.populateInputField(inputVoyageType, selectedValue);
+                    oDialog.close();
+                }.bind(this),
+            }),
+            endButton: new sap.m.Button({
                 text: "Cancel",
                 type: "Reject",
                 press: function () {
@@ -404,14 +337,14 @@ sap.ui.define(
                 },
             }),
         });
-    
-       
+   
         // Bind the dialog to the view
         this.getView().addDependent(oDialog);
-    
+   
         // Open the dialog
         oDialog.open();
-    },
+        console.log(oData);
+      },
     
     
 

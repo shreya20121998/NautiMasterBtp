@@ -1,4 +1,4 @@
-<mvc:View controllerName="nauticalfe.controller.TrDisplayVoyage"
+<mvc:View controllerName="nauticalfe.controller.TrMaintainEvent"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards" 
     xmlns:form="sap.ui.layout.form" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core"
@@ -48,17 +48,14 @@
         </headerContent>
     
     
+    
         <Bar id="navbar">
         <contentLeft>
             
-            <Button id="Button2" text="Execute"  />
+            <Button id="Button2" text="Save"  />
             <Button id="Button3" text="Refresh"  />
             <Button id="Button4" text="Freight Simulator"  />
-            <Button id="Button5" text="Planned Event Upload"  />
-            <Button id="Button6" text="Planned Event Download"  />
-            <Button id="Button07" text="Actual Event Upload"  />
-            <Button id="Button8" text="Actual Event Download"  />
-           
+            <Button id="Button5" text="Copy"  />
            
         </contentLeft>
         </Bar>
@@ -127,6 +124,7 @@
                 </HBox>
                 </VBox>
             </HBox>
+
 
 
       <!-- for nav container buttons  -->

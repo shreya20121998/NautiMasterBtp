@@ -51,10 +51,10 @@
         <Bar id="navbar">
         <contentLeft>
             
-            <Button id="Button2" text="Execute"  />
+            <Button id="Button2" text="Save"  />
             <Button id="Button3" text="Refresh"  />
             <Button id="Button4" text="Freight Simulator"  />
-           
+            <Button id="Button5" text="Copy"  />
            
         </contentLeft>
         </Bar>
@@ -123,6 +123,7 @@
                 </HBox>
                 </VBox>
             </HBox>
+
 
       <!-- for nav container buttons  -->
        <Button id="Hide" icon="sap-icon://minimize"></Button>

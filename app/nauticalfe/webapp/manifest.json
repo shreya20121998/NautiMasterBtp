@@ -115,7 +115,7 @@
           },
           {
               "name": "RouteFreightSimulator",
-              "pattern": "FreightSimulator",
+              "pattern": "FreightSimulator/{OriginData}/{destinationData}/{distanceData}/{cargo_sizedestination}/{cargo_sizeorigin}",
               "target": [
                   "TargetFreightSimulator"
               ]

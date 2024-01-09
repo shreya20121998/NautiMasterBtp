@@ -13,9 +13,23 @@ sap.ui.define([
  
         
       },
+      // for frightdata navigation
       onFreightSimulator: function () {
+     var OriginData=this.getView().byId("portfromorigin").getValue();
+     var destinationData=this.getView().byId("portdestination").getValue();
+     var distanceData=this.getView().byId("distancedestination").getValue();
+     var cargo_sizedestination=this.getView().byId("cargo_sizedestination").getValue();
+     var cargo_sizeorigin=this.getView().byId("cargo_sizeorigin").getValue();
+     console.log(OriginData,destinationData,distanceData,cargo_sizedestination,cargo_sizeorigin);
+
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteFreightSimulator");
+        oRouter.navTo("RouteFreightSimulator",{
+          "OriginData":OriginData,
+          "destinationData":destinationData,
+          "distanceData":distanceData,
+          "cargo_sizedestination":cargo_sizedestination,
+          "cargo_sizeorigin":cargo_sizeorigin
+        });
       },
       onChangeVoyage: function () {
         const oRouter = this.getOwnerComponent().getRouter();
@@ -321,11 +335,6 @@ sap.ui.define([
         oDialog.open();
       },
  
- 
- 
- 
-     
- 
       onValueHelp2: function () {
         // Create a dialog
        
@@ -385,10 +394,6 @@ sap.ui.define([
         // Open the dialog
         oDialog.open();
       },
-
-
-
-      
       calculateVoyage: function () {
 
         var portfromorigin = this.getView().byId("portfromorigin").getValue();
@@ -481,8 +486,8 @@ sap.ui.define([
           console.log(arrTime, hours, minutes);
      
     
-    },
-    addTimeTo12HourFormat : function(time, additionalHours, additionalMinutes) {
+      },
+      addTimeTo12HourFormat : function(time, additionalHours, additionalMinutes) {
       console.log(time, typeof time);
       // Split the time into hours, minutes, seconds, and AM/PM
       const [timeStr, ampm] = time.split(' ');
@@ -525,7 +530,7 @@ sap.ui.define([
   return daysCarriedOver > 0
     ? `${daysCarriedOver}, ${newTime}` // Append days carried over
     : newTime;
-    },
+      },
     
     // Example usage:
     // const initialTime = '04:30:45 PM';

@@ -12,33 +12,47 @@ sap.ui.define([
  
         return Controller.extend("nauticalfe.controller.FreightSimulator", {
             onInit: function () {
-                UIComponent.getRouterFor(this).getRoute('RouteFreightSimulator').attachPatternMatched(this._onRouteMatched, this)
+                // routing with parameters
+                sap.ui.core.UIComponent.getRouterFor(this).getRoute('RouteFreightSimulator').attachPatternMatched(this._onRouteMatched, this)
  
             },
             _onRouteMatched: function (oEvent) {
-       
-               
- 
-                // this.getView().byId("_IDGenSimpleForm2").refresh(true, false);
-                //  var component = this.getOwnerComponent();
-                //  component.refreshBinding();
-                console.log(oEvent);
-                oPort = oEvent.mParameters.arguments.oPort;
-                dPort = oEvent.mParameters.arguments.dPort;
-                oDistance = oEvent.mParameters.arguments.oDistance;
-                dDistance = oEvent.mParameters.arguments.dDistance;
-                oCargoSize = oEvent.mParameters.arguments.oCargoSize;
-                dCargoSize = oEvent.mParameters.arguments.dCargoSize;
-                // console.log(oPort,oCargoSize,oDistance);
+        
+                    var OriginData=oEvent.mParameters.arguments.OriginData
+                    var destinationData=oEvent.mParameters.arguments.destinationData
+                    var distanceData=oEvent.mParameters.arguments.distanceData
+                    var cargo_sizedestination=oEvent.mParameters.arguments.cargo_sizedestination
+                    var cargo_sizeorigin=oEvent.mParameters.arguments.cargo_sizeorigin
+                    let oView= this.getView();
+                    //  for frieght perTo table
+                    oView.byId("port_Origin").setValue(OriginData); 
+                    oView.byId("port_Destination").setValue(destinationData); 
+                    oView.byId("port_Distance").setValue(distanceData); 
+                    oView.byId("cargosize_Origin").setValue(cargo_sizeorigin); 
+                    oView.byId("cargosize_Destination").setValue(cargo_sizedestination); 
+                    // for frieght Lumpsum
+                    oView.byId("port_Origin1").setValue(OriginData); 
+                    oView.byId("port_Destination1").setValue(destinationData); 
+                    oView.byId("port_Distance1").setValue(distanceData); 
+                    oView.byId("cargosize_Origin1").setValue(cargo_sizeorigin); 
+                    oView.byId("cargosize_Destination1").setValue(cargo_sizedestination); 
+                    // for frieght TO/NM
+                    oView.byId("port_Origin2").setValue(OriginData); 
+                    oView.byId("port_Destination2").setValue(destinationData); 
+                    oView.byId("port_Distance2").setValue(distanceData); 
+                    oView.byId("cargosize_Origin2").setValue(cargo_sizeorigin); 
+                    oView.byId("cargosize_Destination2").setValue(cargo_sizedestination); 
+
+                
             },
  
             //freight cost calculation for Freight(Per Ton)
             freightCostPerTon: function(oEvent) {
                 var proposedFreightCost = parseFloat(oEvent.getParameter("value"));
-                var freightcostPerTon = this.getView().byId("field10")
-                var totalProjCostPerTon = this.getView().byId("field12")
+                var freightcostPerTon = this.getView().byId("frieghtCost_Destination")
+                var totalProjCostPerTon = this.getView().byId("totalCost_Destination")
                 var totalCostPerTon = this.getView().byId('inputCostPerTon')
-                var cargoPerTon = this.getView().byId("field9").getValue()
+                var cargoPerTon = this.getView().byId("cargosize_Destination").getValue()
                 if (freightcostPerTon) {
                   freightcostPerTon.setValue((proposedFreightCost * cargoPerTon).toFixed(2));
                 }
@@ -54,10 +68,10 @@ sap.ui.define([
             //frieght cost calculation for Freight(Lumpsum)
             freightCostLumpsum: function(oEvent) {
                 var proposedFreightCost = parseFloat(oEvent.getParameter("value"));
-                var frieghtCostLumpsum = this.getView().byId("fild10")
-                var totalProjCostLumpsum = this.getView().byId("fild12")
+                var frieghtCostLumpsum = this.getView().byId("frieghtCost_Destination1")
+                var totalProjCostLumpsum = this.getView().byId("totalCost_Destination1")
                 var totalCostLumpsum = this.getView().byId('inputCostLumpsum')
-                var cargoLumpsum = this.getView().byId("fild9").getValue()
+                var cargoLumpsum = this.getView().byId("cargosize_Destination1").getValue()
                 if (frieghtCostLumpsum) {
                     frieghtCostLumpsum.setValue((proposedFreightCost*(cargoLumpsum/1000)).toFixed(2))
                 }
@@ -73,11 +87,11 @@ sap.ui.define([
             //freight cost calculation for Freight (TO/NM)
             freightCostPoNm: function(oEvent) {
                 var proposedFreightCost = parseFloat(oEvent.getParameter("value"));
-                var distance = this.getView().byId("field27").getValue()
-                var freightcostToNm = this.getView().byId("field29")
-                var totalProjCostToNm = this.getView().byId("field31")
+                var distance = this.getView().byId("port_Distance2").getValue()
+                var freightcostToNm = this.getView().byId("frieghtCost_Destination2")
+                var totalProjCostToNm = this.getView().byId("totalCost_Destination2")
                 var totalCostToNm = this.getView().byId('inputCostToNm')
-                var cargoToNm = this.getView().byId("field28").getValue()
+                var cargoToNm = this.getView().byId("cargosize_Destination2").getValue()
                 if (freightcostToNm) {
                   freightcostToNm.setValue((proposedFreightCost * distance * cargoToNm).toFixed(2));
                 }
