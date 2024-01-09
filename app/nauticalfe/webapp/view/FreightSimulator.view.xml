@@ -98,9 +98,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Origin" value =""/>
               <Input id="portOrigin_Distance" value ="0"/>
               <Input id="cargosize_Origin" value =""/>
-              <Input id="frieghtCost_Origin" value =""/>
-              <Input id="otherCost_Origin" value =""/>
-              <Input id="totalCost_Origin" value =""/>
+              <Input id="frieghtCost_Origin" value ="0"/>
+              <Input id="otherCost_Origin" value ="0"/>
+              <Input id="totalCost_Origin" value ="0"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist2">
@@ -109,7 +109,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Distance" value =""/>
               <Input id="cargosize_Destination" value =""/>
               <Input id="frieghtCost_Destination" value =""/>
-              <Input id="otherCost_Destination" value =""/>
+              <Input id="otherCost_Destination" value ="0"/>
               <Input id="totalCost_Destination" value =""/>
              </cells>
            </ColumnListItem>
@@ -162,9 +162,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Origin1" value =""/>
               <Input id="portOrigin_Distance1" value ="0"/>
               <Input id="cargosize_Origin1" value =""/>
-              <Input id="frieghtCost_Origin1" value =""/>
-              <Input id="otherCost_Origin1" value =""/>
-              <Input id="totalCost_Origin1" value =""/>
+              <Input id="frieghtCost_Origin1" value ="0"/>
+              <Input id="otherCost_Origin1" value ="0"/>
+              <Input id="totalCost_Origin1" value ="0"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist3">
@@ -173,7 +173,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Distance1" value =""/>
               <Input id="cargosize_Destination1" value =""/>
               <Input id="frieghtCost_Destination1" value =""/>
-              <Input id="otherCost_Destination1" value =""/>
+              <Input id="otherCost_Destination1" value ="0"/>
               <Input id="totalCost_Destination1" value =""/>
              </cells>
            </ColumnListItem>
@@ -226,9 +226,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Origin2" value =""/>
               <Input id="portOrigin_Distance2" value ="0"/>
               <Input id="cargosize_Origin2" value =""/>
-              <Input id="frieghtCost_Origin2" value =""/>
-              <Input id="otherCost_Origin2" value =""/>
-              <Input id="totalCost_Origin2" value =""/>
+              <Input id="frieghtCost_Origin2" value ="0"/>
+              <Input id="otherCost_Origin2" value ="0"/>
+              <Input id="totalCost_Origin2" value ="0"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist5">
@@ -237,7 +237,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Distance2" value =""/>
               <Input id="cargosize_Destination2" value =""/>
               <Input id="frieghtCost_Destination2" value =""/>
-              <Input id="otherCost_Destination2" value =""/>
+              <Input id="otherCost_Destination2" value ="0"/>
               <Input id="totalCost_Destination2" value =""/>
              </cells>
            </ColumnListItem>
