@@ -21,11 +21,12 @@
                         press="onBackPressHome"
                     />
                     <Image
-                        src="../images/ingenxlogo.jpg"
+                        class="size1"
+                        src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
-                        class="textBid"
+                        class="textBid size1"
                         text="Refrence Document Indicator"
                     />
                 </contentLeft>

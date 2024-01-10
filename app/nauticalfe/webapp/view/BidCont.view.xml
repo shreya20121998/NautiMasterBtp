@@ -15,11 +15,12 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
                   press="onBackPress"
               />
               <Image
+                   class="size1"
                   src="./images/ignxlogo.png"
                   height="75%"
               />
               <Text
-                  class="textBid"
+                  class="textBid size1"
                   text="Bidding Controller Portal"
               />
           </contentLeft>

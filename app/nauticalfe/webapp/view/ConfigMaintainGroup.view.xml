@@ -27,11 +27,12 @@
                         press="onBackPressHome"
                     />
                     <Image
+                        class="size1"
                         src="./images/ingenxlogo.jpg"
                         height="75%"
                     />
                     <Text
-                        class="textBid"
+                        class="textBid size1"
                         text='Change View User ID and Group Mapping: Overview'
                     />
                 </contentLeft>

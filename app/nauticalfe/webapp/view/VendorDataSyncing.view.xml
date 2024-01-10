@@ -20,11 +20,11 @@
                         press="onBackPressHome"
                     />
                     <Image
-                        src="../images/ingenxlogo.jpg"
+                        src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
-                        class="textBid"
+                        class="textBid size1"
                         text="Vendor Data Syncing Details"
                     />
                 </contentLeft>

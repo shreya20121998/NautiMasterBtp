@@ -11,11 +11,12 @@ xmlns:form="sap.ui.layout.form"
             <Bar class="customHeader">
                 <contentLeft>
                     <Image
+                         class="size1"
                         src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
-                        class="textBid"
+                        class="textBid size1"
                         text="Home"
                     />
                 </contentLeft>

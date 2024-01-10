@@ -18,6 +18,7 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
               
               
               <Image
+                   class="size1"
                   src="./images/ignxlogo.png"
                   height="75%" activeSrc="https://www.ingenxtec.com"
                   
@@ -25,7 +26,7 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
         
               
               <Text
-                  class="textBid"
+                  class="textBid size1"
                   text="Nautical Dashboard"
               />
           </contentLeft>

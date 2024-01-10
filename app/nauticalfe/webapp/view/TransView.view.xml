@@ -20,12 +20,13 @@
                         press="onBackPressHome"
                     />
                     <Image
+                         class="size1"
                         src="./images/ignxlogo.png"
                         height="75%" activeSrc="https://www.ingenxtec.com"
                     
                     />
                     <Text id="_IDGenText1"
-                        class="textBid"
+                        class="textBid size1"
                         text="Transaction Data Dashboard"
                     />
                 </contentLeft>

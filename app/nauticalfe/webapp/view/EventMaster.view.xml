@@ -26,11 +26,12 @@
                         press="onBackPressHome"
                     />
                     <Image
-                        src="./images/ingenxlogo.jpg"
+                        class="size1"
+                        src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
-                        class="textBid"
+                        class="size1 textBid"                       
                         text='Display View Event Master Table: Overview'
                     />
                 </contentLeft>

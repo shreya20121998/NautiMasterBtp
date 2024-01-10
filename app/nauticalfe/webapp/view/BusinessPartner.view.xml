@@ -27,12 +27,12 @@
                     />
                     <Image
                         id="_IDGenImage2"
-                        src="../images/ingenxlogo.jpg"
+                        src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
                         id="_IDGenText1"
-                        class="textBid"
+                        class="textBid size1"
                         text='Business Partner'
                     />
                 </contentLeft>

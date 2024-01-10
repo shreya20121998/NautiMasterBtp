@@ -20,11 +20,12 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                     press="onBackPressHome"
                 />
                 <Image id="_IDGenImage1"
-                    src="../images/ingenxlogo.jpg"
+                     class="size1"
+                    src="./images/ignxlogo.png"
                     height="75%"
                 />
                 <Text id="_IDGenText1"
-                    class="textBid"
+                    class="textBid size1"
                     text="Upload Program for Dummy Latitude and Longitude for Val"
                 />
             </contentLeft>

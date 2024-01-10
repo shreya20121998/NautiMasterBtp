@@ -52,7 +52,7 @@ entity ZPORT {
 
     ZF_DESC  : String(50); // field description
 
-     COUNTRY  : Country; //country
+    COUNTRY  : Country; //country
 
     COUNTRYN : Country; //country
 

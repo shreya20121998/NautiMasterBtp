@@ -229,6 +229,11 @@
  
 .customHeader{
     background-color: black;
+    
+    
+}
+.size1{
+    margin-left: 1rem !important;
 }
 .textBid{
     color: white;

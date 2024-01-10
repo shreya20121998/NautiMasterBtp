@@ -26,11 +26,13 @@
                         press="onBackPressHome"
                     />
                     <Image
-                        src="./images/ingenxlogo.jpg"
+                        class="size1"
+                        src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
-                        class="textBid"
+                     
+                        class="textBid size1"
                         text='Change View Refrence Voyage Type Search Help: Overview'
                     />
                 </contentLeft>

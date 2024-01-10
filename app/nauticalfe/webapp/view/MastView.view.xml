@@ -22,12 +22,13 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                         press="onBackPressHome"
                     />
                     <Image
+                         class="size1"
                         src="./images/ignxlogo.png"
                         height="75%" activeSrc="https://www.ingenxtec.com"
                     
                     />
                     <Text id="_IDGenText1"
-                        class="textBid"
+                        class="textBid size1"
                         text="Master Data Dashboard"
                     />
                 </contentLeft>

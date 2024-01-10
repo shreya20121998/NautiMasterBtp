@@ -16,11 +16,12 @@
                   press="onBackPress"
               />
               <Image
+                  class="size1"
                   src="./images/ignxlogo.png"
                   height="75%"
               />
               <Text
-                  class="textBid"
+                  class="textBid size1"
                   text="Create Voyage (Plan) "
               />
           </contentLeft>
