@@ -22,6 +22,10 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
       },
+      onBackPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("Routedash");
+      },
       VoyageOptions:function(){
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("TrVoyageOptions")
