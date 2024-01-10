@@ -53,7 +53,7 @@
             
             <Button id="Button2" text="Save"  />
             <Button id="Button3" text="Refresh"  />
-            <Button id="Button4" text="Freight Simulator"  />
+            <Button id="Button4" text="Freight Simulator" press="onFreightSimulator" />
             <Button id="Button5" text="Copy"  />
            
         </contentLeft>
