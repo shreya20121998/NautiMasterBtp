@@ -11,16 +11,11 @@
                         src="sap-icon://nav-back"
                         class="size1"
                         color="#FFFFFF"
-                        press="backPress"
+                        press="onBackPress"
                     />
-                    <core:Icon
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
+                    
                     <Image
-                        src="../images/ingenxlogo.jpg"
+                        src="./images/ignxlogo.png"
                         height="75%"
                     />
                     <Text
