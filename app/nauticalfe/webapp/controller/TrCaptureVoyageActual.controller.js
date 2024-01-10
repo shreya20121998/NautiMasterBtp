@@ -17,6 +17,10 @@ sap.ui.define(
           hideButton1.attachPress(this.toggleBarAndNavContainer.bind(this));
         }
       },
+      onBackPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("TransView");
+      },
 
       onAddRow1: function() {
         var oTable = this.byId("vesselRefDetails1");
