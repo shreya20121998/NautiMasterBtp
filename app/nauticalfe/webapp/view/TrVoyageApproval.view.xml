@@ -50,7 +50,7 @@
    
         <Bar id="_IDGenBar1" class="_IDGenBar1">
                 <contentLeft>
-                    <Button id="_IDGenButton1" text="Save as Variant"></Button>
+                    <Button id="_IDGenButton1" text="Save as Variant" press="onSaveAs"></Button>
                     <Button id="button" icon="sap-icon://slim-arrow-down" iconFirst="false" text="More" ariaHasPopup="Menu" press="onPress"/>
                 </contentLeft>
                 <contentRight>
