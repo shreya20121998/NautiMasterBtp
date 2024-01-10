@@ -8,35 +8,35 @@ sap.ui.define([
             sap.ui.core.UIComponent.getRouterFor(this).getRoute('RouteFreightSimulator').attachPatternMatched(this._onRouteMatched, this)
         },
 
-        _onRouteMatched: function (oEvent) {
+    //     _onRouteMatched: function (oEvent) {
         
-            var OriginData=oEvent.mParameters.arguments.OriginData
-            var destinationData=oEvent.mParameters.arguments.destinationData
-            var distanceData=oEvent.mParameters.arguments.distanceData
-            var cargo_sizedestination=oEvent.mParameters.arguments.cargo_sizedestination
-            var cargo_sizeorigin=oEvent.mParameters.arguments.cargo_sizeorigin
-            let oView= this.getView();
+    //         var OriginData=oEvent.mParameters.arguments.OriginData
+    //         var destinationData=oEvent.mParameters.arguments.destinationData
+    //         var distanceData=oEvent.mParameters.arguments.distanceData
+    //         var cargo_sizedestination=oEvent.mParameters.arguments.cargo_sizedestination
+    //         var cargo_sizeorigin=oEvent.mParameters.arguments.cargo_sizeorigin
+    //         let oView= this.getView();
 
-            //  for frieght perTo table
-            oView.byId("port_Origin").setValue(OriginData); 
-            oView.byId("port_Destination").setValue(destinationData); 
-            oView.byId("port_Distance").setValue(distanceData); 
-            oView.byId("cargosize_Origin").setValue(cargo_sizeorigin); 
-            oView.byId("cargosize_Destination").setValue(cargo_sizedestination); 
-            // for frieght Lumpsum
-            oView.byId("port_Origin1").setValue(OriginData); 
-            oView.byId("port_Destination1").setValue(destinationData); 
-            oView.byId("port_Distance1").setValue(distanceData); 
-            oView.byId("cargosize_Origin1").setValue(cargo_sizeorigin); 
-            oView.byId("cargosize_Destination1").setValue(cargo_sizedestination); 
-            // for frieght TO/NM
-            oView.byId("port_Origin2").setValue(OriginData); 
-            oView.byId("port_Destination2").setValue(destinationData); 
-            oView.byId("port_Distance2").setValue(distanceData); 
-            oView.byId("cargosize_Origin2").setValue(cargo_sizeorigin); 
-            oView.byId("cargosize_Destination2").setValue(cargo_sizedestination); 
+    //         //  for frieght perTo table
+    //         oView.byId("port_Origin").setValue(OriginData); 
+    //         oView.byId("port_Destination").setValue(destinationData); 
+    //         oView.byId("port_Distance").setValue(distanceData); 
+    //         oView.byId("cargosize_Origin").setValue(cargo_sizeorigin); 
+    //         oView.byId("cargosize_Destination").setValue(cargo_sizedestination); 
+    //         // for frieght Lumpsum
+    //         oView.byId("port_Origin1").setValue(OriginData); 
+    //         oView.byId("port_Destination1").setValue(destinationData); 
+    //         oView.byId("port_Distance1").setValue(distanceData); 
+    //         oView.byId("cargosize_Origin1").setValue(cargo_sizeorigin); 
+    //         oView.byId("cargosize_Destination1").setValue(cargo_sizedestination); 
+    //         // for frieght TO/NM
+    //         oView.byId("port_Origin2").setValue(OriginData); 
+    //         oView.byId("port_Destination2").setValue(destinationData); 
+    //         oView.byId("port_Distance2").setValue(distanceData); 
+    //         oView.byId("cargosize_Origin2").setValue(cargo_sizeorigin); 
+    //         oView.byId("cargosize_Destination2").setValue(cargo_sizedestination); 
 
-    },
+    // },
 
         freightCostPerTon: function (oEvent) {
             var proposedFreightCost = parseFloat(oEvent.getParameter("value"));

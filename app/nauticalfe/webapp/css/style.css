@@ -1,6 +1,5 @@
-
 .page{
-    background-color: rgba(246, 246, 245, );
+    background-color: rgba(247, 243, 243, 0.898);
 }
 .pageFooter{
     border: 1px solid rgb(194, 193, 193);
@@ -158,8 +157,8 @@
     width: 100%;
 }
 .vdHeaderLayout{
-    margin-left: 5rem;
-    margin-bottom: 3rem;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
     justify-content: space-between;
 }
  
@@ -179,7 +178,6 @@
     margin: 1%;
 }
  
- 
 /* vessel Plan section  */
  
 .vsplandetails{
@@ -188,8 +186,8 @@
 .infoinputs{
     margin-left: 2rem;
 }
-
- /* Bid Details */
+ 
+/* Bid Details */
  
 .flexbidtable{
     padding-right: 5%;
@@ -198,18 +196,13 @@
 .flexbtn{
     margin-left: 4.2%;
 }
- 
- 
- 
+/* .formInputbox{
+    align-items: center;
+} */
  
 /***************************************** Business Partner Details Page ************************************/
  
-.EnterDetailsHeader{
-    margin: 2%;
-    font-size: 18px;
-    border-bottom: 1px solid rgb(185, 182, 182);
-    width: 80%;
-}
+ 
 .BPdetailsContent{
     margin-left: 35%;
 }
@@ -304,8 +297,11 @@
 .sapMBtnIcon {
     color: rgb(194, 65, 65);
 }
-/* request for quotation */
-
-.reqQuotation{
-    padding: 2%;
+ 
+.vaInputBox{
+    margin-right: 8%;
 }
+.vasrLabel{
+    margin-right: 6.5%;
+}
+ 
