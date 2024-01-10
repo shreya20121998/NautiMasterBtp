@@ -309,4 +309,24 @@
 .vasrLabel{
     margin-right: 6.5%;
 }
+ /****************************************** Request For Quotation *****************************************/
  
+
+.gapinputLabel{
+    /* margin-top: 0.5rem; */
+    line-height: 2;
+    direction: rtl;
+}
+
+/*********************************Compare Live Freight Negotitation****************************************/
+.VnLabel{
+    margin-left: -20%;
+    margin-bottom: 1.2%;
+}
+.mandatorylabel{
+    direction: rtl; 
+}
+/**********************************Bidding Histrory Report***************************************************/
+.CRNLabel{
+    margin-left: -10%;
+}

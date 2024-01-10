@@ -14,6 +14,10 @@ sap.ui.define([
  
         
       },
+      onBackPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("TransView");
+      },
       // for frightdata navigation
     onFreightSimulator: function () {
      var OriginData=this.getView().byId("portfromorigin").getValue();

@@ -15,11 +15,12 @@ xmlns:form="sap.ui.layout.form"
                   press="onBackPress"
               />
               <Image id="_IDGenImage1"
+                 class="size1"
                   src="./images/ignxlogo.png"
                   height="75%"
               />
               <Text id="_IDGenText1"
-                  class="textBid"
+                  class="textBid size1"
                   text="Create Voyage"
               />
           </contentLeft>

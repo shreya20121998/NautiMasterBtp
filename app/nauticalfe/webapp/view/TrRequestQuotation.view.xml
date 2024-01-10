@@ -56,50 +56,25 @@ controllerName="nauticalfe.controller.TrRequestQuotation"
             <Button id="Button2" text="Sumbit Quotation"  />
             </contentLeft>
         </Bar>
-         <VBox id="_IDGenVBox1" class="reqQuotation">
-               <Text id="_IDGenText1" text="Bidding Details" class="vgheading "></Text>
-
-                    <HBox id="_IDGenHBox1" alignItems="End">
-
-                        <Label id="_IDGenLabel1" required="true" text="Chartering Request No :"   ></Label>
-
-                        <Input id="_IDGenInput1" width="170px" showValueHelp="true" ></Input>
-
-                    </HBox>
-
-                    <HBox id="_IDGenHBox2" alignItems="End" >
-
-                        <Label id="_IDGenLabel2" text="Bidding Start Date:"  required="true"></Label>
-
-                        <DatePicker id="_IDGenDatePicker1" width="200px" placeholder="MM:DD:YY"></DatePicker>
-
-                    </HBox>
-
-                    <HBox id="_IDGenHBox3" alignItems="End" >
-
-                         <Label id="_IDGenLabel3" text="Bidding Start Time:"  required="true" ></Label>
-
-                         <TimePicker id="_IDGenTimePicker1" width="200px" placeholder="00:00:00"></TimePicker>
-
-                    </HBox>
-
-                    <HBox id="_IDGenHBox4" alignItems="End"  >
-
-                         <Label id="_IDGenLabel4" text="Bidding End Date:"  required="true"></Label>
-
-                         <DatePicker id="_IDGenDatePicker2" width="200px" placeholder="MM:DD:YY"></DatePicker>
-
-                    </HBox>
-
-                    <HBox id="_IDGenHBox5" alignItems="End" >
-
-                        <Label id="_IDGenLabel5" text="Bidding End Time:"   required="true"></Label>
-
-                        <TimePicker id="_IDGenTimePicker2" width="200px" placeholder="00:00:00"></TimePicker>
-
-                    </HBox>
-
-               </VBox>
+            
+        <Text id="_IDGenText1" text="Bidding Details" class="vgheading "></Text>
+        <HBox >
+            <VBox id="_IDGenVBox1" class="vdsection ">
+                <Label id="_IDGenLabel1" required="true" text="Chartering Request No :" class="gapinputLabel"  ></Label>
+                <Label id="_IDGenLabel2" text="Bidding Start Date:"  required="true" class="gapinputLabel"></Label>
+                <Label id="_IDGenLabel3" text="Bidding Start Time:"  required="true" class="gapinputLabel"></Label>
+                <Label id="_IDGenLabel4" text="Bidding End Date:"  required="true" class="gapinputLabel"></Label>
+                <Label id="_IDGenLabel5" text="Bidding End Time:"   required="true" class="gapinputLabel"></Label>
+            </VBox>
+            <VBox id="_IDGenHBox2">
+                <Input id="_IDGenInput1" width="170px" showValueHelp="true" class="" textDirection="Inherit"></Input>
+                <DatePicker id="_IDGenDatePicker1" width="150px" placeholder="MM:DD:YY" ></DatePicker>
+                <TimePicker id="_IDGenTimePicker1" width="120px" placeholder="00:00:00" ></TimePicker>
+                <DatePicker id="_IDGenDatePicker2" width="150px" placeholder="MM:DD:YY"></DatePicker>
+                <TimePicker id="_IDGenTimePicker2" width="120px" placeholder="00:00:00"></TimePicker>
+            </VBox>
+            </HBox>
+ 
 
     
     
