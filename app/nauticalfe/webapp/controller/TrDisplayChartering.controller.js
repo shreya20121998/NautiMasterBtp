@@ -10,6 +10,10 @@ sap.ui.define(
         onInit() {
          
         },
+        onBackPress: function () {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("TransView");
+        },
 
         handleNav: function(evt) {
           var navCon = this.byId("navCon");
