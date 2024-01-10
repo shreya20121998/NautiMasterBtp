@@ -10,6 +10,10 @@ sap.ui.define(
         onInit() {
          
         },
+        onBackPress: function () {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("TransView");
+        },
 
         onValueHelpRequest: function (oEvent) {
           // Open the value help dialog or perform any custom logic
