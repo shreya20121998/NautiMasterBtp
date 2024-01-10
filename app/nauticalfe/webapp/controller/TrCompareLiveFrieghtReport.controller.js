@@ -9,6 +9,10 @@ sap.ui.define(
         onInit() {
             
         },
+        onBackPress: function () {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("TransView");
+          },
         onSaveAs:function(){
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteSaveAsVariant");

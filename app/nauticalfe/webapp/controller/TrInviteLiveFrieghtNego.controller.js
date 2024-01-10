@@ -8,6 +8,10 @@ sap.ui.define(
       return BaseController.extend("nauticalfe.controller.TrInviteLiveFrieghtNego", {
         onInit() {
         },
+        onBackPress: function () {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("TransView");
+        },
         onSaveAs:function(){
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteSaveAsVariant");

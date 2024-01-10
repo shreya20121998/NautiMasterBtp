@@ -13,12 +13,7 @@
                         color="#FFFFFF"
                         press="onBackPress"
                     />
-                    <core:Icon
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
+                    
                     <Image
                         src="./images/ignxlogo.png"
                         height="75%"
