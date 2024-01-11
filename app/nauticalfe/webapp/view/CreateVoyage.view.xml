@@ -78,7 +78,7 @@ xmlns:form="sap.ui.layout.form"
             <CheckBox id="_IDGenChBox3" text="Keil" />
           </contentLeft>
           <contentMiddle>
-            <Label id="_IDGenLab6" text="Speed"  />
+            <Label id="_IDGenLab6" text="Speed"  required="true" class="mandatorylabel" />
             <Input id="speed" width="10%" liveChange=".speedUpdate"/>
             <Label id="_IDGenLab8" text="NM/HR" />
             <Label id="_IDGenLab7" text="Total Days" />
@@ -98,40 +98,40 @@ xmlns:form="sap.ui.layout.form"
         <Table id="table" class="tableLayout"  growing="true" growingThreshold="10"  >
           <columns>
            <Column id="heading1" hAlign="Center" width="150px">
-             <Text id="text1" text="Port Name" />
+             <Label id="text1" text="Port Name" />
            </Column>
            <Column id="heading2"  hAlign="Center" width="150px" >
-             <Text id="text2" text="Distance(NM)"/>
+             <Label id="text2" text="Distance(NM)"/>
            </Column>
            <Column id="heading3"  hAlign="Center" width="100px" >
-             <Text id="text3" text="Weather%"/>
+             <Label id="text3" text="Weather%"/>
            </Column>
            <Column id="heading4"  hAlign="Center" width="100px">
-             <Text id="text4" text="Cargo Size"/>
+             <Label id="text4" text="Cargo Size"  required="true" class="mandatorylabel" />
            </Column>
-           <Column id="heading5"  hAlign="Center" width="100px">
-             <Text id="text5" text="Unit"/>
+           <Column id="heading5"  hAlign="Center" width="100px" >
+             <Label id="text5" text="Unit" required="true" class="mandatorylabel" />
            </Column>
            <Column id="heading6"  hAlign="Center" width="100px" >
-             <Text id="text6" text="Speed(NM/Hr)"/>
+             <Label id="text6" text="Speed(NM/Hr)"/>
            </Column>
            <Column id="heading7"  hAlign="Center" width="100px" >
-             <Text id="text7" text="Sea Days"/>
+             <Label id="text7" text="Sea Days"/>
            </Column>
            <Column id="heading8"  hAlign="Center" width="100px" >
-             <Text id="text8" text="Port Days"/>
+             <Label id="text8" text="Port Days"/>
            </Column>
            <Column id="heading9"  hAlign="Center" width="150px" >
-             <Text id="text9" text="Arrival Date"/>
+             <Label id="text9" text="Arrival Date"/>
            </Column>
            <Column id="heading10"  hAlign="Center" width="150px" >
-             <Text id="text10" text="Arrival Time"/>
+             <Label id="text10" text="Arrival Time"/>
            </Column>
            <Column id="heading11"  hAlign="Center"  width="150px">
-             <Text id="text11" text="Departure date"/>
+             <Label id="text11" text="Departure date"/>
            </Column>
            <Column id="heading12" hAlign="Center" width="150px" >
-             <Text id="text12" text="Departure Time"/>
+             <Label id="text12" text="Departure Time"/>
            </Column>
           </columns>
  
@@ -150,7 +150,7 @@ xmlns:form="sap.ui.layout.form"
               <Input id="arrivaldateorigin"     width="auto" value="" editable="false" />
               <Input id="arrivaltimeorigin" change="handleChange"    value="" editable="false" />
               <DatePicker id="departuredateorigin" placeholder="Enter Date"  />
-              <TimePicker id="departuretimeorigin"  displayFormat="hh:mm:ss" ></TimePicker>
+              <TimePicker id="departuretimeorigin"  displayFormat="hh:mm:ss" showCurrentTimeButton="true"></TimePicker>
              
              </cells>
              
