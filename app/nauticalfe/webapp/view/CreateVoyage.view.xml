@@ -15,12 +15,11 @@ xmlns:form="sap.ui.layout.form"
                   press="onBackPress"
               />
               <Image id="_IDGenImage1"
-                 class="size1"
                   src="./images/ignxlogo.png"
                   height="75%"
               />
               <Text id="_IDGenText1"
-                  class="textBid size1"
+                  class="textBid"
                   text="Create Voyage"
               />
           </contentLeft>
@@ -53,15 +52,15 @@ xmlns:form="sap.ui.layout.form"
           <form:SimpleForm id="_IDSimpleForm1" title="Create Voyage">
               <!-- Add your form elements here -->
               <Label id="_IDLabel1" text="voyage Name"/>
-              <Input id="_IDInput1" value="" />
+              <Input id="_voyage_Name" value="" />
               <Label id="_IDLabel2" text="Voyage Type"/>
-              <Input id="_IDInput2" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog1" />
+              <Input id="_voyage_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog1" />
               <Label id="_IDLabel3" text="bidding Type"/>
-              <Input id="_IDInput3" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
+              <Input id="_bidding_Type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
               <Label id="_IDLabel4" text="Cargo Type" />
-              <Input id="_IDInput4" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
+              <Input id="_cargo_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
               <Label id="_IDLabel5" text="currency"/>
-              <Input id="_IDInput5" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4" />
+              <Input id="_currency_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4" />
               <!-- Add more form elements as needed -->
           </form:SimpleForm>
         </FlexBox>
@@ -81,14 +80,14 @@ xmlns:form="sap.ui.layout.form"
             <CheckBox id="_IDGenChBox3" text="Keil" />
           </contentLeft>
           <contentMiddle>
-            <Label id="_IDGenLab6" text="Speed" />
-           <Input id="speed" width="10%" liveChange=".speedUpdate"/>
+            <Label id="_IDGenLab6" text="Speed"  />
+            <Input id="speed" width="10%" liveChange=".speedUpdate"/>
             <Label id="_IDGenLab8" text="NM/HR" />
             <Label id="_IDGenLab7" text="Total Days" />
             <Input id="totaldays" width="10%" value=""/>
           </contentMiddle>
           <contentRight >
-            <Button id="_IDGenButn1" text="Create Voyage"  press="onChangeVoyage" type="Reject"/>
+            <Button id="_IDGenButn1" text="Create Voyage"  press="onCreateVoyage" type="Reject"/>
             <Button id="_IDGenButn2" text="Freight Simulator" press="onFreightSimulator" type="Reject" />
             <Button id="_IDGenButn3"  text="Calculate"  type="Negative"  icon="none"  press="calculateVoyage" />
             <Button id="_IDGenButn4" icon="sap-icon://refresh" type="Reject" />
@@ -138,19 +137,19 @@ xmlns:form="sap.ui.layout.form"
          <items>
            <ColumnListItem id="coloumnlist"  >
              <cells>
-              <Input id="portfromorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelp"/>
+              <Input id="portfromorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelpPort"/>
               <!-- <Input id="field2" value="" showValueHelp="true" valueHelpRequest="onValueHelp1" enabled="false"/> -->
              <Input id="distanceorigin" value="0"  enabled="false"/>
               <Input id="weatherorigin" value ="0" enabled="false"/>
               <Input id="cargo_sizeorigin" value =""/>
-              <Input id="unitorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelp2"/>
-              <Input id="speedorigin" value =""/>
+              <Input id="unitorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelpUOM"/>
+              <Input id="speedorigin" value ="" enabled="false"/>
               <Input id="sea_daysorigin" value ="0" enabled="false"/>
               <Input id="portdaysorigin" value =""/>
-              <Input id="arrivaldateorigin" placeholder="Enter Date"  change="handleChange" width="auto" value="" editable="false" />
+              <Input id="arrivaldateorigin" placeholder="Enter Date"   width="auto" value="" editable="false" />
               <Input id="arrivaltimeorigin" change="handleChange"    value="" editable="false"/>
-              <DatePicker id="departuredateorigin" placeholder="Enter Date"  change="handleChange"/>
-              <TimePicker id="departuretimeorigin" change="handleChange"  ></TimePicker>
+              <DatePicker id="departuredateorigin" placeholder="Enter Date"  />
+              <TimePicker id="departuretimeorigin"  ></TimePicker>
              
              </cells>
              
@@ -162,14 +161,14 @@ xmlns:form="sap.ui.layout.form"
               <Input id="weatherdestination" value ="0" enabled="false"/>
               <Input id="cargo_sizedestination" value =""/>
               <Input id="unitdestination" value="" showValueHelp="true" valueHelpRequest="onValueHelp2" enabled="false"/>
-              <Input id="speeddestination" value ="" />
+              <Input id="speeddestination" value ="" enabled="false" />
               <Input id="sea_daysdestination" value ="" enabled="false"/>
               <Input id="portdaysdestination" value =""/>
              
-              <Input id="arrivaldatedestination"   change="handleChange" width="auto" value="" editable="false"/>
-              <Input id="arrivaltimedestination" change="handleChange"    value="" editable="false"/>
-              <DatePicker id="departuredatedestination" placeholder="Enter Date"  change="handleChange"/>
-              <TimePicker id="departuretimedestination" change="handleChange"></TimePicker>
+              <Input id="arrivaldatedestination"   width="auto" value="" />
+                <TimePicker id="arrivaltimedestination" ></TimePicker>
+              <DatePicker id="departuredatedestination" placeholder="Enter Date"  />
+              <TimePicker id="departuretimedestination" ></TimePicker>
              
              </cells>
              
