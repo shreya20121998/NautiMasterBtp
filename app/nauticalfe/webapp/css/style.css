@@ -10,6 +10,10 @@
 .sapMLIBShowSeparator>td{
     border: 1px solid rgb(214, 211, 211);
  }
+ .stickyBar{
+    scrollbar-width: 100%;
+    
+ }
 /************************************ For Home Screen **********************************************/
 .tileLayout{
     border-radius: 0%;
@@ -21,7 +25,7 @@
 }
 .tableLayout{
     border: 1px solid rgb(218, 215, 215);
-   
+    border-width: 100% ;
 }
 /************************************** Freight Simulator Screen ***************************************/
 .freightSimulatorPage{

@@ -51,15 +51,15 @@ xmlns:form="sap.ui.layout.form"
         <FlexBox id="_IDGenFlexBox1" width="18%" class="threeFlex">
           <form:SimpleForm id="_IDSimpleForm1" title="Create Voyage">
               <!-- Add your form elements here -->
-              <Label id="_IDLabel1" text="voyage Name"/>
+              <Label id="_IDLabel1" text="Voyage Name"/>
               <Input id="_voyage_Name" value="" />
               <Label id="_IDLabel2" text="Voyage Type"/>
               <Input id="_voyage_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog1" />
-              <Label id="_IDLabel3" text="bidding Type"/>
+              <Label id="_IDLabel3" text="Bidding Type"/>
               <Input id="_bidding_Type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
               <Label id="_IDLabel4" text="Cargo Type" />
               <Input id="_cargo_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
-              <Label id="_IDLabel5" text="currency"/>
+              <Label id="_IDLabel5" text="Currency"/>
               <Input id="_currency_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4" />
               <!-- Add more form elements as needed -->
           </form:SimpleForm>
@@ -71,9 +71,7 @@ xmlns:form="sap.ui.layout.form"
         <FlexBox id="_IDGenFlexBox3" width="35%" class="threeFlex">
         </FlexBox>
       </HBox>
- 
-      <Panel id="_IDGenPanel1" >
-        <Bar id="TableUpperBar">
+      <Bar id="TableUpperBar" class="stickyBar" >
           <contentLeft>
             <CheckBox id="_IDGenChBox1" text="Suez" />
             <CheckBox id="_IDGenChBox2" text="Panama" />
@@ -94,42 +92,45 @@ xmlns:form="sap.ui.layout.form"
           </contentRight>
         </Bar>
  
+      <Panel id="_IDGenPanel1" >
+        
+ 
         <Table id="table" class="tableLayout"  growing="true" growingThreshold="10"  >
           <columns>
-           <Column id="heading1">
-             <Text id="text1" text="Port Name"/>
+           <Column id="heading1" hAlign="Center" width="150px">
+             <Text id="text1" text="Port Name" />
            </Column>
-           <Column id="heading2" >
+           <Column id="heading2"  hAlign="Center" width="150px" >
              <Text id="text2" text="Distance(NM)"/>
            </Column>
-           <Column id="heading3" >
+           <Column id="heading3"  hAlign="Center" width="100px" >
              <Text id="text3" text="Weather%"/>
            </Column>
-           <Column id="heading4" >
+           <Column id="heading4"  hAlign="Center" width="100px">
              <Text id="text4" text="Cargo Size"/>
            </Column>
-           <Column id="heading5" >
+           <Column id="heading5"  hAlign="Center" width="100px">
              <Text id="text5" text="Unit"/>
            </Column>
-           <Column id="heading6" >
+           <Column id="heading6"  hAlign="Center" width="100px" >
              <Text id="text6" text="Speed(NM/Hr)"/>
            </Column>
-           <Column id="heading7" >
+           <Column id="heading7"  hAlign="Center" width="100px" >
              <Text id="text7" text="Sea Days"/>
            </Column>
-           <Column id="heading8" >
+           <Column id="heading8"  hAlign="Center" width="100px" >
              <Text id="text8" text="Port Days"/>
            </Column>
-           <Column id="heading9" >
+           <Column id="heading9"  hAlign="Center" width="150px" >
              <Text id="text9" text="Arrival Date"/>
            </Column>
-           <Column id="heading10" >
+           <Column id="heading10"  hAlign="Center" width="150px" >
              <Text id="text10" text="Arrival Time"/>
            </Column>
-           <Column id="heading11" >
+           <Column id="heading11"  hAlign="Center"  width="150px">
              <Text id="text11" text="Departure date"/>
            </Column>
-           <Column id="heading12" >
+           <Column id="heading12" hAlign="Center" width="150px" >
              <Text id="text12" text="Departure Time"/>
            </Column>
           </columns>
@@ -146,10 +147,10 @@ xmlns:form="sap.ui.layout.form"
               <Input id="speedorigin" value ="" enabled="false"/>
               <Input id="sea_daysorigin" value ="0" enabled="false"/>
               <Input id="portdaysorigin" value =""/>
-              <Input id="arrivaldateorigin" placeholder="Enter Date"   width="auto" value="" editable="false" />
-              <Input id="arrivaltimeorigin" change="handleChange"    value="" editable="false"/>
+              <Input id="arrivaldateorigin"     width="auto" value="" editable="false" />
+              <Input id="arrivaltimeorigin" change="handleChange"    value="" editable="false" />
               <DatePicker id="departuredateorigin" placeholder="Enter Date"  />
-              <TimePicker id="departuretimeorigin"  ></TimePicker>
+              <TimePicker id="departuretimeorigin"  displayFormat="hh:mm:ss" ></TimePicker>
              
              </cells>
              
@@ -165,10 +166,10 @@ xmlns:form="sap.ui.layout.form"
               <Input id="sea_daysdestination" value ="" enabled="false"/>
               <Input id="portdaysdestination" value =""/>
              
-              <Input id="arrivaldatedestination"   width="auto" value="" />
-                <TimePicker id="arrivaltimedestination" ></TimePicker>
-              <DatePicker id="departuredatedestination" placeholder="Enter Date"  />
-              <TimePicker id="departuretimedestination" ></TimePicker>
+              <Input id="arrivaldatedestination"   width="auto" value=""  editable="false"/>
+                <TimePicker id="arrivaltimedestination"  editable="false" />
+              <DatePicker id="departuredatedestination" placeholder="Enter Date" />
+              <TimePicker id="departuretimedestination" displayFormat="hh:mm:ss" ></TimePicker>
              
              </cells>
              

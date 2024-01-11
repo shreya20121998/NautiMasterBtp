@@ -419,9 +419,9 @@ sap.ui.define(
               var oSelectedItem = oEvent.getParameter("listItem");
               var oSelectedValue = oSelectedItem.getCells()[0].getText();
               var inputVoyageType = this.getView().byId("unitorigin");
-              // var inputVoyageType1 = this.getView().byId("unitdestination");
+              var inputVoyageType1 = this.getView().byId("unitdestination");
               this.populateInputField(inputVoyageType, oSelectedValue);
-              // this.populateInputField(inputVoyageType1, oSelectedValue);
+              this.populateInputField(inputVoyageType1, oSelectedValue);
 
               oDialog.close();
             }.bind(this),

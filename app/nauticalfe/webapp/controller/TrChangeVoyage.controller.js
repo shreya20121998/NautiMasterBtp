@@ -19,7 +19,7 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("TransView");
+        oRouter.navTo("RouteHome");
       },
 
       onAddRow1: function() {
