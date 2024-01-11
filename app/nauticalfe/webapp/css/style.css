@@ -11,8 +11,7 @@
     border: 1px solid rgb(214, 211, 211);
  }
  .stickyBar{
-    scrollbar-width: 100%;
-    
+   margin-top: 1%;
  }
 /************************************ For Home Screen **********************************************/
 .tileLayout{
@@ -25,7 +24,7 @@
 }
 .tableLayout{
     border: 1px solid rgb(218, 215, 215);
-    border-width: 100% ;
+    
 }
 /************************************** Freight Simulator Screen ***************************************/
 .freightSimulatorPage{

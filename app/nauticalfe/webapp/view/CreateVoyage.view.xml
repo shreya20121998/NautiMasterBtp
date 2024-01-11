@@ -47,7 +47,7 @@ xmlns:form="sap.ui.layout.form"
     </headerContent>
    
     <VBox id="_IDGenVBox2" >
-      <HBox id="_IDGenVBox1" width="100%" height="400px" class="crthreebox">
+      <HBox id="_IDGenVBox1" width="100%" height="410px" class="crthreebox">
         <FlexBox id="_IDGenFlexBox1" width="18%" class="threeFlex">
           <form:SimpleForm id="_IDSimpleForm1" title="Create Voyage">
               <!-- Add your form elements here -->
