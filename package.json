@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap-cloud-sdk/resilience": "^3.10.0",
     "@sap/cds": "^7",
     "express": "^4"
   },

@@ -121,45 +121,30 @@
             <columns>
                
                 <Column id="_IDGenColumn1">
-                    <Label id="_IDGenLabel1" text="Country" />
+                    <Label id="_IDGenLabel1" text="Release St" />
                 </Column>
                 <Column id="_IDGenColumn2">
-                    <Label id="_IDGenLabel2" text="Port Code" />
+                    <Label id="_IDGenLabel2" text="Voyage Typ" />
                 </Column>
                 <Column id="_IDGenColumn3">
-                    <Label id="_IDGenLabel3" text="Port Name" />
+                    <Label id="_IDGenLabel3" text="Vessel Typ" />
                 </Column>
                 <Column id="_IDGenColumn4">
-                    <Label id="_IDGenLabel4" text="Relatedanchorage" />
+                    <Label id="_IDGenLabel4" text="UserID Group" />
                 </Column>
                 <Column id="_IDGenColumn5">
-                    <Label id="_IDGenLabel5" text="Latitude" />
+                    <Label id="_IDGenLabel5" text="User Name" />
                 </Column>
-                <Column id="_IDGenColumn6">
-                    <Label id="_IDGenLabel6" text="Longitude" />
-                </Column>
-                <Column id="_IDGenColumn7">
-                    <Label id="_IDGenLabel7" text="Country Name" />
-                </Column>
-                <Column id="_IDGenColumn8">
-                    <Label id="_IDGenLabel8" text="Location Id" />
-                </Column>
-                <Column id="_IDGenColumn9">
-                    <Label id="_IDGenLabel9" text="Proc Ind" />
-                </Column>
+                
             </columns>
             <ColumnListItem id="_IDGenColumnListItem1">
                 <cells>
                    
-                    <Text id="_IDGenText3" text="{MARINE_TRAFFIC_API_SRV>Country}" />
-                    <Text id="_IDGenText4" text="{MARINE_TRAFFIC_API_SRV>Portc}" />
-                    <Text id="_IDGenText5" text="{MARINE_TRAFFIC_API_SRV>Portn}" />
-                    <Text id="_IDGenText6" text="{MARINE_TRAFFIC_API_SRV>Reancho}" />
-                    <Text id="_IDGenText7" text="{MARINE_TRAFFIC_API_SRV>Latitude}" />
-                    <Text id="_IDGenText8" text="{MARINE_TRAFFIC_API_SRV>Longitude}" />
-                    <Text id="_IDGenText9" text="{MARINE_TRAFFIC_API_SRV>Countryn}" />
-                    <Text id="_IDGenText10" text="{MARINE_TRAFFIC_API_SRV>Locid}" />
-                    <Text id="_IDGenText11" text="{}" />
+                    <Text id="_IDGenText3" text="{}" />
+                    <Text id="_IDGenText4" text="{}" />
+                    <Text id="_IDGenText5" text="{}" />
+                    <Text id="_IDGenText6" text="{}" />
+                    <Text id="_IDGenText7" text="{}" />
                 </cells>
             </ColumnListItem>
         </Table>
@@ -168,54 +153,33 @@
             <Table
                 width="100%"
                 class="mastertables"
-                items="{MARINE_TRAFFIC_API_SRV>/PortMasterSet}"
                 visible="false"
                 id="newTableId"
             >
                 <columns>
-                    <Column id="_IDGenColumn10" width="30px">
-                        <Label id="_IDGenLabel10" text=" " />
-                    </Column>
-                    <Column id="_IDGenColumn11">
-                        <Label id="_IDGenLabel11" text="Country" />
-                    </Column>
-                    <Column id="_IDGenColumn12">
-                        <Label id="_IDGenLabel12" text="Port Code" />
-                    </Column>
-                    <Column id="_IDGenColumn13">
-                        <Label id="_IDGenLabel13" text="Port Name" />
-                    </Column>
-                    <Column id="_IDGenColumn14">
-                        <Label id="_IDGenLabel14" text="Relatedanchorage" />
-                    </Column>
-                    <Column id="_IDGenColumn15">
-                        <Label id="_IDGenLabel15" text="Latitude" />
-                    </Column>
-                    <Column id="_IDGenColumn16">
-                        <Label id="_IDGenLabel16" text="Longitude" />
-                    </Column>
-                    <Column id="_IDGenColumn17">
-                        <Label id="_IDGenLabel17" text="Country Name" />
-                    </Column>
-                    <Column id="_IDGenColumn18">
-                        <Label id="_IDGenLabel18" text="Location Id" />
-                    </Column>
-                    <Column id="_IDGenColumn19">
-                        <Label id="_IDGenLabel19" text="Proc Ind" />
-                    </Column>
+                    <Column id="_IDColumn1">
+                    <Label id="_IDLabel1" text="Release St" />
+                </Column>
+                <Column id="_IDColumn2">
+                    <Label id="_IDLabel2" text="Voyage Typ" />
+                </Column>
+                <Column id="_IDColumn3">
+                    <Label id="_IDLabel3" text="Vessel Typ" />
+                </Column>
+                <Column id="_IDColumn4">
+                    <Label id="_IDLabel4" text="UserID Group" />
+                </Column>
+                <Column id="_IDColumn5">
+                    <Label id="_IDLabel5" text="User Name" />
+                </Column>
                 </columns>
                 <ColumnListItem id="_IDGenColumnListItem2">
                     <cells>
-                        <CheckBox id="_IDGenCheckBox1" />
-                        <Text id="_IDGenText12" text="{MARINE_TRAFFIC_API_SRV>Country}" />
-                        <Text id="_IDGenText13" text="{MARINE_TRAFFIC_API_SRV>Portc}" />
-                        <Text id="_IDGenText14" text="{MARINE_TRAFFIC_API_SRV>Portn}" />
-                        <Text id="_IDGenText15" text="{MARINE_TRAFFIC_API_SRV>Reancho}" />
-                        <Text id="_IDGenText16" text="{MARINE_TRAFFIC_API_SRV>Latitude}" />
-                        <Text id="_IDGenText17" text="{MARINE_TRAFFIC_API_SRV>Longitude}" />
-                        <Text id="_IDGenText18" text="{MARINE_TRAFFIC_API_SRV>Countryn}" />
-                        <Text id="_IDGenText19" text="{MARINE_TRAFFIC_API_SRV>Locid}" />
-                        <Text id="_IDGenText20" text="{}" />
+                        <Text id="_IDText3" text="{}" />
+                        <Text id="_IDText4" text="{}" />
+                        <Text id="_IDText5" text="{}" />
+                        <Text id="_IDText6" text="{}" />
+                        <Text id="_IDText7" text="{}" />
                     </cells>
                 </ColumnListItem>
             </Table>

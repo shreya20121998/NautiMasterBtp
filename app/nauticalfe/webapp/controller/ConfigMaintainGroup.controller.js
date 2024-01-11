@@ -80,7 +80,7 @@ sap.ui.define(
             let cells = oSelectedItem.getCells();
             console.log(cells);
            
-            return [oSelectedItem.getBindingContext().getProperty("ZUSER1"), oSelectedItem.getBindingContext().getProperty("ZGROUP")]
+            return [oSelectedItem.getBindingContext().getProperty("ZUSERNAME"), oSelectedItem.getBindingContext().getProperty("ZGROUP")]
  
           } else {
  
@@ -132,7 +132,7 @@ sap.ui.define(
  
        
         let data = {
-          ZUSER1 : value1,
+          ZUSERNAME : value1,
          
           ZGROUP: value2
  
@@ -142,7 +142,7 @@ sap.ui.define(
  
         var oView = this.getView();
         var JsonData = JSON.stringify(data)
-        let EndPoint = "/odata/v4/nautical/ZUSER/"+ data.ZUSER1;
+        let EndPoint = "/odata/v4/nautical/ZUSER/"+ data.ZUSERNAME;
         console.log(EndPoint);
         fetch(EndPoint, {
           method: 'PATCH',
@@ -189,7 +189,7 @@ sap.ui.define(
  
         var data = {
  
-          ZUSER1: value1,
+          ZUSERNAME: value1,
 
           ZGROUP: value2
  

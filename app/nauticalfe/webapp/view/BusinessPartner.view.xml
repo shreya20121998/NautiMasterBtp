@@ -66,22 +66,21 @@
                 </contentRight>
             </Bar>
         </headerContent>
-            <VBox id="_IDGenVBox1" class="vPanel">
 
+        <Panel id="_IDGenPanel1"  width="700px" height="500px" >
+            <Text text="Selection Option" id="HeadOptions" class="configHeading "/>
+            
+            <VBox alignItems="Center">
+                <Button id="_IDGenButton1" text="BP Master Details"  width="300px"
+                icon="sap-icon://request" press="onBPDetailpress" class="mgbtn"/>
 
-                <Panel id="_IDGenPanel1" class="panel" width="700px" height="500px">
-                    <ObjectListItem id="_IDGenObjectListItem1" intro="Select Options" ></ObjectListItem>
-
-                    <Button id="_IDGenButton1" text="BP Master Details" class="Trans" width="30%"
-                    icon="sap-icon://request" press="onBPDetailpress"></Button>
-
-                    <Button id="_IDGenButton2" text="Vendor Data Syncing" press="onVendorDataPress" class="Mastr" width="30%" icon="sap-icon://visits"></Button>
-                
-                </Panel> 
-
+                <Button id="_IDGenButton2" text="Vendor Data Syncing" press="onVendorDataPress"
+                width="300px" icon="sap-icon://visits" class="mgbtn "/>
             </VBox>
-         <footer>
-        <OverflowToolbar ></OverflowToolbar>
+        </Panel>
+
+        <footer>
+            <OverflowToolbar ></OverflowToolbar>
         </footer>
     </Page>
 </mvc:View>

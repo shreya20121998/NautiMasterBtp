@@ -139,7 +139,7 @@
                     <Text id="_IDGenText7" text="{CUNIT_code}" />
                     <Text id="_IDGenText8" text="{DATATYPE}" />
                     <Text id="_IDGenText9" text="{TABLENAME}" />
-                    <Text id="_IDGenText10" text="{MULTI_CHOICE}" />
+                    <CheckBox id="_IDGenText10" text="{MULTI_CHOICE}" />
                 </cells>
             </ColumnListItem>
         </Table>

@@ -10,7 +10,7 @@
     xmlns:core="sap.ui.core"
 >
     <Page id="_IDGenPage1">
-       <headerContent>
+        <headerContent>
             <!-- Your header content goes here -->
             <Bar class="customHeader">
                 <contentLeft>
@@ -93,10 +93,7 @@
                 />
             </contentRight>
         </Bar>
-        <Label
-            text="Cost Master Table "
-            class="masterheadings"
-        />
+        <Label text="Cost Master Table " class="masterheadings" />
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -127,7 +124,7 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{ZUSER1}"
+                            text="{ZUSERNAME}"
                         />
                         <Text
                             id="_IDGenInput2"

@@ -68,15 +68,16 @@ xmlns:core="sap.ui.core">
                 </contentRight>
             </Bar>
         </headerContent>
-      <Text text="Selection Option" id="HeadOptions" class="configHeading "/>
+        <Text text="Selection Option" id="HeadOptions" class="configHeading "/>
       
-      <VBox id="VoyageOperations" >
-         <Button id="_IDGenButton1" text="Maintain Group" width="300px" class="buttonSpacing mgbtn" icon="sap-icon://calendar" press="onMaintainGroupPress"></Button>
-         <Button id="_IDGenButton2" text="Voyage" width="300px" class="buttonSpacing" icon="../images/pen_msg.png" press="onConfigVoyage"></Button>
-         <Button id="_IDGenButton3" text="Chatering" width="300px" class="buttonSpacing" press="onConfigChartering"></Button>
-      </VBox>
-      <footer>
-        <OverflowToolbar ></OverflowToolbar>
+        <VBox id="VoyageOperations" >
+            <Button id="_IDGenButton1" text="Maintain Group" width="300px" type="Reject" class="mgbtn" icon="sap-icon://calendar" press="onMaintainGroupPress"></Button>
+            <Button id="_IDGenButton2" text="Voyage" width="300px" type="Reject" class="mgbtn" icon="../images/pen_msg.png" press="onConfigVoyage"></Button>
+            <Button id="_IDGenButton3" text="Chatering" width="300px" type="Reject" class="mgbtn" press="onConfigChartering"></Button>
+        </VBox>
+
+        <footer>
+            <OverflowToolbar ></OverflowToolbar>
         </footer>
 
    </Page>
