@@ -71,11 +71,11 @@
             <Text text="Selection Option" id="HeadOptions" class="configHeading "/>
             
             <VBox alignItems="Center">
-                <Button id="_IDGenButton1" text="BP Master Details"  width="300px"
+                <Button id="_IDGenButton1" text="BP Master Details" type="Reject"  width="300px"
                 icon="sap-icon://request" press="onBPDetailpress" class="mgbtn"/>
 
                 <Button id="_IDGenButton2" text="Vendor Data Syncing" press="onVendorDataPress"
-                width="300px" icon="sap-icon://visits" class="mgbtn "/>
+                width="300px" icon="sap-icon://visits" type="Reject" class="mgbtn "/>
             </VBox>
         </Panel>
 
