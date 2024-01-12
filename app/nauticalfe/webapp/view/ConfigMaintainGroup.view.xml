@@ -197,11 +197,13 @@
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
                 <Button
                     id="mainPageSave"
+                    type="Reject"
                     text="Save"
                     press="onSave"
                 />
                 <Button
                     id="_IDGenButton22"
+                    type="Reject"
                     text="Cancel"
                     press="onCancel"
                 />
@@ -215,11 +217,13 @@
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
                     id="mainPageSave12"
+                    type="Reject"
                     text="Update"
                     press="onUpdate"
                 />
                 <Button
                     id="_IDGenButton23"
+                    type="Reject"
                     text="Cancel"
                     press="onCancel"
                 />

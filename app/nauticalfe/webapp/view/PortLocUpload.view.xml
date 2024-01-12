@@ -72,9 +72,9 @@
  
            
             <footer>
-                <OverflowToolbar design="Auto">
+                <OverflowToolbar design="Solid">
                 <ToolbarSpacer />
-                <Button text="Execute" ></Button>
+                <Button text="Execute" type="Negative" icon="none" ></Button>
                 
                 </OverflowToolbar>
             </footer>

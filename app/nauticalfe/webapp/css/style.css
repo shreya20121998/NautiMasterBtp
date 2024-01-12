@@ -152,7 +152,7 @@
 .animation{
     display: none;
 }
-/* Vessel Details */
+/* Voyage Vessel Details */
 .vgheading{
     margin: 10px;
     padding: 5px;
@@ -181,7 +181,7 @@
     margin: 1%;
 }
  
-/* vessel Plan section  */
+/* Voyage vessel Plan section  */
  
 .vsplandetails{
     margin-left: 3rem;
@@ -190,7 +190,7 @@
     margin-left: 2rem;
 }
  
-/* Bid Details */
+/* Voyage Bid Details */
  
 .flexbidtable{
     padding-right: 5%;
@@ -199,42 +199,16 @@
 .flexbtn{
     margin-left: 4.2%;
 }
-/* .formInputbox{
-    align-items: center;
-} */
  
 /***************************************** Business Partner Details Page ************************************/
- 
- 
 .BPdetailsContent{
     margin-left: 35%;
 }
-.executeBtn{
-    margin-left: 70rem;
-    margin-top: 22rem;
-}
-/****************************************** config release strategy *****************************************/
- 
-.configHeading{
-    margin-top: 2%;
-    font-size: 20px;
-    margin-left: 1%;
-    border-bottom: 1px solid rgb(183, 180, 180);
-    width: 40%;
-}
-.mgbtn{
-    margin-top: 3%;
-    margin-left: 4%;
-}
- 
- 
-/*
+
 /* Master data pages css by anurag */
  
 .customHeader{
     background-color: black;
-    
-    
 }
 .size1{
     margin-left: 1rem !important;
@@ -242,9 +216,7 @@
 .textBid{
     color: white;
 }
-/* .exeBtn{
-    margin-top: 35%;
-} */
+
 .masterFileUpload{
     margin-left: 250px;
     margin-top: 70px;
@@ -257,8 +229,6 @@
     border-bottom: 1px solid rgb(189, 187, 187);
     width: 100%;
 }
- 
- 
  
 /* file upload dialog box css */
 .MastDialogButtonAlign{
@@ -274,7 +244,7 @@
     color: white;
 }
  
-/* save as variant tab */
+/********************************* save as variant tab **********************************************/
  
 .sapMCb .sapMLabel {
     margin-top: -1.5%;

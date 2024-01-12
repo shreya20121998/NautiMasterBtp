@@ -23,10 +23,7 @@ sap.ui.define(
  
  
       },
-      onBackPress: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
-      },
+     
       // for more fragment
 
       onPress: function () {
@@ -49,6 +46,10 @@ sap.ui.define(
         else {
           this._oMenuFragment.openBy(oButton);
         }
+      },
+      onBackPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("MastView");
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
@@ -73,8 +74,12 @@ sap.ui.define(
             let cells = oSelectedItem.getCells();
             console.log(cells);
            
-            return [oSelectedItem.getBindingContext().getProperty("ZF_VALUE"), oSelectedItem.getBindingContext().getProperty("ZF_DESC")]
- 
+            return [
+              oSelectedItem.getBindingContext().getProperty("ZF_VALUE"),
+              oSelectedItem.getBindingContext().getProperty("ZF_DESC"),
+              oSelectedItem.getBindingContext().getProperty("COUNTRY_code"),
+              oSelectedItem.getBindingContext().getProperty("COUNTRYN_code"),
+            ]
           } else {
  
           }
@@ -90,8 +95,6 @@ sap.ui.define(
         this.getView().byId("createTypeTable").setVisible(false)
         this.getView().byId("entryTypeTable").setVisible(true)
         this.getView().byId("mainPageFooter").setVisible(true)
- 
- 
       },
      
       pressEdit : function(){
@@ -109,8 +112,14 @@ sap.ui.define(
         this.getView().byId("createTypeTable").setVisible(false);
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
+        let country = aSelectedIds[0][2];
+        let cname = aSelectedIds[0][3];
         this.getView().byId("value1").setText(code);
         this.getView().byId("field1").setValue(desc);
+        
+        this.getView().byId("field5").setValue(country);
+        this.getView().byId("field4").setValue(cname);
+        
         this.getView().byId('updateTypeTable').setVisible(true);
         
         this.getView().byId("mainPageFooter2").setVisible(true);
@@ -122,12 +131,14 @@ sap.ui.define(
          
         let value1 =  aSelectedIds[0][0];
         let value2 =  this.getView().byId("field1").getValue() ;
- 
-       
+        let value3 =  this.getView().byId("field5").getValue() ;
+        let value4 =  this.getView().byId("field4").getValue() ;
+
         let data = {
           ZF_VALUE : value1,
-         
-          ZF_DESC: value2
+          ZF_DESC: value2,
+          COUNTRY_code: value3,
+          COUNTRYN_code: value4
  
         };
         console.log(data);
@@ -293,8 +304,12 @@ sap.ui.define(
         this.getView().byId("createTypeTable").setVisible(false);
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
+        let country = aSelectedIds[0][2];
+        let cname = aSelectedIds[0][3];
         this.getView().byId("value").setValue(code);
         this.getView().byId("field").setValue(desc);
+        this.getView().byId("field2").setValue(country);
+        this.getView().byId("field3").setValue(cname);
         this.getView().byId('entryTypeTable').setVisible(true);
 
         // console.log(aSelectedIds[0][0], aSelectedIds[0][1]);
