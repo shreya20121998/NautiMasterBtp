@@ -86,7 +86,7 @@
                 <Button text="Display" />
                 <Button
                     text="Exit"
-                    press="onPressExit"
+                    press="onExit"
                 />
             </contentRight>
         </Bar>

@@ -17,7 +17,7 @@
                         src="sap-icon://nav-back"
                         class="size1"
                         color="#FFFFFF"
-                        press="backPress"
+                        press="onBackPress"
                     />
                     <core:Icon
                         src="sap-icon://home"

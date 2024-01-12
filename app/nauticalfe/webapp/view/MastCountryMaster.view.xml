@@ -21,7 +21,7 @@
                         src="sap-icon://nav-back"
                         class="size1"
                         color="#FFFFFF"
-                        press="backPress"
+                        press="onBackPress"
                     />
                     <core:Icon
                         id="_IDGenIcon2"
@@ -120,7 +120,7 @@
                 <Button
                     id="_IDGenButton20"
                     text="Exit"
-                    press="MastPage"
+                    press="onExit"
                 />
             </contentRight>
         </Bar>

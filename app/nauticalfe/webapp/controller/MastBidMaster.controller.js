@@ -10,23 +10,20 @@ sap.ui.define(
  
     return BaseController.extend("nauticalfe.controller.MastBidMaster", {
       onInit() {
-      }, onBackPress: function () {
-        const oHistory = History.getInstance();
-        const sPreviousHash = oHistory.getPreviousHash();
-
-        if (sPreviousHash !== undefined) {
-          window.history.go(-1);
-        } else {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("MastView", {}, true);
-        }
-      },onBackPressHome: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
-      },onPressExit:function () {
+      }, 
+      onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("MastView");
-      }, newEntries: function () {
+      },
+      onBackPressHome: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("Routedash");
+      },
+      onExit: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHome");
+      }, 
+      newEntries: function () {
         this.getView().byId("createTypeTable").setVisible(false)
         this.getView().byId("entryTypeTable").setVisible(true)
         this.getView().byId("mainPageFooter").setVisible(true)

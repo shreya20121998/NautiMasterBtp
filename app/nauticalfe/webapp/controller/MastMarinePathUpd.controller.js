@@ -55,29 +55,19 @@ sap.ui.define([
                     this._oMenuFragment.openBy(oButton);
                 }
             },
-            MastPage:function(){
-                const oHistory = History.getInstance();
-                const sPreviousHash = oHistory.getPreviousHash();
-     
-                if (sPreviousHash !== undefined) {
-                  window.history.go(-1);
-                } else {
-                  const oRouter = this.getOwnerComponent().getRouter();
-                  oRouter.navTo("MastView", {}, true);
-                }
-             },onBackPress: function () {
+            
+            onBackPress: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("MastView");
-              }, onBackPress: function () {
+              },
+              onBackPressHome: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("MastView");
-              },onBackPressHome: function () {
+                oRouter.navTo("Routedash");
+              },
+              onExit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteHome");
-              },onPressExit:function () {
-                const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("MastView");
-              }
+              },
         });
 });
  

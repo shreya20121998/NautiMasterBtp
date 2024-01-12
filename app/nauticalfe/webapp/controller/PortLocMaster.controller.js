@@ -75,15 +75,18 @@ sap.ui.define(
 
         this.getView().byId("firstTableId").setVisible(true)
         this.getView().byId("newTableId").setVisible(false)
-      }, onBackPress: function () {
+      },
+      onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("MastView");
-      }, onBackPressHome: function () {
+      },
+      onBackPressHome: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("Routedash");
+      },
+      onExit: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
-      }, onPressExit: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
       },
       onPress: function () {
         var oView = this.getView(),

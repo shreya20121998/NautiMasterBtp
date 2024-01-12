@@ -58,7 +58,7 @@
             <Button id="button" icon="sap-icon://slim-arrow-down" iconFirst="false" text="More" press="onPress" ariaHasPopup="Menu"/>
         </contentLeft>
         <contentRight>
-            <Button id="_IDGenButton4" text="Exit" press="MastPage"></Button>
+            <Button id="_IDGenButton4" text="Exit" press="onExit"></Button>
         </contentRight>
         </Bar>
         <HBox id="_IDGenHBox1" alignItems="Center" class="masterFileUpload">

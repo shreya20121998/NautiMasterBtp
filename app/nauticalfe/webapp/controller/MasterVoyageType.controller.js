@@ -22,16 +22,9 @@ sap.ui.define(
  
  
       },
-      backPress:function(){
-        const oHistory = History.getInstance();
-        const sPreviousHash = oHistory.getPreviousHash();
- 
-        if (sPreviousHash !== undefined) {
-          window.history.go(-1);
-        } else {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("MastView", {}, true);
-        }
+      onBackPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("MastView");
       },
       // for more fragment
  
@@ -58,11 +51,11 @@ sap.ui.define(
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
+        oRouter.navTo("Routedash");
       },
-      onExit: function () {
+      onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("Routedash");
       },
       selectedItems: function (oEvent) {
         // console.log("hello");

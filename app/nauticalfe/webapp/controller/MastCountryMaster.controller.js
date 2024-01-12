@@ -11,18 +11,18 @@ sap.ui.define(
     return BaseController.extend("nauticalfe.controller.MastCountryMaster", {
       onInit() {
       },
-      backPress:function(){
-        const oHistory = History.getInstance();
-        const sPreviousHash = oHistory.getPreviousHash();
-
-        if (sPreviousHash !== undefined) {
-          window.history.go(-1);
-        }
-        else {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("MastView", {}, true);
-        }
-     },
+      onBackPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("MastView");
+      },
+      onBackPressHome: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("Routedash");
+      },
+      onExit: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHome");
+      },
      onPress: function () {
       var oView = this.getView(),
         oButton = oView.byId("button");

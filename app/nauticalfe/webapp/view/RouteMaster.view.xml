@@ -83,7 +83,7 @@
                 <Button id="_IDGenButton8" text="Display" />
                 <Button id="_IDGenButton9"
                     text="Exit"
-                    press="MastPage"
+                    press="onExit"
                 />
             </contentRight>
         </Bar>

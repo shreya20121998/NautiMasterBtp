@@ -54,37 +54,19 @@ sap.ui.define([
                     this._oMenuFragment.openBy(oButton);
                 }
             },
-            MastPage:function(){
-                const oHistory = History.getInstance();
-                const sPreviousHash = oHistory.getPreviousHash();
-     
-                if (sPreviousHash !== undefined) {
-                  window.history.go(-1);
-                } else {
-                  const oRouter = this.getOwnerComponent().getRouter();
-                  oRouter.navTo("MastView", {}, true);
-                }
-            },
+           
             onExit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("MastView");
-            },
-            onBackPressHome: function () {
-                const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteHome");
-            },
-            backPress:function(){
-                const oHistory = History.getInstance();
-                const sPreviousHash = oHistory.getPreviousHash();
-        
-                if (sPreviousHash !== undefined) {
-                    window.history.go(-1);
-                } else {
-                    const oRouter = this.getOwnerComponent().getRouter();
-                    oRouter.navTo("MastView", {}, true);
-                }
-            },
-
+              },
+              onBackPressHome: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("Routedash");
+              },
+              onBackPress: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("MastView");
+              },
             onDownloadPress: function () {
                 // Handle the press event for "Download as Template" button
       

@@ -112,17 +112,10 @@ sap.ui.define(
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("RouteHome");
         },
-        backPress:function(){
-          const oHistory = History.getInstance();
-          const sPreviousHash = oHistory.getPreviousHash();
- 
-          if (sPreviousHash !== undefined) {
-            window.history.go(-1);
-          } else {
-            const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("MastView", {}, true);
-          }
-       }
+        onBackPress: function () {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("Routedash");
+        },
  
  
  
