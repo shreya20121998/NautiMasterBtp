@@ -39,7 +39,7 @@
                     <Text
                         id="_IDGenText1"
                         class="textBid size1"
-                        text='Change View "API URL Path Master": Overview'
+                        text='Change View "Country Master tcode": Overview'
                     />
                 </contentLeft>
                 <contentRight>
@@ -72,10 +72,8 @@
                 </contentRight>
             </Bar>
         </headerContent>
-        <Bar
-            id="_IDGenBar12"
-            class="_IDGenBar1"
-        >
+
+        <Bar id="_IDGenBar12" class="_IDGenBar1" >
             <contentLeft>
                 <Button
                     id="_IDGenButton12"
@@ -85,16 +83,17 @@
                 <Button
                     id="_IDGenButton13"
                     text="Copy As"
+                    press="pressCopy"
                 />
                 <Button
                     id="_IDGenButton14"
                     text="Delete"
-                    press="onDeleteVoyageType"
+                    press="onDeletePress"
                 />
                 <Button
                     id="_IDGenButton15"
-                    text="Update"
-                    press="onShowUpdateDialog"
+                    text="Edit"
+                    press="pressEdit"
                 />
                 
                 <Button
@@ -124,8 +123,9 @@
                 />
             </contentRight>
         </Bar>
+
         <Label
-            text="API URL Path Master"
+            text="Country Master tCode"
             class="masterheadings"
         />
         <Table
@@ -135,9 +135,8 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
-            
-        >
+            class="mastertables" >
+
             <columns>
                 <Column>
                     <Text text="Value" />
@@ -162,14 +161,14 @@
                 </ColumnListItem>
             </items>
         </Table>
+
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            visible="false"
-        >
+            visible="false" >
             <columns>
                 <Column>
                     <Text text="Value" />
@@ -187,10 +186,8 @@
                 </ColumnListItem>
             </items>
         </Table>
-        <!-- <Button id="_IDGenButton2" text="Add Row" press="updateTableRefresh" /> -->
+
         
-            <!-- footers for both pages are coded differently as save functionality is different in
-        both main page and new entries page  -->
 
             <!-- main page footer -->
             <OverflowToolbar
@@ -207,6 +204,7 @@
                 <Button
                     id="_IDGenButton22"
                     text="Cancel"
+                    press="onCancel"
                 />
             </OverflowToolbar>
 

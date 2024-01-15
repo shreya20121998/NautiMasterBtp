@@ -900,7 +900,32 @@ sap.ui.define(
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
+      },
+      
+      onDateChange: function (oEvent) {
+        var oDatePicker = oEvent.getSource();
+        var oSelectedDate = oDatePicker.getDateValue();
+        var oCurrentDate = new Date();
+   
+        // Disable dates before and including the current date
+        oDatePicker.setMinDate(new Date(oCurrentDate.getTime() + 24 * 60 * 60 * 1000)); // Adding one day to the current date
+   
+        if (oSelectedDate <= oCurrentDate) {
+            alert("You cannot select the Current Date or any date before it");
+            oDatePicker.setDateValue(new Date(oCurrentDate.getTime() + 24 * 60 * 60 * 1000)); // Set the date to the next day
+        }
       }
+    
+    
+
+
+
+      
+    
+    
+    
+    
+    
     });
   }
 );

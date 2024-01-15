@@ -77,8 +77,8 @@ sap.ui.define(
             return [
               oSelectedItem.getBindingContext().getProperty("ZF_VALUE"),
               oSelectedItem.getBindingContext().getProperty("ZF_DESC"),
-              oSelectedItem.getBindingContext().getProperty("COUNTRY_code"),
-              oSelectedItem.getBindingContext().getProperty("COUNTRYN_code"),
+              oSelectedItem.getBindingContext().getProperty("COUNTRY"),
+              oSelectedItem.getBindingContext().getProperty("COUNTRYN"),
             ]
           } else {
  
@@ -137,8 +137,8 @@ sap.ui.define(
         let data = {
           ZF_VALUE : value1,
           ZF_DESC: value2,
-          COUNTRY_code: value3,
-          COUNTRYN_code: value4
+          COUNTRY: value3,
+          COUNTRYN: value4
  
         };
         console.log(data);
@@ -190,12 +190,16 @@ sap.ui.define(
  
         var value1 =  this.getView().byId("value").getValue();
         var value2 =  this.getView().byId("field").getValue();
+        var value3 =  this.getView().byId("field2").getValue();
+        var value4 =  this.getView().byId("field3").getValue();
  
         var data = {
  
           ZF_VALUE: value1,
 
-          ZF_DESC: value2
+          ZF_DESC: value2,
+          COUNTRY: value3,
+          COUNTRYN: value4
  
         };
         console.log(data);
@@ -219,6 +223,8 @@ sap.ui.define(
               that.getModel().refresh();
               that.byId("value").setValue("");
               that.byId("field").setValue("");
+              that.byId("field2").setValue("");
+              that.byId("field3").setValue("");
              
  
             }

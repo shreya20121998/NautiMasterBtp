@@ -19,7 +19,7 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
+        oRouter.navTo("RouteCreateVoyage");
       },
 
       onAddRow1: function() {
