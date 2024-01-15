@@ -12,46 +12,19 @@ sap.ui.define([
  
         return Controller.extend("nauticalfe.controller.BidCont", {
             onInit: function () {
-                console.log("hello");
-                let oView = this.getView();
-                console.log(oView);
-
-                // let bidModel = oView.getModel("bidData");
-                // console.log(bidModel);
-                // if( bidModel){
-                //     this.updateStatusCounts(bidModel);
-                // }
- 
+                // console.log("hello");
+                // let oView = this.getView();
+                // console.log(oView);
             },
-            // updateStatusCounts : function (dataModel){
-            //     let statusCounts = {
-            //         open: 0,
-            //         Ongoing:0,
-            //         Closed:0
-            //     };
-            //     let allItemCount = dataModel.getData();
-            //     console.log((allItemCount)); 
-            //     dataModel.getData().forEach(function(item){
-            //         switch (item.Status){
-            //             case 'open':
-            //                 statusCounts.open++;
-            //                 break;
-            //                 case 'Ongoing':
-            //                 statusCounts.Ongoing++;
-            //                 break;
-
-            //                 case 'Closed':
-            //                     statusCounts.Closed++;
-            //                     break;                  
-                            
-            //         }
-            //     });
-            //     let oView = this.getView();
-            //     oView.byId('closeTileNumericId').setValue(statusCounts.Closed);
-            //     oView.byId('ongoingTileNumericId').setValue(statusCounts.Ongoing);
-            //     oView.byId('openTileNumericId').setValue(statusCounts.open);
-
-            // },
+            onBackPress: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteHome");
+            },
+            onBackPressHome: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteHome");
+            },
+            
             onPressBidTableData(oEvent) {
                 const oItem = oEvent.getSource();
                 const oRouter = this.getOwnerComponent().getRouter();
