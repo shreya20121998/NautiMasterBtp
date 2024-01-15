@@ -1,4 +1,4 @@
-<core:FragmentDefinition
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
 xmlns="sap.m"
 xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 <Dialog
@@ -8,9 +8,9 @@ xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
         search="onValueHelpSearchmat"
         confirm="onValueHelpClosemat"
         cancel="onValueHelpClosemat"
-        contentWidth="60%"
-        contentHeight="60%"
-        titleAlignment="Center" 
+        contentWidth="50%"
+        contentHeight="65%"
+        titleAlignment="Center"
         items="">
  
         <IconTabBar
@@ -25,109 +25,93 @@ xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
                 count="{/ProductCollectionStats/Counts/Weight/Ok}"
                 text="A:Suppliers(General)"
                 key="Ok" >
-                
-                    <FlexBox >
-                        <Label text="Search Term"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
-                        <Label text="Country"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
-                        <Label text="Postal Code"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
-                        <Label text="City"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
+            <form:SimpleForm  editable="true">
+            <Label text="Search Term"></Label>
+            <!-- <MultiInput required="true" showValueHelp="true" width="100px"  valueHelpRequest="showVendorNoDialog2"></MultiInput> -->
+            <Input id="searchInput1"  required="true" showValueHelp="true" width="100px"  valueHelpRequest="showVendorNoDialog2" ></Input>
+             <Label text="Country"></Label>
+              <Input id="countrybtn1"  width="100px" required="true" showValueHelp="true" valueHelpRequest="CountryDialogue"></Input>
+               <Label text="Postal Code"></Label>
+                        <Input  width="100px" ></Input>
+                         <Label text="City" ></Label>
+                        <Input  width="150px" ></Input>
                         <Label text="Name"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
+                        <Input  width="100px"></Input>
                         <Label text="Vendor"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
+                        <Input  width="100px"></Input>
                         <Label text="Delition Flag"></Label>
-                        <Input ></Input>
-                    </FlexBox>
-                    <FlexBox >
+                        <Input width="100px" required="true" showValueHelp="true" valueHelpRequest="" ></Input>
                         <Label text="Maximum No Of Hits"></Label>
-                        <Input ></Input>
-                    </FlexBox>           
-                  
-                 
-                    <Button text="Close" type="Reject" press="onClose" class="closeBtn"></Button>
-                
-                
-                    
-                 
-                  
-                 
+                        <Input  width="100px"></Input>
  
+            </form:SimpleForm>
+                    <Button text="Close" type="Reject" press="onClose" class="closeBtn"></Button>
+               
             </IconTabFilter>
             <IconTabSeparator />
-
+ 
             <IconTabFilter
                
-                iconColor="Default"
-
+                iconColor="Negative"
+ 
                 count="{/ProductCollectionStats/Counts/Weight/Heavy}"
                 text="Suppliers by country"
                 key="Heavy" >
  
-                   <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                   <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                   <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                   <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                   <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                    <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                    <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                  <Label  text="Search Term"></Label>
-                   <Input ></Input>
-                   <Button text="Find"></Button>
-                   <Button text="Multiple Selection"></Button>
-                   <Button text="close" ></Button>
+                     <form:SimpleForm  editable="true">
+            <Label text="Country"></Label>
+            <Input id="CountryInp1" required="true" showValueHelp="true" width="100px"  valueHelpRequest="showVendorNoDialog3"></Input>
+             <Label text="City"></Label>
+              <Input width="100px"></Input>
+               <Label text="Search Term "></Label>
+                        <Input  width="100px" ></Input>
+                         <Label text="Name" ></Label>
+                        <Input  width="150px" ></Input>
+                       
+                        <Label text="Vendor"></Label>
+                        <Input  width="100px"></Input>
+                        <Label text="Company Code"></Label>
+                        <Input id="CoCd1" width="100px" required="true" showValueHelp="true" valueHelpRequest="showVendorNoDialog5"></Input>
+                        <Label text="Maximum No Of Hits"></Label>
+                        <Input  width="100px"></Input>
  
+            </form:SimpleForm>
  
+                   <Button text="Close" type="Reject" press="onClose" class="closeBtn"></Button>
+                 
                         </IconTabFilter>
+                    <IconTabSeparator />
+ 
             <IconTabFilter
                
-                iconColor="Default"
+                iconColor="Negative"
                 count="{/ProductCollectionStats/Counts/Weight/Overweight}"
                 text="Suppliers by Company"
                 key="Overweight" >
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Label text="Search Term"></Label>
-                    <Input ></Input>
-                    <Button text="save"></Button>
-                    <Button  text="exit"></Button>
+                   
+                     <form:SimpleForm  editable="true">
+            <Label text="Search Term"></Label>
+            <Input id="vendor12" required="true" showValueHelp="true" width="100px"  valueHelpRequest="showVendorNoDialog4"></Input>
+             <Label text="Country"></Label>
+              <Input width="100px" required="true" showValueHelp="true"  valueHelpRequest="showVendorNoDialog4"></Input>
+               <Label text="Postal Code"></Label>
+                        <Input  width="100px" ></Input>
+                         <Label text="City" ></Label>
+                        <Input  width="150px" ></Input>
+                        <Label text="Name"></Label>
+                        <Input  width="100px"></Input>
+                        <Label text="Vendor"></Label>
+                        <Input  width="100px"></Input>
+                        <Label text="Delition Flag"></Label>
+                        <Input width="100px" required="true" showValueHelp="true"   valueHelpRequest="showVendorNoDialog4" ></Input>
+                        <Label text="Maximum No Of Hits"></Label>
+                        <Input  width="100px"></Input>
  
- 
+            </form:SimpleForm>
+                    <Button text="Close" type="Reject" press="onClose" class="closeBtn"></Button>
+                   
                         </IconTabFilter>
+                        <IconTabSeparator />
         </items>
         <content>
            
@@ -136,20 +120,6 @@ xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
    
  
     </Dialog>
-   <!-- <IconTabBar -->
-      <!-- <IconTabHeader  id="fghgfhhg" mode="Inline">
-        <items>
-            <IconTabFilter key="info" text="Info" />
-            <IconTabFilter key="attachments" text="Attachments" count="3" />
-            <IconTabFilter key="notes" text="Notes" count="12" />
-            <IconTabFilter key="people" text="People"/>
-        </items>
-    </IconTabHeader> -->
    
-    <!-- <Menu id="_IDGenMenu1" itemSelected="onMenuAction">
-        <MenuItem id="_IDGenMenuItem1" text="suppliers" press="onSuppliers"/>
-        <MenuItem id="_IDGenMenuItem2" text="supplier by country" press="onSuppliersByCountry"/>
-        <MenuItem id="_IDGenMenuItem3" text="suppliers by company code" press="onSuppliersByCompanyCode"/>
-    </Menu> -->
  
 </core:FragmentDefinition>
