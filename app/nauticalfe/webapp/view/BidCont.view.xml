@@ -62,17 +62,17 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
 
       <GenericTile id="closeTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Closed" subheader="Bids" press="closeTile" >
         <TileContent id="closeTile" >
-          <NumericContent id="closeTileNumericId" value="3" valueColor="Good" icon="sap-icon://folder-full" withMargin="false" />
+          <NumericContent id="closeTileNumericId" value="" valueColor="Good" icon="sap-icon://folder-full" withMargin="false" />
         </TileContent>
       </GenericTile> 
       <GenericTile id="ongoingTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Ongoing" subheader="Bids" press="ongoingTile" >
         <TileContent id="ongoingTile" >
-          <NumericContent id="ongoingTileNumericId" value="2" valueColor="Critical"  icon="sap-icon://away" withMargin="false"  />
+          <NumericContent id="ongoingTileNumericId" value="" valueColor="Critical"  icon="sap-icon://away" withMargin="false"  />
         </TileContent>
       </GenericTile> 
       <GenericTile id="allTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="All" subheader="Bids" press="allTile" >
         <TileContent id="allTile" >
-          <NumericContent id="allTileNumericId" value="18" icon="sap-icon://browse-folder" withMargin="false"  />
+          <NumericContent id="allTileNumericId" value="" icon="sap-icon://browse-folder" withMargin="false"  />
         </TileContent>
       </GenericTile> 
     </FlexBox>
@@ -82,7 +82,7 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
     
     <Panel id="PanelId"  headerText="Ongoing Bids" class="ongoingPanel " width="auto">
     
-    <Table id="table" items="{bidData>/biddingData}" growing="true" growingThreshold="10" >
+    <Table id="table" items="{bidData>/biddingData}">
             <columns>
             <Column id="bheading1" >
               <Text id="text1" text="Chartering Req No."/>

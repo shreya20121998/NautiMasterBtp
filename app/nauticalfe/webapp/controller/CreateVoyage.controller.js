@@ -902,19 +902,21 @@ sap.ui.define(
         oRouter.navTo("RouteHome");
       },
       
-      onDateChange: function (oEvent) {
+      onDateChange: function(oEvent) {
         var oDatePicker = oEvent.getSource();
         var oSelectedDate = oDatePicker.getDateValue();
+        console.log(oSelectedDate);
         var oCurrentDate = new Date();
-   
-        // Disable dates before and including the current date
-        oDatePicker.setMinDate(new Date(oCurrentDate.getTime() + 24 * 60 * 60 * 1000)); // Adding one day to the current date
-   
-        if (oSelectedDate <= oCurrentDate) {
-            alert("You cannot select the Current Date or any date before it");
-            oDatePicker.setDateValue(new Date(oCurrentDate.getTime() + 24 * 60 * 60 * 1000)); // Set the date to the next day
+    
+        // Set the minimum date to the current date
+        oDatePicker.setMinDate(oCurrentDate);
+    
+        if (oSelectedDate < oCurrentDate) {
+            alert("Please select a date equal to or after the current date.");
+            oDatePicker.setDateValue(oCurrentDate);
         }
-      }
+    }
+    
     
     
 

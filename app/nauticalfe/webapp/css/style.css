@@ -57,7 +57,7 @@
     border-radius: 0%;
     background-color: rgb(255, 255, 255);
 }
- 
+
 /************************************** Bidding object page ************************************************/
 .bpanel1{
     width: 20rem ;
@@ -306,3 +306,10 @@
 .CRNLabel{
     margin-left: -10%;
 }
+.closeBtn{
+    float: right;
+    margin-top: 3%;
+}
+
+
+

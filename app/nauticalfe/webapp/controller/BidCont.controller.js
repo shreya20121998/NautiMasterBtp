@@ -59,36 +59,49 @@ sap.ui.define([
                     bidObjPath: window.encodeURIComponent(oItem.getBindingContext("bidData").getPath().substr(1))
                 });
             },
-            closeTile : function(oEvent){
-                console.log("clicked close");
+            closeTile: function(oEvent) {
                 let oTable = this.getView().byId("table");
-                let oFilter = new sap.ui.model.Filter("Status", FilterOperator.Contains,"Closed");
+                let oNumericContent = this.getView().byId("closeTileNumericId"); 
+                let oFilter = new sap.ui.model.Filter("Status", FilterOperator.Contains,"closed");
                 oTable.getBinding("items").filter(oFilter, FilterType.Application);
-    
+                let closedItemsCount = oTable.getBinding("items").getLength();
+                oNumericContent.setValue(closedItemsCount);
             },
+            
+            
             openTile : function(oEvent){
-                console.log("clicked open");
                 let oTable = this.getView().byId("table");
+                let oNumericContent = this.getView().byId("openTileNumericId"); 
                 let oFilter = new sap.ui.model.Filter("Status", FilterOperator.Contains,"open");
                 oTable.getBinding("items").filter(oFilter, FilterType.Application);
-    
+                let openItemsCount = oTable.getBinding("items").getLength();
+                oNumericContent.setValue(openItemsCount);
             },
+
             ongoingTile : function(oEvent){
                 console.log("clicked ongoing");
                 let oTable = this.getView().byId("table");
+                let oNumericContent = this.getView().byId("ongoingTileNumericId"); 
                 let oFilter = new sap.ui.model.Filter("Status", FilterOperator.Contains,"Ongoing");
                 oTable.getBinding("items").filter(oFilter, FilterType.Application);
+                // Get the count of rows for the "Closed" status
+                let ongoingItemsCount = oTable.getBinding("items").getLength();
+            
+                // Set the count to the NumericContent
+                oNumericContent.setValue(ongoingItemsCount);
     
             },
             allTile : function(oEvent){
-                console.log("clicked all");
                 let oTable = this.getView().byId("table");
+                let oNumericContent = this.getView().byId("allTileNumericId");
                 let oFilter = new sap.ui.model.Filter("Status", FilterOperator,"Closed,Ongoing,open");
                 oTable.getBinding("items").filter(oFilter, FilterType.Application);
+                // Get the count of rows for the "Closed" status
+                let ongoingItemsCount = oTable.getBinding("items").getLength();
+            
+                // Set the count to the NumericContent
+                oNumericContent.setValue(ongoingItemsCount);
     
             }
-
-           
-            
         });
     });

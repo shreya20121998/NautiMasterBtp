@@ -40,6 +40,24 @@ sap.ui.define(
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("MastView");
         },
+
+        showVendorNoDialog:function () {
+          var oView = this.getView();
+          if (!this._oTankInfomate) {
+            this._oTankInfomate = sap.ui.xmlfragment(oView.getId(), "nauticalfe.fragments.Supplier", this);
+            oView.addDependent(this._oTankInfomate);
+          }
+          // var oTankModel = new sap.ui.model.json.JSONModel();  
+          // this._oTankInfoDialog.setModel(oTankModel);
+          this._oTankInfomate.open();
+         
+           
+        },
+        onClose: function() {
+          if (this._oTankInfomate) {
+              this._oTankInfomate.close();
+          }
+        },
         
       });
     }
