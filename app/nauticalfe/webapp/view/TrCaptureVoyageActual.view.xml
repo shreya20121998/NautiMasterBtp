@@ -50,18 +50,19 @@
     
     
         <Bar id="navbar">
-        <contentLeft>
+            <contentLeft>
+                
+                <Button id="Button2" text="Save"  />
+                <Button id="Button3" text="Refresh"  />
+                <Button id="Button4" text="Freight Simulator"  />
+                <Button id="Button5" text="Copy"  />
             
-            <Button id="Button2" text="Save"  />
-            <Button id="Button3" text="Refresh"  />
-            <Button id="Button4" text="Freight Simulator"  />
-            <Button id="Button5" text="Copy"  />
-           
-        </contentLeft>
+            </contentLeft>
         </Bar>
         
 
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
+
         <!-- For Header Section -->
             <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
  

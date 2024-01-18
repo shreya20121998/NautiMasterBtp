@@ -89,25 +89,7 @@ xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
                 text="Suppliers by Company"
                 key="Overweight" >
                    
-                     <form:SimpleForm  editable="true">
-            <Label text="Search Term"></Label>
-            <Input id="vendor12" required="true" showValueHelp="true" width="100px"  valueHelpRequest="showVendorNoDialog4"></Input>
-             <Label text="Country"></Label>
-              <Input width="100px" required="true" showValueHelp="true"  valueHelpRequest="showVendorNoDialog4"></Input>
-               <Label text="Postal Code"></Label>
-                        <Input  width="100px" ></Input>
-                         <Label text="City" ></Label>
-                        <Input  width="150px" ></Input>
-                        <Label text="Name"></Label>
-                        <Input  width="100px"></Input>
-                        <Label text="Vendor"></Label>
-                        <Input  width="100px"></Input>
-                        <Label text="Delition Flag"></Label>
-                        <Input width="100px" required="true" showValueHelp="true"   valueHelpRequest="showVendorNoDialog4" ></Input>
-                        <Label text="Maximum No Of Hits"></Label>
-                        <Input  width="100px"></Input>
- 
-            </form:SimpleForm>
+            cc
                     <Button text="Close" type="Reject" press="onClose" class="closeBtn"></Button>
                    
                         </IconTabFilter>

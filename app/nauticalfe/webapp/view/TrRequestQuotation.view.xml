@@ -1,13 +1,7 @@
 
 <mvc:View xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt"
-
-xmlns:form="sap.ui.layout.form"
-
-xmlns:l="sap.ui.layout"
-
-controllerName="nauticalfe.controller.TrRequestQuotation"
-
-    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" controllerName="nauticalfe.controller.TrRequestQuotation"
+xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
 
     <Page >
         <headerContent>
@@ -53,33 +47,36 @@ controllerName="nauticalfe.controller.TrRequestQuotation"
         </headerContent>
         <Bar id="navbar">
             <contentLeft>
-            <Button id="Button2" text="Sumbit Quotation"  />
+            <Button id="Button2" text="Sumbit Quotation" press="onSubmitQuotation" />
             </contentLeft>
         </Bar>
             
         <Text id="_IDGenText1" text="Bidding Details" class="vgheading "></Text>
-        <HBox >
-            <VBox id="_IDGenVBox1" class="vdsection ">
-                <Label id="_IDGenLabel1" required="true" text="Chartering Request No :" class="gapinputLabel"  ></Label>
-                <Label id="_IDGenLabel2" text="Bidding Start Date:"  required="true" class="gapinputLabel"></Label>
-                <Label id="_IDGenLabel3" text="Bidding Start Time:"  required="true" class="gapinputLabel"></Label>
-                <Label id="_IDGenLabel4" text="Bidding End Date:"  required="true" class="gapinputLabel"></Label>
-                <Label id="_IDGenLabel5" text="Bidding End Time:"   required="true" class="gapinputLabel"></Label>
-            </VBox>
-            <VBox id="_IDGenHBox2">
-                <Input id="_IDGenInput1" width="170px" showValueHelp="true" class="" textDirection="Inherit"></Input>
-                <DatePicker id="_IDGenDatePicker1" width="150px" placeholder="MM:DD:YY" ></DatePicker>
-                <TimePicker id="_IDGenTimePicker1" width="120px" placeholder="00:00:00" ></TimePicker>
-                <DatePicker id="_IDGenDatePicker2" width="150px" placeholder="MM:DD:YY"></DatePicker>
-                <TimePicker id="_IDGenTimePicker2" width="120px" placeholder="00:00:00"></TimePicker>
-            </VBox>
-            </HBox>
- 
+        
+        <form:SimpleForm  editable="true">
+            <Label id="_IDGenLabel1" required="true" text="Chartering Request No"/>
+            <Input id="_IDGenInput1" width="170px" showValueHelp="true" valueHelpRequest=" onValueHelpCharteringRequest"/>
 
-    
-    
-    
+            <Label id="_IDGenLabel2" text="Bidding Start Date"  required="true" ></Label>
+            <DatePicker id="_IDGenDatePicker1" width="150px" placeholder="MM:DD:YY" />
+
+            <Label id="_IDGenLabel3" text="Bidding Start Time"  required="true" />
+            <TimePicker id="_IDGenTimePicker1" width="120px" placeholder="00:00:00" displayFormat="HH:mm:ss" />
+
+            <Label id="_IDGenLabel4" text="Bidding End Date"  required="true" ></Label>
+            <DatePicker id="_IDGenDatePicker2" width="150px" placeholder="MM:DD:YY"></DatePicker>
+
+            <Label id="_IDGenLabel5" text="Bidding End Time"   required="true" ></Label>
+            <TimePicker id="_IDGenTimePicker2" width="120px" placeholder="00:00:00" displayFormat="HH:mm:ss"></TimePicker>
+        </form:SimpleForm>
+        
+        <footer>
+            <OverflowToolbar design="Solid">
+                 <Text id="footerMessage" text="" visible="false" class="sapUiSmallMarginBeginEnd" />
+            </OverflowToolbar>
+        </footer>
+ 
     </Page>
 
-   </mvc:View>
+</mvc:View>
  

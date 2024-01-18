@@ -349,6 +349,11 @@ sap.ui.define(
         oDialog.open();
         console.log(oData);
       },
+
+      onBackPressHome: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHome");
+      },
     
     
 

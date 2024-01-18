@@ -8,7 +8,8 @@
   "dependencies": {
     "@sap-cloud-sdk/resilience": "^3.10.0",
     "@sap/cds": "^7",
-    "express": "^4"
+    "express": "^4",
+    "nodemailer": "^6.9.8"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",

@@ -68,7 +68,7 @@ xmlns="sap.m">
             <Label id="_IDGenLabel1" text="Vendor No:" required="true" class="mandatorylabel"></Label>
             <Input id="searchField" width="150px" showValueHelp="true" valueHelpRequest="showVendorNoDialog"/>
             <Label id="_IDGenLabel2" text="To:" required="true" class="mandatorylabel"></Label>
-            <Input id="searchField2" width="150px" showValueHelp="true" />
+            <Input id="inputfiled2" width="150px" showValueHelp="true" valueHelpRequest="onInput2ValueHelpRequest"/>
         </HBox>
 
         <footer>

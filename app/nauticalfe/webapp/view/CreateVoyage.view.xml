@@ -14,6 +14,13 @@ xmlns:form="sap.ui.layout.form"
                   color="#FFFFFF"
                   press="onBackPress"
               />
+              <core:Icon
+                        id="IDGenIcon2"
+                        src="sap-icon://home"
+                        class="size1"
+                        color="#FFFFFF"
+                        press="onBackPressHome"
+                    />
               <Image id="_IDGenImage1"
                   src="./images/ignxlogo.png"
                   height="75%"
@@ -81,14 +88,14 @@ xmlns:form="sap.ui.layout.form"
             <Label id="_IDGenLab6" text="Speed"  required="true" class="mandatorylabel" />
             <Input id="speed" width="10%" liveChange=".speedUpdate"/>
             <Label id="_IDGenLab8" text="NM/HR" />
-            <Label id="_IDGenLab7" text="Total Days" />
-            <Input id="totaldays" width="10%" value=""/>
+            <Label id="_IDGenLab7" text="Total Days"  />
+            <Input id="totaldays" width="10%" value="" editable="false"/>
           </contentMiddle>
           <contentRight >
             <Button id="_IDGenButn1" text="Create Voyage"  press="onCreateVoyage" type="Reject"/>
             <Button id="_IDGenButn2" text="Freight Simulator" press="onFreightSimulator" type="Reject" />
             <Button id="_IDGenButn3"  text="Calculate"  type="Negative"  icon="none"  press="calculateVoyage" />
-            <Button id="_IDGenButn4" icon="sap-icon://refresh" type="Reject" />
+            <Button id="_IDGenButn4" icon="sap-icon://refresh" type="Reject" press="onRefreshTable"/>
           </contentRight>
         </Bar>
  
@@ -112,14 +119,14 @@ xmlns:form="sap.ui.layout.form"
            <Column id="heading5"  hAlign="Center" width="100px" >
              <Label id="text5" text="Unit" required="true" class="mandatorylabel" />
            </Column>
-           <Column id="heading6"  hAlign="Center" width="100px" >
+           <Column id="heading6"  hAlign="Center" width="120px" >
              <Label id="text6" text="Speed(NM/Hr)"/>
            </Column>
            <Column id="heading7"  hAlign="Center" width="100px" >
              <Label id="text7" text="Sea Days"/>
            </Column>
            <Column id="heading8"  hAlign="Center" width="100px" >
-             <Label id="text8" text="Port Days"/>
+             <Label id="text8" text="Port Days" required="true" class="mandatorylabel"/>
            </Column>
            <Column id="heading9"  hAlign="Center" width="150px" >
              <Label id="text9" text="Arrival Date"/>
@@ -128,10 +135,10 @@ xmlns:form="sap.ui.layout.form"
              <Label id="text10" text="Arrival Time"/>
            </Column>
            <Column id="heading11"  hAlign="Center"  width="150px">
-             <Label id="text11" text="Departure date"/>
+             <Label id="text11" text="Departure date" required="true" class="mandatorylabel"/>
            </Column>
            <Column id="heading12" hAlign="Center" width="150px" >
-             <Label id="text12" text="Departure Time"/>
+             <Label id="text12" text="Departure Time" required="true" class="mandatorylabel"/>
            </Column>
           </columns>
  
@@ -149,8 +156,8 @@ xmlns:form="sap.ui.layout.form"
               <Input id="portdaysorigin" value =""/>
               <Input id="arrivaldateorigin"     width="auto" value="" editable="false" />
               <Input id="arrivaltimeorigin" change="handleChange"    value="" editable="false" />
-              <DatePicker id="departuredateorigin" placeholder="Enter Date" change="onDateChange" />
-              <TimePicker id="departuretimeorigin"  displayFormat="hh:mm:ss" showCurrentTimeButton="true"></TimePicker>
+              <DatePicker id="departuredateorigin" placeholder="Enter Date" change="onDateChange"  />
+              <TimePicker id="departuretimeorigin"  displayFormat="hh:mm:ss" showCurrentTimeButton="true" ></TimePicker>
              
              </cells>
              
@@ -167,9 +174,9 @@ xmlns:form="sap.ui.layout.form"
               <Input id="portdaysdestination" value =""/>
              
               <Input id="arrivaldatedestination"   width="auto" value=""  editable="false"/>
-                <TimePicker id="arrivaltimedestination"  editable="false" />
-              <DatePicker id="departuredatedestination" placeholder="Enter Date" />
-              <TimePicker id="departuretimedestination" displayFormat="hh:mm:ss" ></TimePicker>
+              <TimePicker id="arrivaltimedestination"  editable="false" />
+              <DatePicker id="departuredatedestination" placeholder="Enter Date" editable="false" />
+              <TimePicker id="departuretimedestination" displayFormat="hh:mm:ss" editable="false"></TimePicker>
              
              </cells>
              
