@@ -1,5 +1,3 @@
-
-
 sap.ui.define(
   ["sap/ui/core/mvc/Controller",
   "sap/m/MessageBox",
@@ -11,11 +9,61 @@ sap.ui.define(
   function (Controller, MessageBox, MessageToast) {
     "use strict";
     let isLogicDone = false;
+    let itemDetails = {};
+    let count =0;
+    var lastobj;
 
     return Controller.extend("nauticalfe.controller.CreateVoyage", {
       onInit: function () {
         var oView = this.getView();
+
+        
       },
+
+    showData:function(){
+      const url = "/odata/v4/nautical/NAVOYGH"; 
+
+ 
+
+      fetch(url) 
+
+          .then(response => { 
+
+              if (!response.ok) { 
+
+                  throw new Error('Network response was not ok'); 
+
+              } 
+
+              return response.json(); 
+
+          }) 
+
+          .then(odata => { 
+
+              console.log("show Entity Data",odata); 
+              // return odata;
+              let dataLength=odata.value;
+
+
+              lastobj=dataLength[dataLength.length-1]
+              console.log("last-Obj",lastobj.VOYNO);
+              
+             MessageBox.success(`Successfully created Voyage no. ${lastobj.VOYNO}`);
+
+   
+
+          }) 
+
+          .catch(error => { 
+
+              console.error('There was a problem with the fetch operation:', error); 
+
+          }); 
+
+
+    },
+
       onFreightSimulator: function () {
 
         var OriginData=this.getView().byId("portfromorigin").getValue();
@@ -34,6 +82,13 @@ sap.ui.define(
         if(!this.checkCargoLoaded(cargo_sizeorigin,cargo_sizedestination)){
           MessageBox.error("Enter the cargo size")
         }
+       
+      //  console.log(!this.checkUnit(cargo_sizeorigin,cargo_sizedestination))
+      //  if(this.checkDestCargo(cargo_sizeorigin,cargo_sizedestination)==false){
+      //   MessageBox.error("Wrong")
+      //   return
+      //  }
+ 
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteFreightSimulator",{
           "OriginData":OriginData,
@@ -44,57 +99,7 @@ sap.ui.define(
         });
        
       },
-      onCreateVoyage: function () {
-        // validation for value help
-        const _voyage_Name = this.byId("_voyage_Name").getValue();
-        const _voyage_type = this.byId("_voyage_type").getValue();
-        const _bidding_Type = this.byId("_bidding_Type").getValue();
-        const _cargo_type = this.byId("_cargo_type").getValue();
-        const _currency_type = this.byId("_currency_type").getValue();
-
-        // console.log("Selected values : ", _voyage_Name,_voyage_type, _cargo_type, _bidding_Type, _currency_type);
-
-        if(_voyage_Name == "" ){
-          MessageBox.error("Please enter Voyage Name");
-        return false;
-
-        }
-        if(_voyage_type == ""){
-          MessageBox.error("Please enter Voyage Type");
-        return false;
-        }
-        if( _bidding_Type == "" ){
-          MessageBox.error("Please enter bidding Type");
-        return false;
-
-
-        }
-        if(_cargo_type == ""){
-          MessageBox.error("Please enter cargo Type");
-        return false;
-
-
-        }if(_currency_type == ""){
-          MessageBox.error("Please enter currency Type");
-        return false;
-
-
-        }
-         let flag = false;
-         let result = this.calculateVoyage(flag);
-         console.log(result);
-
-        if( result  =="Complete Calculate logic first" ){
-          MessageBox.error("please Calculate logic first")
-         
-        }else if( result =="proceed" ){
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("RouteTrChangeVoyage", {
-            
-            
-          });
-        }
-        },
+     
       populateInputField: function (inputField, selectedValue) {
         inputField.setValue(selectedValue);
       },
@@ -110,6 +115,157 @@ sap.ui.define(
           this.getView().byId("speeddestination").setValue(speed);
         }
       },
+      onCreateVoyage: function () {
+             let headerData = {
+              "VOYNO":-1 +count,
+               "VOYNM":"",
+               "VOYTY":"",
+               "BIDTYPE":"",
+               "CARTY":"",
+               "CURR":"",
+               "VSTAT":"created"
+             };
+             // validation for value help
+             const _voyage_Name = this.byId("_voyage_Name").getValue();
+             const _voyage_type = this.byId("_voyage_type").getValue();
+             const _bidding_Type = this.byId("_bidding_Type").getValue();
+             const _cargo_type = this.byId("_cargo_type").getValue();
+             const _currency_type = this.byId("_currency_type").getValue();
+             headerData.VOYNM = _voyage_Name;
+             headerData.VOYTY = _voyage_type;
+             headerData.BIDTYPE=_bidding_Type;
+             headerData.CARTY= _cargo_type;
+             headerData.CURR = _currency_type;
+             
+             // console.log("Selected values : ", _voyage_Name,_voyage_type, _cargo_type, _bidding_Type, _currency_type);
+      
+             if(_voyage_Name == "" ){
+               MessageBox.error("Please enter Voyage Name");
+             return false;
+      
+             }
+             if(_voyage_type == ""){
+               MessageBox.error("Please enter Voyage Type");
+             return false;
+             }
+             if( _bidding_Type == "" ){
+               MessageBox.error("Please enter bidding Type");
+             return false;
+      
+      
+             }
+             if(_cargo_type == ""){
+               MessageBox.error("Please enter cargo Type");
+             return false;
+      
+      
+             }if(_currency_type == ""){
+               MessageBox.error("Please enter currency Type");
+             return false;
+      
+      
+             }
+             let flag = false;
+             
+             // Calling  Calculate logic fn
+             
+             let result = this.calculateVoyage(flag);
+             console.log(result);
+             
+             if( result  =="Complete Calculate logic first" ){
+               MessageBox.error("please Calculate logic first")
+               
+              }else if( result =="proceed" ){
+
+               console.log("header data : ",headerData);
+               this.onSaveVoyage(headerData);
+               
+               console.log("ItemLevel Details : ", itemDetails);
+
+              //  const oRouter = this.getOwnerComponent().getRouter();
+              //  oRouter.navTo("RouteTrChangeVoyage", {
+                
+              //  });
+
+             }
+      },
+      onSaveVoyage : function (payloadHeader){
+
+      let JsonData = JSON.stringify(payloadHeader)
+       let that = this;
+      let EndPoint = "/odata/v4/nautical/NAVOYGH";
+        fetch(EndPoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JsonData
+        })
+          .then(function (res) {
+ 
+            if (res.ok) {
+              // console.log("fdgnm",res);
+              console.log("Entity created successfully");
+               that.showData();
+              // MessageBox.success(`Successfully created Voyage no. ${lastobj.VOYNO}`);
+
+              //  console.log(result);
+              //  let resultLength=result.length
+              //  let valueofno = result[resultLength-1]
+              //  console.log(valueofno);
+              //  MessageBox.success(`successfully created Voyage no. ${data.VOYNO}`);
+              
+              // res.json().then((data) => {
+              //   if (data ) {
+              //     // Show the error message from the backend
+              //    console.log( data)
+              //   //  console.log(data.VOYNO)
+              //     // console.log(`successfully created ${data.VOYNO}`);
+              //     // MessageBox.success(`successfully created Voyage no. ${data.VOYNO}`);
+              //     count++;
+              //     return
+              //   }
+              // });
+              // MessageToast.show(`Entity created successfully`)
+ 
+ 
+            }
+            else {
+              res.json().then((data) => {
+                if (data && data.error && data.error.message) {
+                  // Show the error message from the backend
+                  MessageBox.error(data.error.message);
+                  return
+                }
+              });
+            }
+          })
+          .catch(function (err) {
+            console.log("error", err);
+          })
+          // .then(function (res) {
+          //   if (res.ok) {
+          //     return res.json();
+          //   } else {
+          //     throw new Error('Network response was not ok.');
+          //   }
+          // })
+          // .then(function (data) {
+          //   if (data.success) {
+          //     // Handle success
+          //     console.log(data.message);
+          //     MessageBox.success(data.message);
+          //   } else {
+          //     // Handle error
+          //     console.error('Error:', data.error);
+          //     MessageBox.error(data.error);
+          //   }
+          // })
+          // .catch(function (err) {
+          //   console.error('Fetch error:', err);
+          // });
+ 
+      }, 
       showValueHelpDialog1: function () {
         // Create a dialog
         console.log("clicked voyage");
@@ -463,66 +619,277 @@ sap.ui.define(
         }
         return true
       },
-      //Checking whether destination cargo is less or equal to than origin cargo size
-      checkDestCargo:function(cargo_sizeorigin,cargo_sizedestination){
-        // return(cargo_sizeorigin<cargo_sizedestination)
-        if(cargo_sizedestination !== cargo_sizeorigin){
-          return false
-        }
-        return true
-      },
+        //Checking whether destination cargo is less or equal to than origin cargo size
+    checkDestCargo:function(cargo_sizeorigin,cargo_sizedestination){
+      // return(cargo_sizeorigin<cargo_sizedestination)
+      if(cargo_sizedestination !== cargo_sizeorigin){
+        return false
+      }
+      return true
+  },
 
-      //Checking units are entered or not
-      checkUnit:function(unitdestination,unitorigin){
-        if(unitdestination=="" || unitorigin=="" ){
-          return false
-        }
-        return true
-      },
+   //Checking units are entered or not
+  checkUnit:function(unitdestination,unitorigin){
+    if(unitdestination=="" || unitorigin=="" ){
+      return false
+    }
+    return true
+  },
 
-      //Checking speed is entered or not
-      checkSpeed:function(journeyspeed){
-          if(journeyspeed==="" || journeyspeed<=0 || journeyspeed===null ){
-            return false
-          }
-          return true
-      },
+  //Checking speed is entered or not
+  checkSpeed:function(journeyspeed){
+      if(journeyspeed==="" || journeyspeed<=0 || journeyspeed===null ){
+        return false
+      }
+      return true
+  },
  
-      //checking Port days are entered or not
-      checkPortDays:function(portdaysdestination,portdaysorigin){
-          if(portdaysdestination===""|| portdaysdestination<=0 || portdaysorigin==="" || portdaysorigin<=0){
-            return false
-          }
-          return true
-      },
+  //checking Port days are entered or not
+  checkPortDays:function(portdaysdestination,portdaysorigin){
+      if(portdaysdestination===""|| portdaysdestination<=0 || portdaysorigin==="" || portdaysorigin<=0){
+        return false
+      }
+      return true
+  },
 
-      //checking departure dates for org and dest are entered or not
-      checkDepDates:function(departuredateorigin){
-          if(departuredateorigin==="" ){
-            return false
-          }
-          return true
-      },
-      checkDepTime:function(departuretimeorigin){
-        if(departuretimeorigin==="" ){
-          return false
-        }
-        return true
-      },
-      //Checking ports are registered
-      checkPorts:function(portfromorigin,portdestination){
-        if(portfromorigin==""||portdestination==""){
-          return false
-        }
-        return true
-      },
+  //checking departure dates for org and dest are entered or not
+  checkDepDates:function(departuredateorigin){
+      if(departuredateorigin==="" ){
+        return false
+      }
+      return true
+  },
+  checkDepTime:function(departuretimeorigin){
+    if(departuretimeorigin==="" ){
+      return false
+    }
+    return true
+},
+  //Checking ports are registered
+  checkPorts:function(portfromorigin,portdestination){
+    if(portfromorigin==""||portdestination==""){
+      return false
+    }
+    return true
+  },
 
-      
-
-        calculateVoyage: function (oEvent) {
+  calculateVoyage: function (oEvent) {
       
         
           
+    var portfromorigin = this.getView().byId("portfromorigin").getValue();
+    var distanceorigin = this.getView().byId("distanceorigin").getValue();
+    var weatherorigin = this.getView().byId("weatherorigin").getValue();
+    var cargo_sizeorigin = this.getView()
+      .byId("cargo_sizeorigin")
+      .getValue();
+    var unitorigin = this.getView().byId("unitorigin").getValue();
+    var speedorigin = this.getView().byId("speedorigin").getValue();
+    var sea_daysorigin = this.getView().byId("sea_daysorigin").getValue();
+    var portdaysorigin = this.getView().byId("portdaysorigin").getValue();
+
+    var arrivaldateorigin = this.getView()
+      .byId("arrivaldateorigin")
+      .getValue();
+    var arrivaltimeorigin = this.getView()
+      .byId("arrivaltimeorigin")
+      .getValue();
+    var departuredateorigin = this.getView()
+      .byId("departuredateorigin")
+      .getValue();
+    var departuretimeorigin = this.getView()
+      .byId("departuretimeorigin")
+      .getValue();
+
+    var portdestination = this.getView().byId("portdestination").getValue();
+    var distancedestination = this.getView()
+      .byId("distancedestination")
+      .getValue();
+    var weatherdestination = this.getView()
+      .byId("weatherdestination")
+      .getValue();
+    var cargo_sizedestination = this.getView()
+      .byId("cargo_sizedestination")
+      .getValue();
+    var unitdestination = this.getView().byId("unitdestination").getValue();
+    var speeddestination = this.getView()
+      .byId("speeddestination")
+      .getValue();
+    var sea_daysdestination;
+    var portdaysdestination = this.getView()
+      .byId("portdaysdestination")
+      .getValue();
+    var arrivaldatedestination = this.getView()
+      .byId("arrivaldatedestination")
+      .getValue();
+    var arrivaltimedestination = this.getView()
+      .byId("arrivaltimedestination")
+      .getValue();
+    var departuredatedestination = this.getView()
+      .byId("departuredatedestination")
+      .getValue();
+    var departuretimedestination = this.getView()
+    .byId("departuretimedestination")
+    .getValue();
+    var journeyspeed=this.getView().byId("speed").getValue();
+    console.log(
+      portdaysorigin,
+      portdaysdestination,
+      distanceorigin,
+      distancedestination
+    );
+
+    var data = {
+      portfromorigin: portfromorigin,
+      portdestination: portdestination,
+      distanceorigin: distanceorigin,
+      distancedestination: distancedestination,
+      weatherorigin: weatherorigin,
+      weatherdestination: weatherdestination,
+      cargo_sizeorigin: cargo_sizeorigin,
+      cargo_sizedestination: cargo_sizedestination,
+      unitorigin: unitorigin,
+      unitdestination: unitdestination,
+      speedorigin: speedorigin,
+      speeddestination: speeddestination,
+      sea_daysorigin: sea_daysorigin,
+      sea_daysdestination: sea_daysdestination,
+      portdaysorigin: portdaysorigin,
+      portdaysdestination: portdaysdestination,
+      arrivaldateorigin: arrivaldateorigin,
+      arrivaldatedestination: arrivaldatedestination,
+      arrivaltimeorigin: arrivaltimeorigin,
+      arrivaltimedestination: arrivaltimedestination,
+      departuredateorigin: departuredateorigin,
+      departuredatedestination: departuredatedestination,
+      departuretimeorigin: departuretimeorigin,
+      departuretimedestination: departuretimedestination,
+      journeyspeed:journeyspeed
+    };
+    //Ensuring ports are registered
+
+    if(!this.checkPorts(data.portfromorigin,data.portdestination)){
+      MessageBox.error("Please enter ports")
+      return false
+    }
+    //Ensuring cargo is loaded
+    if (!this.checkCargoLoaded(data.cargo_sizeorigin, data.cargo_sizedestination)) {
+      MessageBox.error("Please enter Cargo size");
+      return false;
+    }
+    //Ensuring cargo is loaded
+    if (!this.checkCargoLoaded(data.cargo_sizeorigin, data.cargo_sizedestination)) {
+      MessageBox.error("Please enter Cargo size");
+      return false;
+    }
+
+    //Ensuring destination cargo is lesser than origin cargo
+    if(!this.checkDestCargo(data.cargo_sizeorigin,data.cargo_sizedestination)){
+      MessageBox.error("The sum of Leg 2 (and onwards) Cargo Size must be less than Leg One Cargo Size");
+      return false;
+    }
+
+    //Ensuring units are entered
+    if(!this.checkUnit(data.unitorigin,data.unitdestination)){
+      MessageBox.error("Please enter units");
+      return false;
+    }
+
+    //Ensuring Speed is entered
+    if(!this.checkSpeed(data.journeyspeed)){
+      MessageBox.error("Please enter speed")
+      return false
+    }
+
+    //Ensuring port days are entered
+    if(!this.checkPortDays(data.portdaysdestination,portdaysorigin)){
+    MessageBox.error("Please enter port days")
+      return false
+    }
+
+    //Checking departure dates are entered or not
+    if(!this.checkDepDates(data.departuredateorigin,data.departuredatedestination)){
+      MessageBox.error("Please enter Dpearture date and time")
+      return false
+    }
+    if(!this.checkDepTime(data.departuretimeorigin)){
+      MessageBox.error("Please enter departure  time")
+      return false
+    }
+      //Checking cargo is loaded or not
+    
+    // console.log(data);
+    let flagStatus = oEvent;
+
+    console.log( "status flag : ",flagStatus);
+    if ( flagStatus ){
+
+      // Calculate Arrival Date and Time at Origin Port
+      var arrivaldateorigin = this.calculatearrivaldateorigin(
+      data.departuredateorigin,
+      data.portdaysorigin
+      );
+      
+      // Calculate Overall Total Number of Days
+      let updatedvalueSea = this.calculateOverallTotalDays(
+      data.distanceorigin,
+      data.distancedestination,
+      data.portdaysorigin,
+      data.portdaysdestination,
+      data.speedorigin
+      );
+      sea_daysdestination = updatedvalueSea;
+      data.sea_daysdestination = sea_daysdestination;
+      // console.log(sea_daysdestination, data.sea_daysdestination);
+      
+      // Calculate Arrival Date and Time at Destination Port(s)
+      
+      this.getView().byId("arrivaltimeorigin").setValue(departuretimeorigin);
+      
+      let { hours, minutes } = this.extractTimeFromDay(sea_daysdestination);
+      
+      let arrTimeArr = this.addTimeTo12HourFormat( departuretimeorigin, hours, minutes );
+      if( arrTimeArr == false){
+        return false
+      }
+      // console.log(arrTimeArr , hours, minutes);
+      
+      this.getView().byId("arrivaltimedestination").setValue(arrTimeArr[0]);
+      this.getView().byId("departuretimedestination").setValue(arrTimeArr[0]);
+      
+      let carryDay = arrTimeArr[1];
+      
+      var arrivaldatedestination = this.calculatearrivaldatedestination( data.departuredateorigin, data.sea_daysdestination, carryDay );
+      this.performAsyncOperations().then(() => {
+        var departuredatedestination = this.calculatedeparturedatedestination(arrivaldatedestination, data.portdaysdestination, carryDay);
+        // Continue with any further logic or UI updates
+      });
+      
+
+      isLogicDone = true;
+      MessageToast.show("calculate done")
+      return
+        
+    }
+    else {
+      console.log("come in else");
+      if( isLogicDone) {
+        console.log(isLogicDone);
+        return "proceed"
+      }else {
+        return "Complete Calculate logic first"
+      }
+      
+    }
+    
+  },
+  performAsyncOperations: function() {
+    return new Promise((resolve) => {
+        resolve();
+    });
+  },
+
+    calculateVoyage1: function (oEvent) {
           var portfromorigin = this.getView().byId("portfromorigin").getValue();
           var distanceorigin = this.getView().byId("distanceorigin").getValue();
           var weatherorigin = this.getView().byId("weatherorigin").getValue();
@@ -575,9 +942,9 @@ sap.ui.define(
             .byId("departuredatedestination")
             .getValue();
           var departuretimedestination = this.getView()
-          .byId("departuretimedestination")
-          .getValue();
-          var journeyspeed=this.getView().byId("speed").getValue();
+            .byId("departuretimedestination")
+            .getValue();
+            var journeyspeed=this.getView().byId("speed").getValue();
           console.log(
             portdaysorigin,
             portdaysdestination,
@@ -628,31 +995,31 @@ sap.ui.define(
             MessageBox.error("Please enter Cargo size");
             return false;
           }
-
+  
           //Ensuring destination cargo is lesser than origin cargo
           if(!this.checkDestCargo(data.cargo_sizeorigin,data.cargo_sizedestination)){
             MessageBox.error("The sum of Leg 2 (and onwards) Cargo Size must be less than Leg One Cargo Size");
             return false;
           }
-
+  
           //Ensuring units are entered
           if(!this.checkUnit(data.unitorigin,data.unitdestination)){
             MessageBox.error("Please enter units");
             return false;
           }
-
+  
           //Ensuring Speed is entered
           if(!this.checkSpeed(data.journeyspeed)){
             MessageBox.error("Please enter speed")
             return false
           }
-
+  
           //Ensuring port days are entered
           if(!this.checkPortDays(data.portdaysdestination,portdaysorigin)){
           MessageBox.error("Please enter port days")
             return false
           }
-
+  
           //Checking departure dates are entered or not
           if(!this.checkDepDates(data.departuredateorigin,data.departuredatedestination)){
             MessageBox.error("Please enter Dpearture date and time")
@@ -678,7 +1045,7 @@ sap.ui.define(
             
             // Calculate Overall Total Number of Days
             let updatedvalueSea = this.calculateOverallTotalDays(
-            data.distanceorigin,
+              data.distanceorigin,
             data.distancedestination,
             data.portdaysorigin,
             data.portdaysdestination,
@@ -693,29 +1060,33 @@ sap.ui.define(
             this.getView().byId("arrivaltimeorigin").setValue(departuretimeorigin);
             
             let { hours, minutes } = this.extractTimeFromDay(sea_daysdestination);
+            // console.log("departure time--", departuretimeorigin);
             
-            let arrTimeArr = this.addTimeTo12HourFormat( departuretimeorigin, hours, minutes );
-            if( arrTimeArr == false){
-              return false
-            }
-            // console.log(arrTimeArr , hours, minutes);
-            
-            this.getView().byId("arrivaltimedestination").setValue(arrTimeArr[0]);
-            this.getView().byId("departuretimedestination").setValue(arrTimeArr[0]);
-            
-            let carryDay = arrTimeArr[1];
-            
-            var arrivaldatedestination = this.calculatearrivaldatedestination( data.departuredateorigin, data.sea_daysdestination, carryDay );
-            this.performAsyncOperations().then(() => {
-              var departuredatedestination = this.calculatedeparturedatedestination(arrivaldatedestination, data.portdaysdestination, carryDay);
-              // Continue with any further logic or UI updates
-            });
-            
+            let arrTimeArr = this.addTimeTo12HourFormat(
+              departuretimeorigin,
+              hours,
+              minutes
+              );
+              if( arrTimeArr == false){
+                return false
+              }
+              // console.log(arrTimeArr , hours, minutes);
+              
+              this.getView().byId("arrivaltimedestination").setValue(arrTimeArr[0]);
+              
+              let carryDay = arrTimeArr[1];
 
+              
+          var arrivaldatedestination = this.calculatearrivaldatedestination(
+            data.departuredateorigin,
+            data.sea_daysdestination,
+            carryDay
+            );
+            
             isLogicDone = true;
             MessageToast.show("calculate done")
             return
-              
+            
           }
           else {
             console.log("come in else");
@@ -727,17 +1098,21 @@ sap.ui.define(
             }
             
           }
-          
-        },
-        performAsyncOperations: function() {
-          return new Promise((resolve) => {
-              resolve();
-          });
-        },
-      //function for time format logic that return arrival time along with carry  days
+    },
+        
+      //  function for time format logic that return arrival time along with carry  days
 
-      addTimeTo12HourFormat: function ( time, additionalHours, additionalMinutes ) {
-          
+      addTimeTo12HourFormat: function (
+        time,
+        additionalHours,
+        additionalMinutes
+        ) {
+          console.log(
+            time,
+            typeof time,
+            typeof additionalHours,
+            typeof additionalMinutes
+            );
             // Split the time into hours, minutes, seconds, and AM/PM   '5:20:00 PM'
             const [timeStr, x] = time.split(" ");
         let [hoursStr, minutesStr, secondsStr] = timeStr.split(":");
@@ -752,7 +1127,8 @@ sap.ui.define(
         
         let hours = parseInt(hoursStr, 10);
         let minutes = parseInt(minutesStr, 10);
-       
+        // console.log("hhhh : ", time.substr(-2));
+        //  ampm =  time.substr(-2);
 
 
         let ampm = time.substr(-2);
@@ -792,7 +1168,9 @@ sap.ui.define(
         return [newTime, daysCarriedOver];
       },
 
-      
+      // Example usage:
+      // const initialTime = '04:30:45 PM';
+      // const newTime = addTimeTo12HourFormat(initialTime, 2, 15); // Add 2 hours and 15 minutes
 
       extractTimeFromDay: function (day) {
         // Extract the fractional part from the day
@@ -839,48 +1217,49 @@ sap.ui.define(
         return arrivaldatedestination;
       },
 
-      //departure Date destination
-      calculatedeparturedatedestination: function (arrivaldatedestination, portdaysdestination, carryDay) {
-        // Parse the arrival date to ensure it's a valid date
-        var arrivaldate = new Date(arrivaldatedestination);
-        if (isNaN(arrivaldate.getTime())) {
-          console.error("Invalid arrival date");
-          return null;
-        }
-      
-        // Ensure portdaysdestination and carryDay are valid numbers
-        portdaysdestination = parseFloat(portdaysdestination);
-        carryDay = parseFloat(carryDay);
-        if (isNaN(portdaysdestination) || isNaN(carryDay)) {
-          console.error("Invalid port days or carry day");
-          return null;
-        }
-      
-        // Calculate the departure date at the destination
-        var departuredatedestination = new Date(
-          arrivaldate.getTime() + (portdaysdestination + carryDay) * 24 * 60 * 60 * 1000
-        );
-      
-        // Check if the result is a valid date
-        if (isNaN(departuredatedestination.getTime())) {
-          console.error("Invalid departure date");
-          return null;
-        }
-      
-        // Set the calculated departure date in the UI or wherever needed
-        this.getView().byId("departuredatedestination").setValue(departuredatedestination.toString().slice(0, 15));
-      
-        return departuredatedestination;
-      },
-      
+        //departure Date destination
+        calculatedeparturedatedestination: function (arrivaldatedestination, portdaysdestination, carryDay) {
+          // Parse the arrival date to ensure it's a valid date
+          var arrivaldate = new Date(arrivaldatedestination);
+          if (isNaN(arrivaldate.getTime())) {
+            console.error("Invalid arrival date");
+            return null;
+          }
+        
+          // Ensure portdaysdestination and carryDay are valid numbers
+          portdaysdestination = parseFloat(portdaysdestination);
+          carryDay = parseFloat(carryDay);
+          if (isNaN(portdaysdestination) || isNaN(carryDay)) {
+            console.error("Invalid port days or carry day");
+            return null;
+          }
+        
+          // Calculate the departure date at the destination
+          var departuredatedestination = new Date(
+            arrivaldate.getTime() + (portdaysdestination + carryDay) * 24 * 60 * 60 * 1000
+          );
+        
+          // Check if the result is a valid date
+          if (isNaN(departuredatedestination.getTime())) {
+            console.error("Invalid departure date");
+            return null;
+          }
+        
+          // Set the calculated departure date in the UI or wherever needed
+          this.getView().byId("departuredatedestination").setValue(departuredatedestination.toString().slice(0, 15));
+        
+          return departuredatedestination;
+        },
 
+
+      //overall total Days
       calculateOverallTotalDays: function (
-          distanceorigin,
-          distancedestination,
-          portdaysorigin,
-          portdaysdestination,
-          speedorigin
-        ) {
+        distanceorigin,
+        distancedestination,
+        portdaysorigin,
+        portdaysdestination,
+        speedorigin
+      ) {
         console.log(
           distanceorigin,
           portdaysorigin,
@@ -912,42 +1291,7 @@ sap.ui.define(
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
-      },
-      onBackPressHome: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
-      },
-      
-      onDateChange: function(oEvent) {
-        var oDatePicker = oEvent.getSource();
-        var oSelectedDate = oDatePicker.getDateValue();
-        console.log(oSelectedDate);
-        var oCurrentDate = new Date();
-    
-        // Set the minimum date to the current date
-        oDatePicker.setMinDate(oCurrentDate);
-    
-        if (oSelectedDate < oCurrentDate) {
-            alert("Please select a date equal to or after the current date.");
-            oDatePicker.setDateValue(oCurrentDate);
-        }
-      },
-      onRefreshTableOriginal: function () {
-        // Assuming you have a reference to the table, replace "yourTableId" with the actual ID of your table
-        var oTable = this.getView().byId("table");
-  
-        // Clear the existing items (data) in the table
-        oTable.unbindAggregation("items");
-  
-        // Optionally, you can also reset any other related data or perform additional actions here
-  
-        // Re-bind the empty aggregation to refresh the table
-        oTable.bindAggregation("items", {
-          path: "/odata/v4/nautical/NAVOYGIP", // Replace with your actual entity set path
-          template: oTable.getItems()[0].clone(), // Clone an empty item template
-        });
-      },
-    
+      }
     });
   }
 );

@@ -13,6 +13,7 @@ xmlns:form="sap.ui.layout.form"
                   class="size1"
                   color="#FFFFFF"
                   press="onBackPress"
+                  
               />
               <core:Icon
                         id="IDGenIcon2"
@@ -56,7 +57,7 @@ xmlns:form="sap.ui.layout.form"
     <VBox id="_IDGenVBox2" >
       <HBox id="_IDGenVBox1" width="100%" height="410px" class="crthreebox">
         <FlexBox id="_IDGenFlexBox1" width="18%" class="threeFlex">
-          <form:SimpleForm id="_IDSimpleForm1" title="Create Voyage">
+          <form:SimpleForm id="form" title="Create Voyage">
               <!-- Add your form elements here -->
               <Label id="_IDLabel1" text="Voyage Name"/>
               <Input id="_voyage_Name" value="" />
