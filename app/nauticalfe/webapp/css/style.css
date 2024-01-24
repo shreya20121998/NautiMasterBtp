@@ -59,55 +59,42 @@
 }
 
 /************************************** Bidding object page ************************************************/
-.bpanel1{
-    width: 20rem ;
-   
+.panelBoard{
+    background-color: white;
+    padding: 3%;
 }
-.vPanel{
-    display: flex;
-    flex-direction: row;
-    gap: 5rem;
-    flex-wrap: wrap;
-   
+.panelBoard1{
+    border: 1px solid rgb(224, 221, 221);
+    background-color: white;
+    margin: 20%;
+    padding: 10%;
+    
 }
- 
+.panelBoard2{
+    margin-left: 15% !important;
+    margin-top: 15% !important;
+    border: 1px solid rgb(224, 221, 221);
+    width: 500px !important;
+}
+.companyText{
+    color: green;
+}
 .text1{
     display: block;
 }
+.botxt1{
+    margin-top: 3%;
+    font-size: 22px;
+ }
 .botxt2{
     margin-top: 15%;
 }
 .botxt3{
     margin-top: 5%!important;
 }
-.botxt1{
-   margin-top: 3%;
-   font-size: 22px;
+.vgNoText{
+    float: right;
 }
-.botxt7{
-    font-size:15px;
-}
-.vendorListHeading{
-    justify-content: space-around;
-    padding-top: 5rem;
-}
-.vTHeading{
-    font-size: 20px;
-}
-.cql1{
-    padding-top:8px;
-}
-#application-nauticalfe-display-component---BidObj--table-tblHeadNav{
-    background-color: rgb(240, 235, 235);
-    border-top: 1px solid rgb(187, 186, 186);
- 
-}
-#application-nauticalfe-display-component---BidObj--boTxt6{
-    color: green;
-    margin-top: 15%;
-    font-size: 24px;
-}
- 
 /**************************************** Nautical Dashboard Screen *********************************/
 .dashboardPanel{
     background-color: white;
