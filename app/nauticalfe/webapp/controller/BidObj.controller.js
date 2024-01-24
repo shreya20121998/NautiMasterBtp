@@ -51,7 +51,15 @@ sap.ui.define([
                 this.getView().byId("boTxt6").setText(vendorName);
                 this.getView().byId("boTxt7").setText(`Technical Score: ${TechnicalScore}`);
 
-            }
+            },
+            onBackPress: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteBidCont");
+            },
+            onBackPressHome: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteHome");
+            },
  
            
            
