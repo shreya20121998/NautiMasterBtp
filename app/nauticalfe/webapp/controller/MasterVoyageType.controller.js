@@ -4,11 +4,10 @@ sap.ui.define(
     "sap/ui/core/routing/History",
     "sap/ui/core/Fragment",
     "sap/m/MessageToast",
-    "sap/m/MessageBox"
- 
-   
+    "sap/m/MessageBox",
+    "sap/ui/model/json/JSONModel"
   ],
-  function (Controller,History,Fragment,MessageToast, MessageBox ) {
+  function (Controller,History,Fragment,MessageToast, MessageBox,JSONModel ) {
     "use strict";
     let aSelectedIds=[];
  
@@ -180,8 +179,13 @@ sap.ui.define(
           // that.getView().getModel().refresh();
  
       },
-     
+
+      
+    
+    
+    
       onSave: function () {
+        var that = this.getView();
  
         var value1 =  this.getView().byId("voyCode").getValue();
         var value2 =  this.getView().byId("voyCodeDesc").getValue();
@@ -193,48 +197,29 @@ sap.ui.define(
           VOYDES: value2
  
         };
-        console.log(data);
+        const voyageModel= new JSONModel(data)
+        that.setModel(voyageModel,"voyageModel");
+        let oModel = this.getView().getModel();
+        var addVoyData = this.getView().getModel("voyageModel").getData();
+        console.log(addVoyData);          
  
-        var that = this.getView();
-        var JsonData = JSON.stringify(data)
-        let EndPoint = "/odata/v4/nautical/VOYTYP";
-        fetch(EndPoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JsonData
-        })
-          .then(function (res) {
-           
-            if (res.ok) {
-             
-              console.log("Entry created successfully");
-              MessageBox.success(`Entry created successfully`);
-              that.getModel().refresh();
-              that.byId("voyCode").setValue("");
-              that.byId("voyCodeDesc").setValue("");
-             
+        let oBindListSP = oModel.bindList("/VOYTYP");
+        oBindListSP.create(addVoyData)
+          that.getModel().refresh();
+          that.byId("voyCode").setValue("");
+          that.byId("voyCodeDesc").setValue("");
+          MessageToast
  
-            }
-            else {
-              res.json().then((data) => {
-                if (data && data.error && data.error.message) {
-                    // Show the error message from the backend
-                    MessageBox.error(data.error.message);
-                }
-                });
-            }
-          })
-          .catch(function (err) {
-            console.log("error", err);
-          })
+          console.log(data);
+ 
           this.getView().byId("createTypeTable").setVisible(true)
           this.getView().byId("entryTypeTable").setVisible(false)
           this.getView().byId("mainPageFooter").setVisible(false)
  
  
       },
+     
+      
       onCancel: function(){
         this.getView().byId("createTypeTable").setVisible(true);
         this.getView().byId("updateTypeTable").setVisible(false);
@@ -283,8 +268,9 @@ sap.ui.define(
                 }
               });
             });
-       },
-       pressCopy: function () {
+      },
+
+      pressCopy: function () {
  
         if( aSelectedIds.length){
           if( aSelectedIds.length > 1){
@@ -303,12 +289,7 @@ sap.ui.define(
         this.getView().byId("voyCodeDesc").setValue(desc);
         this.getView().byId('entryTypeTable').setVisible(true);
  
-        // console.log(aSelectedIds[0][0], aSelectedIds[0][1]);
         this.getView().byId("mainPageFooter").setVisible(true);
- 
- 
-       
- 
       }
    
  

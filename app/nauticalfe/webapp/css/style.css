@@ -64,16 +64,23 @@
     padding: 3%;
 }
 .panelBoard1{
-    border: 1px solid rgb(224, 221, 221);
+    border: 1px solid rgb(214, 212, 212);
     background-color: white;
     margin: 20%;
     padding: 10%;
     
 }
+.vPanel{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    flex-wrap: wrap;
+   
+}
 .panelBoard2{
     margin-left: 15% !important;
     margin-top: 15% !important;
-    border: 1px solid rgb(224, 221, 221);
+    border: 1px solid rgb(214, 212, 212);
     width: 500px !important;
 }
 .companyText{

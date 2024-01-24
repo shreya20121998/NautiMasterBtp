@@ -111,27 +111,27 @@ sap.ui.define(
     }, 
       
       
-       // for visiblity of nav container 1
-        toggleNavContainer: function() {
-          var navCon = this.byId("navCon");
-          var bar = this.byId("HBox10");
-          // Get the current visibility state of the NavContainer
-          var currentVisibility = navCon.getVisible();
-          
-          // Toggle the visibility state
-          navCon.setVisible(!currentVisibility);
-          bar.setVisible(!currentVisibility);
-          
+      // for visiblity of nav container 1
+      toggleNavContainer: function() {
+        var navCon = this.byId("navCon");
+        var bar = this.byId("HBox10");
+        // Get the current visibility state of the NavContainer
+        var currentVisibility = navCon.getVisible();
+        
+        // Toggle the visibility state
+        navCon.setVisible(!currentVisibility);
+        bar.setVisible(!currentVisibility);
+        
 
-        },
-        // for visiblity of nav container 2
-        toggleBarAndNavContainer: function() {
-          var navCon2 = this.byId("navCon2");
-          var bar2 = this.byId("HBox20");
-          var currentVisibility = navCon2.getVisible();
+      },
+      // for visiblity of nav container 2
+      toggleBarAndNavContainer: function() {
+        var navCon2 = this.byId("navCon2");
+        var bar2 = this.byId("HBox20");
+        var currentVisibility = navCon2.getVisible();
 
-          navCon2.setVisible(!currentVisibility);
-          bar2.setVisible(!currentVisibility);
+        navCon2.setVisible(!currentVisibility);
+        bar2.setVisible(!currentVisibility);
       },
       populateInputField: function (inputField, selectedValue) {
         inputField.setValue(selectedValue);

@@ -1083,7 +1083,10 @@ sap.ui.define(
     onBackPressHome: function () {
       const oRouter = this.getOwnerComponent().getRouter();
       oRouter.navTo("RouteHome");
-    }
+    },
+    // RefreshData : function(){
+    //   this.getView().byId("table").getBinding("items").refresh();
+    // },
     });
   }
 );
