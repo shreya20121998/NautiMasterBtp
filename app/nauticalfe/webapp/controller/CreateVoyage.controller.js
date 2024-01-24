@@ -887,411 +887,203 @@ sap.ui.define(
     return new Promise((resolve) => {
         resolve();
     });
-  },
+  },     
+    //  function for time format logic that return arrival time along with carry  days
 
-    calculateVoyage1: function (oEvent) {
-          var portfromorigin = this.getView().byId("portfromorigin").getValue();
-          var distanceorigin = this.getView().byId("distanceorigin").getValue();
-          var weatherorigin = this.getView().byId("weatherorigin").getValue();
-          var cargo_sizeorigin = this.getView()
-            .byId("cargo_sizeorigin")
-            .getValue();
-          var unitorigin = this.getView().byId("unitorigin").getValue();
-          var speedorigin = this.getView().byId("speedorigin").getValue();
-          var sea_daysorigin = this.getView().byId("sea_daysorigin").getValue();
-          var portdaysorigin = this.getView().byId("portdaysorigin").getValue();
-
-          var arrivaldateorigin = this.getView()
-            .byId("arrivaldateorigin")
-            .getValue();
-          var arrivaltimeorigin = this.getView()
-            .byId("arrivaltimeorigin")
-            .getValue();
-          var departuredateorigin = this.getView()
-            .byId("departuredateorigin")
-            .getValue();
-          var departuretimeorigin = this.getView()
-            .byId("departuretimeorigin")
-            .getValue();
-
-          var portdestination = this.getView().byId("portdestination").getValue();
-          var distancedestination = this.getView()
-            .byId("distancedestination")
-            .getValue();
-          var weatherdestination = this.getView()
-            .byId("weatherdestination")
-            .getValue();
-          var cargo_sizedestination = this.getView()
-            .byId("cargo_sizedestination")
-            .getValue();
-          var unitdestination = this.getView().byId("unitdestination").getValue();
-          var speeddestination = this.getView()
-            .byId("speeddestination")
-            .getValue();
-          var sea_daysdestination;
-          var portdaysdestination = this.getView()
-            .byId("portdaysdestination")
-            .getValue();
-          var arrivaldatedestination = this.getView()
-            .byId("arrivaldatedestination")
-            .getValue();
-          var arrivaltimedestination = this.getView()
-            .byId("arrivaltimedestination")
-            .getValue();
-          var departuredatedestination = this.getView()
-            .byId("departuredatedestination")
-            .getValue();
-          var departuretimedestination = this.getView()
-            .byId("departuretimedestination")
-            .getValue();
-            var journeyspeed=this.getView().byId("speed").getValue();
-          console.log(
-            portdaysorigin,
-            portdaysdestination,
-            distanceorigin,
-            distancedestination
+    addTimeTo12HourFormat: function (
+      time,
+      additionalHours,
+      additionalMinutes
+      ) {
+        console.log(
+          time,
+          typeof time,
+          typeof additionalHours,
+          typeof additionalMinutes
           );
+          // Split the time into hours, minutes, seconds, and AM/PM   '5:20:00 PM'
+          const [timeStr, x] = time.split(" ");
+      let [hoursStr, minutesStr, secondsStr] = timeStr.split(":");
+      if( secondsStr ==""){
+        MessageBox.error("please Select Valid Time")
+        return
 
-          var data = {
-            portfromorigin: portfromorigin,
-            portdestination: portdestination,
-            distanceorigin: distanceorigin,
-            distancedestination: distancedestination,
-            weatherorigin: weatherorigin,
-            weatherdestination: weatherdestination,
-            cargo_sizeorigin: cargo_sizeorigin,
-            cargo_sizedestination: cargo_sizedestination,
-            unitorigin: unitorigin,
-            unitdestination: unitdestination,
-            speedorigin: speedorigin,
-            speeddestination: speeddestination,
-            sea_daysorigin: sea_daysorigin,
-            sea_daysdestination: sea_daysdestination,
-            portdaysorigin: portdaysorigin,
-            portdaysdestination: portdaysdestination,
-            arrivaldateorigin: arrivaldateorigin,
-            arrivaldatedestination: arrivaldatedestination,
-            arrivaltimeorigin: arrivaltimeorigin,
-            arrivaltimedestination: arrivaltimedestination,
-            departuredateorigin: departuredateorigin,
-            departuredatedestination: departuredatedestination,
-            departuretimeorigin: departuretimeorigin,
-            departuretimedestination: departuretimedestination,
-            journeyspeed:journeyspeed
-          };
-          //Ensuring ports are registered
+      }
+      secondsStr = secondsStr.substr(0,2);
+      
+      console.log(hoursStr, minutesStr, secondsStr);
+      
+      let hours = parseInt(hoursStr, 10);
+      let minutes = parseInt(minutesStr, 10);
+      // console.log("hhhh : ", time.substr(-2));
+      //  ampm =  time.substr(-2);
 
-          if(!this.checkPorts(data.portfromorigin,data.portdestination)){
-            MessageBox.error("Please enter ports")
-            return false
-          }
-          //Ensuring cargo is loaded
-          if (!this.checkCargoLoaded(data.cargo_sizeorigin, data.cargo_sizedestination)) {
-            MessageBox.error("Please enter Cargo size");
-            return false;
-          }
-          //Ensuring cargo is loaded
-          if (!this.checkCargoLoaded(data.cargo_sizeorigin, data.cargo_sizedestination)) {
-            MessageBox.error("Please enter Cargo size");
-            return false;
-          }
-  
-          //Ensuring destination cargo is lesser than origin cargo
-          if(!this.checkDestCargo(data.cargo_sizeorigin,data.cargo_sizedestination)){
-            MessageBox.error("The sum of Leg 2 (and onwards) Cargo Size must be less than Leg One Cargo Size");
-            return false;
-          }
-  
-          //Ensuring units are entered
-          if(!this.checkUnit(data.unitorigin,data.unitdestination)){
-            MessageBox.error("Please enter units");
-            return false;
-          }
-  
-          //Ensuring Speed is entered
-          if(!this.checkSpeed(data.journeyspeed)){
-            MessageBox.error("Please enter speed")
-            return false
-          }
-  
-          //Ensuring port days are entered
-          if(!this.checkPortDays(data.portdaysdestination,portdaysorigin)){
-          MessageBox.error("Please enter port days")
-            return false
-          }
-  
-          //Checking departure dates are entered or not
-          if(!this.checkDepDates(data.departuredateorigin,data.departuredatedestination)){
-            MessageBox.error("Please enter Dpearture date and time")
-            return false
-          }
-          if(!this.checkDepTime(data.departuretimeorigin)){
-            MessageBox.error("Please enter departure  time")
-            return false
-          }
-            //Checking cargo is loaded or not
-          
-          // console.log(data);
-          let flagStatus = oEvent;
 
-          console.log( "status flag : ",flagStatus);
-          if ( flagStatus ){
+      let ampm = time.substr(-2);
+      // console.log(ampm, typeof ampm);
+      
+      // Convert AM/PM to uppercase for consistency
+      const isPM = ampm.toUpperCase() === "PM";
 
-            // Calculate Arrival Date and Time at Origin Port
-            var arrivaldateorigin = this.calculatearrivaldateorigin(
-            data.departuredateorigin,
-            data.portdaysorigin
-            );
-            
-            // Calculate Overall Total Number of Days
-            let updatedvalueSea = this.calculateOverallTotalDays(
-              data.distanceorigin,
-            data.distancedestination,
-            data.portdaysorigin,
-            data.portdaysdestination,
-            data.speedorigin
-            );
-            sea_daysdestination = updatedvalueSea;
-            data.sea_daysdestination = sea_daysdestination;
-            // console.log(sea_daysdestination, data.sea_daysdestination);
-            
-            // Calculate Arrival Date and Time at Destination Port(s)
-            
-            this.getView().byId("arrivaltimeorigin").setValue(departuretimeorigin);
-            
-            let { hours, minutes } = this.extractTimeFromDay(sea_daysdestination);
-            // console.log("departure time--", departuretimeorigin);
-            
-            let arrTimeArr = this.addTimeTo12HourFormat(
-              departuretimeorigin,
-              hours,
-              minutes
-              );
-              if( arrTimeArr == false){
-                return false
-              }
-              // console.log(arrTimeArr , hours, minutes);
-              
-              this.getView().byId("arrivaltimedestination").setValue(arrTimeArr[0]);
-              
-              let carryDay = arrTimeArr[1];
+      // Adjust the hours based on AM/PM
+      if (isPM && hours !== 12) {
+        hours += 12;
+      } else if (!isPM && hours === 12) {
+        hours = 0;
+      }
 
-              
-          var arrivaldatedestination = this.calculatearrivaldatedestination(
-            data.departuredateorigin,
-            data.sea_daysdestination,
-            carryDay
-            );
-            
-            isLogicDone = true;
-            MessageToast.show("calculate done")
-            return
-            
-          }
-          else {
-            console.log("come in else");
-            if( isLogicDone) {
-              console.log(isLogicDone);
-              return "proceed"
-            }else {
-              return "Complete Calculate logic first"
-            }
-            
-          }
+      // Add the additional hours and minutes
+      hours += additionalHours;
+      minutes += additionalMinutes;
+
+      // Adjust hours and minutes if minutes overflow to hours
+      hours += Math.floor(minutes / 60);
+      minutes %= 60;
+
+      // Calculate days carried over
+      const daysCarriedOver = Math.floor(hours / 24);
+      hours %= 24;
+
+      // Convert hours back to 12-hour format
+      const formattedHours = hours % 12 || 12;
+      const formattedAMPM = hours < 12 ? "AM" : "PM";
+
+      // Format the new time
+      const newTime = `${formattedHours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}:${secondsStr} ${formattedAMPM}`;
+      console.log(newTime, daysCarriedOver);
+      return [newTime, daysCarriedOver];
     },
-        
-      //  function for time format logic that return arrival time along with carry  days
 
-      addTimeTo12HourFormat: function (
-        time,
-        additionalHours,
-        additionalMinutes
-        ) {
-          console.log(
-            time,
-            typeof time,
-            typeof additionalHours,
-            typeof additionalMinutes
-            );
-            // Split the time into hours, minutes, seconds, and AM/PM   '5:20:00 PM'
-            const [timeStr, x] = time.split(" ");
-        let [hoursStr, minutesStr, secondsStr] = timeStr.split(":");
-        if( secondsStr ==""){
-          MessageBox.error("please Select Valid Time")
-          return
+    // Example usage:
+    // const initialTime = '04:30:45 PM';
+    // const newTime = addTimeTo12HourFormat(initialTime, 2, 15); // Add 2 hours and 15 minutes
 
-        }
-        secondsStr = secondsStr.substr(0,2);
-        
-        console.log(hoursStr, minutesStr, secondsStr);
-        
-        let hours = parseInt(hoursStr, 10);
-        let minutes = parseInt(minutesStr, 10);
-        // console.log("hhhh : ", time.substr(-2));
-        //  ampm =  time.substr(-2);
+    extractTimeFromDay: function (day) {
+      // Extract the fractional part from the day
+      const fractionalPart = day % 1;
 
+      // Convert fractional part to hours and minutes
+      const totalHours = Math.floor(fractionalPart * 24);
+      const remainingMinutes = Math.round(
+        (fractionalPart * 24 - totalHours) * 60
+      );
 
-        let ampm = time.substr(-2);
-        // console.log(ampm, typeof ampm);
-        
-        // Convert AM/PM to uppercase for consistency
-        const isPM = ampm.toUpperCase() === "PM";
+      // Split hours and minutes
+      const hours = Math.floor(totalHours);
+      const minutes = remainingMinutes;
 
-        // Adjust the hours based on AM/PM
-        if (isPM && hours !== 12) {
-          hours += 12;
-        } else if (!isPM && hours === 12) {
-          hours = 0;
-        }
+      return {
+        hours,
+        minutes,
+      };
+    },
 
-        // Add the additional hours and minutes
-        hours += additionalHours;
-        minutes += additionalMinutes;
+    //arrival Date Origin
+    calculatearrivaldateorigin: function ( departuredateorigin, portdaysorigin ) {
+      var departureDate = new Date(departuredateorigin);
+      var arrivalDateOrigin = new Date(
+        departureDate.getTime() - portdaysorigin * 24 * 60 * 60 * 1000
+      );
+      this.getView()
+        .byId("arrivaldateorigin")
+        .setValue(arrivalDateOrigin.toString().slice(0, 15));
+      return arrivalDateOrigin;
+    },
 
-        // Adjust hours and minutes if minutes overflow to hours
-        hours += Math.floor(minutes / 60);
-        minutes %= 60;
+    // arrival Date destination
+    calculatearrivaldatedestination: function ( departuredateorigin, sea_daysdestination, carryDays) {
+      
+      var departuredate = new Date(departuredateorigin);
 
-        // Calculate days carried over
-        const daysCarriedOver = Math.floor(hours / 24);
-        hours %= 24;
+      var arrivaldatedestination = new Date(
+        departuredate.getTime() + (sea_daysdestination +carryDays) * 24 * 60 * 60 * 1000
+      );
+      console.log("arrDatedest ", arrivaldatedestination);
+      this.getView().byId("arrivaldatedestination").setValue(arrivaldatedestination.toString().slice(0, 15));
+      return arrivaldatedestination;
+    },
 
-        // Convert hours back to 12-hour format
-        const formattedHours = hours % 12 || 12;
-        const formattedAMPM = hours < 12 ? "AM" : "PM";
-
-        // Format the new time
-        const newTime = `${formattedHours.toString().padStart(2, "0")}:${minutes
-          .toString()
-          .padStart(2, "0")}:${secondsStr} ${formattedAMPM}`;
-        console.log(newTime, daysCarriedOver);
-        return [newTime, daysCarriedOver];
-      },
-
-      // Example usage:
-      // const initialTime = '04:30:45 PM';
-      // const newTime = addTimeTo12HourFormat(initialTime, 2, 15); // Add 2 hours and 15 minutes
-
-      extractTimeFromDay: function (day) {
-        // Extract the fractional part from the day
-        const fractionalPart = day % 1;
-
-        // Convert fractional part to hours and minutes
-        const totalHours = Math.floor(fractionalPart * 24);
-        const remainingMinutes = Math.round(
-          (fractionalPart * 24 - totalHours) * 60
-        );
-
-        // Split hours and minutes
-        const hours = Math.floor(totalHours);
-        const minutes = remainingMinutes;
-
-        return {
-          hours,
-          minutes,
-        };
-      },
-
-      //arrival Date Origin
-      calculatearrivaldateorigin: function ( departuredateorigin, portdaysorigin ) {
-        var departureDate = new Date(departuredateorigin);
-        var arrivalDateOrigin = new Date(
-          departureDate.getTime() - portdaysorigin * 24 * 60 * 60 * 1000
-        );
-        this.getView()
-          .byId("arrivaldateorigin")
-          .setValue(arrivalDateOrigin.toString().slice(0, 15));
-        return arrivalDateOrigin;
-      },
-
-      // arrival Date destination
-      calculatearrivaldatedestination: function ( departuredateorigin, sea_daysdestination, carryDays) {
-        
-        var departuredate = new Date(departuredateorigin);
-
-        var arrivaldatedestination = new Date(
-          departuredate.getTime() + (sea_daysdestination +carryDays) * 24 * 60 * 60 * 1000
-        );
-        console.log("arrDatedest ", arrivaldatedestination);
-        this.getView().byId("arrivaldatedestination").setValue(arrivaldatedestination.toString().slice(0, 15));
-        return arrivaldatedestination;
-      },
-
-        //departure Date destination
-        calculatedeparturedatedestination: function (arrivaldatedestination, portdaysdestination, carryDay) {
-          // Parse the arrival date to ensure it's a valid date
-          var arrivaldate = new Date(arrivaldatedestination);
-          if (isNaN(arrivaldate.getTime())) {
-            console.error("Invalid arrival date");
-            return null;
-          }
-        
-          // Ensure portdaysdestination and carryDay are valid numbers
-          portdaysdestination = parseFloat(portdaysdestination);
-          carryDay = parseFloat(carryDay);
-          if (isNaN(portdaysdestination) || isNaN(carryDay)) {
-            console.error("Invalid port days or carry day");
-            return null;
-          }
-        
-          // Calculate the departure date at the destination
-          var departuredatedestination = new Date(
-            arrivaldate.getTime() + (portdaysdestination + carryDay) * 24 * 60 * 60 * 1000
-          );
-        
-          // Check if the result is a valid date
-          if (isNaN(departuredatedestination.getTime())) {
-            console.error("Invalid departure date");
-            return null;
-          }
-        
-          // Set the calculated departure date in the UI or wherever needed
-          this.getView().byId("departuredatedestination").setValue(departuredatedestination.toString().slice(0, 15));
-        
-          return departuredatedestination;
-        },
+    //departure Date destination
+    calculatedeparturedatedestination: function (arrivaldatedestination, portdaysdestination, carryDay) {
+      // Parse the arrival date to ensure it's a valid date
+      var arrivaldate = new Date(arrivaldatedestination);
+      if (isNaN(arrivaldate.getTime())) {
+        console.error("Invalid arrival date");
+        return null;
+      }
+    
+      // Ensure portdaysdestination and carryDay are valid numbers
+      portdaysdestination = parseFloat(portdaysdestination);
+      carryDay = parseFloat(carryDay);
+      if (isNaN(portdaysdestination) || isNaN(carryDay)) {
+        console.error("Invalid port days or carry day");
+        return null;
+      }
+    
+      // Calculate the departure date at the destination
+      var departuredatedestination = new Date(
+        arrivaldate.getTime() + (portdaysdestination + carryDay) * 24 * 60 * 60 * 1000
+      );
+    
+      // Check if the result is a valid date
+      if (isNaN(departuredatedestination.getTime())) {
+        console.error("Invalid departure date");
+        return null;
+      }
+    
+      // Set the calculated departure date in the UI or wherever needed
+      this.getView().byId("departuredatedestination").setValue(departuredatedestination.toString().slice(0, 15));
+    
+      return departuredatedestination;
+    },
 
 
-      //overall total Days
-      calculateOverallTotalDays: function (
+    //overall total Days
+    calculateOverallTotalDays: function (
+      distanceorigin,
+      distancedestination,
+      portdaysorigin,
+      portdaysdestination,
+      speedorigin
+    ) {
+      console.log(
         distanceorigin,
-        distancedestination,
         portdaysorigin,
         portdaysdestination,
         speedorigin
-      ) {
-        console.log(
-          distanceorigin,
-          portdaysorigin,
-          portdaysdestination,
-          speedorigin
-        );
-        let sea_daysdestination =
-          (distancedestination - distanceorigin) / (speedorigin * 24);
+      );
+      let sea_daysdestination =
+        (distancedestination - distanceorigin) / (speedorigin * 24);
 
-        let overallTotalDays1 =
-          parseFloat(portdaysorigin) +
-          parseFloat(portdaysdestination) +
-          parseFloat(sea_daysdestination);
-        console.log(
-          "helloo",
-          sea_daysdestination,
-          portdaysorigin,
-          portdaysdestination
-        );
-        this.getView().byId("totaldays").setValue(overallTotalDays1.toFixed(1));
-        this.getView()
-          .byId("sea_daysdestination")
-          .setValue(sea_daysdestination);
+      let overallTotalDays1 =
+        parseFloat(portdaysorigin) +
+        parseFloat(portdaysdestination) +
+        parseFloat(sea_daysdestination);
+      console.log(
+        "helloo",
+        sea_daysdestination,
+        portdaysorigin,
+        portdaysdestination
+      );
+      this.getView().byId("totaldays").setValue(overallTotalDays1.toFixed(1));
+      this.getView()
+        .byId("sea_daysdestination")
+        .setValue(sea_daysdestination);
 
-        return sea_daysdestination;
-      },
+      return sea_daysdestination;
+    },
       
 
-      onBackPress: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
-      }
+    onBackPress: function () {
+      const oRouter = this.getOwnerComponent().getRouter();
+      oRouter.navTo("RouteHome");
+    },
+    onBackPressHome: function () {
+      const oRouter = this.getOwnerComponent().getRouter();
+      oRouter.navTo("RouteHome");
+    }
     });
   }
 );
