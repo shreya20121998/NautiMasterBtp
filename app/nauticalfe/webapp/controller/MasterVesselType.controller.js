@@ -4,10 +4,11 @@ sap.ui.define(
     "sap/ui/core/routing/History",
     "sap/ui/core/Fragment",
     "sap/m/MessageToast",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/model/json/JSONModel"
  
   ],
-  function (Controller, History, Fragment, MessageToast, MessageBox) {
+  function (Controller, History, Fragment, MessageToast, MessageBox,JSONModel) {
     "use strict";
     let aSelectedIds = [];
  
@@ -82,61 +83,55 @@ sap.ui.define(
  
       },
       onSave: function () {
- 
-        var CARCD = this.getView().byId("CARCD").getValue();
-        var CARDES = this.getView().byId("CARDES").getValue();
- 
- 
- 
+        var that = this.getView();
+        var value1 = this.getView().byId("CARCD").getValue();
+        var value2 = this.getView().byId("CARDES").getValue();
+   
+        if (!value1 || !value2) {
+            MessageToast.show("Error: Please enter both Voyage Code and Voyage Description.");
+            return;
+        }
+   
         var data = {
- 
-          CARCD: CARCD,
- 
-          CARDES: CARDES
- 
+          CARCD: value1,
+          CARDES: value2
         };
-        console.log(data);
+        const voyageModel = new JSONModel(data);
+        that.setModel(voyageModel, "voyageModel");
+        let oModel = this.getView().getModel();
+        let oBindListSP = oModel.bindList("/CARTYP");
  
- 
-        var that = this;
-        var JsonData = JSON.stringify(data)
-        let EndPoint = "/odata/v4/nautical/CARTYP";
-        fetch(EndPoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JsonData
-        })
-          .then(function (res) {
- 
-            if (res.ok) {
- 
-              console.log("Entity created successfully");
-              MessageToast.show(`Entity created successfully`)
- 
- 
-            }
-            else {
-              res.json().then((data) => {
-                if (data && data.error && data.error.message) {
-                  // Show the error message from the backend
-                  MessageBox.error(data.error.message);
-                  return
+        oBindListSP.attachEventOnce("dataReceived", function () {
+            let existingEntries = oBindListSP.getContexts().map(function (context) {
+                return context.getProperty("CARCD");
+            });
+   
+            if (existingEntries.includes(value1)) {
+                MessageToast.show("Duplicate Voyage Code is not allowed");
+            } else {
+               
+                try {
+                    oBindListSP.create({
+                      CARCD: value1,
+                      CARDES: value2
+                    });
+                    that.getModel().refresh();
+                    that.byId("CARCD").setValue("");
+                    that.byId("CARDES").setValue("");
+   
+                    MessageToast.show("Data created Successfully");
+   
+                    that.byId("createTypeTable").setVisible(true);
+                    that.byId("entryTypeTable").setVisible(false);
+                    that.byId("mainPageFooter").setVisible(false);
+   
+                } catch (error) {
+                    MessageToast.show("Error while saving data");
                 }
-              });
             }
-          })
-          .catch(function (err) {
-            console.log("error", err);
-          })
-        this.getView().byId("createTypeTable").setVisible(true)
-        this.getView().byId("entryTypeTable").setVisible(false)
-        this.getView().byId("mainPageFooter").setVisible(false)
- 
-        that.getView().getModel().refresh();
- 
-      },
+        });
+        oBindListSP.getContexts();
+    },
       onCancel: function () {
  
         this.getView().byId("createTypeTable").setVisible(true);

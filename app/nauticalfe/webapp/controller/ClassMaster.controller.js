@@ -5,9 +5,10 @@ sap.ui.define(
     "sap/ui/core/Fragment",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
+    "sap/ui/model/json/JSONModel"
     
   ],
-  function (Controller,History,Fragment, MessageToast , MessageBox) {
+  function (Controller,History,Fragment, MessageToast , MessageBox,JSONModel) {
     "use strict";
     let aSelectedIds =[];
     
@@ -83,59 +84,55 @@ sap.ui.define(
 
       },
       onSave: function () {
-
-        var value1 =  this.getView().byId("CLASSFIELD").getValue();
-        var value2 =  this.getView().byId("CLASSDESC").getValue();
-
-
-        
+        var that = this.getView();
+        var value1 = this.getView().byId("CLASSFIELD").getValue();
+        var value2 = this.getView().byId("CLASSDESC").getValue();
+   
+        if (!value1 || !value2) {
+            MessageToast.show("Error: Please enter both Voyage Code and Voyage Description.");
+            return;
+        }
+   
         var data = {
-
-          ZF_VALUE: value1,
-
-          ZF_DESC: value2
-
+          ZF_DESC: value1,
+          ZF_VALUE: value2
         };
-        console.log(data);
-
-
-       let that = this;
-        var JsonData = JSON.stringify(data)
-        let EndPoint = "/odata/v4/nautical/CLASS";
-        fetch(EndPoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JsonData
-        })
-          .then(function (res) {
-            
-            if (res.ok) {
-              
-              console.log("Entity created successfully");
-              MessageToast.show(`Entity created successfully`);
-              that.getView().getModel().refresh();
-
-             
-
-            }
-            else {
-              res.json().then(data=>{
-                if( data && data.error && data.error.message){
-                  MessageBox.error(data.error.message)
+        const voyageModel = new JSONModel(data);
+        that.setModel(voyageModel, "voyageModel");
+        let oModel = this.getView().getModel();
+        let oBindListSP = oModel.bindList("/CLASS");
+ 
+        oBindListSP.attachEventOnce("dataReceived", function () {
+            let existingEntries = oBindListSP.getContexts().map(function (context) {
+                return context.getProperty("ZF_VALUE");
+            });
+   
+            if (existingEntries.includes(value1)) {
+                MessageToast.show("Duplicate Voyage Code is not allowed");
+            } else {
+               
+                try {
+                    oBindListSP.create({
+                      ZF_VALUE: value1,
+                      ZF_DESC: value2
+                    });
+                    that.getModel().refresh();
+                    that.byId("CLASSFIELD").setValue("");
+                    that.byId("CLASSDESC").setValue("");
+   
+                    MessageToast.show("Data created Successfully");
+   
+                    that.byId("createTypeTable").setVisible(true);
+                    that.byId("entryTypeTable").setVisible(false);
+                    that.byId("mainPageFooter").setVisible(false);
+   
+                } catch (error) {
+                    MessageToast.show("Error while saving data");
                 }
-              })
             }
-          })
-          .catch(function (err) {
-            console.log("error", err);
-          })
-          this.getView().byId("createTypeTable").setVisible(true)
-          this.getView().byId("entryTypeTable").setVisible(false)
-          this.getView().byId("mainPageFooter").setVisible(false)
-          that.getView().getModel().refresh();
-      },
+        });
+        oBindListSP.getContexts();
+    },
       onCancel: function(){
         this.getView().byId("createTypeTable").setVisible(true);
         this.getView().byId("entryTypeTable").setVisible(false);

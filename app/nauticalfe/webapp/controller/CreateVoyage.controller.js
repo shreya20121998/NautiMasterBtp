@@ -49,8 +49,13 @@ sap.ui.define(
               lastobj=dataLength[dataLength.length-1]
               console.log("last-Obj",lastobj.VOYNO);
               
-             MessageBox.success(`Successfully created Voyage no. ${lastobj.VOYNO}`);
-
+              MessageBox.success(`Successfully created Voyage no. ${lastobj.VOYNO}`, {
+                onClose: () => {
+                  console.log('OK button pressed');
+                  const oRouter = this.getOwnerComponent().getRouter();
+                  oRouter.navTo("RouteTrChangeVoyage");
+                }
+              });
    
 
           }) 
@@ -190,10 +195,9 @@ sap.ui.define(
              }
       },
       onSaveVoyage : function (payloadHeader){
-
-      let JsonData = JSON.stringify(payloadHeader)
-       let that = this;
-      let EndPoint = "/odata/v4/nautical/NAVOYGH";
+        let JsonData = JSON.stringify(payloadHeader)
+        let that = this;
+        let EndPoint = "/odata/v4/nautical/NAVOYGH";
         fetch(EndPoint, {
           method: 'POST',
           headers: {
@@ -204,31 +208,8 @@ sap.ui.define(
           .then(function (res) {
  
             if (res.ok) {
-              // console.log("fdgnm",res);
               console.log("Entity created successfully");
                that.showData();
-              // MessageBox.success(`Successfully created Voyage no. ${lastobj.VOYNO}`);
-
-              //  console.log(result);
-              //  let resultLength=result.length
-              //  let valueofno = result[resultLength-1]
-              //  console.log(valueofno);
-              //  MessageBox.success(`successfully created Voyage no. ${data.VOYNO}`);
-              
-              // res.json().then((data) => {
-              //   if (data ) {
-              //     // Show the error message from the backend
-              //    console.log( data)
-              //   //  console.log(data.VOYNO)
-              //     // console.log(`successfully created ${data.VOYNO}`);
-              //     // MessageBox.success(`successfully created Voyage no. ${data.VOYNO}`);
-              //     count++;
-              //     return
-              //   }
-              // });
-              // MessageToast.show(`Entity created successfully`)
- 
- 
             }
             else {
               res.json().then((data) => {
@@ -243,28 +224,7 @@ sap.ui.define(
           .catch(function (err) {
             console.log("error", err);
           })
-          // .then(function (res) {
-          //   if (res.ok) {
-          //     return res.json();
-          //   } else {
-          //     throw new Error('Network response was not ok.');
-          //   }
-          // })
-          // .then(function (data) {
-          //   if (data.success) {
-          //     // Handle success
-          //     console.log(data.message);
-          //     MessageBox.success(data.message);
-          //   } else {
-          //     // Handle error
-          //     console.error('Error:', data.error);
-          //     MessageBox.error(data.error);
-          //   }
-          // })
-          // .catch(function (err) {
-          //   console.error('Fetch error:', err);
-          // });
- 
+          
       }, 
       showValueHelpDialog1: function () {
         // Create a dialog
