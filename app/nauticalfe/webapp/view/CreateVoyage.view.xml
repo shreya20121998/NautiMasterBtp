@@ -62,13 +62,13 @@ xmlns:form="sap.ui.layout.form"
               <Label id="_IDLabel1" text="Voyage Name"/>
               <Input id="_voyage_Name" value="" />
               <Label id="_IDLabel2" text="Voyage Type"/>
-              <Input id="_voyage_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog1" />
+              <Input id="_voyage_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog1" valueHelpOnly="true"/>
               <Label id="_IDLabel3" text="Bidding Type"/>
-              <Input id="_bidding_Type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
+              <Input id="_bidding_Type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2" valueHelpOnly="true"/>
               <Label id="_IDLabel4" text="Cargo Type" />
-              <Input id="_cargo_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
+              <Input id="_cargo_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3" valueHelpOnly="true"/>
               <Label id="_IDLabel5" text="Currency"/>
-              <Input id="_currency_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4" />
+              <Input id="_currency_type" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4" valueHelpOnly="true"/>
               <!-- Add more form elements as needed -->
           </form:SimpleForm>
         </FlexBox>
@@ -147,8 +147,7 @@ xmlns:form="sap.ui.layout.form"
            <ColumnListItem id="coloumnlist"  >
              <cells>
               <Input id="portfromorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelpPort"/>
-              <!-- <Input id="field2" value="" showValueHelp="true" valueHelpRequest="onValueHelp1" enabled="false"/> -->
-             <Input id="distanceorigin" value="0"  enabled="false"/>
+              <Input id="distanceorigin" value="0"  enabled="false"/>
               <Input id="weatherorigin" value ="0" enabled="false"/>
               <Input id="cargo_sizeorigin" value =""/>
               <Input id="unitorigin" value="" showValueHelp="true" valueHelpRequest="onValueHelpUOM"/>

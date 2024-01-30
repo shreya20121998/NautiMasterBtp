@@ -20,6 +20,7 @@ sap.ui.define(
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteCreateVoyage");
+        location.reload();
       },
 
       onAddRow1: function() {
@@ -79,13 +80,6 @@ sap.ui.define(
         // Clear selection after deletion
         oTable.removeSelections();
       },
-      
-      
-
-      
-
-
-
       handleNav: function(evt) {
         var navCon = this.byId("navCon");
         var target = evt.getSource().data("target");
@@ -95,8 +89,8 @@ sap.ui.define(
         } else {
             navCon.back();
         }
-    },
-    //  for navigation of nav container 2 
+      },
+      //  for navigation of nav container 2 
       handleNavToPanelA: function() {
       this.navigateToPanel("panelA");
      },
@@ -354,6 +348,8 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
       },
+
+
     
     
 

@@ -70,17 +70,19 @@
 
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
         <!-- For Header Section -->
+            
+      
             <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
  
-                <VBox id="_IDGenVBox1" alignItems="End">
-                <HBox id="_IDGenHBox2"  >
+                <VBox id="_IDGenVBox1" alignItems="End" >
+                <HBox id="_IDGenHBox2" items="{path: '/NAVOYGH'}" >
                 <Label id="Label1" text="Voyage No:"/>
-                <Input id="Input1" width="200px"/>
+                <Input id="Input1" width="200px" value="{VOYTY}"/>
                 </HBox>
  
-                <HBox id="_IDGenHBox3" >
+                <HBox id="_IDGenHBox3" items="{path: '/NAVOYGH'}" >
                 <Label id="Label2" text="Voyage Name:"/>
-                <Input id="Input2" width="200px"/>
+                <Input id="Input2" width="200px" value="{VOYNM}"/>
                 </HBox>
                 </VBox>
                 <VBox id="_IDGenVBox2" alignItems="End" >
@@ -109,26 +111,27 @@
                 </HBox>
                 </VBox>
                 <VBox id="_IDGenVBox3" alignItems="End" >
-                <HBox id="_IDGenHBox6">
-                <Label id="Label5" text="Currency:"/>
-                <Input id="Input3" width="100px"/>
-                </HBox>
- 
-                <HBox id="_IDGenHBox7">
-                <Label id="Label6" text="Historical Frieght Cost Name:" />
-                <Input id="Input4" width="100px" />
-                </HBox>
+                    <HBox id="_IDGenHBox6">
+                    <Label id="Label5" text="Currency:"/>
+                    <Input id="Input3" width="100px" value=""/>
+                    </HBox>
+    
+                    <HBox id="_IDGenHBox7">
+                    <Label id="Label6" text="Historical Frieght Cost Name:" />
+                    <Input id="Input4" width="100px" value=""/>
+                    </HBox>
                 </VBox>
+
                 <VBox id="_IDGenVBox4" alignItems="End">
-                <HBox id="_IDGenHBox8">
-                <Label id="Label7" text="Bid Type:"/>
-                <Input id="Input5" />
-                </HBox>
- 
-                <HBox id="_IDGenHBox9">
-                <Label id="Label8" text="Status:"/>
-                <Input id="Input6"/>
-                </HBox>
+                    <HBox id="_IDGenHBox8">
+                    <Label id="Label7" text="Bid Type:"/>
+                    <Input id="Input5" value=""/>
+                    </HBox>
+    
+                    <HBox id="_IDGenHBox9">
+                    <Label id="Label8" text="Status:"/>
+                    <Input id="Input6" value=""/>
+                    </HBox>
                 </VBox>
             </HBox>
 
@@ -231,9 +234,7 @@
         <NavContainer
                 navigationFinished="onNavigationFinished"
                 id="navCon"
-                height="auto"
-                
-        >
+                height="auto">
 
 
             
