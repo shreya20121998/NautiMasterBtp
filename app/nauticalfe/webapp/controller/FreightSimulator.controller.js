@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller"
 ], function (Controller) {
     "use strict";
- 
+
     return Controller.extend("nauticalfe.controller.FreightSimulator", {
         onInit: function () {
             sap.ui.core.UIComponent.getRouterFor(this).getRoute('RouteFreightSimulator').attachPatternMatched(this._onRouteMatched, this)
@@ -68,33 +68,22 @@ sap.ui.define([
         freightCostLumpsum: function (oEvent) {
             var proposedFreightCost = parseFloat(oEvent.getParameter("value"));
             var proposedFreightCostField = this.getView().byId("ProposedFreightCostLumpsum")
-            console.log(proposedFreightCostField.getValue());
             var frieghtCostLumpsum = this.getView().byId("frieghtCost_Destination1");
             var totalProjCostLumpsum = this.getView().byId("totalCost_Destination1");
             var totalCostLumpsum = this.getView().byId('inputCostLumpsum');
  
             if (!isNaN(proposedFreightCost)) {
- 
                 var destPortCargo = this.getView().byId("cargosize_Destination1").getValue();
-                console.log(destPortCargo)
                 var orgPortCargo = this.getView().byId("cargosize_Origin1").getValue()
-                console.log(orgPortCargo);
- 
-                if(orgPortCargo == destPortCargo){
- 
-                    frieghtCostLumpsum.setValue(proposedFreightCost.toFixed(2));
-                    if (totalProjCostLumpsum) {
-                        totalProjCostLumpsum.setValue(lumpCost);
-                    }
-                    if (totalCostLumpsum) {
-                        totalCostLumpsum.setValue(lumpCost);
-                    }
-                }else {
- 
-                    var lumpCost = ((proposedFreightCost*destPortCargo)/orgPortCargo).toString()
-                   
-                    console.log(lumpCost)
-                   
+                var lumpCost = ((proposedFreightCost*destPortCargo)/orgPortCargo).toString()
+                if(lumpCost.length==1)
+                {  
+                   lumpCost=Number(lumpCost).toFixed(2)
+                   if(frieghtCostLumpsum){
+                      frieghtCostLumpsum.setValue(lumpCost)
+                   }
+                }
+                else{
                     var lumpCostArr = []
                     lumpCostArr = lumpCost.split(".")
                     console.log(lumpCostArr)
@@ -107,9 +96,8 @@ sap.ui.define([
                         }
                         else{
                             frieghtCostLumpsum.setValue(lumpCost)
-                           
                         }
-                    }
+                }
                 }
                 if (totalProjCostLumpsum) {
                     totalProjCostLumpsum.setValue(lumpCost);
@@ -152,6 +140,14 @@ sap.ui.define([
                 totalProjCostToNm.setValue("");
                 totalCostToNm.setValue("");
             }
-        }
+        },
+        onBackPress: function () {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteCreateVoyage");
+         },
+          onBackPressHome: function () {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteHome");
+          },
     });
 });

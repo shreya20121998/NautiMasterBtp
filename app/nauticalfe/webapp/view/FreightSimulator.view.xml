@@ -1,7 +1,7 @@
 <mvc:View xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards"
 xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
- controllerName="nauticalfe.controller.FreightSimulator"
-    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+controllerName="nauticalfe.controller.FreightSimulator"
+xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
  
   <Page id="freightSimlulatorId" class="freightSimulatorPage">
  
@@ -14,6 +14,14 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
                   color="#FFFFFF"
                   press="onBackPress"
               />
+              <core:Icon
+                        id="IDGenIcon2"
+                        src="sap-icon://home"
+                        class="size1"
+                        color="#FFFFFF"
+                        press="onBackPressHome"
+                    />
+              
               <Image
                   src="./images/ignxlogo.png"
                   height="75%"
@@ -97,9 +105,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Origin" value =""/>
               <Input id="portOrigin_Distance" value ="0"/>
               <Input id="cargosize_Origin" value =""/>
-              <Input id="frieghtCost_Origin" value =""/>
-              <Input id="otherCost_Origin" value =""/>
-              <Input id="totalCost_Origin" value =""/>
+              <Input id="frieghtCost_Origin" value ="0"/>
+              <Input id="otherCost_Origin" value ="0"/>
+              <Input id="totalCost_Origin" value ="0"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist2">
@@ -108,7 +116,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Distance" value =""/>
               <Input id="cargosize_Destination" value =""/>
               <Input id="frieghtCost_Destination" value =""/>
-              <Input id="otherCost_Destination" value =""/>
+              <Input id="otherCost_Destination" value ="0"/>
               <Input id="totalCost_Destination" value =""/>
              </cells>
            </ColumnListItem>
@@ -126,7 +134,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
         <contentLeft >
           <FlexBox id="_IDFlBox1"  >
             <Label id="_IDLbel1" text="Proposed Freight Cost:" class="labelTxt"></Label>
-            <Input id="ProposedFreightCostLumpsum" liveChange="freightCostLumpsum" value=""  ></Input>
+            <Input id="ProposedFreightCostLumpsum" liveChange="freightCostLumpsum"></Input>
             <Label id="_IDGn2" text="Total Cost:" class="labelTxt"></Label>
             <Input id="inputCostLumpsum" editable="false"/>
           </FlexBox>
@@ -161,9 +169,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Origin1" value =""/>
               <Input id="portOrigin_Distance1" value ="0"/>
               <Input id="cargosize_Origin1" value =""/>
-              <Input id="frieghtCost_Origin1" value =""/>
-              <Input id="otherCost_Origin1" value =""/>
-              <Input id="totalCost_Origin1" value =""/>
+              <Input id="frieghtCost_Origin1" value ="0"/>
+              <Input id="otherCost_Origin1" value ="0"/>
+              <Input id="totalCost_Origin1" value ="0"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist3">
@@ -172,7 +180,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Distance1" value =""/>
               <Input id="cargosize_Destination1" value ="" editable="false"/>
               <Input id="frieghtCost_Destination1" value =""/>
-              <Input id="otherCost_Destination1" value =""/>
+              <Input id="otherCost_Destination1" value ="0"/>
               <Input id="totalCost_Destination1" value =""/>
              </cells>
            </ColumnListItem>
@@ -225,9 +233,9 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Origin2" value =""/>
               <Input id="portOrigin_Distance2" value ="0"/>
               <Input id="cargosize_Origin2" value =""/>
-              <Input id="frieghtCost_Origin2" value =""/>
-              <Input id="otherCost_Origin2" value =""/>
-              <Input id="totalCost_Origin2" value =""/>
+              <Input id="frieghtCost_Origin2" value ="0"/>
+              <Input id="otherCost_Origin2" value ="0"/>
+              <Input id="totalCost_Origin2" value ="0"/>
              </cells>
            </ColumnListItem>
            <ColumnListItem id="coloumnlist5">
@@ -236,7 +244,7 @@ xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
               <Input id="port_Distance2" value =""/>
               <Input id="cargosize_Destination2" value =""/>
               <Input id="frieghtCost_Destination2" value =""/>
-              <Input id="otherCost_Destination2" value =""/>
+              <Input id="otherCost_Destination2" value ="0"/>
               <Input id="totalCost_Destination2" value =""/>
              </cells>
            </ColumnListItem>
