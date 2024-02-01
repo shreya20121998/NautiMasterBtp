@@ -1,0 +1,56 @@
+{
+    "fields": [
+        {
+            "LegId": 2,
+            "PortCode": 21,
+            "EventNo": 1,
+            "EventType": "Passenger",
+            "NormalText": "Random Text",
+            "Status":"C",
+            "PlannedStartDate": "2023-12-11",
+            "PlannedStartTime": "13:45:00",
+            "PlannedEndDate": "2023-12-15",
+            "PlannedEndTime":"12:00:30",
+            "EventStatus":"Completed"
+        },
+        {
+            "LegId": 1,
+            "PortCode": 19,
+            "EventNo": 2,
+            "EventType": "Passenger",
+            "NormalText": "Random Text",
+            "Status":"N",
+            "PlannedStartDate": "2024-12-11",
+            "PlannedStartTime": "11:00:00",
+            "PlannedEndDate": "2024-12-15",
+            "PlannedEndTime":"11:35:00",
+            "EventStatus":"Incomplete"
+        },
+        {
+            "LegId": 3,
+            "PortCode": 25,
+            "EventNo": 3,
+            "EventType": "Passenger",
+            "NormalText": "Random Text",
+            "Status":"C",
+            "PlannedStartDate": "2023-10-22",
+            "PlannedStartTime": "12:07:00",
+            "PlannedEndDate": "2023-08-15",
+            "PlannedEndTime":"13:00:00",
+            "EventStatus":"Completed"
+        },
+        {
+            "LegId": 4,
+            "PortCode": 22,
+            "EventNo": 5,
+            "EventType": "Passenger",
+            "NormalText": "Random Text",
+            "Status":"N",
+            "PlannedStartDate": "2023-08-21",
+            "PlannedStartTime": "12:00:00",
+            "PlannedEndDate": "2023-08-21",
+            "PlannedEndTime":"16:25:00",
+            "EventStatus":"Completed"
+        }
+    ]
+}

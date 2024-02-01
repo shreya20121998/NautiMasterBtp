@@ -83,6 +83,10 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "tsFields": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/timesheetFields.json"
       }
     },
     "resources": {

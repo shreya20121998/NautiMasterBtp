@@ -2,7 +2,7 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards" 
     xmlns:form="sap.ui.layout.form" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
       
     xmlns="sap.m">
     <Page id="page">
@@ -70,19 +70,17 @@
 
         <Text id="_IDGenText11" class="vgheading" text="Voyage Details" />
         <!-- For Header Section -->
-            
-      
             <HBox id="_IDGenHBox1" class="vdHeaderLayout" >
  
-                <VBox id="_IDGenVBox1" alignItems="End" >
-                <HBox id="_IDGenHBox2" items="{path: '/NAVOYGH'}" >
+                <VBox id="_IDGenVBox1" alignItems="End">
+                <HBox id="_IDGenHBox2"  >
                 <Label id="Label1" text="Voyage No:"/>
-                <Input id="Input1" width="200px" value="{VOYTY}"/>
+                <Input id="Input1" width="200px"/>
                 </HBox>
  
-                <HBox id="_IDGenHBox3" items="{path: '/NAVOYGH'}" >
+                <HBox id="_IDGenHBox3" >
                 <Label id="Label2" text="Voyage Name:"/>
-                <Input id="Input2" width="200px" value="{VOYNM}"/>
+                <Input id="Input2" width="200px"/>
                 </HBox>
                 </VBox>
                 <VBox id="_IDGenVBox2" alignItems="End" >
@@ -111,27 +109,27 @@
                 </HBox>
                 </VBox>
                 <VBox id="_IDGenVBox3" alignItems="End" >
-                    <HBox id="_IDGenHBox6">
-                    <Label id="Label5" text="Currency:"/>
-                    <Input id="Input3" width="100px" value=""/>
-                    </HBox>
-    
-                    <HBox id="_IDGenHBox7">
-                    <Label id="Label6" text="Historical Frieght Cost Name:" />
-                    <Input id="Input4" width="100px" value=""/>
-                    </HBox>
+                <HBox id="_IDGenHBox6">
+                <Label id="Label5" text="Currency:"/>
+                <Input id="Input3" width="100px"/>
+                </HBox>
+ 
+                <HBox id="_IDGenHBox7">
+                <Label id="Label6" text="Historical Frieght Cost Name:" />
+                <Input id="Input4" width="100px" />
+                </HBox>
                 </VBox>
-
                 <VBox id="_IDGenVBox4" alignItems="End">
-                    <HBox id="_IDGenHBox8">
-                    <Label id="Label7" text="Bid Type:"/>
-                    <Input id="Input5" value=""/>
-                    </HBox>
-    
-                    <HBox id="_IDGenHBox9">
-                    <Label id="Label8" text="Status:"/>
-                    <Input id="Input6" value=""/>
-                    </HBox>
+                <HBox id="_IDGenHBox8" >
+                
+                <Label id="Label7" text="Bid Type:"/>
+                <Input id="Input5"  />
+                </HBox>
+ 
+                <HBox id="_IDGenHBox9">
+                <Label id="Label8" text="Status:"/>
+                <Input id="Input6"/>
+                </HBox>
                 </VBox>
             </HBox>
 
@@ -234,7 +232,9 @@
         <NavContainer
                 navigationFinished="onNavigationFinished"
                 id="navCon"
-                height="auto">
+                height="auto"
+                
+        >
 
 
             
@@ -805,19 +805,18 @@
             </Panel>
 
             <!-- Panel for ButtonB -->
-            <Panel id="panelB" height="600px" class="voyagePanel">
+           <Panel id="panelB" height="600px" class="voyagePanel">
                 <HBox  >
-
                             <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
-                            <Button icon="sap-icon://sort-ascending"  class="btnIcon"/>
-                            <Button icon="sap-icon://sort-descending"  class="btnIcon"/>
-                            <Button icon="sap-icon://search"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-ascending"  class="btnIcon" press="sortOptionsTab1Asc"/>
+                            <Button icon="sap-icon://sort-descending"  class="btnIcon" press="sortOptionsTab1Desc"/>
+                            <Button icon="sap-icon://search"  class="btnIcon" press="showSearchFieldsTab1"/>
                             <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
                             <Button icon="sap-icon://filter" class="btnIcon"/>
                             <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
                             <Button icon="sap-icon://sum"  class="btnIcon"/>
                             <Button icon="../images/subtotals.png"  class="btnIcon"/>
-                            <Button icon="sap-icon://print"  class="btnIcon"/>
+                            <Button icon="sap-icon://print"  class="btnIcon" press="tab1exp"/>
                             <Button icon="sap-icon://detail-view"  class="btnIcon"/>
                             <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
                             <Button icon="../images/Export.png"  class="btnIcon"/>
@@ -826,51 +825,106 @@
                             <Button icon="sap-icon://message-information" class="btnIcon"/>
                             <Button icon="sap-icon://full-screen" class="btnIcon"/>
                         </HBox>
-                        <Table width="100%" class="costplantables">
-                            <columns>
-                                <Column>
-                                    <Label text="LegId"/>
-                                </Column>
-                                <Column>
-                                    <Label text="Event No."/>
-                                </Column>
-                                <Column>
-                                    <Label text="Event Type"/>
-                                </Column>
-                                <Column width="200px">
-                                    <Label text="Normal Text"/>
-                                </Column>
-                                <Column>
-                                    <Label text="Status"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned Start Date"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned Start Time"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned End Date"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned End Time"/>
-                                </Column>
-                                <Column>
-                                    <Label text="Event Status Text"/>
-                                </Column>
-                            </columns>
-                        </Table>
-                         <HBox class="footeractualplanbutton">
+                         <HBox id="valueSearchTab1" class="InputSearch" visible="false">
+                            <Label text="Enter LegId for searching : "/>
+                            <Input id="searchFieldTab1"></Input>
+                            <Button text="Search" press="searchLegIdTab1"/>
+                            <Button text="Refresh" press="refreshTab1"/>
+                            <Button icon="sap-icon://decline" press="closeSearchTab1"/>
+                        </HBox>
+                         <ui:Table width="100%" class="costplantables" rows="{tsFields>/fields}" id="tstab1" > <!--change width for scrollable table  -->
+                           	<ui:columns>
+                            <ui:Column
+                                id="name">
+                                <Label text="LegId" />
+                                <ui:template>
+                                    <Text text="{tsFields>LegId}"/>
+                                </ui:template>
+                            </ui:Column>
+                             <ui:Column
+                                >
+                                <Label text="Port Code" />
+                                <ui:template>
+                                    <Text text="{tsFields>PortCode}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                id="categories"
+                                >
+                                <Label text="Event No" />
+                                <ui:template>
+                                    <Text text="{tsFields>EventNo}"/>
+                                </ui:template>
+                            </ui:Column>
+                             <ui:Column
+                                >
+                                <Label text="Event Type" />
+                                <ui:template>
+                                    <Text text="{tsFields>EventType}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Normal Text" />
+                                <ui:template>
+                                    <Text text="{tsFields>NormalText}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Status" />
+                                <ui:template>
+                                    <Text text="{tsFields>Status}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned Start Date" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedStartDate}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned Start Time" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedStartTime}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned End Date" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedEndDate}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned End Time" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedEndTime}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Event Status Text" />
+                                <ui:template>
+                                    <Text text="{tsFields>EventStatus}"/>
+                                </ui:template>
+                            </ui:Column>
+					</ui:columns>
+                        </ui:Table>
+                         <HBox >
                             <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
-                            <Button icon="sap-icon://sort-ascending"  class="btnIcon"/>
-                            <Button icon="sap-icon://sort-descending"  class="btnIcon"/>
-                            <Button icon="sap-icon://search"  class="btnIcon"/>
+                            <Button icon="sap-icon://sort-ascending"  class="btnIcon" press="sortOptionsTab2Asc"/>
+                            <Button icon="sap-icon://sort-descending"  class="btnIcon" press="sortOptionsTab2Desc"/>
+                            <Button icon="sap-icon://search"  class="btnIcon" press="showSearchFieldsTab2"/>
                             <Button icon="sap-icon://zoom-in"  class="btnIcon"/>
                             <Button icon="sap-icon://filter" class="btnIcon"/>
                             <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
                             <Button icon="sap-icon://sum"  class="btnIcon"/>
                             <Button icon="../images/subtotals.png"  class="btnIcon"/>
-                            <Button icon="sap-icon://print"  class="btnIcon"/>
+                            <Button icon="sap-icon://print"  class="btnIcon" press="tab2exp"/>
                             <Button icon="sap-icon://detail-view"  class="btnIcon"/>
                             <Button icon="sap-icon://slim-arrow-down" class="btnIcon"/>
                             <Button icon="../images/Export.png"  class="btnIcon"/>
@@ -879,40 +933,95 @@
                             <Button icon="sap-icon://message-information" class="btnIcon"/>
                             <Button icon="sap-icon://full-screen" class="btnIcon"/>
                         </HBox>
-                        <Table width="100%" class="costplantables">
-                            <columns>
-                                <Column>
-                                    <Label text="LegId"/>
-                                </Column>
-                                <Column>
-                                    <Label text="Event No."/>
-                                </Column>
-                                <Column>
-                                    <Label text="Event Type"/>
-                                </Column>
-                                <Column width="200px">
-                                    <Label text="Normal Text"/>
-                                </Column>
-                                <Column>
-                                    <Label text="Status"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned Start Date"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned Start Time"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned End Date"/>
-                                </Column>
-                                <Column width="120px">
-                                    <Label text="Planned End Time"/>
-                                </Column>
-                                <Column>
-                                    <Label text="Event Status Text"/>
-                                </Column>
-                            </columns>
-                        </Table>
+                         <HBox id="valueSearchTab2" class="InputSearch" visible="false">
+                            <Label text="Enter LegId for searching : "/>
+                            <Input id="searchFieldTab2"></Input>
+                            <Button text="Search" press="searchLegIdTab2"/>
+                            <Button text="Refresh" press="refreshTab2"/>
+                            <Button icon="sap-icon://decline" press="closeSearchTab2"/>
+                        </HBox>
+                         <ui:Table width="100%" class="costplantables" rows="{tsFields>/fields}" id="tstab2"> <!--change width for scrollable table  -->
+                           	<ui:columns>
+                            <ui:Column
+                                id="name1">
+                                <Label text="LegId" />
+                                <ui:template>
+                                    <Text text="{tsFields>LegId}"/>
+                                </ui:template>
+                            </ui:Column>
+                             <ui:Column
+                                >
+                                <Label text="Port Code" />
+                                <ui:template>
+                                    <Text text="{tsFields>PortCode}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                id="categories1"
+                                >
+                                <Label text="Event No" />
+                                <ui:template>
+                                    <Text text="{tsFields>EventNo}"/>
+                                </ui:template>
+                            </ui:Column>
+                             <ui:Column
+                                >
+                                <Label text="Event Type" />
+                                <ui:template>
+                                    <Text text="{tsFields>EventType}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Normal Text" />
+                                <ui:template>
+                                    <Text text="{tsFields>NormalText}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Status" />
+                                <ui:template>
+                                    <Text text="{tsFields>Status}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned Start Date" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedStartDate}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned Start Time" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedStartTime}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned End Date" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedEndDate}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Planned End Time" />
+                                <ui:template>
+                                    <Text text="{tsFields>PlannedEndTime}"/>
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                >
+                                <Label text="Event Status Text" />
+                                <ui:template>
+                                    <Text text="{tsFields>EventStatus}"/>
+                                </ui:template>
+                            </ui:Column>
+					</ui:columns>
+                        </ui:Table>
 
             </Panel>
 
