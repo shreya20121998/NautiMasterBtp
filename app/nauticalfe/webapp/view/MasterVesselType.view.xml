@@ -72,10 +72,7 @@
                 </contentRight>
             </Bar>
         </headerContent>
-        <Bar
-            id="_IDGenBar12"
-            class="_IDGenBar1"
-        >
+        <Bar id="_IDGenBar12" class="_IDGenBar1">
             <contentLeft>
                 <Button
                     id="_IDGenButton12"
@@ -125,10 +122,8 @@
                 />
             </contentRight>
         </Bar>
-        <Label
-            text="Vessel Type Master Table "
-            class="masterheadings"
-        />
+
+        <Label text="Vessel Type Master Table " class="masterheadings" />
         <Table
             id="createTypeTable"
             mode="MultiSelect"

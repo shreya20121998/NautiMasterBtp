@@ -56,18 +56,30 @@
                 </contentRight>
             </Bar>
         </headerContent>
-        <Bar
-            id="_IDGenBar1"
-            class="_IDGenBar1"
-        >
+
+        <Bar id="_IDGenBar12" class="_IDGenBar1">
             <contentLeft>
-                <Button id="_IDGenButton1" text="New Entries" press="newEntries" />
-                <Button id="_IDGenButton2" text="Copy As" />
-                <Button id="_IDGenButton3" text="Delete" />
-                <Button id="_IDGenButton4" text="Undo Change" />
-                <Button id="_IDGenButton5" text="Select All" />
-                <Button id="_IDGenButton6" text="Select Block" />
-                <Button id="_IDGenButton7" text="Deselect All" />
+                <Button
+                    id="_IDGenButton12"
+                    text="New Entries"
+                    press="newEntries"
+                />
+                <Button
+                    id="_IDGenButton13"
+                    text="Copy As"
+                    press="pressCopy"
+                />
+                <Button
+                    id="_IDGenButton14"
+                    text="Delete"
+                    press="onDeletePress"
+                />
+                <Button
+                    id="_IDGenButton15"
+                    text="Edit"
+                    press="pressEdit"
+                />
+               
                 <Button
                     id="button"
                     icon="sap-icon://slim-arrow-down"
@@ -78,31 +90,34 @@
                 />
             </contentLeft>
             <contentRight>
-                <core:Icon id="_IDGenIcon5"
-                        src="sap-icon://print"
-                        class="size1"
-                        color="#FF0000"
-                    />
-                <Button id="_IDGenButton8" text="Display" />
-                <Button id="_IDGenButton9"
+                <core:Icon
+                    id="_IDGenIcon33"
+                    src="sap-icon://print"
+                    class="size1"
+                    color="#FF0000"
+                />
+                <Button
+                    id="_IDGenButton19"
+                    text="Display"
+                />
+                <Button
+                    id="_IDGenButton20"
                     text="Exit"
-                    press="onPressExit"
+                    press="onExit"
                 />
             </contentRight>
         </Bar>
-        <Text id="_IDGenText2"
-            text="Bid Master"
-            class="masterheadings"
-        />
+
+        <Text id="_IDGenText2" text="Bid Master" class="masterheadings" />
+
         <Table id="createTypeTable"
             width="100%"
             class="mastertables"
             items="{/MAS}"
             mode="MultiSelect"
-           
-        >
+            selectionChange="selectedItems">
+
             <columns>
-               
                 <Column >
                     <Label text="User" />
                 </Column>
@@ -139,17 +154,18 @@
                     <Text id="_IDGenText7" text="{CUNIT_code}" />
                     <Text id="_IDGenText8" text="{DATATYPE}" />
                     <Text id="_IDGenText9" text="{TABLENAME}" />
-                    <CheckBox id="_IDGenText10" text="{MULTI_CHOICE}" />
+                    <CheckBox id="_IDGenText10" selected="{MULTI_CHOICE}" />
                 </cells>
             </ColumnListItem>
         </Table>
-         <Table id="entryTypeTable"
+
+        <Table id="entryTypeTable"
+            selectionChange="selectedItems"
             width="100%"
             class="mastertables"
             visible="false"
         >
             <columns>
-               
                 <Column id="User">
                     <Label text="User" />
                 </Column>
@@ -178,24 +194,110 @@
             </columns>
             <ColumnListItem id="istItem1">
                 <cells>
-                   
-                    <Input id="BNAME" value="{}" />
-                    <Input id="CODE" value="{}" />
-                    <Input id="VALUE" value="{}" />
-                    <Input id="CVALUE" value="{}" />
-                    <Input id="CUNIT" value="{}" />
-                    <Input id="DATATYPE" value="{}" />
-                    <Input id="TABLENAME" value="{}" />
-                    <CheckBox id="MULTI_CHOICE"/>
+                    <Input id="BNAME"/>
+                    <Input id="CODE" />
+                    <Input id="VALUE"/>
+                    <Input id="CVALUE"/>
+                    <Input id="CUNIT"/>
+                    <Input id="DATATYPE" />
+                    <Input id="TABLENAME"/>
+                    <CheckBox id="MULTI_CHOICE"  />
                 </cells>
             </ColumnListItem>
         </Table>
+
+        <Table
+            id="updateTypeTable"
+            selectionChange="selectedItems"
+            width="100%"
+            class="mastertables"
+            visible="false" >
+            <columns>
+                <Column >
+                    <Label text="User" />
+                </Column>
+                <Column >
+                    <Label text="Code" />
+                </Column>
+                <Column >
+                    <Label text="Value" />
+                </Column>
+                <Column >
+                    <Label text="Revaluation" />
+                </Column>
+                 <Column  >
+                    <Label text="Crcy" />
+                </Column>
+                <Column >
+                    <Label text="Data Type" />
+                </Column>
+                <Column >
+                    <Label text="Table Name" />
+                </Column>
+                <Column >
+                    <Label text="Multiple Column" />
+                </Column>
+               
+            </columns>
+            <items>
+                <ColumnListItem id="stItem1">
+                    <cells>
+                        <Input id="BN"/>
+                        <Input id="CE" />
+                        <Input id="VE"/>
+                        <Input id="CET"/>
+                        <Input id="CT"/>
+                        <Input id="DE" />
+                        <Input id="TE"/>
+                        <CheckBox id="ME"  />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+            <OverflowToolbar
+                id="mainPageFooter2"
+                design="Auto"
+                visible="false" >
+                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                <Button
+                    id="mainPageSave12"
+                    text="Update"
+                    press="onUpdate"
+                />
+                <Button
+                    id="_IDGenButton23"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
+ 
+ 
+            <!-- main page footer -->
+            <OverflowToolbar
+                id="mainPageFooter"
+                design="Auto"
+                visible="false">
+                <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button
+                    id="mainPageSave"
+                    text="Save"
+                    press="onSave"
+                />
+                <Button
+                    id="_IDGenButton22"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
        
-                <OverflowToolbar id="mainPageFooter" design="Auto" visible="false">
-                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
-                <Button id="_IDGenButton10" text="Save"  press="onSave"></Button>
-                <Button id="_IDGenButton11" text="Cancel"  ></Button>
-                </OverflowToolbar>
+        <footer>
+            <Bar>
+                <contentRight>
+                    <Button id="_IDGenButton10" text="Save"  press="onSave"></Button>
+                    <Button id="_IDGenButton11" text="Cancel"  ></Button>
+                </contentRight>
+            </Bar>
+        </footer>
        
  
        

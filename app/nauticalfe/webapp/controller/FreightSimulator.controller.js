@@ -9,7 +9,6 @@ sap.ui.define([
         },
  
         _onRouteMatched: function (oEvent) {
-       
             var OriginData=oEvent.mParameters.arguments.OriginData
             var destinationData=oEvent.mParameters.arguments.destinationData
             var distanceData=oEvent.mParameters.arguments.distanceData

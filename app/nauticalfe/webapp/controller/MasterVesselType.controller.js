@@ -73,10 +73,9 @@ sap.ui.define(
           this.getView().byId("createTypeTable").setVisible(false)
           this.getView().byId("entryTypeTable").setVisible(true)
           this.getView().byId("mainPageFooter").setVisible(true)
-   
-   
         },
-        onSave: function () {
+
+      onSave: function () {
           var that = this.getView();
           var value1 = this.getView().byId("CARCD").getValue();
           var value2 = this.getView().byId("CARDES").getValue();
@@ -126,14 +125,15 @@ sap.ui.define(
           });
           oBindListSP.getContexts();
       },
-        onCancel: function () {
-   
-          this.getView().byId("createTypeTable").setVisible(true);
-          this.getView().byId("updateTypeTable").setVisible(false);
-          this.getView().byId("entryTypeTable").setVisible(false);
-          this.getView().byId("mainPageFooter").setVisible(false);
-          this.getView().byId("mainPageFooter2").setVisible(false);
-        },
+
+      onCancel: function () {
+  
+        this.getView().byId("createTypeTable").setVisible(true);
+        this.getView().byId("updateTypeTable").setVisible(false);
+        this.getView().byId("entryTypeTable").setVisible(false);
+        this.getView().byId("mainPageFooter").setVisible(false);
+        this.getView().byId("mainPageFooter2").setVisible(false);
+      },
    
         pressEdit: function () {
    
