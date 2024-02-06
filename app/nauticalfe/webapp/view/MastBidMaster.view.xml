@@ -242,14 +242,14 @@
             <items>
                 <ColumnListItem id="stItem1">
                     <cells>
-                        <Input id="BN"/>
-                        <Input id="CE" />
-                        <Input id="VE"/>
-                        <Input id="CET"/>
-                        <Input id="CT"/>
-                        <Input id="DE" />
-                        <Input id="TE"/>
-                        <CheckBox id="ME"  />
+                        <Input id="bname" />
+                        <Input id="code" value="" editable="false"/>
+                        <Input id="value" />
+                        <Input id="cvalue" />
+                        <Input id="cunit" />
+                        <Input id="datatype" />
+                        <Input id="tablename" />
+                        <CheckBox id="multichoice"  />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -290,14 +290,7 @@
                 />
             </OverflowToolbar>
        
-        <footer>
-            <Bar>
-                <contentRight>
-                    <Button id="_IDGenButton10" text="Save"  press="onSave"></Button>
-                    <Button id="_IDGenButton11" text="Cancel"  ></Button>
-                </contentRight>
-            </Bar>
-        </footer>
+        
        
  
        

@@ -2,38 +2,21 @@
 ###
 GET http://localhost:4004/odata/v4/nautical/NAVOYGH
 ###
-DELETE http://localhost:4004/odata/v4/nautical/NAVOYGH/1000000
+Get http://localhost:4004/odata/v4/nautical/MAS
 
 ###
-POST  http://localhost:4004/odata/v4/nautical/NAVOYGH
+PATCH  http://localhost:4004/odata/v4/nautical/MAS/COOR
 Content-Type: application/json
 
  {
-    "VOYNO":1,
-    "VOYNM": "Mahadev",
-    "VNOMTK": "",
-    "REFDOC": "",
-    "DOCIND": 1,
-    "VESSN": "",
-    "VIMO": "",
-    "CHTYP": "47678",
-    "CHPNO": "",
-    "CURRKEYS": "USD",
-    "FRTCO": 30.56,
-    "VSTAT": "Created",
-    "VOYTY": "1000",
-    "CARTY": "1234",
-    "CURR": "USD",
-    "FREGHT": 0,
-    "PARTY": "not yet",
-    "BIDTYPE": "2",
-    "FRCOST": 0,
-    "FRTU": "",
-    "FRCOST_ACT": 0,
-    "ZDELETE": "0",
-    "REF_VOYNO": "empty"
- }
-
+      "BNAME": "JIB",
+      "VALUE": "CLASS OF VESSEL",
+      "CVALUE": null,
+      "CUNIT": null,
+      "DATATYPE": "CHR",
+      "TABLENAME": "/NAUTI/CLASS",
+      "MULTI_CHOICE": null
+    }
 
 ###
 GET http://localhost:4004/odata/v4/nautical/NAVOYGH

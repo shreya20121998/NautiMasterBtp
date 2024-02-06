@@ -34,14 +34,14 @@ entity CURR {
 //Bid Master Data table
 //Bid Master Data table
 entity BIDMASTER{
-   key BNAME: String(12)@assert.unique @mandatory @assert.notNull;
-   key CODE : String(10)@assert.unique @mandatory @assert.notNull; //This field represents a unique Code
-     VALUE: String(50); //value
-     CVALUE:String;
-     CUNIT:String;  
-     DATATYPE : String(3); //data type
-     TABLENAME: String(20);
-     MULTI_CHOICE:Boolean;
+    BNAME: String(12)@assert.unique @mandatory @assert.notNull;
+    key CODE : String(10)@assert.unique @mandatory @assert.notNull; //This field represents a unique Code
+    VALUE: String(50); //value
+    CVALUE:String;
+    CUNIT:String;  
+    DATATYPE : String(3); //data type
+    TABLENAME: String(20);
+    MULTI_CHOICE:Boolean;
 }
 
 
