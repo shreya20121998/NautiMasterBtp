@@ -51,6 +51,8 @@ service Nautical{
     entity LFA1 as projection on NAUTI_VENDOR.LFA1;
     entity ADR6 as projection on NAUTI_VENDOR.ADR6;
     entity ADRC as projection on NAUTI_VENDOR.ADRC;
+    entity PORTLOC as projection on NAUTI_MAS.PORTMASTER;
+
 
    entity BidTypeSet as projection on NAUTINAUTICALCV_SRV.BidTypeSet;
 

@@ -93,3 +93,15 @@ entity REF_DOC_S {
     DOCIND  : String(1) ;//Reference document indicator (PSX)
     DOCDESC : String(20) //Doc Desc
 };
+
+entity PORTMASTER{
+    key COUNTRY: String(12)@assert.unique @mandatory @assert.notNull;
+    PORTC : String(15)@assert.unique @mandatory @assert.notNull;
+    PORTN: String(50); //value
+    REANCHO:String;
+    LATITUDE:String;  
+    LONGITUDE : String;
+    COUNTRYN: String(50);
+    LOCID:String(10);
+    IND:String(1);
+}
