@@ -1,22 +1,20 @@
 .page{
-    background-color: rgba(247, 243, 243, 0.898);
+    background-color: rgba(212, 232, 255, 0.898);
+    
 }
-.pageFooter{
-    border: 1px solid rgb(194, 193, 193);
-}
-.sapMBtnContent{
-    color: rgb(195, 68, 68);;
+#__bar0-BarRight{
+    background-color: rgb(161, 212, 241);
 }
 .sapMLIBShowSeparator>td{
     border: 1px solid rgb(214, 211, 211);
  }
+
  .stickyBar{
    margin-top: 1%;
  }
 /************************************ For Home Screen **********************************************/
-.tileLayout{
-    border-radius: 0%;
-}
+
+
 /************************************* For Create Voyage Screen *************************************/
 .threeFlex{
     margin: 0.5%;
@@ -45,6 +43,10 @@
 }
  
 /************************************** Bidding controller page ******************************************/
+.compareIcon{
+    
+    margin-top: 30%;
+}
 .biddingTileflex{
     justify-content: space-around;
     justify-content: center;
@@ -102,11 +104,17 @@
 .vgNoText{
     float: right;
 }
-/**************************************** Nautical Dashboard Screen *********************************/
-.dashboardPanel{
-    background-color: white;
-    margin: 7%;
+/************************************ For Master DashBoard Screen **********************************************/
+.masterFlexBox{
+    margin-bottom: 1%;
 }
+.mastDash{
+    margin:3%;
+}
+/**************************************** Nautical Dashboard Screen *********************************/
+/* .dashboardPanel{
+    margin: 3%;
+} */
 .headerTxt{
     font-weight: bold;
 }
@@ -120,22 +128,7 @@
     position: fixed;
 }
  
-/************************************** Master Dashboard Screen  ***************************************/
-.one,.two,.three,.four,.five{
-    margin-left: 2%;
-    margin-top: 5%;
-}
-.one,.three,.five{
-    width: 30%;
-}
-.two,.four{
-    width: 8%;
-}
-.nauticalimg1{
-    margin-top: 10%;
-    position: fixed;
-}
- 
+
 /************************************** Transaction data Dashboard  **************************************/
 .two{
     width: 35%;
@@ -269,9 +262,9 @@
 }
  
 /* for all icon */
-.sapMBtnIcon {
+/* .sapMBtnIcon {
     color: rgb(194, 65, 65);
-}
+} */
  
 .vaInputBox{
     margin-right: 8%;

@@ -53,7 +53,8 @@ xmlns:form="sap.ui.layout.form"
     
         <GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
          header="Nautical" subheader="Live Bidding Controller" press=".onPress2">
-            <TileContent id="_IDGenTileContent2">
+            <TileContent id="_IDGenTileContent2" >
+            <core:Icon src="sap-icon://compare" class="compareIcon"></core:Icon>
             </TileContent>
         </GenericTile>
     
@@ -61,6 +62,20 @@ xmlns:form="sap.ui.layout.form"
          header="Nautical" subheader="Dashboard" press=".onPress3">
             <TileContent id="_IDGenTileContent3">
             <ImageContent id="_IDGenImageContent2" src="./images/pic.png"></ImageContent>
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile id="GenGenericTile23" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+         header="Transaction" subheader="Dashboard" press=".onPress34">
+            <TileContent id="GenTileContent4">
+            <ImageContent id="GenImageContent3" src="./images/pic.png"></ImageContent>
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile id="GenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+         header="Master" subheader="Dashboard" press=".onPress4">
+            <TileContent id="GenTileContent5">
+            <ImageContent id="GenImageContent4" src="./images/pic.png"></ImageContent>
             </TileContent>
         </GenericTile>
  

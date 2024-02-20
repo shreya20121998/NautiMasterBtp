@@ -84,7 +84,6 @@
                 <core:Icon
                     src="sap-icon://print"
                     class="size1"
-                    color="#FF0000"
                 />
                 <!-- <Button text="Display" /> -->
                 <Button

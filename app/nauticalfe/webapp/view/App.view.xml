@@ -1,7 +1,26 @@
 <mvc:View controllerName="nauticalfe.controller.App"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"  xmlns:tnt="sap.tnt">
+    
+   <Page showHeader="false">
+    
+  
     <App id="app" class="main_page">
+        
     </App>
+   
+    <footer >
+        <Bar >
+            <contentRight>
+                <Image id="IDGenImage1" 
+                        width="50px"
+                        src="./images/nautical.png"
+                        height="auto" />
+            </contentRight>
+        </Bar>
+     
+    </footer>
+   </Page>
+    
 </mvc:View>

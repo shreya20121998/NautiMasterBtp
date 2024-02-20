@@ -55,90 +55,107 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
             </Bar>
         </headerContent>
  
-        <VBox id="_IDGenVBox1"  class="vPanel">
-       
-           <Panel id="_IDGenPanel1"  class="dashboardPanel" width="950px" height="auto">
- 
-                <ObjectListItem id="_IDGenObjectListItem1"  intro="Selection Options" class="headerTxt"></ObjectListItem>
- 
-               
-                <Button id="_IDGenButton2"  text="Voyage Type" type="Reject"  class="one" press="navToVoyageType"></Button>
-               
-                     
-               
-                <Button id="_IDGenButton4"  text="Vessel Type" type="Reject"  class="three" press="navToVesselType"></Button>
-               
-                     
-               
-                <Button id="_IDGenButton6"  text="Currency" type="Reject"  class="five" press="navToCurrencyType"></Button>
-               
-                <Button id="_IDGenButton7"  text="Class Master" type="Reject" class="one" press="navToClassMaster"></Button>
-               
-             
-               
-                <Button id="_IDGenButton10"  text="Bid Master" type="Reject" class="three" press="onBidMaster"></Button>
-               
-                     
-               
-                <Button id="_IDGenButton11"   text="Port/Loc Master" type="Reject" class="five" press="onPortLoc"></Button>
-               
-                <Button id="_IDGenButton12"  text="Route Master" type="Reject" class="one" press="onRouterMaster"></Button>
-               
-                     
-               
-                <Button id="_IDGenButton14"  text="UOM" type="Reject" class="three" press="onUoM"></Button>
-               
-               
-               
-                <Button id="_IDGenButton16"  text="Cost Master" type="Reject" class="five" press="onCostMaster"></Button>
-               
-                <Button id="_IDGenButton18"  text="Event Master" type="Reject" class="one" press="onEventMaster"></Button>
-                   
-               
- 
-                <Button id="_IDGenButton19"  text="Ref. Doc. Indicator" type="Reject" class="three" press="onRefDocIndicator"></Button>
-               
-           
-               
-                <Button id="onBusinessPartnerBtn" text="Business Partner" type="Reject" class="five" press="onBusinessPartnerPress" ariaHasPopup="Menu"></Button>
-               
-                <Button id="onConfigBtn"  text="Configure Release" type="Reject" class="one" press="onConfigPress" ariaHasPopup="Menu"></Button>
-             
-               
-                <Button id="_IDGenButton24"  text="Port/Loc Upload" type="Reject" class="three" press="onPortLocUpload"></Button>
-               
-           
-               
-                <Button id="_IDGenButton26"  text="Port Master" type="Reject" class="five" press="onPortMaster"></Button>
-               
-                <Button id="_IDGenButton27"  text="Port Upd" type="Reject" class="one" press="onPortUpload"></Button>
-               
-               
-                <Button id="_IDGenButton29"  text="Country Master Upd" type="Reject" class="three" press="onCountryMasterUpd"></Button>
-               
-               
-               
-                <Button id="_IDGenButton31"  text="Country Master" type="Reject" class="five" press="onCountryMaster"></Button>
-               
-                <Button id="_IDGenButton32"  text="API URL" type="Reject" class="one" press="onApiurl"></Button>
-               
-               
-               
-                <Button id="_IDGenButton34"  text="Marine Path Upd" type="Reject" class="three" press="onMarinePathUpd"></Button>
-               
-               
-               
-                <Button id="_IDGenButton36"  text="Marine Dis Upd" type="Reject" class="five" press="onMarineDisUpd"></Button>
-            </Panel>  
- 
-            <Panel id="_IDGenPanel2"  width="0px">
-                <Image id="_IDGenImage1" width="350px" class="nauticalimg1" src="./images/nautical.png" height="auto"></Image>
-            </Panel>
- 
+        <VBox id="_IDGenVBox1"  class="mastDash" >
+            <Title text="Selection Option" titleStyle="H4" />
+            <FlexBox class="masterFlexBox">
+                <GenericTile id="GenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Voyage Type" press="navToVoyageType" >
+                    <TileContent id="_IDGenTileContent1">
+                    <ImageContent id="_IDGenImageContent1" src="./images/voyage.png" ></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="GenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Vessel Type" press="navToVesselType">
+                    <TileContent >
+                    <ImageContent src="./images/vessel.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="GenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Currency" press="navToCurrencyType">
+                    <TileContent >
+                    <ImageContent src="./images/currency.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="GenGenericTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Class Master" press="navToClassMaster">
+                    <TileContent >
+                    <ImageContent src="./images/class.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="GenGenericTile5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Bid Master" press="onBidMaster">
+                    <TileContent >
+                    <ImageContent src="./images/bidmaster.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                    <GenericTile id="GenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port/Loc Master" press="onPortLoc">
+                    <TileContent >
+                    <ImageContent src="./images/portLocMaster.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="GenGenericTile7" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Route Master" press="onRouterMaster">
+                    <TileContent >
+                    <ImageContent src="./images/route.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                
+            </FlexBox>
+            <FlexBox class="masterFlexBox">
+                <GenericTile id="GenGenericTile8" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="UOM" press="onUoM">
+                    <TileContent >
+                    <ImageContent src="./images/uom.png"></ImageContent>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="GenGenericTile9" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Cost Master" press="onCostMaster">
+                </GenericTile>
+                <GenericTile id="GenGenericTile10" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Event Master" press="onEventMaster">
+                </GenericTile>
+                <GenericTile id="GenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Ref. Doc. Indicator" press="onRefDocIndicator">
+                </GenericTile>
+                <GenericTile id="GenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Business Partner" press="onBusinessPartnerPress">
+                </GenericTile>
+                <GenericTile id="GenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Configure Release" press="onConfigPress">
+                </GenericTile>
+                <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port/Loc Upload" press="onPortLocUpload">
+                </GenericTile>
+                
+            </FlexBox>
+            <FlexBox class="masterFlexBox">
+                <GenericTile id="GenGenericTile15" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port Master" press="onPortMaster">
+                </GenericTile>
+                <GenericTile id="GenGenericTile16" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port Upd" press="onPortUpload">
+                </GenericTile>
+                <GenericTile id="GenGenericTile17" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Country Master Upd" press="onCountryMasterUpd">
+                </GenericTile>
+                <GenericTile id="GenGenericTile18" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Country Master" press="onCountryMaster">
+                </GenericTile>
+                <GenericTile id="GenGenericTile19" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="API URL" press="onApiurl">
+                </GenericTile>
+                <GenericTile id="GenGenericTile20" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Marine Path Upd" press="onMarinePathUpd">
+                </GenericTile>
+                <GenericTile id="GenGenericTile21" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Marine Dis Upd" press="onMarineDisUpd">
+                </GenericTile>
+                
+            </FlexBox>
         </VBox>
-        <footer >
-        <OverflowToolbar design="Solid" class="pageFooter"></OverflowToolbar>
-        </footer>
+
+        
      
     </Page>
 </mvc:View>

@@ -634,9 +634,6 @@ sap.ui.define(
   },
 
   calculateVoyage: function (oEvent) {
-      
-        
-          
     var portfromorigin = this.getView().byId("portfromorigin").getValue();
     var distanceorigin = this.getView().byId("distanceorigin").getValue();
     var weatherorigin = this.getView().byId("weatherorigin").getValue();
