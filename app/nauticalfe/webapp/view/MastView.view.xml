@@ -111,6 +111,9 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                 </GenericTile>
                 <GenericTile id="GenGenericTile9" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Cost Master" press="onCostMaster">
+                    <TileContent >
+                    <ImageContent src="./images/cost.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile10" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Event Master" press="onEventMaster">
