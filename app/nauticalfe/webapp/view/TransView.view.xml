@@ -78,25 +78,25 @@
                 <GenericTile id="GenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Change Voyage Details" press="navToVesselType">
                     <TileContent >
-                    <ImageContent src="./images/vessel.png"></ImageContent>
+                    <ImageContent src="./images/voyage.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Display Voyage Details" press="navToCurrencyType">
                     <TileContent >
-                    <ImageContent src="./images/currency.png"></ImageContent>
+                    <ImageContent src="./images/voyage.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Maintain Events" press="navToClassMaster">
                     <TileContent >
-                    <ImageContent src="./images/class.png"></ImageContent>
+                    <ImageContent src="./images/maintainEvent.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Voyage Approval" press="onBidMaster">
                     <TileContent >
-                    <ImageContent src="./images/bidmaster.png"></ImageContent>
+                    <ImageContent src="./images/voyageApproval.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
             </FlexBox>
@@ -114,25 +114,25 @@
                 <GenericTile id="GenGenericTile7" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Create Chartering" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/createChartering.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile8" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Change Chartering" press="navToVesselType">
                     <TileContent >
-                    <ImageContent src="./images/vessel.png"></ImageContent>
+                    <ImageContent src="./images/changeChartering.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile9" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Display Chartering" press="navToCurrencyType">
                     <TileContent >
-                    <ImageContent src="./images/currency.png"></ImageContent>
+                    <ImageContent src="./images/displayChartering.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile10" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Chartering Approval" press="navToClassMaster">
                     <TileContent >
-                    <ImageContent src="./images/class.png"></ImageContent>
+                    <ImageContent src="./images/voyageApproval.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
                 </FlexBox>
@@ -142,14 +142,14 @@
                 <GenericTile id="GenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Request For Quotation" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/reqForQuotation.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
            
                 <GenericTile id="GenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Compare Request For Quotation" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/compareReqForQuotation.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
             </FlexBox>
@@ -159,14 +159,14 @@
                 <GenericTile id="GenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Invite For Live Freight Negotiation" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/reqForQuotation.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
             
                 <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Compare Live Freight Negotitation" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/compareLiveFrieghtNegotiation.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
             </FlexBox>
@@ -176,13 +176,13 @@
                 <GenericTile id="GenGenericTile15" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Contract Award Status Report" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/contractAwardStatusReport.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile16" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Bidding History Report" press="navToVoyageType" >
                     <TileContent >
-                    <ImageContent src="./images/voyage.png" ></ImageContent>
+                    <ImageContent src="./images/biddingHistoryReport.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
             </FlexBox>
