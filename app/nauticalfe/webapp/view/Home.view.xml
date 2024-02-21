@@ -66,7 +66,7 @@ xmlns:form="sap.ui.layout.form"
         </GenericTile>
 
         <GenericTile id="GenGenericTile23" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-         header="Transaction" subheader="Dashboard" press=".onPress34">
+         header="Transaction" subheader="Dashboard" press=".onPress5">
             <TileContent id="GenTileContent4">
             <ImageContent id="GenImageContent3" src="./images/pic.png"></ImageContent>
             </TileContent>
