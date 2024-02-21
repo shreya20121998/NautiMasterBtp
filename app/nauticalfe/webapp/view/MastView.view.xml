@@ -117,42 +117,78 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                 </GenericTile>
                 <GenericTile id="GenGenericTile10" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Event Master" press="onEventMaster">
+                    <TileContent >
+                    <ImageContent src="./images/event.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Ref. Doc. Indicator" press="onRefDocIndicator">
+                    <TileContent >
+                    <ImageContent src="./images/refdocindicator.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Business Partner" press="onBusinessPartnerPress">
+                    <TileContent >
+                    <ImageContent src="./images/businesspartner.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Configure Release" press="onConfigPress">
+                    <TileContent >
+                    <ImageContent src="./images/configReleseStrategy.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Port/Loc Upload" press="onPortLocUpload">
+                    <TileContent >
+                    <ImageContent src="./images/portLocUpload.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 
             </FlexBox>
             <FlexBox class="masterFlexBox">
                 <GenericTile id="GenGenericTile15" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Port Master" press="onPortMaster">
+                    <TileContent >
+                    <ImageContent src="./images/portLocMaster.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile16" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Port Upd" press="onPortUpload">
+                    <TileContent >
+                    <ImageContent src="./images/portLocUpload.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile17" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Country Master Upd" press="onCountryMasterUpd">
+                    <TileContent >
+                    <ImageContent src="./images/countryMasterUpload.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile18" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Country Master" press="onCountryMaster">
+                    <TileContent >
+                    <ImageContent src="./images/countryMaster.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile19" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="API URL" press="onApiurl">
+                    <TileContent >
+                    <ImageContent src="./images/apiURL.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile20" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Marine Path Upd" press="onMarinePathUpd">
+                    <TileContent >
+                    <ImageContent src="./images/marinePath.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile21" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Marine Dis Upd" press="onMarineDisUpd">
+                    <TileContent >
+                    <ImageContent src="./images/marinePath.png"></ImageContent>
+                    </TileContent>
                 </GenericTile>
                 
             </FlexBox>
