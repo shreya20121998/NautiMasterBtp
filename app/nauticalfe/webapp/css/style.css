@@ -115,6 +115,7 @@
 /* .dashboardPanel{
     margin: 3%;
 } */
+
 .headerTxt{
     font-weight: bold;
 }
@@ -130,11 +131,10 @@
  
 
 /************************************** Transaction data Dashboard  **************************************/
-.two{
-    width: 35%;
-    margin-left: 10%;
-    margin-top: 8%;
-}
+.iconBar{
+    position: fixed;
+    width: 100%;
+  }
 /*************************************Transaction Capture Voyage Plan Screen***********************************/
 .animation{
     display: none;

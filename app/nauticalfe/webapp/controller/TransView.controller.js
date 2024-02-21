@@ -13,7 +13,45 @@ sap.ui.define(
         _oChartMenuFragment: null,
         _oReportMenuFragment :null,
         onInit() {
-        },
+          // Assuming you have a reference to the IconTabHeader
+          var iconTabHeader = this.getView().byId("iconTabHeaderId");
+
+          // Attach select event handler to the IconTabHeader
+          iconTabHeader.attachSelect(function(oEvent) {
+              var selectedKey = oEvent.getParameter("key");
+              switch (selectedKey) {
+                  case "voyage":
+                      this.scrollToSection("voyageTileId");
+                      break;
+                  case "freightsimulator":
+                    this.scrollToSection("freightSimulatorTileId");
+                    break;
+                  case "chartering":
+                      this.scrollToSection("charteringTileId");
+                      break;
+                  case "quotation":
+                    this.scrollToSection("quotationTileId");
+                    break;
+                  case "negotiation":
+                      this.scrollToSection("negotiationTileId");
+                      break;
+                  case "reorts":
+                    this.scrollToSection("reportTileId");
+                    break;
+                  // Add cases for other sections as needed
+                  default:
+                      break;
+              }
+          }, this);
+      },
+
+      scrollToSection: function(sectionId) {
+        var sectionFlexBox = this.getView().byId(sectionId);
+        if (sectionFlexBox) {
+            sectionFlexBox.getDomRef().scrollIntoView({ behavior: "smooth" });
+        }
+      },
+      
         onChange: function() {
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("RouteTrChangeVoyage");
