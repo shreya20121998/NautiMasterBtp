@@ -1,7 +1,7 @@
 <mvc:View controllerName="nauticalfe.controller.TransView"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core"
-    xmlns="sap.m" xmlns:tnt="sap.tnt">
+    xmlns="sap.m" xmlns:tnt="sap.tnt" >
     	<Page id="_IDGenPage1" class="page">
         <headerContent>
             <!-- Your header content goes here -->
@@ -52,20 +52,23 @@
                 </contentRight>
             </Bar>
         </headerContent>
-        <IconTabHeader mode="Inline">
+        <IconTabHeader id="iconTabHeaderId" mode="Inline" class="iconBar">
             <items>
-                <IconTabFilter key="charteringId" text="Voyage" />
-                <IconTabFilter key="attachments" text="Freight Simulator" />
-                <IconTabFilter key="charteringId" text="Chartering"/>
-                <IconTabFilter key="people" text="Quotation"/>
-                <IconTabFilter key="people" text="Negotiation"/>
-                <IconTabFilter key="people" text="Reports"/>
+                <IconTabFilter id="voyageId" key="voyage" text="Voyage" />
+                <IconTabFilter id="freightsimulatorId" key="freightsimulator" text="Freight Simulator" />
+                <IconTabFilter id="charteringId" key="chartering" text="Chartering"/>
+                <IconTabFilter id="quotationId" key="quotation" text="Quotation"/>
+                <IconTabFilter id="negotiationId" key="negotiation" text="Negotiation"/>
+                <IconTabFilter id="reportsId" key="reorts" text="Reports"/>
             </items>
 	    </IconTabHeader>
+
+        
  
         <VBox   class="mastDash" >
-            <Title text="Voyage" titleStyle="H4" />
-            <FlexBox class="masterFlexBox">
+            
+            <Title id="voyageTileId" text="Voyage" titleStyle="H4" />
+            <FlexBox  class="masterFlexBox">
                 <GenericTile id="GenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Capture Voyage Details" press="navToVoyageType" >
                     <TileContent id="_IDGenTileContent1">
@@ -97,8 +100,8 @@
                     </TileContent>
                 </GenericTile>
             </FlexBox>
-            <Title text="Freight Simulator" titleStyle="H4" />
-            <FlexBox class="masterFlexBox">
+            <Title id="freightSimulatorTileId" text="Freight Simulator" titleStyle="H4" />
+            <FlexBox  class="masterFlexBox">
                 <GenericTile id="GenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Freight Simulator" press="navToVoyageType" >
                     <TileContent >
@@ -106,8 +109,8 @@
                     </TileContent>
                 </GenericTile>
             </FlexBox>
-            <Title id="charteringId" text="Chartering" titleStyle="H4" />
-            <FlexBox class="masterFlexBox">
+            <Title id="charteringTileId" text="Chartering" titleStyle="H4" />
+            <FlexBox  class="masterFlexBox">
                 <GenericTile id="GenGenericTile7" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Create Chartering" press="navToVoyageType" >
                     <TileContent >
@@ -134,8 +137,8 @@
                 </GenericTile>
                 </FlexBox>
 
-            <Title text="Quotation" titleStyle="H4" />
-            <FlexBox class="masterFlexBox">
+            <Title id="quotationTileId" text="Quotation" titleStyle="H4" />
+            <FlexBox  class="masterFlexBox">
                 <GenericTile id="GenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Request For Quotation" press="navToVoyageType" >
                     <TileContent >
@@ -152,7 +155,7 @@
             </FlexBox>
 
             <Title text="Negotiation" titleStyle="H4" />
-            <FlexBox class="masterFlexBox">
+            <FlexBox id="negotiationTileId" class="masterFlexBox">
                 <GenericTile id="GenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Invite For Live Freight Negotiation" press="navToVoyageType" >
                     <TileContent >
@@ -169,7 +172,7 @@
             </FlexBox>
 
             <Title text="Reports" titleStyle="H4" />
-            <FlexBox class="masterFlexBox">
+            <FlexBox id="reportTileId" class="masterFlexBox">
                 <GenericTile id="GenGenericTile15" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Contract Award Status Report" press="navToVoyageType" >
                     <TileContent >
