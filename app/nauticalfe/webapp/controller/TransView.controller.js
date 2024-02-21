@@ -35,7 +35,7 @@ sap.ui.define(
                   case "negotiation":
                       this.scrollToSection("negotiationTileId");
                       break;
-                  case "reorts":
+                  case "reports":
                     this.scrollToSection("reportTileId");
                     break;
                   // Add cases for other sections as needed
@@ -52,9 +52,9 @@ sap.ui.define(
         }
       },
       
-        onChange: function() {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("RouteTrChangeVoyage");
+      onChange: function() {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteTrChangeVoyage");
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();

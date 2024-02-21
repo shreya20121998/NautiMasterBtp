@@ -59,7 +59,7 @@
                 <IconTabFilter id="charteringId" key="chartering" text="Chartering"/>
                 <IconTabFilter id="quotationId" key="quotation" text="Quotation"/>
                 <IconTabFilter id="negotiationId" key="negotiation" text="Negotiation"/>
-                <IconTabFilter id="reportsId" key="reorts" text="Reports"/>
+                <IconTabFilter id="reportsId" key="reports" text="Reports"/>
             </items>
 	    </IconTabHeader>
 
@@ -94,7 +94,7 @@
                     </TileContent>
                 </GenericTile>
                 <GenericTile id="GenGenericTile5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Voyage Approval" press="onBidMaster">
+                    header="Voyage Approval" press="onVoyageApproval">
                     <TileContent >
                     <ImageContent src="./images/voyageApproval.png"></ImageContent>
                     </TileContent>
@@ -103,7 +103,7 @@
             <Title id="freightSimulatorTileId" text="Freight Simulator" titleStyle="H4" />
             <FlexBox  class="masterFlexBox">
                 <GenericTile id="GenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Freight Simulator" press="navToVoyageType" >
+                    header="Freight Simulator" press="onFrieghtPress" >
                     <TileContent >
                     <ImageContent src="./images/voyage.png" ></ImageContent>
                     </TileContent>
@@ -140,14 +140,14 @@
             <Title id="quotationTileId" text="Quotation" titleStyle="H4" />
             <FlexBox  class="masterFlexBox">
                 <GenericTile id="GenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Request For Quotation" press="navToVoyageType" >
+                    header="Request For Quotation" press="onReqQuotationPress" >
                     <TileContent >
                     <ImageContent src="./images/reqForQuotation.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
            
                 <GenericTile id="GenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Compare Request For Quotation" press="navToVoyageType" >
+                    header="Compare Request For Quotation" press="onCompareReqQuotPress" >
                     <TileContent >
                     <ImageContent src="./images/compareReqForQuotation.png" ></ImageContent>
                     </TileContent>
@@ -157,14 +157,14 @@
             <Title text="Negotiation" titleStyle="H4" />
             <FlexBox id="negotiationTileId" class="masterFlexBox">
                 <GenericTile id="GenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Invite For Live Freight Negotiation" press="navToVoyageType" >
+                    header="Invite For Live Freight Negotiation" press="onInvitelivefrieghtNegoPress" >
                     <TileContent >
                     <ImageContent src="./images/reqForQuotation.png" ></ImageContent>
                     </TileContent>
                 </GenericTile>
             
                 <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Compare Live Freight Negotitation" press="navToVoyageType" >
+                    header="Compare Live Freight Negotitation" press="onCompareLiveFrieghtReportPress" >
                     <TileContent >
                     <ImageContent src="./images/compareLiveFrieghtNegotiation.png" ></ImageContent>
                     </TileContent>
