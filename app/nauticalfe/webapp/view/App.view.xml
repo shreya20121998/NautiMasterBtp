@@ -12,12 +12,13 @@
    
     <footer >
         <Bar >
-            <contentRight>
+            <contentLeft>
                 <Image id="IDGenImage1" 
                         width="50px"
                         src="./images/nautical.png"
                         height="auto" />
-            </contentRight>
+                <Title text="Nautical Ez Chartering Solution" ></Title>        
+            </contentLeft>
         </Bar>
      
     </footer>
