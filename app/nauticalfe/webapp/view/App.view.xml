@@ -11,7 +11,7 @@
     </App>
    
     <footer >
-        <Bar >
+        <Bar class="footerBar">
             <contentLeft>
                 <Image id="IDGenImage1" 
                         width="50px"

@@ -26,7 +26,7 @@ sap.ui.define([
             },
             onPress5: function(){
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("TransView")
+                oRouter.navTo("RouteTransactionDashboard")
             },
             onPress4: function(){
                 const oRouter = this.getOwnerComponent().getRouter();

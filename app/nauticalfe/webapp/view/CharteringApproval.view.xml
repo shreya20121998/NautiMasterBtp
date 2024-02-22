@@ -1,0 +1,98 @@
+<mvc:View xmlns:controls="sap.viz.ui5.controls" controllerName="nauticalfe.controller.CharteringApproval"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards" 
+    xmlns:form="sap.ui.layout.form" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout"
+      
+    xmlns="sap.m">
+    <Page id="page">
+        <headerContent>
+           <Bar class="customHeader">
+          <contentLeft>
+              <core:Icon
+                  src="sap-icon://nav-back"
+                  class="size1"
+                  color="#FFFFFF"
+                  press="onBackPress"
+              />
+              <Image
+                   class="size1"
+                  src="./images/ignxlogo.png"
+                  height="75%"
+              />
+              <Text
+                  class="textBid size1"
+                  text="Chartering Approval Dashboard"
+              />
+          </contentLeft>
+          <contentRight>
+              <core:Icon
+                  src="sap-icon://search"
+                  class="size1"
+                  color="#FFFFFF"
+              >
+                  <core:layoutData>
+                      <FlexItemData growFactor="1" />
+                  </core:layoutData>
+              </core:Icon>
+              <core:Icon
+                  src="sap-icon://SAP-icons-TNT/user"
+                  class="size1"
+                  color="#FFFFFF"
+              >
+                  <core:layoutData>
+                      <FlexItemData growFactor="1" />
+                  </core:layoutData>
+              </core:Icon>
+          </contentRight>
+           </Bar>
+        </headerContent>
+    
+    
+        <Bar id="_IDGenBar1" class="_IDGenBar1">
+                <contentLeft>
+                    <Button id="_IDGenButton1" text="Save as Variant"></Button>
+                    <Button id="button" icon="sap-icon://slim-arrow-down" iconFirst="false" text="More" ariaHasPopup="Menu" press="onPress"/>
+                </contentLeft>
+                <contentRight>
+                    <Button id="_IDGenButton2" text="Exit" press="onExit"></Button>
+                </contentRight>
+            </Bar>
+            <Text id="EnterDetailsId" text="Enter Details" class="vgheading"></Text>
+            <VBox  alignItems="Center">
+                <HBox id="_IDGenHBox1">
+                    <Label id="_IDGenLabel1" text="Voyage Number: "></Label>
+                    <Input id="searchField" filterSuggests="true"/>
+                    <Label id="_IDGenLabel2" text="to:" class="sapUiSmallMarginBegin" ></Label>
+                    <Input id="searchField2" />
+                    <Button icon="sap-icon://rotate" type="Reject"></Button>
+                </HBox>
+                <HBox id="_IDGenHBox2" class="vaInputBox">
+                    <Label id="_IDGLabel1" text="Voyage Approval Request Number: " ></Label>
+                    <Input id="searchField3" />
+                    <Label id="_IDGLabel2" text="to:" class="sapUiSmallMarginBegin"></Label>
+                    <Input id="searchField4"  />
+                    <Button icon="sap-icon://rotate" type="Reject"></Button>
+                </HBox>
+            </VBox>
+            <Text id="DetailsId" text="Selection Options" class="vgheading"></Text>
+            <VBox alignItems="Center">
+                <HBox >
+                    <Text text="Approve Voyage" />
+                    <RadioButton id="_IDLabel1" selected="true" />
+                </HBox>
+                <HBox class="vasrLabel">
+                    <Text text="Voyage Approval Status Report" />
+                    <RadioButton id="_IDLabel2" />
+                </HBox>
+            </VBox>
+            <footer>
+                <OverflowToolbar id="_IDGenOverflowToolbar1" design="Solid">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <Button id="_IDGenButton11" text="Execute" type="Negative" icon="none"></Button>
+               
+                </OverflowToolbar>
+            </footer>
+        
+</Page>
+</mvc:View>

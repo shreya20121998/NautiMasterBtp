@@ -2,8 +2,8 @@
     background-color: rgba(212, 232, 255, 0.898);
     
 }
-#__bar0-BarLeft{
-    background-color: rgb(161, 212, 241);
+.footerBar{
+    background-color: rgb(193, 230, 252) !important;
 }
 .sapMLIBShowSeparator>td{
     border: 1px solid rgb(214, 211, 211);
@@ -109,8 +109,7 @@
     margin-bottom: 1%;
 }
 .mastDash{
-    margin-top:5%;
-    margin-left:3%;
+    padding: 5%;
 }
 /**************************************** Nautical Dashboard Screen *********************************/
 /* .dashboardPanel{

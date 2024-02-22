@@ -151,10 +151,10 @@
               ]
           },
           {
-              "name": "TransView",
-              "pattern": "TransViewObj",
+              "name": "RouteTransactionDashboard",
+              "pattern": "TransactionDashboard",
               "target": [
-                  "TargetTransView"
+                  "TargetTransactionDashboard"
               ]
           },
           {
@@ -372,110 +372,118 @@
         ]
       },
       {
-        "name": "RouteTrCaptureVoyagePlan",
-        "pattern": "TrCaptureVoyagePlan",
+        "name": "RouteCaptureVoyageDetails",
+        "pattern": "CaptureVoyageDetails",
         "target": [
-            "TargetTrCaptureVoyagePlan"
+            "TargetCaptureVoyageDetails"
         ]
       },
       {
-        "name": "RouteTrCaptureVoyageActual",
-        "pattern": "TrCaptureVoyageActual",
+        "name": "RouteCaptureVoyagePlan",
+        "pattern": "CaptureVoyagePlan",
         "target": [
-            "TargetTrCaptureVoyageActual"
+            "TargetCaptureVoyagePlan"
         ]
       },
       {
-        "name": "RouteTrDisplayVoyage",
-        "pattern": "TrDisplayVoyage",
+        "name": "RouteCaptureVoyageActual",
+        "pattern": "CaptureVoyageActual",
         "target": [
-            "TargetTrDisplayVoyage"
+            "TargetCaptureVoyageActual"
         ]
       },
       {
-        "name": "RouteTrMaintainEvent",
-        "pattern": "MaintainEvent",
+        "name": "RouteDisplayVoyageDetails",
+        "pattern": "DisplayVoyageDetails",
         "target": [
-            "TargetTrMaintainEvent"
+            "TargetDisplayVoyageDetails"
         ]
       },
       {
-        "name": "RouteTrRequestQuotation",
-        "pattern": "RequestQuotation",
+        "name": "RouteMaintainEvents",
+        "pattern": "MaintainEvents",
         "target": [
-            "TargetTrRequestQuotation"
+            "TargetMaintainEvents"
         ]
       },
       {
-        "name": "RouteTrCompareRequestQuotation",
-        "pattern": "CompareRequestQuotation",
+        "name": "RouteVoyageApproval",
+        "pattern": "VoyageApproval",
         "target": [
-            "TargetTrCompareRequestQuotation"
+            "TargetVoyageApproval"
         ]
       },
       {
-        "name": "RouteTrInviteLiveFrieghtNego",
-        "pattern": "InviteLiveFrieghtNego",
+        "name": "RouteCreateChartering",
+        "pattern": "CreateChartering",
         "target": [
-            "TargetTrInviteLiveFrieghtNego"
+            "TargetCreateChartering"
         ]
       },
       {
-        "name": "RouteTrCompareLiveFrieghtReport",
-        "pattern": "CompareLiveFrieghtReport",
+        "name": "RouteChangeChartering",
+        "pattern": "ChangeChartering",
         "target": [
-            "TargetTrCompareLiveFrieghtReport"
+            "TargetChangeChartering"
         ]
       },
       {
-        "name": "RouteTrContractAwardStatusReport",
-        "pattern": "TrContractAwardStatusReport",
+        "name": "RouteDisplayChartering",
+        "pattern": "DisplayChartering",
         "target": [
-            "TargetTrContractAwardStatusReport"
+            "TargetDisplayChartering"
         ]
       },
       {
-        "name": "RouteTrBiddingHistoryReport",
-        "pattern": "TrBiddingHistoryReport",
+        "name": "RouteCharteringApproval",
+        "pattern": "CharteringApproval",
         "target": [
-            "TargetTrBiddingHistoryReport"
+            "TargetCharteringApproval"
         ]
       },
       {
-        "name": "RouteTrCreateChartering",
-        "pattern": "TrCreateChartering",
+        "name": "RouteRequestForQuotation",
+        "pattern": "RequestForQuotation",
         "target": [
-            "TargetTrCreateChartering"
+            "TargetRequestForQuotation"
         ]
       },
       {
-        "name": "RouteTrChangeChartering",
-        "pattern": "TrChangeChartering",
+        "name": "RouteCompareRequestForQuotation",
+        "pattern": "CompareRequestForQuotation",
         "target": [
-            "TargetTrChangeChartering"
+            "TargetCompareRequestForQuotation"
         ]
       },
       {
-        "name": "RouteTrDisplayChartering",
-        "pattern": "TrDisplayChartering",
+        "name": "RouteInviteForLiveFrieghtNegotiation",
+        "pattern": "InviteForLiveFrieghtNegotiation",
         "target": [
-            "TargetTrDisplayChartering"
+            "TargetInviteForLiveFrieghtNegotiation"
         ]
       },
       {
-        "name": "RouteTrCharteringApproval",
-        "pattern": "TrCharteringApproval",
+        "name": "RouteCompareLiveFrieghtNegotiation",
+        "pattern": "CompareLiveFrieghtNegotiation",
         "target": [
-            "TargetTrCharteringApproval"
+            "TargetCompareLiveFrieghtNegotiation"
         ]
       },
       {
-        "name": "RouteTrVoyageApproval",
-        "pattern": "TrVoyageApproval",
+        "name": "RouteContractAwardStatusReport",
+        "pattern": "ContractAwardStatusReport",
         "target": [
-            "TargetTrVoyageApproval"
+            "TargetContractAwardStatusReport"
+        ]
+      },
+      {
+        "name": "RouteBiddingHistoryReport",
+        "pattern": "BiddingHistoryReport",
+        "target": [
+            "TargetBiddingHistoryReport"
         ]
       }
+      
 
 
      
@@ -523,12 +531,12 @@
               "viewId": "dash",
               "viewName": "dash"
           },
-          "TargetTransView": {
+          "TargetTransactionDashboard": {
               "viewType": "XML",
               "transition": "slide",
               "clearControlAggregation": false,
-              "viewId": "TransView",
-              "viewName": "TransView"
+              "viewId": "TransactionDashboard",
+              "viewName": "TransactionDashboard"
           },
           "TargetMastView": {
               "viewType": "XML",
@@ -744,111 +752,120 @@
                 "viewId": "MastSaveAsVariant",
                 "viewName": "MastSaveAsVariant"
             },
-            "TargetTrCaptureVoyagePlan": {
+            "TargetCaptureVoyageDetails": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrCaptureVoyagePlan",
-                "viewName": "TrCaptureVoyagePlan"
+                "viewId": "CaptureVoyageDetails",
+                "viewName": "CaptureVoyageDetails"
             },
-            "TargetTrCaptureVoyageActual": {
+            "TargetCaptureVoyagePlan": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrCaptureVoyageActual",
-                "viewName": "TrCaptureVoyageActual"
+                "viewId": "CaptureVoyagePlan",
+                "viewName": "CaptureVoyagePlan"
             },
-            "TargetTrDisplayVoyage": {
+            "TargetCaptureVoyageActual": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrDisplayVoyage",
-                "viewName": "TrDisplayVoyage"
+                "viewId": "CaptureVoyageActual",
+                "viewName": "CaptureVoyageActual"
             },
-            "TargetTrMaintainEvent": {
+            "TargetDisplayVoyageDetails": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrMaintainEvent",
-                "viewName": "TrMaintainEvent"
+                "viewId": "DisplayVoyageDetails",
+                "viewName": "DisplayVoyageDetails"
             },
-            "TargetTrRequestQuotation": {
+            "TargetMaintainEvents": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrRequestQuotation",
-                "viewName": "TrRequestQuotation"
+                "viewId": "MaintainEvents",
+                "viewName": "MaintainEvents"
             },
-            "TargetTrCompareRequestQuotation": {
+            "TargetVoyageApproval": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrCompareRequestQuotation",
-                "viewName": "TrCompareRequestQuotation"
+                "viewId": "VoyageApproval",
+                "viewName": "VoyageApproval"
             },
-            "TargetTrInviteLiveFrieghtNego": {
+
+            "TargetCreateChartering": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrInviteLiveFrieghtNego",
-                "viewName": "TrInviteLiveFrieghtNego"
+                "viewId": "CreateChartering",
+                "viewName": "CreateChartering"
             },
-            "TargetTrCompareLiveFrieghtReport": {
+            "TargetChangeChartering": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrCompareLiveFrieghtReport",
-                "viewName": "TrCompareLiveFrieghtReport"
+                "viewId": "ChangeChartering",
+                "viewName": "ChangeChartering"
             },
-            "TargetTrContractAwardStatusReport": {
+            "TargetDisplayChartering": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrContractAwardStatusReport",
-                "viewName": "TrContractAwardStatusReport"
+                "viewId": "DisplayChartering",
+                "viewName": "DisplayChartering"
             },
-            "TargetTrBiddingHistoryReport": {
+            "TargetCharteringApproval": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrBiddingHistoryReport",
-                "viewName": "TrBiddingHistoryReport"
+                "viewId": "CharteringApproval",
+                "viewName": "CharteringApproval"
             },
-            "TargetTrCreateChartering": {
+            "TargetRequestForQuotation": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrCreateChartering",
-                "viewName": "TrCreateChartering"
+                "viewId": "RequestForQuotation",
+                "viewName": "RequestForQuotation"
             },
-            "TargetTrChangeChartering": {
+            "TargetCompareRequestForQuotation": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrChangeChartering",
-                "viewName": "TrChangeChartering"
+                "viewId": "CompareRequestForQuotation",
+                "viewName": "CompareRequestForQuotation"
             },
-            "TargetTrDisplayChartering": {
+            "TargetInviteForLiveFrieghtNegotiation": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrDisplayChartering",
-                "viewName": "TrDisplayChartering"
+                "viewId": "InviteForLiveFrieghtNegotiation",
+                "viewName": "InviteForLiveFrieghtNegotiation"
             },
-            "TargetTrCharteringApproval": {
+            "TargetCompareLiveFrieghtNegotiation": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrCharteringApproval",
-                "viewName": "TrCharteringApproval"
+                "viewId": "CompareLiveFrieghtNegotiation",
+                "viewName": "CompareLiveFrieghtNegotiation"
             },
-            "TargetTrVoyageApproval": {
+            "TargetContractAwardStatusReport": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "TrVoyageApproval",
-                "viewName": "TrVoyageApproval"
+                "viewId": "ContractAwardStatusReport",
+                "viewName": "ContractAwardStatusReport"
+            },
+            "TargetBiddingHistoryReport": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "BiddingHistoryReport",
+                "viewName": "BiddingHistoryReport"
             }
+            
 
             
 
