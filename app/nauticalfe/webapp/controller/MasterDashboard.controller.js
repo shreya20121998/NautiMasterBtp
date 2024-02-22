@@ -7,7 +7,7 @@ sap.ui.define(
   function(BaseController,History,Fragment) {
     "use strict";
 
-    return BaseController.extend("nauticalfe.controller.MastView", {
+    return BaseController.extend("nauticalfe.controller.MasterDashboard", {
       onInit() {
       },
       onPortLoc:function(){

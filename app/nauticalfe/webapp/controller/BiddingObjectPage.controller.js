@@ -12,10 +12,10 @@ sap.ui.define([
         var vendorName;
         var TechnicalScore="";
  
-        return Controller.extend("nauticalfe.controller.BidObj", {
+        return Controller.extend("nauticalfe.controller.BiddingObjectPage", {
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.getRoute("RouteBidObj").attachPatternMatched(this.onObjectMatched, this);
+                oRouter.getRoute("RouteBiddingObjectPage").attachPatternMatched(this.onObjectMatched, this);
                 this.getView().byId("boTxt5").setText(`Quote: ${Quote}`);
                 this.getView().byId("Label01").setText(`Leading Commercial Rank: (${CommercialRank})`);
                 this.getView().byId("boTxt6").setText(vendorName);

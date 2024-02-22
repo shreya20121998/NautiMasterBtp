@@ -4,7 +4,7 @@ xmlns:form="sap.ui.layout.form"
  controllerName="nauticalfe.controller.CreateVoyage"
     xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
  
-  <Page id="pageId">
+  <Page id="pageId" >
     <headerContent>
       <Bar id="_IDGenBar1" class="customHeader">
           <contentLeft>
@@ -74,6 +74,7 @@ xmlns:form="sap.ui.layout.form"
         </FlexBox>
    
         <FlexBox id="_IDGenFlexBox2"  width="47%" class="threeFlex">
+       
         </FlexBox>
  
         <FlexBox id="_IDGenFlexBox3" width="35%" class="threeFlex">
@@ -93,10 +94,10 @@ xmlns:form="sap.ui.layout.form"
             <Input id="totaldays" width="10%" value="" editable="false"/>
           </contentMiddle>
           <contentRight >
-            <Button id="_IDGenButn1" text="Create Voyage"  press="onCreateVoyage" type="Reject"/>
-            <Button id="_IDGenButn2" text="Freight Simulator" press="onFreightSimulator" type="Reject" />
-            <Button id="_IDGenButn3"  text="Calculate"  type="Negative"  icon="none"  press="calculateVoyage" />
-            <Button id="_IDGenButn4" icon="sap-icon://refresh" type="Reject" press="onRefreshTable"/>
+            <Button id="_IDGenButn1" text="Create Voyage"  press="onCreateVoyage" />
+            <Button id="_IDGenButn2" text="Freight Simulator" press="onFreightSimulator"  />
+            <Button id="_IDGenButn3"  text="Calculate"  type="Emphasized"  icon="none"  press="calculateVoyage" />
+            <Button id="_IDGenButn4" icon="sap-icon://refresh"  press="onRefreshTable"/>
           </contentRight>
         </Bar>
  

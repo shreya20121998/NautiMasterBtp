@@ -1,7 +1,7 @@
 <mvc:View xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards" xmlns:core="sap.ui.core"
-xmlns:form="sap.ui.layout.form" xmlns:f="sap.f" controllerName="nauticalfe.controller.BidObj"
+xmlns:form="sap.ui.layout.form" xmlns:f="sap.f" controllerName="nauticalfe.controller.BiddingObjectPage"
 xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
-<Page >
+<Page class="page">
   <headerContent>
     <Bar class="customHeader">
         <contentLeft>
@@ -94,7 +94,7 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
         <contentRight>
           <Label id="Label2"  text="Quote Price:"/>
           <Input id="Input1" value="{biddata>Original Bid}" width="50%"></Input>
-          <Button id="Button" text="Submit" type="Negative" icon="none"></Button>
+          <Button id="Button" text="Submit" type="Emphasized" icon="none"></Button>
         </contentRight>
       </Bar>
     

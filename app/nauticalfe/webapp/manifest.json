@@ -130,38 +130,26 @@
               ]
           },
           {
-              "name": "RouteBidCont",
-              "pattern": "Bidding",
+              "name": "RouteBiddingController",
+              "pattern": "BiddingController",
               "target": [
-                  "TargetBidCont"
+                  "TargetBiddingController"
               ]
           },
           {
-              "name": "RouteBidObj",
+              "name": "RouteBiddingObjectPage",
               "pattern": "BiddingObject/{bidObjPath}",
               "target": [
-                  "TargetBidObj"
+                  "TargetBiddingObjectPage"
               ]
           },
+          
+          
           {
-              "name": "Routedash",
-              "pattern": "dashboard",
+              "name": "RouteMasterDashboard",
+              "pattern": "MasterDashboard",
               "target": [
-                  "Targetdash"
-              ]
-          },
-          {
-              "name": "RouteTransactionDashboard",
-              "pattern": "TransactionDashboard",
-              "target": [
-                  "TargetTransactionDashboard"
-              ]
-          },
-          {
-              "name": "MastView",
-              "pattern": "MastViewObj",
-              "target": [
-                  "TargetMastView"
+                  "TargetMasterDashboard"
               ]
           },
           {
@@ -372,6 +360,13 @@
         ]
       },
       {
+        "name": "RouteTransactionDashboard",
+        "pattern": "TransactionDashboard",
+        "target": [
+            "TargetTransactionDashboard"
+        ]
+        },
+      {
         "name": "RouteCaptureVoyageDetails",
         "pattern": "CaptureVoyageDetails",
         "target": [
@@ -510,40 +505,28 @@
               "viewId": "FreightSimulator",
               "viewName": "FreightSimulator"
           },
-          "TargetBidCont": {
+          "TargetBiddingController": {
               "viewType": "XML",
               "transition": "slide",
               "clearControlAggregation": false,
-              "viewId": "BidCont",
-              "viewName": "BidCont"
+              "viewId": "BiddingController",
+              "viewName": "BiddingController"
           },
-          "TargetBidObj": {
+          "TargetBiddingObjectPage": {
               "viewType": "XML",
               "transition": "slide",
               "clearControlAggregation": false,
-              "viewId": "BidObj",
-              "viewName": "BidObj"
+              "viewId": "BiddingObjectPage",
+              "viewName": "BiddingObjectPage"
           },
-          "Targetdash": {
+          
+          
+          "TargetMasterDashboard": {
               "viewType": "XML",
               "transition": "slide",
               "clearControlAggregation": false,
-              "viewId": "dash",
-              "viewName": "dash"
-          },
-          "TargetTransactionDashboard": {
-              "viewType": "XML",
-              "transition": "slide",
-              "clearControlAggregation": false,
-              "viewId": "TransactionDashboard",
-              "viewName": "TransactionDashboard"
-          },
-          "TargetMastView": {
-              "viewType": "XML",
-              "transition": "slide",
-              "clearControlAggregation": false,
-              "viewId": "MastView",
-              "viewName": "MastView"
+              "viewId": "MasterDashboard",
+              "viewName": "MasterDashboard"
           },
           "TargetTrChangeVoyage": {
               "viewType": "XML",
@@ -752,6 +735,13 @@
                 "viewId": "MastSaveAsVariant",
                 "viewName": "MastSaveAsVariant"
             },
+            "TargetTransactionDashboard": {
+              "viewType": "XML",
+              "transition": "slide",
+              "clearControlAggregation": false,
+              "viewId": "TransactionDashboard",
+              "viewName": "TransactionDashboard"
+          },
             "TargetCaptureVoyageDetails": {
                 "viewType": "XML",
                 "transition": "slide",

@@ -10,7 +10,7 @@ sap.ui.define([
     function (Controller, Filter, FilterOperator,FilterType) {
         "use strict";
  
-        return Controller.extend("nauticalfe.controller.BidCont", {
+        return Controller.extend("nauticalfe.controller.BiddingController", {
             onInit: function () {
                 // console.log("hello");
                 // let oView = this.getView();
@@ -28,7 +28,7 @@ sap.ui.define([
             onPressBidTableData(oEvent) {
                 const oItem = oEvent.getSource();
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteBidObj", {
+                oRouter.navTo("RouteBiddingObjectPage", {
                     bidObjPath: window.encodeURIComponent(oItem.getBindingContext("bidData").getPath().substr(1))
                 });
             },

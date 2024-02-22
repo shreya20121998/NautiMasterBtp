@@ -12,25 +12,21 @@ sap.ui.define([
  
             },
            
-            onPress: function() {
+            onPress1: function() {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteCreateVoyage");
             },
             onPress2: function() {
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteBidCont");
+                oRouter.navTo("RouteBiddingController");
             },
             onPress3: function(){
-                const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("Routedash")
-            },
-            onPress5: function(){
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteTransactionDashboard")
             },
             onPress4: function(){
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("MastView")
+                oRouter.navTo("RouteMasterDashboard")
             }
         });
     });
