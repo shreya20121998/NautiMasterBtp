@@ -99,7 +99,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/VOYTYP}"
+            items="{/VoyTypeSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -126,11 +126,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{VOYCD}"
+                            text="{Voycd}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{VOYDES}"
+                            text="{Voydes}"
                         />
                        
                     </cells>

@@ -97,7 +97,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/ZUSER}"
+            items="{/MaintainGroupSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -124,11 +124,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{ZUSERNAME}"
+                            text="{Zuser}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{ZGROUP}"
+                            text="{Zgroup}"
                         />
                        
                     </cells>

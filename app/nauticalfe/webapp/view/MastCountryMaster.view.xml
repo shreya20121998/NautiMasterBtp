@@ -131,7 +131,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/ZCOUNTRY}"
+            items="{/CountryMasterSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -151,11 +151,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{ZF_VALUE}"
+                            text="{ZfValue}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{ZF_DESC}"
+                            text="{ZfDesc}"
                         />
                     </cells>
                 </ColumnListItem>

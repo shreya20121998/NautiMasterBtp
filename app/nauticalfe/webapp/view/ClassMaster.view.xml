@@ -132,7 +132,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/CLASS}"
+            items="{/ClassMasterSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -159,11 +159,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{ZF_VALUE}"
+                            text="{ZfValue}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{ZF_DESC}"
+                            text="{ZfDesc}"
                         />
                         
                     </cells>

@@ -99,7 +99,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/EVENT_MAS}"
+            items="{/EventMasterSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -126,11 +126,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{EVTTY}"
+                            text="{Evtty}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{TEXT}"
+                            text="{Text}"
                         />
                        
                     </cells>

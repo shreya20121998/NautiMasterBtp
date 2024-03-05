@@ -127,7 +127,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/CARTYP}"
+            items="{/CarTypeSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -154,11 +154,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{CARCD}"
+                            text="{Carcd}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{CARDES}"
+                            text="{Cardes}"
                         />
                        
                     </cells>

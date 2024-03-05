@@ -265,11 +265,11 @@ sap.ui.define(
         let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
 
         oValueHelpTable.bindItems({
-          path: "/VOYTYP", // Replace with your entity set
+          path: "/VoyTypeSet", // Replace with your entity set
           template: new sap.m.ColumnListItem({
             cells: [
-              new sap.m.Text({ text: "{VOYCD}" }),
-              new sap.m.Text({ text: "{VOYDES}" }),
+              new sap.m.Text({ text: "{Voycd}" }),
+              new sap.m.Text({ text: "{Voydes}" }),
             ],
           }),
         });
@@ -297,22 +297,22 @@ sap.ui.define(
                 header: new sap.m.Text({ text: "Description" }),
               }),
             ],
-            items: [
-              new sap.m.ColumnListItem({
-                cells: [
-                  new sap.m.Text({ text: "TB" }),
-                  new sap.m.Text({ text: "2 Bid System" }),
-                ],
-              }),
-              new sap.m.ColumnListItem({
-                cells: [
-                  new sap.m.Text({ text: "SB" }),
-                  new sap.m.Text({ text: "1 Bid System" }),
-                ],
-              }),
+            // items: [
+            //   new sap.m.ColumnListItem({
+            //     cells: [
+            //       new sap.m.Text({ text: "TB" }),
+            //       new sap.m.Text({ text: "2 Bid System" }),
+            //     ],
+            //   }),
+            //   new sap.m.ColumnListItem({
+            //     cells: [
+            //       new sap.m.Text({ text: "SB" }),
+            //       new sap.m.Text({ text: "1 Bid System" }),
+            //     ],
+            //   }),
 
-              // Add more ColumnListItems as needed
-            ],
+            //   // Add more ColumnListItems as needed
+            // ],
 
             selectionChange: function (oEvent) {
               var oSelectedItem = oEvent.getParameter("listItem");
@@ -332,6 +332,15 @@ sap.ui.define(
         });
 
         let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
+        oValueHelpTable.bindItems({
+          path: "/BidTypeSet", // Replace with your entity set
+          template: new sap.m.ColumnListItem({
+            cells: [
+              new sap.m.Text({ text: "{Ddtext}" }),
+              new sap.m.Text({ text: "{DomvalueL}" }),
+            ],
+          }),
+        });
 
         // Bind the dialog to the view
         this.getView().addDependent(oDialog);
@@ -378,11 +387,11 @@ sap.ui.define(
         let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
 
         oValueHelpTable.bindItems({
-          path: "/CARTYP", // Replace with your entity set
+          path: "/CarTypeSet", // Replace with your entity set
           template: new sap.m.ColumnListItem({
             cells: [
-              new sap.m.Text({ text: "{CARCD}" }),
-              new sap.m.Text({ text: "{CARDES}" }),
+              new sap.m.Text({ text: "{Carcd}" }),
+              new sap.m.Text({ text: "{Cardes}" }),
             ],
           }),
         });
@@ -431,11 +440,11 @@ sap.ui.define(
         let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
 
         oValueHelpTable.bindItems({
-          path: "/CURR", // Replace with your entity set
+          path: "/CurTypeSet", // Replace with your entity set
           template: new sap.m.ColumnListItem({
             cells: [
-              new sap.m.Text({ text: "{NAVOYCUR}" }),
-              new sap.m.Text({ text: "{NAVOYGCURDES}" }),
+              new sap.m.Text({ text: "{Navoycur}" }),
+              new sap.m.Text({ text: "{Navoygcurdes}" }),
             ],
           }),
         });
@@ -559,11 +568,11 @@ sap.ui.define(
         let oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
 
         oValueHelpTable.bindItems({
-          path: "/NAVOYGUOM", // Replace with your entity set
+          path: "/CargoUnitSet", // Replace with your entity set
           template: new sap.m.ColumnListItem({
             cells: [
-              new sap.m.Text({ text: "{UOM}" }),
-              new sap.m.Text({ text: "{UOMDES}" }),
+              new sap.m.Text({ text: "{Uom}" }),
+              new sap.m.Text({ text: "{Uomdes}" }),
             ],
           }),
         });

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="NAUTI.MASTER_BTP_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="BusinessPartner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lifnr"/>
+                </Key>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vendor" sap:updatable="false"/>
+                <Property Name="PartnerRole" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="BP Role"/>
+                <Property Name="Anred" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Title"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name"/>
+                <Property Name="Name2" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 2"/>
+                <Property Name="Name3" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 3"/>
+                <Property Name="Sort1" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Search Term 1"/>
+                <Property Name="StrSuppl1" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Street 2"/>
+                <Property Name="StrSuppl2" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Street 3"/>
+                <Property Name="HouseNum1" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"/>
+                <Property Name="Stras" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street"/>
+                <Property Name="Pstlz" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"/>
+                <Property Name="Ort01" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="City"/>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country"/>
+                <Property Name="Regio" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Region"/>
+                <Property Name="TimeZone" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Time zone"/>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language"/>
+                <Property Name="Telf1" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Telephone 1"/>
+                <Property Name="Telf2" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Telephone 2"/>
+                <Property Name="Telfx" Type="Edm.String" Nullable="false" MaxLength="31" sap:unicode="false" sap:label="Fax Number"/>
+                <Property Name="SmtpAddr" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="E-Mail Address"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Created on"/>
+                <Property Name="DateTo" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="To"/>
+            </EntityType>
+            <EntityType Name="MaintainGroup" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zgroup"/>
+                </Key>
+                <Property Name="Zuser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:updatable="false"/>
+                <Property Name="Zgroup" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User ID group"/>
+            </EntityType>
+            <EntityType Name="VoyageRelease" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zgroup"/>
+                    <PropertyRef Name="App1"/>
+                </Key>
+                <Property Name="Rels" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Release Strategy"/>
+                <Property Name="Voyty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Voyage Type"/>
+                <Property Name="Vesty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vessel Type"/>
+                <Property Name="Zgroup" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User ID group" sap:updatable="false"/>
+                <Property Name="App1" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ReleaseStrategy" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zgroup"/>
+                    <PropertyRef Name="App1"/>
+                </Key>
+                <Property Name="Rels" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Release Strategy"/>
+                <Property Name="Voyty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Voyage Type"/>
+                <Property Name="Vesty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vessel Type"/>
+                <Property Name="Zgroup" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User ID group" sap:updatable="false"/>
+                <Property Name="App1" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CountryMaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZfValue"/>
+                </Key>
+                <Property Name="ZfValue" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Value" sap:updatable="false"/>
+                <Property Name="ZfDesc" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Field Description"/>
+            </EntityType>
+            <EntityType Name="CostMaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Costcode"/>
+                </Key>
+                <Property Name="Costcode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Cost.Code" sap:updatable="false"/>
+                <Property Name="Cstcodes" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Cost.Code.Des"/>
+            </EntityType>
+            <EntityType Name="EventMaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Evtty"/>
+                </Key>
+                <Property Name="Evtty" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Event Type"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Event Text"/>
+            </EntityType>
+            <EntityType Name="ClassMaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZfValue"/>
+                </Key>
+                <Property Name="ZfValue" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Value" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="ZfDesc" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Field Description" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BidMaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                </Key>
+                <Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cvalue" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:label="Revaluation" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cunit" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Datatype" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Datatype" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tablename" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Table Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MultiChoice" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Multiple Choice" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="NAUTI_MASTER_BTP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BusinessPartnerSet" EntityType="NAUTI.MASTER_BTP_SRV.BusinessPartner" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MaintainGroupSet" EntityType="NAUTI.MASTER_BTP_SRV.MaintainGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="VoyageReleaseSet" EntityType="NAUTI.MASTER_BTP_SRV.VoyageRelease" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReleaseStrategySet" EntityType="NAUTI.MASTER_BTP_SRV.ReleaseStrategy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountryMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.CountryMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CostMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.CostMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EventMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.EventMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ClassMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.ClassMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BidMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.BidMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://35.185.33.183:8001/sap/opu/odata/nauti/MASTER_BTP_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://35.185.33.183:8001/sap/opu/odata/nauti/MASTER_BTP_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

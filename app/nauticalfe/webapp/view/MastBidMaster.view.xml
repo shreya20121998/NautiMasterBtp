@@ -113,7 +113,7 @@
         <Table id="createTypeTable"
             width="100%"
             class="mastertables"
-            items="{/MAS}"
+            items="{/BidMasterSet}"
             mode="MultiSelect"
             selectionChange="selectedItems">
 
@@ -147,14 +147,14 @@
             <ColumnListItem id="_istItem1">
                 <cells>
                    
-                    <Text id="_IDGenText3" text="{BNAME}" />
-                    <Text id="_IDGenText4" text="{CODE}" />
-                    <Text id="_IDGenText5" text="{VALUE}" />
-                    <Text id="_IDGenText6" text="{CVALUE_code}" />
-                    <Text id="_IDGenText7" text="{CUNIT_code}" />
-                    <Text id="_IDGenText8" text="{DATATYPE}" />
-                    <Text id="_IDGenText9" text="{TABLENAME}" />
-                    <CheckBox id="_IDGenText10" selected="{MULTI_CHOICE}" />
+                    <Text id="_IDGenText3" text="{Bname}" />
+                    <Text id="_IDGenText4" text="{Code}" />
+                    <Text id="_IDGenText5" text="{Value}" />
+                    <Text id="_IDGenText6" text="{Cvalue}" />
+                    <Text id="_IDGenText7" text="{Cunit}" />
+                    <Text id="_IDGenText8" text="{DataType}" />
+                    <Text id="_IDGenText9" text="{Tablename}" />
+                    <CheckBox id="_IDGenText10" selected="{Multichoice}" />
                 </cells>
             </ColumnListItem>
         </Table>

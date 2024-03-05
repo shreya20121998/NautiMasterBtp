@@ -133,7 +133,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/CURR}"
+            items="{/CurTypeSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -160,11 +160,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{NAVOYCUR}"
+                            text="{Navoycur}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{NAVOYGCURDES}"
+                            text="{Navoygcurdes}"
                         />
                         
                     </cells>

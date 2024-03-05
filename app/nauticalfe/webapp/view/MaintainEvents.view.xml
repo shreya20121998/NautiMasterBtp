@@ -86,9 +86,9 @@
                         forceSelection="false"
                
                         items="{
-                            path: '/VOYTYP'
+                            path: '/VoyTypeSet'
                         }">
-                    <core:Item  id="_Item2" key="{VOYCD}" text="{VOYDES}" />
+                    <core:Item  id="_Item2" key="{Voycd}" text="{Voydes}" />
                 </Select>
                 </HBox>
                 <HBox id="_IDGenHBox5">
@@ -96,9 +96,9 @@
                 <Select id="Select3" width="200px" forceSelection="false"
            
                     items="{
-                        path: '/CARTYP'
+                        path: '/CarTypeset'
                     }">
-                    <core:Item  id="_Item3" key="{CARCD}" text="{CARDES}" />
+                    <core:Item  id="_Item3" key="{Carcd}" text="{Cardes}" />
                 </Select>
                 </HBox>
                 </VBox>

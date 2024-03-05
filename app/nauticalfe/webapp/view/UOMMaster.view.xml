@@ -101,7 +101,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/NAVOYGUOM}"
+            items="{/CargoUnitSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -128,11 +128,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{UOM}"
+                            text="{Uom}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{UOMDES}"
+                            text="{Uomdes}"
                         />
                        
                     </cells>

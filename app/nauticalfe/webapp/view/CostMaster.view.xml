@@ -99,7 +99,7 @@
         <Table
             id="createTypeTable"
             mode="MultiSelect"
-            items="{/NAVOYGC}"
+            items="{/CostMasterSet}"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -126,11 +126,11 @@
                      
                         <Text
                             id="_IDGenInput1"
-                            text="{COSTCODE}"
+                            text="{Costcode}"
                         />
                         <Text
                             id="_IDGenInput2"
-                            text="{CSTCODES}"
+                            text="{Cstcodes}"
                         />
                        
                     </cells>
