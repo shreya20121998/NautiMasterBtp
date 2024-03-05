@@ -35,6 +35,36 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('READ', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
 
+      srv.on('CREATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'ClassMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'CostMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'CountryMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'EventMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+
+      srv.on('UPDATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'ClassMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'CostMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'CountryMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'EventMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+
+      srv.on('DELETE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'ClassMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'CostMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'CountryMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'EventMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+
       const NAUTIMARINE_TRAFFIC_API_SRV = await cds.connect.to("NAUTIMARINE_TRAFFIC_API_SRV"); 
       srv.on('READ', 'EsPathCollection', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
       srv.on('READ', 'PortMasterSet', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
