@@ -104,6 +104,8 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            growingThreshold="30"
+            growing="true"
            
         >
             <columns>
@@ -184,7 +186,7 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="eventCode1" text="" />
+                        <Input id="eventCode1" editable="false" />
                         <Input id="eventCodeDesc1"  editable="true"/>
                     </cells>
                 </ColumnListItem>
