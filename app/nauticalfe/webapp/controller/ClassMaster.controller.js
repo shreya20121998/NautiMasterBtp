@@ -93,7 +93,7 @@ sap.ui.define(
         if (isSuccess) {
           sap.m.MessageToast.show("Successfully Created.")
         } else {
-          sap.m.MessageToast.show("Fail to Create Nomination.")
+          sap.m.MessageToast.show("Fail to Create.")
         }
       },
       onSave: function () {
@@ -215,8 +215,8 @@ sap.ui.define(
         };
         // console.log(data);
 
-        let nomModel = this.getView().getModel();
-        let oBindList = nomModel.bindList("/ClassMasterSet", {
+        let oModel = this.getView().getModel();
+        let oBindList = oModel.bindList("/ClassMasterSet", {
           $$updateGroupId: "update"
          });
 
@@ -250,62 +250,9 @@ sap.ui.define(
           }
         });
 
-        nomModel.submitBatch("update");
+        oModel.submitBatch("update");
       },
-      onUpdate1: function () {
-
-        let value1 = aSelectedIds[0][0];
-        let value2 = this.getView().byId("CLASSDESC1").getValue();
-
-        let data = {
-          ZfValue: value1,
-
-          ZfDesc: value2
-        };
-        // console.log(data);
-
-        var oView = this.getView();
-        var JsonData = JSON.stringify(data)
-        let EndPoint = "/odata/v4/nautical/ClassMasterSet/" + data.ZfValue;
-        console.log(EndPoint);
-        fetch(EndPoint, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JsonData
-        })
-          .then(function (res) {
-
-            if (res.ok) {
-              // location.reload();
-              console.log("Entry updated successfully");
-              MessageToast.show(`Entry updated successfully`);
-              oView.getModel().refresh();
-              oView.byId("createTypeTable").setVisible(true)
-              
-              
-              oView.byId("mainPageFooter2").setVisible(false);
-              oView.byId("updateTypeTable").setVisible(false);
-              oView.byId("createTypeTable").removeSelections();
-
-            }
-            else {
-              res.json().then((data) => {
-                if (data && data.error && data.error.message) {
-                  // Show the error message from the backend
-                  MessageBox.error(data.error.message);
-                  return
-                }
-              });
-            }
-          })
-          .catch(function (err) {
-            console.log("error", err);
-          })
-      },
-
-      // on Delete press functionality
+     
 
       onDeletePress: function () {
 
@@ -341,7 +288,6 @@ sap.ui.define(
       // internal calling fn by onDeletePress fn
 
       deleteSelectedItems: function (aItems) {
-        const that = this;
 
         aItems.forEach(function (oItem) {
           const oContext = oItem.getBindingContext();
