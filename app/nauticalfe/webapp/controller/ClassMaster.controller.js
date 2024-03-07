@@ -257,7 +257,6 @@ sap.ui.define(
       onDeletePress: function () {
 
         let aItems = this.byId("createTypeTable").getSelectedItems();
-        
 
         if (!aItems.length) {
 
