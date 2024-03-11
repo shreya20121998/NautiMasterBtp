@@ -24,7 +24,7 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteMasterDashboard");
       },
       // for more fragment
  
@@ -51,7 +51,7 @@ sap.ui.define(
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
+        oRouter.navTo("RouteHome");
       },
       onExit: function () {
         const oRouter = this.getOwnerComponent().getRouter();
@@ -302,6 +302,8 @@ sap.ui.define(
             const oContext = oItem.getBindingContext();
             oContext.delete().then(function () {
               // Successful deletion
+            MessageToast.show("Record deleted sucessfully");
+
               console.log("Succesfully Deleted");
             }).catch(function (oError) {
               // Handle deletion error

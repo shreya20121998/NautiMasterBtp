@@ -35,66 +35,17 @@ sap.ui.define(
               oRouter.navTo("RouteRefDocIndicator");
       },
       onBusinessPartnerPress: function () {
-        var oView = this.getView(),
-        oButton = oView.byId("onBusinessPartnerBtn");
- 
-        if (!this._oBusinessPartnerMenuFragment) {
- 
-          this._oBusinessPartnerMenuFragment = Fragment.load({
-            name: "nauticalfe.fragments.MastBusinessPartner",
-                        id: oView.getId(),
-            controller: this
-          }).then(function(oMenu) {
-            oMenu.openBy(oButton);
-            this._oBusinessPartnerMenuFragment = oMenu;
-            return this._oBusinessPartnerMenuFragment;
-          }.bind(this));
-        }
-        else {
-          this._oBusinessPartnerMenuFragment.openBy(oButton);
-        }
-      },
-      onBPDetailpress: function(){
+
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteBPMasterDetails")
-      },
-      onVendorDataSyncingPress: function() {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteVendorDataSyncing");
-      },
-      onConfigPress: function () {
-        var oView = this.getView(),
-        oButton = oView.byId("onConfigBtn");
- 
-        if (!this._oConfigReleaseMenuFragment) {
- 
-          this._oConfigReleaseMenuFragment = Fragment.load({
-            name: "nauticalfe.fragments.MastConfigRelease",
-                        id: oView.getId(),
-            controller: this
-          }).then(function(oMenu) {
-            oMenu.openBy(oButton);
-            this._oConfigReleaseMenuFragment = oMenu;
-            return this._oConfigReleaseMenuFragment;
-          }.bind(this));
-        }
-        else {
-          this._oConfigReleaseMenuFragment.openBy(oButton);
-        }
-      },
-      onConfigMaintainGroup:function(){
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteConfigMaintainGroup");
-      },
-      onConfigVoyage:function(){
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteConfigVoyage");
-      },
-      onConfigChartering:function(){
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteConfigChartering");
+              oRouter.navTo("RouteBusinessPartnerDashboard");
+        
       },
      
+      onConfigPress: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteConfigReleaseDashboard");
+      },
+           
      
       onApiurl:function(){
         const oRouter = this.getOwnerComponent().getRouter();

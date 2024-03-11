@@ -210,7 +210,7 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="CARCD1" text="" />
+                        <Input id="CARCD1" editable="false" />
                         <Input id="CARDES1"  editable="true"/>
                     </cells>
                 </ColumnListItem>
@@ -261,4 +261,3 @@
  
    
 </mvc:View>
- 

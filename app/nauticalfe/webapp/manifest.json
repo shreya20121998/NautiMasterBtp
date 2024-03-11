@@ -479,6 +479,20 @@
         "target": [
             "TargetBiddingHistoryReport"
         ]
+      },
+      {
+        "name": "RouteConfigReleaseDashboard",
+        "pattern": "ConfigReleaseDashboard",
+        "target": [
+            "TargetConfigReleaseDashboard"
+        ]
+      },
+      {
+        "name": "RouteBusinessPartnerDashboard",
+        "pattern": "BusinessPartnerDashboard",
+        "target": [
+            "TargetBusinessPartnerDashboard"
+        ]
       }
       
 
@@ -856,16 +870,22 @@
                 "clearControlAggregation": false,
                 "viewId": "BiddingHistoryReport",
                 "viewName": "BiddingHistoryReport"
+            },
+            "TargetConfigReleaseDashboard": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "ConfigReleaseDashboard",
+                "viewName": "ConfigReleaseDashboard"
+            },
+            "TargetBusinessPartnerDashboard": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "businessPartnerDashboard",
+                "viewName": "BusinessPartnerDashboard"
             }
-            
-
-            
-
-
-
-
-       
-         
+               
       }
   
         

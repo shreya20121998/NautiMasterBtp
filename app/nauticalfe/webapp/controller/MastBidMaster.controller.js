@@ -45,11 +45,11 @@ sap.ui.define(
 
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteMasterDashboard");
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
+        oRouter.navTo("RouteHome");
       },
       onExit: function () {
         const oRouter = this.getOwnerComponent().getRouter();

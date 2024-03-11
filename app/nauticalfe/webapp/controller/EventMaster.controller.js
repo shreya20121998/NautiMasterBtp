@@ -30,7 +30,7 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteMasterDashboard");
       },
       onPress: function () {
         var oView = this.getView(),
@@ -51,7 +51,7 @@ sap.ui.define(
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
+        oRouter.navTo("RouteHome");
       },
       onExit: function () {
         const oRouter = this.getOwnerComponent().getRouter();
@@ -179,8 +179,8 @@ sap.ui.define(
           Text: value2
         };
 
-        let nomModel = this.getView().getModel();
-        let oBindList = nomModel.bindList("/EventMasterSet", {
+        let oJsonModel = this.getView().getModel();
+        let oBindList = oJsonModel.bindList("/EventMasterSet", {
           $$updateGroupId: "update"
         });
 
@@ -209,7 +209,7 @@ sap.ui.define(
           }
         });
 
-        nomModel.submitBatch("update");
+        oJsonModel.submitBatch("update");
       },
 
       // Deprecated method

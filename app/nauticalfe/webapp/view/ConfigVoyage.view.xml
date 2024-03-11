@@ -31,7 +31,7 @@
                         height="75%"
                     />
                     <Text
-                        class="size1 textBid"                       
+                        class="size1 textBid"                      
                         text='Change View Release Strategy master table for Voyage Release:Overview'
                     />
                 </contentLeft>
@@ -178,17 +178,30 @@
         >
             <columns>
                 <Column>
-                    <Text text="Event Code" />
+                    <Text text="Release Strategy" />
                 </Column>
                 <Column>
-                    <Text text="Event Code Description" />
+                    <Text text="Voyage Type" />
+                </Column>
+                 <Column>
+                    <Text text="Vessel Type" />
+                </Column>
+                 <Column>
+                    <Text text="User ID group" />
+                </Column>
+                 <Column>
+                    <Text text="User Name" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="eventCode"  maxLength="4"/>
-                        <Input id="eventCodeDesc" />
+                        <Input id="releasestrategy"  maxLength="4"/>
+                        <Input id="voyagetype" />
+                        <Input id="vesseltype" />
+                        <Input id="userid" />
+                        <Input id="username" />
+                       
                     </cells>
                 </ColumnListItem>
             </items>
@@ -205,17 +218,30 @@
         >
             <columns>
                 <Column>
-                    <Text text="Cost Code" />
+                    <Text text="Release Strategy" />
                 </Column>
                 <Column>
-                    <Text text="Cost Code Description" />
+                    <Text text="Voyage Type" />
+                </Column>
+                 <Column>
+                    <Text text="Vessel Type" />
+                </Column>
+                 <Column>
+                    <Text text="User ID group" />
+                </Column>
+                 <Column>
+                    <Text text="User Name" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="eventCode1" text="" />
-                        <Input id="eventCodeDesc1"  editable="true"/>
+                        <Text id="Relst" text="" />
+                        <Input id="voytyp"  editable="true"/>
+                        <Input id="vesseltyp"  editable="true"/>
+                        <Input id="uig"  editable="true"/>
+                        <Input id="usrn"  editable="true"/>
+                       
                     </cells>
                 </ColumnListItem>
             </items>
@@ -238,7 +264,7 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
-
+ 
             <OverflowToolbar
                 id="mainPageFooter2"
                 design="Auto"

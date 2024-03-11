@@ -1,0 +1,81 @@
+<mvc:View controllerName="nauticalfe.controller.ConfigReleaseDashboard"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"  xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core">
+    
+   <Page>
+        <headerContent>
+            <!-- Your header content goes here -->
+            <Bar id="_IDGenBar1" class="customHeader">
+                <contentLeft>
+                    <core:Icon id="_IDGenIcon1"
+                        src="sap-icon://nav-back"
+                        class="size1"
+                        color="#FFFFFF"
+                        press="onBackPress"
+                    />
+                    <core:Icon id="_IDGenIcon2"
+                        src="sap-icon://home"
+                        class="size1"
+                        color="#FFFFFF"
+                        press="onBackPressHome"
+                    />
+                    <Image
+                         class="size1"
+                        src="./images/ignxlogo.png"
+                        height="75%" activeSrc="https://www.ingenxtec.com"
+                   
+                    />
+                    <Text id="_IDGenText1"
+                        class="textBid size1"
+                        text="Config  Release Dashboard"
+                    />
+                </contentLeft>
+                <contentRight>
+                    <core:Icon id="_IDGenIcon3"
+                        src="sap-icon://search"
+                        class="size1"
+                        color="#FFFFFF"
+                    >
+                        <core:layoutData>
+                            <FlexItemData id="_IDGenFlexItemData1" growFactor="1" />
+                        </core:layoutData>
+                    </core:Icon>
+                    <core:Icon id="_IDGenIcon4"
+                        src="sap-icon://SAP-icons-TNT/user"
+                        class="size1"
+                        color="#FFFFFF"
+                    >
+                        <core:layoutData>
+                            <FlexItemData id="_IDGenFlexItemData2" growFactor="1" />
+                        </core:layoutData>
+                    </core:Icon>
+                </contentRight>
+            </Bar>
+        </headerContent>
+
+        <GenericTile id="GenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Maintain Group" press="onConfigMaintainGroup" >
+                    <TileContent id="_IDGenTileContent1">
+                    <ImageContent id="_IDGenImageContent1" src="./images/maintainGroup.png" ></ImageContent>
+                    </TileContent>
+        </GenericTile>
+        <GenericTile id="GenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Voyage Config" press="onConfigVoyage" >
+                    <TileContent id="_IDGenTileContent2">
+                    <ImageContent id="_IDGenImageContent2" src="./images/voyageConfig.png" ></ImageContent>
+                    </TileContent>
+        </GenericTile>
+        <GenericTile id="GenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Config Chartering" press="onConfigChartering" >
+                    <TileContent id="_IDGenTileContent3">
+                    <ImageContent id="_IDGenImageContent3" src="./images/configChartering.png" ></ImageContent>
+                    </TileContent>
+        </GenericTile>
+
+    
+  
+    
+   </Page>
+    
+</mvc:View>

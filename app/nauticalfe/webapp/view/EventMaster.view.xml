@@ -104,9 +104,6 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            growingThreshold="30"
-            growing="true"
-           
         >
             <columns>
                 <Column id="_IDGenColumn1">
@@ -234,3 +231,4 @@
        
     </Page>
 </mvc:View>
+

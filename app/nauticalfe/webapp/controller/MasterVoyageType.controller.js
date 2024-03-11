@@ -23,7 +23,7 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteMasterDashboard");
       },
       // for more fragment
  
@@ -50,12 +50,9 @@ sap.ui.define(
       },
       onBackPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
+        oRouter.navTo("RouteHome");
       },
-      onBackPressHome: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
-      },
+      
       selectedItems: function (oEvent) {
         // console.log("hello");
         let oTable = oEvent.getSource();
@@ -71,7 +68,7 @@ sap.ui.define(
             let cells = oSelectedItem.getCells();
             console.log(cells);
            
-            return [oSelectedItem.getBindingContext().getProperty("VOYCD"), oSelectedItem.getBindingContext().getProperty("VOYDES")]
+            return [oSelectedItem.getBindingContext().getProperty("Voycd"), oSelectedItem.getBindingContext().getProperty("Voydes")]
  
           } else {
  
@@ -116,109 +113,146 @@ sap.ui.define(
         // this.onUpdate(code, desc);
  
       },
-      onUpdate : function(){
-         
-        let value1 =  aSelectedIds[0][0];
-        let value2 =  this.getView().byId("voyCodeDesc1").getValue() ;
+
+      onPatchSent: function (ev) {
+        sap.m.MessageToast.show("Updating..")
+      },
+      onPatchCompleted: function (ev) {
+        let oView = this.getView();
+        let isSuccess = ev.getParameter('success');
+        if (isSuccess) {
+          sap.m.MessageToast.show("Successfully Updated.");
+          oView.getModel().refresh();
+              oView.byId("createTypeTable").setVisible(true)
+              oView.byId("createTypeTable").removeSelections();
  
-       
-        let data = {
-          VOYCD : value1,
+ 
+              oView.byId("mainPageFooter2").setVisible(false);
+              oView.byId("updateTypeTable").setVisible(false);
+        } else {
+          sap.m.MessageToast.show("Fail to Update.")
+        }
+      },
+      onUpdate: function(){
+        let value1 = aSelectedIds[0][0];
+        let value2 = this.getView().byId("voyCodeDesc1").getValue();
+ 
+        let UpData = {
+          Voycd : value1,
          
-          VOYDES: value2
+          Voydes: value2
  
         };
-        console.log(data);
+        // console.log(data);
  
+        let oModel = this.getView().getModel();
+        let oBindList = oModel.bindList("/VoyTypeSet", {
+          $$updateGroupId: "update"
+         });
  
-        var oView = this.getView();
-        var JsonData = JSON.stringify(data)
-        let EndPoint = "/odata/v4/nautical/VOYTYP/"+ data.VOYCD;
-        console.log(EndPoint);
-        fetch(EndPoint, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JsonData
-        })
-          .then(function (res) {
-           
-            if (res.ok) {
-              // location.reload();
-              console.log("Entry updated successfully");
-              MessageToast.show(`Entry updated successfully`);
-              oView.getModel().refresh();
-              oView.byId("createTypeTable").setVisible(true)
-       
-             oView.byId("mainPageFooter2").setVisible(false);
-             oView.byId("updateTypeTable").setVisible(false);
-             
+         oBindList.attachPatchSent(this.onPatchSent, this);
+         oBindList.attachPatchCompleted(this.onPatchCompleted, this);
  
-            }
-            else {
-              res.json().then((data) => {
-                if (data && data.error && data.error.message) {
-                    // Show the error message from the backend
-                    MessageToast.show(data.error.message);
-                    return
-                }
-                });
-            }
-          })
-          .catch(function (err) {
-            console.log("error", err);
-          })
-          // this.getView().byId("createTypeTable").setVisible(true)
-       
-          // this.getView().byId("mainPageFooter2").setVisible(false);
-          // this.getView().byId("updateTypeTable").setVisible(false);
+        let oFilter = new sap.ui.model.Filter("Voycd", sap.ui.model.FilterOperator.EQ, UpData.Voycd);
+        oBindList.filter(oFilter);
  
+        oBindList.requestContexts().then(function (aContexts) {
          
-          // location.reload()
-          // that.getView().getModel().refresh();
+          if (aContexts.length > 0) {
+            let aData = [];
+            aContexts.forEach(context => {
+              aData.push(context.getObject())
+            });
+            console.log("addata", aData);
+           
+            let data = aData.filter(item=>item.Voycd == UpData.Voycd);
+            console.log("fghj",data, UpData.Voydes);
  
+            if (data?.Voydes === UpData.Voydes) {
+              sap.m.MessageToast.show("Nothing to Update..")
+            } else {
+              let path = `/VoyTypeSet('${UpData.Voycd}')`;
+ 
+            let upContext = aContexts.filter(obj=>obj.sPath=== path);
+            // console.log(upContext);
+            upContext[0].setProperty("Voydes", UpData.Voydes);
+            }
+          }
+        });
+ 
+        oModel.submitBatch("update");
       },
+   
 
       
-    
-    
-    
+      onCreateSent: function (ev) {
+        sap.m.MessageToast.show("Creating..")
+        console.log(ev.getParameter("context")?.getObject())
+      },
+      onCreateCompleted: function (ev) {
+        let isSuccess = ev.getParameter('success');
+        if (isSuccess) {
+          sap.m.MessageToast.show("Successfully Created.")
+        } else {
+          sap.m.MessageToast.show("Fail to Create.")
+        }
+      },
+ 
       onSave: function () {
         var that = this.getView();
+        var value1 = this.getView().byId("voyCode").getValue();
+        var value2 = this.getView().byId("voyCodeDesc").getValue();
  
-        var value1 =  this.getView().byId("voyCode").getValue();
-        var value2 =  this.getView().byId("voyCodeDesc").getValue();
+        if (!value1 || !value2) {
+          MessageToast.show("Please enter both fields.");
+          return;
+        }
  
-        var data = {
+        let data = {
+          Voycd: value1,
  
-          VOYCD: value1,
- 
-          VOYDES: value2
- 
+          Voydes: value2
         };
-        const voyageModel= new JSONModel(data)
-        that.setModel(voyageModel,"voyageModel");
+        const oJsonModel = new sap.ui.model.json.JSONModel(data);
+        that.setModel(oJsonModel, "oJsonModel");
         let oModel = this.getView().getModel();
-        var addVoyData = this.getView().getModel("voyageModel").getData();
-        console.log(addVoyData);          
+        let oBindListSP = oModel.bindList("/VoyTypeSet");
  
-        let oBindListSP = oModel.bindList("/VOYTYP");
-        oBindListSP.create(addVoyData)
-          that.getModel().refresh();
-          that.byId("voyCode").setValue("");
-          that.byId("voyCodeDesc").setValue("");
-          MessageToast
+        oBindListSP.attachCreateSent(this.onCreateSent, this);
+        oBindListSP.attachCreateCompleted(this.onCreateCompleted, this);
  
-          console.log(data);
+        oBindListSP.attachEventOnce("dataReceived", function () {
+          let existingEntries = oBindListSP.getContexts().map(function (context) {
+            return context.getProperty("Voycd");
+          });
  
-          this.getView().byId("createTypeTable").setVisible(true)
-          this.getView().byId("entryTypeTable").setVisible(false)
-          this.getView().byId("mainPageFooter").setVisible(false)
+          if (existingEntries.includes(value1)) {
+            MessageToast.show("Duplicate Code is not allowed");
+          } else {
  
+            try {
+              oBindListSP.create({
+                Voycd: value1,
+                Voydes: value2
+              });
+              that.getModel().refresh();
+              that.byId("voyCode").setValue("");
+              that.byId("voyCodeDesc").setValue("");
  
+              MessageToast.show("Data created Successfully");
+ 
+              that.byId("createTypeTable").setVisible(true);
+              that.byId("createTypeTable").removeSelections();
+              that.byId("entryTypeTable").setVisible(false);
+              that.byId("mainPageFooter").setVisible(false);
+ 
+            } catch (error) {
+              MessageToast.show("Error while saving data");
+            }
+          }
+        });
+        oBindListSP.getContexts();
       },
-     
       
       onCancel: function(){
         this.getView().byId("createTypeTable").setVisible(true);
@@ -259,16 +293,21 @@ sap.ui.define(
         });
  
         }, // ending fn
-      deleteSelectedItems: function (aItems) {
-            aItems.forEach(function (oItem) {
-              oItem.getBindingContext().delete().catch(function (oError) {
-                if (!oError.canceled) {
-                  // Error was already reported to message model
-                  MessageToast.show(oError)
-                }
-              });
+        deleteSelectedItems: function (aItems) {
+ 
+          aItems.forEach(function (oItem) {
+            const oContext = oItem.getBindingContext();
+            oContext.delete().then(function () {
+              // Successful deletion
+            MessageToast.show("Record deleted sucessfully");
+
+              console.log("Succesfully Deleted");
+            }).catch(function (oError) {
+              // Handle deletion error
+              MessageBox.error("Error deleting item: " + oError.message);
             });
-      },
+          });
+        },
 
       pressCopy: function () {
  
@@ -292,13 +331,7 @@ sap.ui.define(
         this.getView().byId("mainPageFooter").setVisible(true);
       }
    
- 
- 
-     
-     
- 
-     
- 
+
     });
  
   });
