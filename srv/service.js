@@ -87,10 +87,7 @@ module.exports = cds.service.impl(async function (srv) {
                 req.data.VOYNO = id + 1;
             }
             // console.log(id);
-// console.log(id);
-// console.log(id);
-// console.log(id);
-// console.log(id);
+
 
             const voydata = req.data
             console.log("updated data: ", voydata);
