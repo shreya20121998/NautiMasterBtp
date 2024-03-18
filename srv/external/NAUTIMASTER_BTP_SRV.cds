@@ -1,4 +1,4 @@
-/* checksum : 74f0cc2a51e06c5b033cb44014802aaf */
+/* checksum : afd85c9217463521462964c1b037e52b */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
 @sap.supported.formats : 'atom json xlsx'
@@ -6,9 +6,6 @@ service NAUTIMASTER_BTP_SRV {};
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.BusinessPartnerSet {
@@ -90,53 +87,20 @@ entity NAUTIMASTER_BTP_SRV.BusinessPartnerSet {
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.MaintainGroupSet {
   @sap.unicode : 'false'
-  @sap.label : 'User ID group'
-  key Zgroup : String(12) not null;
-  @sap.unicode : 'false'
   @sap.label : 'User Name'
   @sap.updatable : 'false'
-  Zuser : String(12) not null;
+  key Zuser : String(12) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'User ID group'
+  Zgroup : String(12) not null;
 };
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
-@sap.pageable : 'false'
-@sap.content.version : '1'
-entity NAUTIMASTER_BTP_SRV.VoyageReleaseSet {
-  @sap.unicode : 'false'
-  @sap.label : 'User ID group'
-  @sap.updatable : 'false'
-  key Zgroup : String(12) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'User Name'
-  @sap.updatable : 'false'
-  key App1 : String(12) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'Release Strategy'
-  Rels : String(10) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'Voyage Type'
-  Voyty : String(4) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'Vessel Type'
-  Vesty : String(4) not null;
-};
-
-@cds.external : true
-@cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.ReleaseStrategySet {
@@ -161,9 +125,6 @@ entity NAUTIMASTER_BTP_SRV.ReleaseStrategySet {
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.CountryMasterSet {
@@ -178,9 +139,6 @@ entity NAUTIMASTER_BTP_SRV.CountryMasterSet {
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.CostMasterSet {
@@ -195,9 +153,6 @@ entity NAUTIMASTER_BTP_SRV.CostMasterSet {
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.EventMasterSet {
@@ -211,9 +166,6 @@ entity NAUTIMASTER_BTP_SRV.EventMasterSet {
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.ClassMasterSet {
@@ -230,9 +182,6 @@ entity NAUTIMASTER_BTP_SRV.ClassMasterSet {
 
 @cds.external : true
 @cds.persistence.skip : true
-@sap.creatable : 'false'
-@sap.updatable : 'false'
-@sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.BidMasterSet {
@@ -293,5 +242,165 @@ entity NAUTIMASTER_BTP_SRV.BidMasterSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   MultiChoice : Boolean not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.creatable : 'false'
+@sap.updatable : 'false'
+@sap.deletable : 'false'
+@sap.pageable : 'false'
+@sap.content.version : '1'
+entity NAUTIMASTER_BTP_SRV.PortmasterSetSet {
+  @sap.unicode : 'false'
+  @sap.label : 'Country'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Country : String(3) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Port Code'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Portc : String(10) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Port Name'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Portn : String(25) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Related Anchorage'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Reancho : String(30) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Latitude'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Latitude : String(15) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Longitude'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Longitude : String(15) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Country Name'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Countryn : String(25) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Location ID'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Locid : String(10) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Process ind'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Ind : String(1) not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.creatable : 'false'
+@sap.updatable : 'false'
+@sap.deletable : 'false'
+@sap.pageable : 'false'
+@sap.content.version : '1'
+entity NAUTIMASTER_BTP_SRV.ZtestSet {
+  @sap.unicode : 'false'
+  @sap.label : 'Sales Document'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Vbeln : String(10) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Document Cat.'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Vbtyp : String(4) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Net Value'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Netwr : Decimal(16, 3) not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.pageable : 'false'
+@sap.content.version : '1'
+entity NAUTIMASTER_BTP_SRV.voyagereleaseSet {
+  @sap.unicode : 'false'
+  @sap.label : 'Release Strategy'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Rels : String(10) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Voyage Type'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Voyty : String(4) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Vessel Type'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Vesty : String(4) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'User ID group'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Zgroup : String(12) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'User Name'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  App1 : String(12) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'User Name'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  App2 : String(12) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'User Name'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  App3 : String(12) not null;
 };
 

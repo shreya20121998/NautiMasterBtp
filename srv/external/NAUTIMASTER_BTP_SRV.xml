@@ -36,21 +36,10 @@
             </EntityType>
             <EntityType Name="MaintainGroup" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Zgroup"/>
+                    <PropertyRef Name="Zuser"/>
                 </Key>
                 <Property Name="Zuser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:updatable="false"/>
                 <Property Name="Zgroup" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User ID group"/>
-            </EntityType>
-            <EntityType Name="VoyageRelease" sap:content-version="1">
-                <Key>
-                    <PropertyRef Name="Zgroup"/>
-                    <PropertyRef Name="App1"/>
-                </Key>
-                <Property Name="Rels" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Release Strategy"/>
-                <Property Name="Voyty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Voyage Type"/>
-                <Property Name="Vesty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vessel Type"/>
-                <Property Name="Zgroup" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User ID group" sap:updatable="false"/>
-                <Property Name="App1" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:updatable="false"/>
             </EntityType>
             <EntityType Name="ReleaseStrategy" sap:content-version="1">
                 <Key>
@@ -104,16 +93,56 @@
                 <Property Name="Tablename" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Table Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="MultiChoice" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Multiple Choice" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
+            <EntityType Name="Portmaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Country"/>
+                    <PropertyRef Name="Portc"/>
+                </Key>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Portc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Port Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Portn" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Port Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reancho" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Related Anchorage" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Latitude" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Latitude" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Longitude" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Longitude" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Countryn" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Country Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ind" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Process ind" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Ztest" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vbtyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Document Cat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Netwr" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="voyagerelease" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Rels"/>
+                    <PropertyRef Name="Voyty"/>
+                    <PropertyRef Name="Vesty"/>
+                    <PropertyRef Name="Zgroup"/>
+                </Key>
+                <Property Name="Rels" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Release Strategy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Voyty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Voyage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vesty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vessel Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zgroup" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User ID group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="App1" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="App2" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="App3" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
             <EntityContainer Name="NAUTI_MASTER_BTP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="BusinessPartnerSet" EntityType="NAUTI.MASTER_BTP_SRV.BusinessPartner" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="MaintainGroupSet" EntityType="NAUTI.MASTER_BTP_SRV.MaintainGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="VoyageReleaseSet" EntityType="NAUTI.MASTER_BTP_SRV.VoyageRelease" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="ReleaseStrategySet" EntityType="NAUTI.MASTER_BTP_SRV.ReleaseStrategy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="CountryMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.CountryMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="CostMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.CostMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="EventMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.EventMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="ClassMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.ClassMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="BidMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.BidMaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BusinessPartnerSet" EntityType="NAUTI.MASTER_BTP_SRV.BusinessPartner" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MaintainGroupSet" EntityType="NAUTI.MASTER_BTP_SRV.MaintainGroup" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReleaseStrategySet" EntityType="NAUTI.MASTER_BTP_SRV.ReleaseStrategy" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountryMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.CountryMaster" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CostMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.CostMaster" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EventMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.EventMaster" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ClassMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.ClassMaster" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BidMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.BidMaster" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PortmasterSetSet" EntityType="NAUTI.MASTER_BTP_SRV.Portmaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZtestSet" EntityType="NAUTI.MASTER_BTP_SRV.Ztest" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="voyagereleaseSet" EntityType="NAUTI.MASTER_BTP_SRV.voyagerelease" sap:pageable="false" sap:content-version="1"/>
             </EntityContainer>
             <atom:link rel="self" href="http://35.185.33.183:8001/sap/opu/odata/nauti/MASTER_BTP_SRV/$metadata"
                 xmlns:atom="http://www.w3.org/2005/Atom"/>

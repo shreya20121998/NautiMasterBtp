@@ -5,18 +5,17 @@ sap.ui.define(
     "sap/ui/core/Fragment",
     "sap/m/MessageToast",
     "sap/m/MessageBox"
-    
+   
   ],
   function (Controller,History,Fragment,MessageToast, MessageBox) {
     "use strict";
     let aSelectedIds=[];
     let copyFlag = false;
     let editFlag = false;
-    var initialVoycd = "";
-    var initialVoydes = "";
-    
-  
-
+   
+   
+ 
+ 
  
     return Controller.extend("nauticalfe.controller.MasterVoyageType", {
  
@@ -30,11 +29,41 @@ sap.ui.define(
       },
      
       onBackPress: function () {
-       
-
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteMasterDashboard");
-      },
+        const that = this;
+    
+        // Check if any items have been selected
+        if (aSelectedIds.length === 0) {
+            // If no items have been selected, navigate to "RouteMasterDashboard"
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteMasterDashboard");
+        } else {
+            // Get the values from the view
+            let voyDes = this.getView().byId("voyCodeDesc1").getValue().trim();
+            let getvoyCodeDesc1 = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
+    
+            // Check if the description matches the original one
+            if (voyDes == getvoyCodeDesc1) {
+                // If no changes have been made, reset the view to its initial state
+                this.resetView();
+            } else {
+                // If changes have been made, prompt the user for confirmation
+                sap.m.MessageBox.confirm(
+                    "Do you want to discard the changes?", {
+                        title: "Confirmation",
+                        onClose: function (oAction) {
+                            if (oAction === sap.m.MessageBox.Action.OK) {
+                                // If user clicks OK, reset the view to its initial state
+                                that.resetView();
+                            } else {
+                                // If user clicks Cancel, do nothing
+                            }
+                        }
+                    }
+                );
+            }
+        }
+        
+    },
       // for more fragment
  
       onPress: function () {
@@ -58,17 +87,18 @@ sap.ui.define(
           this._oMenuFragment.openBy(oButton);
         }
       },
-      
+     
       onBackPressHome: function () {
         const that = this;
+        if (aSelectedIds.length === 0) {
+          // If no items have been selected, navigate to "RouteMasterDashboard"
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteHome");
+        } else {
         let voyDes = this.getView().byId("voyCodeDesc1").getValue().trim();
-        let voyDes3 = this.getView().byId("voyCode").getValue().trim();
-        let voyDes2= this.getView().byId("voyCodeDesc").getValue().trim();
-
-        let getvoyCodeDesc2 = aSelectedIds[0][0];
         let getvoyCodeDesc1 = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
    
-        if (voyDes == getvoyCodeDesc1 ) {
+        if (voyDes == getvoyCodeDesc1) {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
             this.resetView(); // Reset view if conditions met
@@ -89,8 +119,9 @@ sap.ui.define(
                 }
             );
         }
+      }
       },
-      
+     
       selectedItems: function (oEvent) {
         // console.log("hello");
         let oTable = oEvent.getSource();
@@ -118,11 +149,11 @@ sap.ui.define(
         return aSelectedIds;
  
       },
-  
-    
-
-    
-
+ 
+   
+ 
+   
+ 
      
       newEntries: function () {
         if (copyFlag || editFlag) {
@@ -173,7 +204,7 @@ sap.ui.define(
         // this.onUpdate(code, desc);
  
       },
-
+ 
       onPatchSent: function (ev) {
         sap.m.MessageToast.show("Updating..")
       },
@@ -191,7 +222,7 @@ sap.ui.define(
       onUpdate: function(){
         let value1 = aSelectedIds[0][0];
         let value2 = this.getView().byId("voyCodeDesc1").getValue().trim();
-        
+       
         if (value2 == "") {
           MessageToast.show("Please Enter Description.");
           return
@@ -243,8 +274,8 @@ sap.ui.define(
         oModel.submitBatch("update");
       },
    
-
-      
+ 
+     
       onCreateSent: function (ev) {
         sap.m.MessageToast.show("Creating..")
         console.log(ev.getParameter("context")?.getObject())
@@ -319,7 +350,7 @@ sap.ui.define(
         });
         oBindListSP.getContexts();
       },
-      
+     
      
         onCancel: function () {
           const that = this;
@@ -327,7 +358,7 @@ sap.ui.define(
           let voyDes = this.getView().byId("voyCodeDesc1").getValue().trim();
           let voyDes3 = this.getView().byId("voyCode").getValue().trim();
           let voyDes2= this.getView().byId("voyCodeDesc").getValue().trim();
-          
+         
           let getvoyCodeDesc2 = aSelectedIds[0][0];
           let getvoyCodeDesc1 = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
        
@@ -336,8 +367,8 @@ sap.ui.define(
             this.getView().byId("updateTypeTable").setVisible(false);
             this.getView().byId("mainPageFooter").setVisible(false);
             this.getView().byId("mainPageFooter2").setVisible(false);
-    
-            
+   
+           
             this.getView().byId("editBtn").setEnabled(true);
             this.getView().byId("deleteBtn").setEnabled(true);
             this.getView().byId("copyBtn").setEnabled(true);
@@ -349,20 +380,20 @@ sap.ui.define(
           this.getView().byId("mainPageFooter").setVisible(false);
           this.getView().byId("mainPageFooter2").setVisible(false);
           this.getView().byId("entryTypeTable").setVisible(false);
-
-  
-          
+ 
+ 
+         
           this.getView().byId("editBtn").setEnabled(true);
           this.getView().byId("deleteBtn").setEnabled(true);
           this.getView().byId("copyBtn").setEnabled(true);
           this.getView().byId("entryBtn").setEnabled(true);
          }
-
-          
-          
-          
-          
-          
+ 
+         
+         
+         
+         
+         
           else {
              
    
@@ -376,7 +407,7 @@ sap.ui.define(
                 if (oAction === sap.m.MessageBox.Action.OK) {
                   // If user clicks OK, discard changes and reset view
                   that.resetView();
-                  
+                 
                 }
  
               }
@@ -384,10 +415,10 @@ sap.ui.define(
             )
           }
         },
-      
-      
-  
-
+     
+     
+ 
+ 
       resetView: function () {
         // Reset view to initial state
         this.getView().byId("updateTypeTable").setVisible(false);
@@ -413,7 +444,7 @@ sap.ui.define(
         if (copyFlag || editFlag) {
           return
         }
-
+ 
  
         let aItems = this.byId("createTypeTable").getSelectedItems();
         let oTable = this.byId("createTypeTable");
@@ -451,7 +482,7 @@ sap.ui.define(
             oContext.delete().then(function () {
               // Successful deletion
             MessageToast.show("Record deleted sucessfully");
-
+ 
               console.log("Succesfully Deleted");
               aSelectedIds = []
             }).catch(function (oError) {
@@ -460,7 +491,7 @@ sap.ui.define(
             });
           });
         },
-
+ 
       pressCopy: function () {
         if (editFlag) {
           return;
@@ -489,7 +520,7 @@ sap.ui.define(
         this.getView().byId("mainPageFooter").setVisible(true);
       }
    
-
+ 
     });
  
   });

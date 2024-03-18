@@ -1,4 +1,3 @@
-
 <mvc:View
     xmlns:tnt="sap.tnt"
     xmlns:form="sap.ui.layout.form"
@@ -93,7 +92,7 @@
                 />
             </contentRight>
         </Bar>
-        <Label text="Cost Master Table " class="masterheadings" />
+        <Label text="Config Maintain Group " class="masterheadings" />
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -155,8 +154,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="maintaingrpCode"  maxLength="4"/>
-                        <Input id="maintaingrpCodeDesc" />
+                        <Input id="maintaingrpCode"  maxLength="4" editable="true"/>
+                        <Input id="maintaingrpCodeDesc"  />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -182,7 +181,7 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="maintaingrpCode1" text="" />
+                        <Text id="maintaingrpCode1"   />
                         <Input id="maintaingrpCodeDesc1"  editable="true"/>
                     </cells>
                 </ColumnListItem>
@@ -208,7 +207,7 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
-
+ 
             <OverflowToolbar
                 id="mainPageFooter2"
                 design="Auto"
@@ -229,7 +228,7 @@
                 />
             </OverflowToolbar>
  
-            <!--new entries footer -->
+           
            
        
     </Page>

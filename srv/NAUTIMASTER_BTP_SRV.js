@@ -11,6 +11,8 @@ module.exports = async (srv) =>
       srv.on('READ', 'CountryMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'EventMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
-      srv.on('READ', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'ZtestSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'voyagereleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 }

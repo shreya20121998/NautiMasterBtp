@@ -10,22 +10,19 @@ sap.ui.define(
   function (Controller,History,Fragment,MessageToast, MessageBox,JSONModel ) {
     "use strict";
     let aSelectedIds = [];
-
+ 
     let copyFlag = false;
     let editFlag = false;
-
+ 
     let deschanged=[];
-
-    
-    
-
-    
-   
+    let inputFieldObj  ={};
+    let saveObj ={};
+    let cancelObj = {}
  
     return Controller.extend("nauticalfe.controller.MasterCurrencyType", {
  
       onInit: function () {
-        
+       
         this.getView().byId("createTypeTable").setVisible(true);
         this.getView().byId("entryTypeTable").setVisible(false);
         this.getView().byId("mainPageFooter").setVisible(false);
@@ -64,15 +61,15 @@ sap.ui.define(
       //   this.getView().byId("mainPageFooter").setVisible(false);
       //   this.getView().byId("mainPageFooter2").setVisible(false);
       //   this.getView().byId("entryTypeTable").setVisible(false);
-
-
+ 
+ 
        
       //   this.getView().byId("editBtn").setEnabled(true);
       //   this.getView().byId("deleteBtn").setEnabled(true);
       //   this.getView().byId("copyBtn").setEnabled(true);
       //   this.getView().byId("entryBtn").setEnabled(true);
       //  }
-
+ 
        
        
        
@@ -83,9 +80,9 @@ sap.ui.define(
  
      
       //     sap.m.MessageBox.confirm(
-
+ 
       //       "Do you want to discard the changes?", {
-
+ 
       //       title: "Confirmation",
       //       onClose: function (oAction) {
       //         if (oAction === sap.m.MessageBox.Action.OK) {
@@ -93,7 +90,7 @@ sap.ui.define(
       //           that.resetView();
                
       //         }
-
+ 
       //       }
       //     }
       //     )
@@ -102,7 +99,7 @@ sap.ui.define(
       onBackPress: function () {
         const that = this;
         debugger;
-        
+       
         let voyDes = this.getView().byId("NAVOYGCURDES1").getValue().trim();
         let voyDes3 = this.getView().byId("NAVOYCUR2").getValue().trim();
         let voyDes2= this.getView().byId("NAVOYGCURDES2").getValue().trim();
@@ -111,7 +108,7 @@ sap.ui.define(
          // Assuming aSelectedIds is accessible here
      
         if (voyDes === getvoyCodeDesc1) {
-          
+         
             this.getView().byId("createTypeTable").setVisible(true).removeSelections();
             this.getView().byId("updateTypeTable").setVisible(false);
             this.getView().byId("mainPageFooter").setVisible(false);
@@ -143,14 +140,14 @@ sap.ui.define(
                 }
             )
         }
-    
+   
         // Determine if the user is in edit mode or copy mode
         if (!(voyDes === getvoyCodeDesc1 || (voyDes2 === getvoyCodeDesc1 && voyDes3 === getvoyCodeDesc2))) {
             // If not in edit or copy mode, navigate to the "RouteMasterDashboard" screen
             this.getOwnerComponent().getRouter().navTo("RouteMasterDashboard");
         }
     },
-    
+   
       // for more fragment
       onPress: function () {
         var oView = this.getView(),
@@ -169,14 +166,13 @@ sap.ui.define(
           this._oMenuFragment.openBy(oButton);
         }
       },
-    
-  
-
+ 
+ 
       onBackPressHome: function () {
         const that = this;
         let navoDes = this.getView().byId("NAVOYGCURDES1").getValue().trim();
         let getNAVOYGCURDES1 = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
-    
+   
         if (navoDes == getNAVOYGCURDES1) {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
@@ -199,16 +195,7 @@ sap.ui.define(
             );
         }
       },
-    
-
-
-    
-
-     
-      // onExit: function () {
-      //   const oRouter = this.getOwnerComponent().getRouter();
-      //   oRouter.navTo("RouteHome");
-      // },
+ 
       selectedItems: function (oEvent) {
         // console.log("hello");
         let oTable = oEvent.getSource();
@@ -243,54 +230,93 @@ sap.ui.define(
         }
         let selectedItem = this.byId("createTypeTable").getSelectedItems();
         if (selectedItem.length == 0) {
-
+ 
           this.getView().byId("createTypeTable").setVisible(false)
           this.getView().byId("entryTypeTable").setVisible(true)
           this.getView().byId("mainPageFooter").setVisible(true)
           this.getView().byId("editBtn").setEnabled(false);
           this.getView().byId("deleteBtn").setEnabled(false);
           this.getView().byId("copyBtn").setEnabled(false);
-
-
+ 
+ 
         } else {
           MessageToast.show("Unselect the Selected Row !")
         }
-
-
+ 
+ 
       },
-      pressEdit : function(){
-        console.log("copyflag", copyFlag);
-        if (copyFlag) {
-          return
-        }
-        if( aSelectedIds.length){
-          if( aSelectedIds.length > 1){
-             MessageToast.show("Please select one row");
-             return
+      // pressEdit : function(){
+      //   console.log("copyflag", copyFlag);
+      //   if (copyFlag) {
+      //     return
+      //   }
+      //   if( aSelectedIds.length){
+      //     if( aSelectedIds.length > 1){
+      //        MessageToast.show("Please select one row");
+      //        return
+      //     }
+      //   }else {
+      //     MessageToast.show("Please select a row");
+      //     return;
+      //   }
+       
+       
+      //   editFlag = true;
+      //   this.getView().byId("deleteBtn").setEnabled(false);
+      //   this.getView().byId("copyBtn").setEnabled(false);
+      //   this.getView().byId("entryBtn").setEnabled(false);
+ 
+      //   this.getView().byId("createTypeTable").setVisible(false);
+      //   let code = aSelectedIds[0][0];
+      //   let desc = aSelectedIds[0][1];
+      //   this.getView().byId("NAVOYCUR1").setText(code);
+      //   this.getView().byId("NAVOYGCURDES1").setValue(desc);
+      //   this.getView().byId('updateTypeTable').setVisible(true);
+       
+      //   this.getView().byId("mainPageFooter2").setVisible(true);
+ 
+      //   // this.onUpdate(code, desc);
+      //   // this._bChangesMade = false;
+ 
+      // },
+ 
+     
+      pressEdit: function () {
+ 
+        let oTable = this.byId("createTypeTable");
+        let aSelectedItems = oTable.getSelectedItems();
+ 
+        let cells = aSelectedItems[0].getCells();
+         inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
+         saveObj = cells[1].getAggregation('items')[1].setVisible(true);
+         cancelObj = cells[1].getAggregation('items')[2].setVisible(true);
+         inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
+         inputFieldObj.setEditable(true);
+         saveObj.setVisible(true);
+         inputFieldObj.setEditable(true);
+ 
+ 
+         
+ 
+        if (aSelectedIds.length) {
+          if (aSelectedIds.length > 1) {
+            MessageToast.show("Please select one Item.");
+            return
           }
-        }else {
-          MessageToast.show("Please select a row");
+        } else {
+          MessageToast.show("Please select an Item.");
+         
           return;
         }
-        
         editFlag = true;
         this.getView().byId("deleteBtn").setEnabled(false);
         this.getView().byId("copyBtn").setEnabled(false);
         this.getView().byId("entryBtn").setEnabled(false);
-
-        this.getView().byId("createTypeTable").setVisible(false);
-        let code = aSelectedIds[0][0];
-        let desc = aSelectedIds[0][1];
-        this.getView().byId("NAVOYCUR1").setText(code);
-        this.getView().byId("NAVOYGCURDES1").setValue(desc);
-        this.getView().byId('updateTypeTable').setVisible(true);
        
-        this.getView().byId("mainPageFooter2").setVisible(true);
- 
-        // this.onUpdate(code, desc);
-        // this._bChangesMade = false;
  
       },
+ 
+ 
       onPatchSent: function (ev) {
         sap.m.MessageToast.show("Updating..")
       },
@@ -299,30 +325,39 @@ sap.ui.define(
         let isSuccess = ev.getParameter('success');
         if (isSuccess) {
           sap.m.MessageToast.show("Successfully Updated.");
+         
+          this.resetView();
+          inputFieldObj.setEditable(false);
+          saveObj.setVisible(false);
+          cancelObj.setVisible(false);
           oView.getModel().refresh();
-              // oView.byId("createTypeTable").setVisible(true)
-              // oView.byId("createTypeTable").removeSelections();
- 
- 
-              // oView.byId("mainPageFooter2").setVisible(false);
-              // oView.byId("updateTypeTable").setVisible(false);
-              this.resetView();
         } else {
           sap.m.MessageToast.show("Fail to Update.")
         }
       },
       onUpdate : function(){
         deschanged=[]
-        let value1 =  aSelectedIds[0][0];
-        let value2 =  this.getView().byId("NAVOYGCURDES1").getValue().trim() ;
+        let code =  aSelectedIds[0][0];
+        let description  = aSelectedIds[0][1];
+        // let value2 =  this.getView().byId("DescInput").getValue().trim() ;
+        let oTable = this.byId("createTypeTable");
+        let aSelectedItems = oTable.getSelectedItems();
+ 
+        let cells = aSelectedItems[0].getCells();
+        let value2  = cells[1].getAggregation('items')[0].getProperty("value").trim() ;
+        console.log();
+        if(value2 == description){
+          MessageToast.show("nothing to update ");
+          return;
+        }
  
         if (value2 == "") {
           MessageToast.show("Please Enter Description.");
           return
-        } 
-
+        }
+ 
         let UpData = {
-          Navoycur: value1,
+          Navoycur: code,
  
           Navoygcurdes: value2
  
@@ -353,18 +388,19 @@ sap.ui.define(
            
             let data = aData.filter(item=>item.Navoycur == UpData.Navoycur);
             console.log("fghj",data, UpData.Navoygcurdes);
- 
-            if (data[0]?.Navoygcurdes === UpData.Navoygcurdes) {
-              sap.m.MessageToast.show("Nothing to Update.Make Some Changes.")
-            } else {
+           
+            // if (data[0]?.Navoygcurdes === UpData.Navoygcurdes) {
+            //   sap.m.MessageToast.show("Nothing to Update.Make Some Changes.")
+            // } else {
+            // }
+              console.log("hello");
               let path = `/CurTypeSet('${UpData.Navoycur}')`;
  
             let upContext = aContexts.filter(obj=>obj.sPath=== path);
-            upContext[0].setProperty("Navoygcurdes", UpData.Navoygcurdes);
-            deschanged.push(UpData.Navoygcurdes)
+            upContext[0].setProperty("Navoygcurdes", UpData.Navoygcurdes.trim());
+            deschanged.push(UpData.Navoygcurdes.trim())
             console.log(deschanged);
-
-            }
+ 
           }
         });
  
@@ -444,15 +480,7 @@ sap.ui.define(
         });
         oBindListSP.getContexts();
       },
-      // onCancel: function(){
-      //   this.getView().byId("createTypeTable").setVisible(true);
-      //   this.getView().byId("entryTypeTable").setVisible(false);
-      //   this.getView().byId("updateTypeTable").setVisible(false);
-      //   this.getView().byId("mainPageFooter").setVisible(false)
-      //   this.getView().byId("mainPageFooter2").setVisible(false);
-       
- 
-      // },
+     
       onCancel: function () {
         const that = this;
         debugger;
@@ -481,15 +509,15 @@ sap.ui.define(
         this.getView().byId("mainPageFooter").setVisible(false);
         this.getView().byId("mainPageFooter2").setVisible(false);
         this.getView().byId("entryTypeTable").setVisible(false);
-
-
+ 
+ 
        
         this.getView().byId("editBtn").setEnabled(true);
         this.getView().byId("deleteBtn").setEnabled(true);
         this.getView().byId("copyBtn").setEnabled(true);
         this.getView().byId("entryBtn").setEnabled(true);
        }
-
+ 
        
        
        
@@ -500,9 +528,9 @@ sap.ui.define(
  
      
           sap.m.MessageBox.confirm(
-
+ 
             "Do you want to discard the changes?", {
-
+ 
             title: "Confirmation",
             onClose: function (oAction) {
               if (oAction === sap.m.MessageBox.Action.OK) {
@@ -510,7 +538,7 @@ sap.ui.define(
                 that.resetView();
                
               }
-
+ 
             }
           }
           )
@@ -567,9 +595,9 @@ sap.ui.define(
         });
  
         }, // ending fn
-      
-      
-
+     
+     
+ 
         deleteSelectedItems: function (aItems) {
  
           aItems.forEach(function (oItem) {
@@ -587,7 +615,7 @@ sap.ui.define(
         },
  
       pressCopy: function () {
-
+ 
         if (editFlag) {
           return;
         }
@@ -605,7 +633,7 @@ sap.ui.define(
           return;
         }
         copyFlag = true;
-
+ 
         this.getView().byId("deleteBtn").setEnabled(false);
         this.getView().byId("editBtn").setEnabled(false);
         this.getView().byId("entryBtn").setEnabled(false);
@@ -614,7 +642,7 @@ sap.ui.define(
  
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
-
+ 
         this.getView().byId('entryTypeTable').setVisible(true);
  
         this.getView().byId("NAVOYCUR2").setValue(code);
