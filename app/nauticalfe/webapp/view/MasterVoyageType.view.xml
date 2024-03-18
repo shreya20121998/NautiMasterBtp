@@ -8,8 +8,8 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1">
-       <headerContent>
+    <Page id="_IDGenPage1" class="page1">
+        <headerContent>
             <!-- Your header content goes here -->
             <Bar class="customHeader">
                 <contentLeft>
@@ -58,18 +58,19 @@
                 </contentRight>
             </Bar>
         </headerContent>
-       <Bar
+        <Bar
             id="_IDGenBar1"
             class="_IDGenBar1"
          >
             <contentLeft>
                 <Button
+                    id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button text="Copy As" press="pressCopy"/>
-                <Button text="Edit"  press="pressEdit"/>
-                <Button text="Delete" press="onDeletePress"/>
+                <Button id="copyBtn" text="Copy As" press="pressCopy"/>
+                <Button  id= "editBtn" text="Edit"  press="pressEdit"/>
+                <Button id= "deleteBtn" text="Delete" press="onDeletePress"/>
                
                 <Button
                     id="button"
@@ -80,17 +81,7 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    src="sap-icon://print"
-                    class="size1"
-                />
-                <!-- <Button text="Display" /> -->
-                <Button
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+            
         </Bar>
         <Label
             text="Voyage Type Master Table "
@@ -104,6 +95,8 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+             noDataText="Loading ..."
+            enableBusyIndicator="true"
            
         >
             <columns>
@@ -157,8 +150,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="voyCode"  maxLength="4"/>
-                        <Input id="voyCodeDesc" />
+                        <Input id="voyCode"  maxLength="4" liveChange="onLiveChange"/>
+                        <Input id="voyCodeDesc" liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -185,7 +178,7 @@
                 <ColumnListItem>
                     <cells>
                         <Text id="voyCode1" text="" />
-                        <Input id="voyCodeDesc1"  editable="true"/>
+                        <Input id="voyCodeDesc1"  editable="true"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>

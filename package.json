@@ -8,7 +8,7 @@
   "dependencies": {
     "@sap-cloud-sdk/connectivity": "^3.11.0",
     "@sap-cloud-sdk/http-client": "^3.11.0",
-    "@sap-cloud-sdk/resilience": "^3.12.0",
+    "@sap-cloud-sdk/resilience": "^3.12.1",
     "@sap/cds": "^7",
     "express": "^4",
     "nodemailer": "^6.9.8"
@@ -27,7 +27,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZBTP_NAUTI_MARINE_DM_CDS",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "internalserver",
@@ -45,7 +45,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZBTP_NAUTI_CREATEVOYAGE_CDS",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -63,7 +63,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZBTP_NAUTI_PORTMASTER_CDS",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -81,7 +81,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZBTP_NAUTI_VOY_DOC_UPD_CDS",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -99,7 +99,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZBTP_NAUTICAL_MARIDISTANCE_CDS",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -117,7 +117,7 @@
         "kind": "odata-v2",
         "model": "srv/external/NAUTINAUTICALCV_SRV",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -135,7 +135,7 @@
         "kind": "odata-v2",
         "model": "srv/external/NAUTIMASTER_BTP_SRV",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -153,7 +153,7 @@
         "kind": "odata-v2",
         "model": "srv/external/NAUTIMARINE_TRAFFIC_API_SRV",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
@@ -171,13 +171,14 @@
         "kind": "odata-v2",
         "model": "srv/external/NAUTIVENDOR_BTP_SRV",
         "csrf": true,
-        "csrfInBatch":true,
+        "csrfInBatch": true,
         "[production]": {
           "credentials": {
             "destination": "Ingenx_OData_SAP",
             "path": "/sap/opu/odata/nauti/VENDOR_BTP_SRV"
           }
-        },"[development]": {
+        },
+        "[development]": {
           "credentials": {
             "destination": "SandboxPO",
             "path": "/sap/opu/odata/nauti/VENDOR_BTP_SRV"

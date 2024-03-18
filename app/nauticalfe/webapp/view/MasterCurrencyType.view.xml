@@ -14,8 +14,7 @@
             <!-- Your header content goes here -->
             <Bar
                 id="_IDGenBar1"
-                class="customHeader"
-            >
+                class="customHeader" >
                 <contentLeft>
                     <core:Icon
                         id="_IDGenIcon1"
@@ -30,6 +29,7 @@
                         class="size1"
                         color="#FFFFFF"
                         press="onBackPressHome"
+                        
                     />
                     <Image
                          class="size1"
@@ -75,29 +75,15 @@
         </headerContent>
         <Bar
             id="_IDGenBar12"
-            class="_IDGenBar1"
-        >
+            class="_IDGenBar1" >
             <contentLeft>
-                <Button
-                    id="_IDGenButton12"
+                <Button id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button
-                    id="_IDGenButton13"
-                    text="Copy As"
-                    press="pressCopy"
-                />
-                <Button
-                    id="_IDGenButton14"
-                    text="Delete"
-                    press="onDeletePress"
-                />
-                <Button
-                    id="_IDGenButton15"
-                    text="Edit"
-                    press="pressEdit"
-                />
+                <Button  id="copyBtn" text="Copy As" press="pressCopy" />
+                <Button id="editBtn"  text="Edit"  press="pressEdit"/>
+                <Button  id="deleteBtn" text="Delete" press="onDeletePress"/>
                 
                 <Button
                     id="button"
@@ -108,24 +94,8 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    id="_IDGenIcon33"
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <Button
-                    id="_IDGenButton19"
-                    text="Display"
-                />
-                <Button
-                    id="_IDGenButton20"
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
         </Bar>
+
         <Label
             text="Currency Type Master Table "
             class="masterheadings"
@@ -138,6 +108,8 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            noDataText="Loading ..."
+            enableBusyIndicator="true"
             
         >
             <columns>
@@ -190,8 +162,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="NAVOYCUR" value="" maxLength="4"/>
-                        <Input id="NAVOYGCURDES" value="" />
+                        <Input id="NAVOYCUR2" maxLength="3"/>
+                        <Input id="NAVOYGCURDES2" />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -217,31 +189,12 @@
                 <ColumnListItem>
                     <cells>
                         <Text id="NAVOYCUR1" text="" />
-                        <Input id="NAVOYGCURDES1"  editable="true"/>
+                        <Input id="NAVOYGCURDES1"  editable="true" liveChange="OndescriptionChanged"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         <OverflowToolbar
-                id="mainPageFooter2"
-                design="Auto"
-                visible="false"
-            >
-                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
-                <Button
-                    id="mainPageSave12"
-                    text="Update"
-                    press="onUpdate"
-                />
-                <Button
-                    id="_IDGenButton23"
-                    text="Cancel"
-                    press="onCancel"
-                />
-            </OverflowToolbar>
- 
-            <!-- main page footer -->
-            <OverflowToolbar
                 id="mainPageFooter"
                 design="Auto"
                 visible="false"
@@ -258,20 +211,22 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
-
-            <!--new entries footer -->
-            
-        
+        <OverflowToolbar
+                id="mainPageFooter2"
+                design="Auto"
+                visible="false"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                <Button
+                    id="mainPageSave12"
+                    text="Update"
+                    press="onUpdate"
+                />
+                <Button
+                    id="_IDGenButton23"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar> 
     </Page>
-
-    <!--scrollbar added-->
-    <ScrollContainer
-        id="_IDGenScrollContainer1"
-        height="100%"
-        width="100%"
-        vertical="true"
-        focusable="true"
-    >
-        <!--this is first page-->
-    </ScrollContainer>
 </mvc:View>

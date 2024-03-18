@@ -4,12 +4,19 @@ sap.ui.define(
     "sap/ui/core/routing/History",
     "sap/ui/core/Fragment",
     "sap/m/MessageToast",
-    "sap/m/MessageBox",
-    "sap/ui/model/json/JSONModel"
+    "sap/m/MessageBox"
+    
   ],
-  function (Controller,History,Fragment,MessageToast, MessageBox,JSONModel ) {
+  function (Controller,History,Fragment,MessageToast, MessageBox) {
     "use strict";
     let aSelectedIds=[];
+    let copyFlag = false;
+    let editFlag = false;
+    var initialVoycd = "";
+    var initialVoydes = "";
+    
+  
+
  
     return Controller.extend("nauticalfe.controller.MasterVoyageType", {
  
@@ -18,10 +25,13 @@ sap.ui.define(
         this.getView().byId("entryTypeTable").setVisible(false);
         this.getView().byId("mainPageFooter").setVisible(false);
         this.getView().byId("updateTypeTable").setVisible(false);
- 
+        // this.getView().setModel(oNewModel, "newModelName");
  
       },
+     
       onBackPress: function () {
+       
+
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteMasterDashboard");
       },
@@ -48,9 +58,37 @@ sap.ui.define(
           this._oMenuFragment.openBy(oButton);
         }
       },
+      
       onBackPressHome: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
+        const that = this;
+        let voyDes = this.getView().byId("voyCodeDesc1").getValue().trim();
+        let voyDes3 = this.getView().byId("voyCode").getValue().trim();
+        let voyDes2= this.getView().byId("voyCodeDesc").getValue().trim();
+
+        let getvoyCodeDesc2 = aSelectedIds[0][0];
+        let getvoyCodeDesc1 = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
+   
+        if (voyDes == getvoyCodeDesc1 ) {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteHome");
+            this.resetView(); // Reset view if conditions met
+        } else {
+            sap.m.MessageBox.confirm(
+                "Do you want to discard the changes?", {
+                    title: "Confirmation",
+                    onClose: function (oAction) {
+                        if (oAction === sap.m.MessageBox.Action.OK) {
+                            // If user clicks OK, navigate to home screen
+                            const oRouter = that.getOwnerComponent().getRouter();
+                            oRouter.navTo("RouteHome");
+                            that.resetView(); // Reset view if user clicked OK
+                        } else {
+                            // If user clicks Cancel, do nothing
+                        }
+                    }
+                }
+            );
+        }
       },
       
       selectedItems: function (oEvent) {
@@ -80,27 +118,49 @@ sap.ui.define(
         return aSelectedIds;
  
       },
+  
+    
+
+    
+
      
       newEntries: function () {
+        if (copyFlag || editFlag) {
+          return
+        }
+        let selectedItem = this.byId("createTypeTable").getSelectedItems();
+        if (selectedItem.length == 0) {
         this.getView().byId("createTypeTable").setVisible(false)
         this.getView().byId("entryTypeTable").setVisible(true)
         this.getView().byId("mainPageFooter").setVisible(true)
- 
+        this.getView().byId("editBtn").setEnabled(false);
+        this.getView().byId("deleteBtn").setEnabled(false);
+        this.getView().byId("copyBtn").setEnabled(false);
+        }
+        else {
+          MessageToast.show("Unselect the Selected Row !")
+        }
  
       },
      
       pressEdit : function(){
+        if (copyFlag) {
+          return
+        }
  
         if( aSelectedIds.length){
           if( aSelectedIds.length > 1){
-             MessageToast.show("Please select one row");
+             MessageToast.show("Please select one Item");
              return
           }
         }else {
-          MessageToast.show("Please select a row");
+          MessageToast.show("Please select a Item");
           return;
         }
- 
+        editFlag= true;
+        this.getView().byId("deleteBtn").setEnabled(false);
+        this.getView().byId("copyBtn").setEnabled(false);
+        this.getView().byId("entryBtn").setEnabled(false);
         this.getView().byId("createTypeTable").setVisible(false);
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
@@ -123,20 +183,20 @@ sap.ui.define(
         if (isSuccess) {
           sap.m.MessageToast.show("Successfully Updated.");
           oView.getModel().refresh();
-              oView.byId("createTypeTable").setVisible(true)
-              oView.byId("createTypeTable").removeSelections();
- 
- 
-              oView.byId("mainPageFooter2").setVisible(false);
-              oView.byId("updateTypeTable").setVisible(false);
+          this.resetView();
         } else {
           sap.m.MessageToast.show("Fail to Update.")
         }
       },
       onUpdate: function(){
         let value1 = aSelectedIds[0][0];
-        let value2 = this.getView().byId("voyCodeDesc1").getValue();
- 
+        let value2 = this.getView().byId("voyCodeDesc1").getValue().trim();
+        
+        if (value2 == "") {
+          MessageToast.show("Please Enter Description.");
+          return
+        }
+       
         let UpData = {
           Voycd : value1,
          
@@ -168,8 +228,8 @@ sap.ui.define(
             let data = aData.filter(item=>item.Voycd == UpData.Voycd);
             console.log("fghj",data, UpData.Voydes);
  
-            if (data?.Voydes === UpData.Voydes) {
-              sap.m.MessageToast.show("Nothing to Update..")
+            if (data[0]?.Voydes === UpData.Voydes) {
+              sap.m.MessageToast.show("Nothing to Update....make some change.")
             } else {
               let path = `/VoyTypeSet('${UpData.Voycd}')`;
  
@@ -193,6 +253,11 @@ sap.ui.define(
         let isSuccess = ev.getParameter('success');
         if (isSuccess) {
           sap.m.MessageToast.show("Successfully Created.")
+          copyFlag = false;
+        this.getView().byId("editBtn").setEnabled(true);
+        this.getView().byId("deleteBtn").setEnabled(true);
+        this.getView().byId("copyBtn").setEnabled(true);
+        this.getView().byId("entryBtn").setEnabled(true);
         } else {
           sap.m.MessageToast.show("Fail to Create.")
         }
@@ -227,7 +292,7 @@ sap.ui.define(
           });
  
           if (existingEntries.includes(value1)) {
-            MessageToast.show("Duplicate Code is not allowed");
+            MessageToast.show("Entry already exists with same code.");
           } else {
  
             try {
@@ -243,6 +308,7 @@ sap.ui.define(
  
               that.byId("createTypeTable").setVisible(true);
               that.byId("createTypeTable").removeSelections();
+              aSelectedIds =[]
               that.byId("entryTypeTable").setVisible(false);
               that.byId("mainPageFooter").setVisible(false);
  
@@ -254,19 +320,103 @@ sap.ui.define(
         oBindListSP.getContexts();
       },
       
-      onCancel: function(){
-        this.getView().byId("createTypeTable").setVisible(true);
+     
+        onCancel: function () {
+          const that = this;
+          debugger;
+          let voyDes = this.getView().byId("voyCodeDesc1").getValue().trim();
+          let voyDes3 = this.getView().byId("voyCode").getValue().trim();
+          let voyDes2= this.getView().byId("voyCodeDesc").getValue().trim();
+          
+          let getvoyCodeDesc2 = aSelectedIds[0][0];
+          let getvoyCodeDesc1 = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
+       
+          if (voyDes === getvoyCodeDesc1) {
+            this.getView().byId("createTypeTable").setVisible(true).removeSelections();
+            this.getView().byId("updateTypeTable").setVisible(false);
+            this.getView().byId("mainPageFooter").setVisible(false);
+            this.getView().byId("mainPageFooter2").setVisible(false);
+    
+            
+            this.getView().byId("editBtn").setEnabled(true);
+            this.getView().byId("deleteBtn").setEnabled(true);
+            this.getView().byId("copyBtn").setEnabled(true);
+            this.getView().byId("entryBtn").setEnabled(true);
+          }
+         else if(voyDes2 === getvoyCodeDesc1 && voyDes3 ===getvoyCodeDesc2){
+          this.getView().byId("createTypeTable").setVisible(true).removeSelections();
+          this.getView().byId("updateTypeTable").setVisible(false);
+          this.getView().byId("mainPageFooter").setVisible(false);
+          this.getView().byId("mainPageFooter2").setVisible(false);
+          this.getView().byId("entryTypeTable").setVisible(false);
+
+  
+          
+          this.getView().byId("editBtn").setEnabled(true);
+          this.getView().byId("deleteBtn").setEnabled(true);
+          this.getView().byId("copyBtn").setEnabled(true);
+          this.getView().byId("entryBtn").setEnabled(true);
+         }
+
+          
+          
+          
+          
+          
+          else {
+             
+   
+       
+            sap.m.MessageBox.confirm(
+ 
+              "Do you want to discard the changes?", {
+ 
+              title: "Confirmation",
+              onClose: function (oAction) {
+                if (oAction === sap.m.MessageBox.Action.OK) {
+                  // If user clicks OK, discard changes and reset view
+                  that.resetView();
+                  
+                }
+ 
+              }
+            }
+            )
+          }
+        },
+      
+      
+  
+
+      resetView: function () {
+        // Reset view to initial state
         this.getView().byId("updateTypeTable").setVisible(false);
         this.getView().byId("entryTypeTable").setVisible(false);
         this.getView().byId("mainPageFooter").setVisible(false);
         this.getView().byId("mainPageFooter2").setVisible(false);
+        aSelectedIds = [];
+        editFlag = false;
+        copyFlag = false;
+        this.getView().byId("createTypeTable").setVisible(true).removeSelections();
+        this.getView().byId("voyCode1").setText("");
+        this.getView().byId("voyCodeDesc1").setValue("");
+        this.getView().byId("voyCode").setValue("");
+        this.getView().byId("voyCodeDesc").setValue("");
+        this.getView().byId("editBtn").setEnabled(true);
+        this.getView().byId("deleteBtn").setEnabled(true);
+        this.getView().byId("copyBtn").setEnabled(true);
+        this.getView().byId("entryBtn").setEnabled(true);
       },
      
      
       onDeletePress: function () {
+        if (copyFlag || editFlag) {
+          return
+        }
+
  
         let aItems = this.byId("createTypeTable").getSelectedItems();
- 
+        let oTable = this.byId("createTypeTable");
         if (!aItems.length) {
  
           MessageToast.show("Please Select  Items ");
@@ -286,6 +436,7 @@ sap.ui.define(
                 } else {
                   // User canceled deletion
                   sap.m.MessageToast.show("Deletion canceled");
+                  oTable.removeSelections();
                 }
               }
             }
@@ -302,6 +453,7 @@ sap.ui.define(
             MessageToast.show("Record deleted sucessfully");
 
               console.log("Succesfully Deleted");
+              aSelectedIds = []
             }).catch(function (oError) {
               // Handle deletion error
               MessageBox.error("Error deleting item: " + oError.message);
@@ -310,6 +462,9 @@ sap.ui.define(
         },
 
       pressCopy: function () {
+        if (editFlag) {
+          return;
+        }
  
         if( aSelectedIds.length){
           if( aSelectedIds.length > 1){
@@ -320,13 +475,16 @@ sap.ui.define(
           MessageToast.show("Please select a row");
           return;
         }
- 
+        copyFlag = true;
+        this.getView().byId("deleteBtn").setEnabled(false);
+        this.getView().byId("editBtn").setEnabled(false);
+        this.getView().byId("entryBtn").setEnabled(false);
         this.getView().byId("createTypeTable").setVisible(false);
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
+        this.getView().byId('entryTypeTable').setVisible(true);
         this.getView().byId("voyCode").setValue(code);
         this.getView().byId("voyCodeDesc").setValue(desc);
-        this.getView().byId('entryTypeTable').setVisible(true);
  
         this.getView().byId("mainPageFooter").setVisible(true);
       }

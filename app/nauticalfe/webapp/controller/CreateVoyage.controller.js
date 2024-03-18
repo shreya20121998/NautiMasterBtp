@@ -226,6 +226,7 @@ sap.ui.define(
           })
           
       }, 
+
       showValueHelpDialog1: function () {
         // Create a dialog
         console.log("clicked voyage");
@@ -235,7 +236,7 @@ sap.ui.define(
           contentHeight: "60%",
           content: new sap.m.Table({
             mode: sap.m.ListMode.SingleSelectMaster,
-
+           
             columns: [
               new sap.m.Column({
                 header: new sap.m.Text({ text: "Voyage Type" }),
@@ -279,6 +280,7 @@ sap.ui.define(
         // Open the dialog
         oDialog.open();
       },
+
       showValueHelpDialog2: function () {
         // Create a dialog
         console.log("clicked Bidding type");

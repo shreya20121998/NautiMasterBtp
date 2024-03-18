@@ -62,13 +62,13 @@
             class="_IDGenBar1"
          >
             <contentLeft>
-                <Button
+                <Button id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button text="Copy As" press="pressCopy"/>
-                <Button text="Edit"  press="pressEdit"/>
-                <Button text="Delete" press="onDeletePress"/>
+                <Button  id="copyBtn" text="Copy As" press="pressCopy" />
+                <Button id="editBtn"  text="Edit"  press="pressEdit"/>
+                <Button  id="deleteBtn" text="Delete" press="onDeletePress"/>
                
                 <Button
                     id="button"
@@ -80,11 +80,7 @@
                 />
             </contentLeft>
             <contentRight>
-                <core:Icon
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
+               
                 <!-- <Button text="Display" /> -->
                 <Button
                     text="Exit"
@@ -104,6 +100,8 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            noDataText="Loading ..."
+            enableBusyIndicator="true"
            
         >
             <columns>
@@ -131,6 +129,7 @@
                         <Text
                             id="_IDGenInput2"
                             text="{Cstcodes}"
+
                         />
                        
                     </cells>
@@ -145,6 +144,7 @@
             class="mastertables"
             visible="false"
             mode="MultiSelect"
+    
         >
             <columns>
                 <Column>
@@ -158,7 +158,7 @@
                 <ColumnListItem>
                     <cells>
                         <Input id="costCode"  maxLength="4"/>
-                        <Input id="costCodeDesc" />
+                        <Input id="costCodeDesc"  maxLength="35"/>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -185,7 +185,8 @@
                 <ColumnListItem>
                     <cells>
                         <Text id="costCode1" text="" />
-                        <Input id="costCodeDesc1"  editable="true"/>
+                        <Input id="costCodeDesc1"  editable="true" maxLength="35"  />
+                    
                     </cells>
                 </ColumnListItem>
             </items>
@@ -213,6 +214,7 @@
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
+                
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
