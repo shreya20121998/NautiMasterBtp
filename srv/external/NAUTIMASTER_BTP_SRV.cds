@@ -1,6 +1,7 @@
-/* checksum : afd85c9217463521462964c1b037e52b */
+/* checksum : 8a031952aac76585d68fb14a401691fc */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
+@sap.message.scope.supported : 'true'
 @sap.supported.formats : 'atom json xlsx'
 service NAUTIMASTER_BTP_SRV {};
 
@@ -324,35 +325,7 @@ entity NAUTIMASTER_BTP_SRV.PortmasterSetSet {
 @sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
-entity NAUTIMASTER_BTP_SRV.ZtestSet {
-  @sap.unicode : 'false'
-  @sap.label : 'Sales Document'
-  @sap.creatable : 'false'
-  @sap.updatable : 'false'
-  @sap.sortable : 'false'
-  @sap.filterable : 'false'
-  key Vbeln : String(10) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'Document Cat.'
-  @sap.creatable : 'false'
-  @sap.updatable : 'false'
-  @sap.sortable : 'false'
-  @sap.filterable : 'false'
-  Vbtyp : String(4) not null;
-  @sap.unicode : 'false'
-  @sap.label : 'Net Value'
-  @sap.creatable : 'false'
-  @sap.updatable : 'false'
-  @sap.sortable : 'false'
-  @sap.filterable : 'false'
-  Netwr : Decimal(16, 3) not null;
-};
-
-@cds.external : true
-@cds.persistence.skip : true
-@sap.pageable : 'false'
-@sap.content.version : '1'
-entity NAUTIMASTER_BTP_SRV.voyagereleaseSet {
+entity NAUTIMASTER_BTP_SRV.VoyageRealeaseSet {
   @sap.unicode : 'false'
   @sap.label : 'Release Strategy'
   @sap.creatable : 'false'
@@ -402,5 +375,51 @@ entity NAUTIMASTER_BTP_SRV.voyagereleaseSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   App3 : String(12) not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.creatable : 'false'
+@sap.updatable : 'false'
+@sap.deletable : 'false'
+@sap.pageable : 'false'
+@sap.content.version : '1'
+entity NAUTIMASTER_BTP_SRV.CurrencySet {
+  @sap.unicode : 'false'
+  @sap.label : 'ISO code'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Isocd : String(3) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Currency'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  @sap.semantics : 'currency-code'
+  Waers : String(5) not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.content.version : '1'
+@sap.label : 'CDS View For Currency'
+entity NAUTIMASTER_BTP_SRV.ZBTP_NAUTICAL_CURRENCY {
+  @sap.label : 'Currency'
+  @sap.quickinfo : 'Currency Key'
+  @sap.semantics : 'currency-code'
+  key waers : String(5) not null;
+  @sap.display.format : 'UpperCase'
+  @sap.label : 'ISO code'
+  @sap.quickinfo : 'ISO currency code'
+  isocd : String(3);
+  @sap.label : 'Language Key'
+  spras : String(2);
+  @sap.label : 'Long Text'
+  ltext : String(40);
+  @sap.label : 'Short text'
+  ktext : String(15);
 };
 

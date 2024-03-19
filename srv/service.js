@@ -61,6 +61,7 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('READ', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('READ', 'ZBTP_NAUTICAL_CURRENCY', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       srv.on('CREATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 

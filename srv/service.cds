@@ -1,16 +1,18 @@
+
+
 using ZBTP_NAUTI_CREATEVOYAGE_CDS from './external/ZBTP_NAUTI_CREATEVOYAGE_CDS.cds';
 using ZBTP_NAUTI_MARINE_DM_CDS from './external/ZBTP_NAUTI_MARINE_DM_CDS.cds';
 using ZBTP_NAUTI_VOY_DOC_UPD_CDS from './external/ZBTP_NAUTI_VOY_DOC_UPD_CDS.cds';
 using ZBTP_NAUTICAL_MARIDISTANCE_CDS from './external/ZBTP_NAUTICAL_MARIDISTANCE_CDS.cds';
 using NAUTINAUTICALCV_SRV  from './external/NAUTINAUTICALCV_SRV.cds';
+using NAUTIMASTER_BTP_SRV    from './external/NAUTIMASTER_BTP_SRV';
 using NAUTIMARINE_TRAFFIC_API_SRV from './external/NAUTIMARINE_TRAFFIC_API_SRV.cds';
-using NAUTIMASTER_BTP_SRV from './external/NAUTIMASTER_BTP_SRV.cds';
- 
- 
- 
+
+
+
 service Nautical{
- 
- 
+
+
    entity BidTypeSet as projection on NAUTINAUTICALCV_SRV.BidTypeSet;
    entity CargoUnitSet as projection on NAUTINAUTICALCV_SRV.CargoUnitSet;
    entity CarTypeSet as projection on NAUTINAUTICALCV_SRV.CarTypeSet;
@@ -21,7 +23,7 @@ service Nautical{
    entity ZCalculateSet as projection on NAUTINAUTICALCV_SRV.ZCalculateSet;
    entity ZCreatePlanSet as projection on NAUTINAUTICALCV_SRV.ZCreatePlanSet;
    
-   entity BidMasterSet as projection on NAUTIMASTER_BTP_SRV.BidMasterSet;
+   entity BidMasterSet as projection on NAUTIMASTER_BTP_SRV.BidMasterSet; 
    entity CostMasterSet as projection on NAUTIMASTER_BTP_SRV.CostMasterSet;
    entity EventMasterSet as projection on NAUTIMASTER_BTP_SRV.EventMasterSet;
    entity BusinessPartnerSet as projection on NAUTIMASTER_BTP_SRV.BusinessPartnerSet;
@@ -30,8 +32,8 @@ service Nautical{
    entity ReleaseStrategySet as projection on NAUTIMASTER_BTP_SRV.ReleaseStrategySet;
    
    entity ClassMasterSet as projection on NAUTIMASTER_BTP_SRV.ClassMasterSet;
- 
- 
+
+
    entity EsPathCollection as projection on NAUTIMARINE_TRAFFIC_API_SRV.EsPathCollection;
    entity es_route_map as projection on NAUTIMARINE_TRAFFIC_API_SRV.es_route_map;
    entity es_port_master as projection on NAUTIMARINE_TRAFFIC_API_SRV.es_port_master;
@@ -49,8 +51,9 @@ service Nautical{
 entity ZBTP_NAUTICAL_MariDistance as projection on ZBTP_NAUTICAL_MARIDISTANCE_CDS.ZBTP_NAUTICAL_MariDistance
     {         from_port,  to_port,  distance     }    
 ;
-   entity voyagereleaseSet as projection on NAUTIMASTER_BTP_SRV.voyagereleaseSet
-    {        key Rels, key Voyty, key Vesty, key Zgroup, App1, App2, App3     }    
+entity ZBTP_NAUTICAL_CURRENCY as projection on NAUTIMASTER_BTP_SRV.ZBTP_NAUTICAL_CURRENCY
+    {        key waers, isocd, spras, ltext, ktext     }    
 ;
+
        
 }

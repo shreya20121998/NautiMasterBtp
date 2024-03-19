@@ -1,3 +1,4 @@
+
 <mvc:View
     xmlns:tnt="sap.tnt"
     xmlns:form="sap.ui.layout.form"
@@ -16,8 +17,9 @@
                 id="_IDGenBar1"
                 class="customHeader" >
                 <contentLeft>
+                    
                     <core:Icon
-                        id="_IDGenIcon1"
+                        id="backAfter"
                         src="sap-icon://nav-back"
                         class="size1"
                         color="#FFFFFF"
@@ -28,7 +30,7 @@
                         src="sap-icon://home"
                         class="size1"
                         color="#FFFFFF"
-                        press="onBackPressHome"
+                        press="onPressHome"
                        
                     />
                     <Image
@@ -81,8 +83,8 @@
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button  id="copyBtn" text="Copy As" press="pressCopy" />
-                <Button id="editBtn"  text="Edit"  press="pressEdit"/>
+                <!-- <Button  id="copyBtn" text="Copy As" press="pressCopy" />
+                <Button id="editBtn"  text="Edit"  press="pressEdit"/> -->
                 <Button  id="deleteBtn" text="Delete" press="onDeletePress"/>
                
                 <Button
@@ -113,7 +115,7 @@
            
          >
             <columns>
-                <Column id="_IDGenColumn1" width="400px">
+                <Column id="_IDGenColumn1" width="300px">
                     <Text
                         id="_IDGenText11"
                         text="Currency"
@@ -127,28 +129,12 @@
                 </Column>
             </columns>
             <items>
-                <ColumnListItem id="_IDGenColumnListItem1">
+                <ColumnListItem id="_IDGenColumnListItem1" >
                     <cells>
                      
-                        <Text
-                            id="_IDGenInput1"
-                            text="{Navoycur}"
-                        />
-                        <HBox >
-                        <Input
-                            id="DescInput"
-                            value="{Navoygcurdes}"
-                            editable="false"
-                             maxLength="30"
-                           
-                        />
-                       
-                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdate"></Button>
-                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancel"></Button>
- 
- 
-                        </HBox>
-                       
+                        <Text id="code" text="{Navoycur}" />
+                        <Text id="DescInput" text="{Navoygcurdes}" width="400px" />
+                
                     </cells>
                 </ColumnListItem>
             </items>
@@ -157,10 +143,11 @@
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
+            growing="true"
             width="100%"
             class="mastertables"
             visible="false"
-        >
+         >
             <columns>
                 <Column>
                     <Text text="Currency" />
@@ -172,7 +159,7 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="NAVOYCUR2" maxLength="3"/>
+                        <Input id="NAVOYCUR2" maxLength="3" showValueHelp="true" valueHelpRequest="showValueHelpCurrency" valueHelpOnly="true"/>
                         <Input id="NAVOYGCURDES2" />
                     </cells>
                 </ColumnListItem>
@@ -186,7 +173,7 @@
             class="mastertables"
             visible="false"
            
-        >
+         >
             <columns>
                 <Column>
                     <Text text="Currency Type" />
@@ -218,7 +205,7 @@
                 <Button
                     id="_IDGenButton22"
                     text="Cancel"
-                    press="onCancel"
+                    press="onSaveCancel"
                 />
             </OverflowToolbar>
         <OverflowToolbar
@@ -237,6 +224,6 @@
                     text="Cancel"
                     press="onCancel"
                 />
-            </OverflowToolbar>
+        </OverflowToolbar>
     </Page>
 </mvc:View>

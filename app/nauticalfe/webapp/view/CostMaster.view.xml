@@ -18,12 +18,13 @@
                         class="size1"
                         color="#FFFFFF"
                         press="onBackPress"
+                   
                     />
                     <core:Icon
                         src="sap-icon://home"
                         class="size1"
                         color="#FFFFFF"
-                        press="onBackPressHome"
+                        press="onPressHome"
                     />
                     <Image
                         class="size1"
@@ -79,18 +80,14 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-               
-                <!-- <Button text="Display" /> -->
-                <Button
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+         
         </Bar>
         <Label
             text="Cost Master Table "
             class="masterheadings"
+            design="Bold"
+       
+           
         />
         <Table
             id="createTypeTable"
@@ -101,11 +98,10 @@
             width="100%"
             class="mastertables"
             noDataText="Loading ..."
-            enableBusyIndicator="true"
            
         >
             <columns>
-                <Column id="_IDGenColumn1">
+                <Column id="_IDGenColumn1" width="300px">
                     <Text
                         id="_IDGenText11"
                         text="Cost Code"
@@ -126,11 +122,18 @@
                             id="_IDGenInput1"
                             text="{Costcode}"
                         />
-                        <Text
+                        <HBox >
+                        <Input
                             id="_IDGenInput2"
-                            text="{Cstcodes}"
-
+                            value="{Cstcodes}"
+                            editable="false"
+                            width="400px"
+                            maxLength="30"
+ 
                         />
+                                    <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+                        </HBox>
                        
                     </cells>
                 </ColumnListItem>
@@ -144,7 +147,7 @@
             class="mastertables"
             visible="false"
             mode="MultiSelect"
-    
+   
         >
             <columns>
                 <Column>
@@ -157,8 +160,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="costCode"  maxLength="4"/>
-                        <Input id="costCodeDesc"  maxLength="35"/>
+                        <Input id="costCode"  maxLength="4" liveChange="onCodeLiveChange"/>
+                        <Input id="costCodeDesc"  maxLength="39"/>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -186,7 +189,7 @@
                     <cells>
                         <Text id="costCode1" text="" />
                         <Input id="costCodeDesc1"  editable="true" maxLength="35"  />
-                    
+                   
                     </cells>
                 </ColumnListItem>
             </items>
@@ -209,12 +212,12 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
-
+ 
             <OverflowToolbar
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
-                
+               
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
@@ -234,6 +237,6 @@
        
     </Page>
  
-    
-    
+   
+   
 </mvc:View>

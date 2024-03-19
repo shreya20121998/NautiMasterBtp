@@ -8,7 +8,7 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1" class="page1">
+    <Page id="_IDGenPage1">
         <headerContent>
             <!-- Your header content goes here -->
             <Bar class="customHeader">
@@ -23,7 +23,7 @@
                         src="sap-icon://home"
                         class="size1"
                         color="#FFFFFF"
-                        press="onBackPressHome"
+                        press="onPressHome"
                     />
                     <Image
                         class="size1"
@@ -95,8 +95,7 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-             noDataText="Loading ..."
-            enableBusyIndicator="true"
+            noDataText="Loading ..."
            
         >
             <columns>
@@ -121,10 +120,19 @@
                             id="_IDGenInput1"
                             text="{Voycd}"
                         />
-                        <Text
+                        <HBox >
+                        <Input
                             id="_IDGenInput2"
-                            text="{Voydes}"
+                            value="{Voydes}"
+                            editable="false"
+                            width="400px"
+                            maxLength="30"
+ 
                         />
+                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+                        </HBox>
+                       
                        
                     </cells>
                 </ColumnListItem>
@@ -150,7 +158,7 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="voyCode"  maxLength="4" liveChange="onLiveChange"/>
+                        <Input id="voyCode"  maxLength="4" liveChange="onCodeLiveChange"/>
                         <Input id="voyCodeDesc" liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
@@ -183,10 +191,7 @@
                 </ColumnListItem>
             </items>
         </Table>
-        <!-- <Button id="_IDGenButton2" text="Add Row" press="updateTableRefresh" /> -->
-       
-            <!-- footers for both pages are coded differently as save functionality is different in
-        both main page and new entries page  -->
+      
  
             <!-- main page footer -->
             <OverflowToolbar
