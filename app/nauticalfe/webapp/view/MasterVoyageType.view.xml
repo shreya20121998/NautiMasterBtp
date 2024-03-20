@@ -1,3 +1,4 @@
+
 <mvc:View
     xmlns:tnt="sap.tnt"
     xmlns:form="sap.ui.layout.form"
@@ -95,11 +96,11 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            noDataText="Loading ..."
+            noDataText="{'path' :'loading ...', formatter:'.hello'}"
            
         >
             <columns>
-                <Column id="_IDGenColumn1">
+                <Column id="_IDGenColumn1" width="30%">
                     <Text
                         id="_IDGenText11"
                         text="Voyage Code"
@@ -125,7 +126,6 @@
                             id="_IDGenInput2"
                             value="{Voydes}"
                             editable="false"
-                            width="400px"
                             maxLength="30"
  
                         />
@@ -145,7 +145,7 @@
             width="100%"
             class="mastertables"
             visible="false"
-            mode="MultiSelect"
+        
         >
             <columns>
                 <Column>
@@ -191,7 +191,7 @@
                 </ColumnListItem>
             </items>
         </Table>
-      
+     
  
             <!-- main page footer -->
             <OverflowToolbar

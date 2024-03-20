@@ -18,7 +18,7 @@
                         class="size1"
                         color="#FFFFFF"
                         press="onBackPress"
-                   
+                    
                     />
                     <core:Icon
                         src="sap-icon://home"
@@ -80,14 +80,14 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-         
+          
         </Bar>
         <Label
             text="Cost Master Table "
             class="masterheadings"
             design="Bold"
-       
-           
+        
+            
         />
         <Table
             id="createTypeTable"
@@ -97,13 +97,14 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            noDataText="Loading ..."
+            noDataText="loading ..."
            
         >
             <columns>
                 <Column id="_IDGenColumn1" width="300px">
                     <Text
                         id="_IDGenText11"
+
                         text="Cost Code"
                     />
                 </Column>
@@ -129,9 +130,9 @@
                             editable="false"
                             width="400px"
                             maxLength="30"
- 
+
                         />
-                                    <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
                         <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
                         </HBox>
                        
@@ -146,8 +147,8 @@
             width="100%"
             class="mastertables"
             visible="false"
-            mode="MultiSelect"
-   
+            
+    
         >
             <columns>
                 <Column>
@@ -189,7 +190,7 @@
                     <cells>
                         <Text id="costCode1" text="" />
                         <Input id="costCodeDesc1"  editable="true" maxLength="35"  />
-                   
+                    
                     </cells>
                 </ColumnListItem>
             </items>
@@ -212,12 +213,12 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
- 
+
             <OverflowToolbar
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
-               
+                
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
@@ -232,11 +233,11 @@
                 />
             </OverflowToolbar>
  
-            <!--new entries footer -->
+            
            
        
     </Page>
  
-   
-   
+    
+    
 </mvc:View>

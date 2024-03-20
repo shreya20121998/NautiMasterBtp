@@ -9,16 +9,15 @@ sap.ui.define(
   ],
   function (Controller, History, Fragment, MessageToast, MessageBox) {
     "use strict";
+
     let aSelectedIds = [];
     let copyFlag = false;
     let editFlag = false;
     let newEntryFlag = false;
 
-
     let inputFieldObj = {};
     let saveObj = {};
-    let cancelObj = {}
-
+    let cancelObj = {};
 
 
     return Controller.extend("nauticalfe.controller.MasterVoyageType", {
@@ -30,39 +29,57 @@ sap.ui.define(
         this.getView().byId("updateTypeTable").setVisible(false);
 
       },
+      onCodeLiveChange: function (oEvent) {
+        var oInput = oEvent.getSource();
+        var sValue = oInput.getValue();
+
+        // Check if the input field is for cost code
+        if (oInput.getId() === this.getView().createId("voyCode")) {
+          // Validate if the entered value is a number
+          if (!(/^\d*$/.test(sValue))) {
+            // If not a number, remove the last character
+            var sNewValue = sValue.slice(0, -1);
+            oInput.setValue(sNewValue);
+            // Show an error message to the user
+            sap.m.MessageToast.show("Cost code should only contain numbers.");
+          }
+        }
+      },
+
 
       onBackPress: function () {
         const that = this;
- 
+
         const oRouter = this.getOwnerComponent().getRouter();
         // Check if any items have been selected
+
         if (aSelectedIds.length === 0 && !newEntryFlag) {
- 
+
           // If no items have been selected, navigate to "RouteMasterDashboard"
           oRouter.navTo("RouteMasterDashboard");
         }
         else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
           oRouter.navTo("RouteMasterDashboard");
           this.byId('createTypeTable').removeSelections();
-           
-        }else if(copyFlag){
- 
+
+        } else if (copyFlag) {
+
           // Get the values from the view
           let voyCode = this.getView().byId("voyCode").getValue().trim();
           console.log(voyCode);
           let voyCodeDesc = this.getView().byId("voyCodeDesc").getValue().trim();
           let originalVoyCode = aSelectedIds[0][0];
           let originalVoyCodeDesc = aSelectedIds[0][1];
- 
+
           // Check if the values are unchanged
-              if (voyCode === originalVoyCode && voyCodeDesc === originalVoyCodeDesc) {
- 
+          if (voyCode === originalVoyCode && voyCodeDesc === originalVoyCodeDesc) {
+
             // If no changes have been made, reset the view to its initial state
             this.resetView();
- 
-             }
+
+          }
           // If changes have been made, prompt the user for confirmation
-             else {
+          else {
             sap.m.MessageBox.confirm(
               "Do you want to discard the changes?", {
               title: "Confirmation",
@@ -76,20 +93,21 @@ sap.ui.define(
               }
             }
             );
-           }
-        } else if(newEntryFlag){
+          }
+        } else if (newEntryFlag) {
+
           let voyCode = this.getView().byId("voyCode").getValue().trim();
           let voyCodeDesc = this.getView().byId("voyCodeDesc").getValue().trim();
           if (voyCode == "" && voyCodeDesc == "") {
             this.resetView();
- 
+
           } else {
             sap.m.MessageBox.confirm(
               "Do you want to discard the changes?", {
- 
+
               title: "Confirmation",
               onClose: function (oAction) {
- 
+
                 if (oAction === sap.m.MessageBox.Action.OK) {
                   // If user clicks OK, reset the view to its initial state
                   that.resetView();
@@ -99,76 +117,83 @@ sap.ui.define(
               }
             }
             );
- 
+
           }
         }
-        else if( editFlag){
+        else if (editFlag) {
           let desc = aSelectedIds[0][1];
           let originalDesc = inputFieldObj.getValue();
           console.log(originalDesc, originalDesc.trim());
           if (desc === originalDesc) {
- 
+
             that.onCancelPressBtn();
- 
-            oRouter.navTo("RouteMasterDashboard");
+
+            //oRouter.navTo("RouteMasterDashboard");
             that.resetView();
           } else {
- 
+
             let oTable = this.byId("createTypeTable");
             let aSelectedItems = oTable.getSelectedItems();
- 
+
             let cells = aSelectedItems[0].getCells();
             let value2 = cells[1].getAggregation('items')[0].getProperty("value").trim();
-              sap.m.MessageBox.confirm(
- 
-                "Do you want to discard the changes?", {
- 
-                title: "Confirmation",
-                onClose: function (oAction) {
-                  if (oAction === sap.m.MessageBox.Action.OK) {
-                    // If user clicks OK, discard changes and reset view
-                    cells[1].getAggregation('items')[0].setProperty("value", aSelectedIds[0][1]);
-                    that.getView().getModel().refresh();
-                    inputFieldObj.setEditable(false);
-                    saveObj.setVisible(false);
-                    cancelObj.setVisible(false);
-                    that.resetView();
-                    oRouter.navTo("RouteMasterDashboard");
- 
- 
-                  }
- 
+            sap.m.MessageBox.confirm(
+
+              "Do you want to discard the changes?", {
+
+              title: "Confirmation",
+              onClose: function (oAction) {
+
+                if (oAction === sap.m.MessageBox.Action.OK) {
+
+                  // If user clicks OK, discard changes and reset view
+                  cells[1].getAggregation('items')[0].setProperty("value", aSelectedIds[0][1]);
+                  that.getView().getModel().refresh();
+                  inputFieldObj.setEditable(false);
+                  saveObj.setVisible(false);
+                  cancelObj.setVisible(false);
+                  that.resetView();
+                  //oRouter.navTo("RouteMasterDashboard");
+
+
                 }
+
               }
-              )
             }
- 
+            )
+          }
+
         }
-     
+
       },
 
       onPressHome: function () {
         const that = this;
         const oRouter = this.getOwnerComponent().getRouter();
         if (aSelectedIds.length === 0 && !newEntryFlag) {
+
           // If no items have been selected, navigate to "RouteMasterDashboard"
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("RouteHome");
-         
-        } else if (copyFlag){
+
+        } else if (copyFlag) {
+
           let voyCode = this.getView().byId("voyCode").getValue().trim();
           let voyCodeDesc = this.getView().byId("voyCodeDesc").getValue().trim();
           let originalVoyCode = aSelectedIds[0][0];
           let originalVoyCodeDesc = aSelectedIds[0][1];
- 
+
           // Check if the values are unchanged
-               if (voyCode === originalVoyCode && voyCodeDesc === originalVoyCodeDesc) {
+
+          if (voyCode === originalVoyCode && voyCodeDesc === originalVoyCodeDesc) {
+
             // If no changes have been made, reset the view to its initial state
+
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
             this.resetView();
-             } else {
-                sap.m.MessageBox.confirm(
+          } else {
+            sap.m.MessageBox.confirm(
               "Do you want to discard the changes?", {
               title: "Confirmation",
               onClose: function (oAction) {
@@ -184,19 +209,20 @@ sap.ui.define(
             }
             );
           }
- 
-        }else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag){
+
+        } else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
           oRouter.navTo("RouteHome");
           this.byId("createTypeTable").removeSelections();
         }
-        else if( newEntryFlag){
+        else if (newEntryFlag) {
           let voyCode = this.getView().byId("voyCode").getValue().trim();
           let voyCodeDesc = this.getView().byId("voyCodeDesc").getValue().trim();
           if (voyCode == "" && voyCodeDesc == "") {
+
             const oRouter = that.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
             that.resetView();
- 
+
           } else {
             sap.m.MessageBox.confirm(
               "Do you want to discard the changes?", {
@@ -213,56 +239,52 @@ sap.ui.define(
               }
             }
             );
- 
+
           }
- 
-        }else if(editFlag){
-           
-   
-            let desc = aSelectedIds[0][1];
-            let originalDesc = inputFieldObj.getValue();
-            console.log(originalDesc, originalDesc.trim());
-            if (desc === originalDesc) {
- 
-              that.onCancelPressBtn();
- 
-              oRouter.navTo("RouteHome");
-              that.resetView();
-            } else {
- 
-              let oTable = this.byId("createTypeTable");
-              let aSelectedItems = oTable.getSelectedItems();
- 
-              let cells = aSelectedItems[0].getCells();
-              let value2 = cells[1].getAggregation('items')[0].getProperty("value").trim();
-                sap.m.MessageBox.confirm(
- 
-                  "Do you want to discard the changes?", {
- 
-                  title: "Confirmation",
-                  onClose: function (oAction) {
-                    if (oAction === sap.m.MessageBox.Action.OK) {
-                      // If user clicks OK, discard changes and reset view
-                      cells[1].getAggregation('items')[0].setProperty("value", aSelectedIds[0][1]);
-                      that.getView().getModel().refresh();
-                      inputFieldObj.setEditable(false);
-                      saveObj.setVisible(false);
-                      cancelObj.setVisible(false);
-                      that.resetView();
-                      oRouter.navTo("RouteHome");
- 
- 
-                    }
- 
-                  }
+
+        } else if (editFlag) {
+
+          let desc = aSelectedIds[0][1];
+          let originalDesc = inputFieldObj.getValue();
+          console.log(originalDesc, originalDesc.trim());
+          if (desc === originalDesc) {
+
+            that.onCancelPressBtn();
+
+            oRouter.navTo("RouteHome");
+            that.resetView();
+          } else {
+
+            let oTable = this.byId("createTypeTable");
+            let aSelectedItems = oTable.getSelectedItems();
+
+            let cells = aSelectedItems[0].getCells();
+            let value2 = cells[1].getAggregation('items')[0].getProperty("value").trim();
+            sap.m.MessageBox.confirm(
+
+              "Do you want to discard the changes?", {
+
+              title: "Confirmation",
+              onClose: function (oAction) {
+                if (oAction === sap.m.MessageBox.Action.OK) {
+                  // If user clicks OK, discard changes and reset view
+                  cells[1].getAggregation('items')[0].setProperty("value", aSelectedIds[0][1]);
+                  that.getView().getModel().refresh();
+                  inputFieldObj.setEditable(false);
+                  saveObj.setVisible(false);
+                  cancelObj.setVisible(false);
+                  that.resetView();
+                  oRouter.navTo("RouteHome");
+
+
                 }
-                )
+
               }
- 
-         
-         
+            }
+            )
+          }
         }
-       
+
       },
 
       // for more fragment
@@ -288,12 +310,13 @@ sap.ui.define(
           this._oMenuFragment.openBy(oButton);
         }
       },
+      // Event trigger for Selection change
+
       selectedItems: function (oEvent) {
-        // console.log("hello");
+        
         let oTable = oEvent.getSource();
         let aSelectedItems = oTable.getSelectedItems();
-
-
+      
         aSelectedIds = aSelectedItems.map(function (oSelectedItem) {
 
           // console.log(oSelectedItem.getBindingContext());
@@ -311,10 +334,50 @@ sap.ui.define(
 
         });
         console.log(aSelectedIds);
-        // console.log("Selected Travel IDs: " + aSelectedTravelIds.join(","));
+        
         return aSelectedIds;
 
       },
+      pressEdit: function () {
+      
+
+        if( editFlag){
+          MessageToast.show("Already in edit mode");
+          return
+
+        }
+
+        if (aSelectedIds.length) {
+          if (aSelectedIds.length > 1) {
+            MessageToast.show("Please select one Item.");
+            return
+          }
+        } else {
+          MessageToast.show("Please select an Item.");
+          return;
+        }
+        editFlag = true;
+
+        this.byId("createTypeTable").setMode("SingleSelectMaster");
+
+        let oTable = this.byId("createTypeTable");
+        let aSelectedItems = oTable.getSelectedItems();
+
+        let cells = aSelectedItems[0].getCells();
+        inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
+        saveObj = cells[1].getAggregation('items')[1].setVisible(true);
+        cancelObj = cells[1].getAggregation('items')[2].setVisible(true);
+        inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
+        inputFieldObj.setEditable(true);
+        saveObj.setVisible(true);
+        inputFieldObj.setEditable(true);
+
+        this.getView().byId("deleteBtn").setEnabled(false);
+        this.getView().byId("copyBtn").setEnabled(false);
+        this.getView().byId("entryBtn").setEnabled(false);
+
+      },
+
 
       newEntries: function () {
         newEntryFlag = true;
@@ -324,6 +387,7 @@ sap.ui.define(
         }
         let selectedItem = this.byId("createTypeTable").getSelectedItems();
         if (selectedItem.length == 0) {
+
           this.getView().byId("createTypeTable").setVisible(false)
           this.getView().byId("entryTypeTable").setVisible(true)
           this.getView().byId("mainPageFooter").setVisible(true)
@@ -337,41 +401,6 @@ sap.ui.define(
 
       },
 
-      pressEdit: function () {
- 
-        let oTable = this.byId("createTypeTable");
-        let aSelectedItems = oTable.getSelectedItems();
- 
-        let cells = aSelectedItems[0].getCells();
-        inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
-        saveObj = cells[1].getAggregation('items')[1].setVisible(true);
-        cancelObj = cells[1].getAggregation('items')[2].setVisible(true);
-        inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
-        inputFieldObj.setEditable(true);
-        saveObj.setVisible(true);
-        inputFieldObj.setEditable(true);
- 
- 
-       
-        if (aSelectedIds.length) {
-          if (aSelectedIds.length > 1) {
-            MessageToast.show("Please select one Item.");
-            return
-          }
-        } else {
-          MessageToast.show("Please select an Item.");
-          return;
-        }
-        editFlag = true;
-        this.getView().byId("deleteBtn").setEnabled(false);
-        this.getView().byId("copyBtn").setEnabled(false);
-        this.getView().byId("entryBtn").setEnabled(false);
- 
-       
- 
- 
-      },
-
       onPatchSent: function (ev) {
         sap.m.MessageToast.show("Updating..")
       },
@@ -379,45 +408,45 @@ sap.ui.define(
         let oView = this.getView();
         let isSuccess = ev.getParameter('success');
         if (isSuccess) {
- 
+
           sap.m.MessageToast.show("Successfully Updated.");
- 
+
           oView.getModel().refresh();
           this.resetView();
-         
+
           saveObj.setVisible(false);
           cancelObj.setVisible(false);
           inputFieldObj.setEditable(false);
- 
+
         } else {
           sap.m.MessageToast.show("Fail to Update.")
         }
       },
       onCancelPressBtn: function () {
- 
+
         let that = this;
         console.log("cancel Clciked");
         let description = aSelectedIds[0][1];
- 
+
         let oTable = this.byId("createTypeTable");
         let aSelectedItems = oTable.getSelectedItems();
- 
+
         let cells = aSelectedItems[0].getCells();
         let value2 = cells[1].getAggregation('items')[0].getProperty("value").trim();
-       
+
         if (value2 === description) {
- 
+
           inputFieldObj.setEditable(false);
           saveObj.setVisible(false);
           cancelObj.setVisible(false);
           this.resetView();
           return;
- 
+
         } else {
           sap.m.MessageBox.confirm(
- 
+
             "Do you want to discard the changes?", {
- 
+
             title: "Confirmation",
             onClose: function (oAction) {
               if (oAction === sap.m.MessageBox.Action.OK) {
@@ -428,31 +457,31 @@ sap.ui.define(
                 saveObj.setVisible(false);
                 cancelObj.setVisible(false);
                 that.resetView();
- 
- 
+
+
               }
- 
+
             }
           }
           )
         }
- 
+
         if (value2 == "") {
           MessageToast.show("Please Enter Description.");
           return
         }
- 
- 
+
+
       },
 
       onUpdatePressBtn: function () {
- 
+
         let code = aSelectedIds[0][0];
         let description = aSelectedIds[0][1];
         // let value2 =  this.getView().byId("DescInput").getValue().trim() ;
         let oTable = this.byId("createTypeTable");
         let aSelectedItems = oTable.getSelectedItems();
- 
+
         let cells = aSelectedItems[0].getCells();
         let value2 = cells[1].getAggregation('items')[0].getProperty("value").trim();
         console.log();
@@ -460,74 +489,68 @@ sap.ui.define(
           MessageToast.show("nothing to update ");
           return;
         }
- 
+
         if (value2 == "") {
           MessageToast.show("Please Enter Description.");
           return
         }
- 
+
         let UpData = {
           Voycd: code,
           Voydes: value2
- 
+
         };
- 
- 
+
         // console.log(data);
- 
+
         let oModel = this.getView().getModel();
         oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
-       
+
         let oBindList = oModel.bindList("/VoyTypeSet", {
           $$updateGroupId: "update"
         });
- 
-       
+
+
         oBindList.attachPatchSent(this.onPatchSent, this);
         oBindList.attachPatchCompleted(this.onPatchCompleted, this);
         // let inputVal = this.byId("DescInput")
         // console.log(inputVal);
- 
+
         let oFilter = new sap.ui.model.Filter("Voycd", sap.ui.model.FilterOperator.EQ, UpData.Voycd);
         oBindList.filter(oFilter);
-       
+
         let that = this;
- 
+
         oBindList.requestContexts().then(function (aContexts) {
- 
+
           if (aContexts.length > 0) {
             let aData = [];
             aContexts.forEach(context => {
               aData.push(context.getObject())
             });
             console.log("addata", aData);
- 
+
             let data = aData.filter(item => item.Voycd == UpData.Voycd);
             console.log("fghj", data, UpData.Voydes);
- 
+
             console.log("hello");
             let path = `/VoyTypeSet('${UpData.Voycd}')`;
- 
+
             let upContext = aContexts.filter(obj => obj.sPath === path);
- 
+
             inputFieldObj.setProperty("value", value2.trim());
-                that.getView().getModel().refresh();
- 
+            that.getView().getModel().refresh();
+
             upContext[0].setProperty("Voydes", UpData.Voydes.trim());
             deschanged.push(UpData.Voydes.trim())
             // console.log(deschanged);
- 
+
           }
         });
- 
+
         oModel.submitBatch("update");
         // this._bChangesMade = false;
       },
-
-
-
-
-
 
       onUpdateOldCode: function () {
         let value1 = aSelectedIds[0][0];
@@ -593,7 +616,7 @@ sap.ui.define(
 
       onCreateCompleted: function (ev) {
         console.log("ev", ev);
- 
+
         let isSuccess = ev.getParameter('success');
         if (isSuccess) {
           sap.m.MessageToast.show("Successfully Created.")
@@ -607,39 +630,39 @@ sap.ui.define(
         var that = this;
         var value1 = this.getView().byId("voyCode").getValue();
         var value2 = this.getView().byId("voyCodeDesc").getValue();
- 
+
         if (!value1 || !value2) {
           MessageToast.show("Please enter both fields.");
           return;
         }
- 
+
         let data = {
- 
+
           Voycd: value1,
           Voydes: value2
         };
- 
+
         const oJsonModel = new sap.ui.model.json.JSONModel(data);
         this.getView().setModel(oJsonModel, "oJsonModel");
         let oModel = this.getView().getModel();
- 
+
         oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
- 
+
         let oBindListSP = oModel.bindList("/VoyTypeSet");
- 
+
         oBindListSP.attachCreateSent(this.onCreateSent, this);
         oBindListSP.attachCreateCompleted(this.onCreateCompleted, this);
-     
+
         oBindListSP.attachEventOnce("dataReceived", function () {
- 
+
           let existingEntries = oBindListSP.getContexts().map(function (context) {
             return context.getProperty("Voycd");
           });
- 
+
           if (existingEntries.includes(value1)) {
             MessageToast.show("Entry already exists with the same code.");
           } else {
- 
+
             try {
               oBindListSP.create({
                 Voycd: value1,
@@ -647,8 +670,8 @@ sap.ui.define(
               });
               that.getView().getModel().refresh();
               that.resetView();
-             
- 
+
+
             } catch (error) {
               MessageToast.show("Error while saving data");
             }
@@ -656,68 +679,52 @@ sap.ui.define(
         });
         oBindListSP.getContexts();
       },
-      onCodeLiveChange: function (oEvent) {
-        var oInput = oEvent.getSource();
-        var sValue = oInput.getValue();
-       
-        // Check if the input field is for cost code
-        if (oInput.getId() === this.getView().createId("voyCode")) {
-            // Validate if the entered value is a number
-            if (!(/^\d*$/.test(sValue))) {
-                // If not a number, remove the last character
-                var sNewValue = sValue.slice(0, -1);
-                oInput.setValue(sNewValue);
-                // Show an error message to the user
-                sap.m.MessageToast.show("Cost code should only contain numbers.");
-            }
-        }
-      },
 
       onCancel: function () {
         // checking if edit section
         if (editFlag) {
           this.onCancelEdit();
- 
+
           // checking if new Entry section
         } else if (newEntryFlag) {
           this.onCancelCopyOrEntry();
- 
+
           // checking if copy
         } else if (copyFlag) {
           this.onCancelCopyOrEntry();
         }
- 
+
       },
 
       onCancelEdit: function () {
         const that = this;
         let updatedValue = this.byId("voyCodeDesc1").getValue().trim();
         let selectedEntryDesc = aSelectedIds[0][1];
- 
+
         if (selectedEntryDesc === updatedValue) {
- 
+
           that.resetView();
- 
+
         } else {
- 
+
           sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
             MessageBox.confirm(
               "Do you want to discard the changes ?", {
               title: "Confirm ",
               onClose: function (oAction) {
- 
+
                 if (oAction === MessageBox.Action.OK) {
                   that.resetView();
                 } else {
                   console.log("continue ..");
- 
+
                 }
               }
             }
             );
           });
- 
- 
+
+
         }
       },
 
@@ -726,36 +733,36 @@ sap.ui.define(
         const that = this;
         let updatedCode = this.byId("voyCode").getValue();
         let updatedValue = this.byId("voyCodeDesc").getValue().trim();
-       
-        if( aSelectedIds.length){
- 
+
+        if (aSelectedIds.length) {
+
           selectedEntryCode = aSelectedIds[0][0];
           selectedEntryDesc = aSelectedIds[0][1];
         }
         //console.log(selectedEntryCode, selectedEntryDesc, updatedCode, updatedValue);
- 
+
         if ((updatedCode == "" && updatedValue == "") && newEntryFlag) {
- 
+
           that.resetView();
- 
+
         }
         else if ((selectedEntryDesc === updatedValue && updatedCode === selectedEntryCode) && copyFlag) {
- 
+
           that.resetView();
- 
+
         } else {
           sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
             MessageBox.confirm(
               "Changes were made , do you want to Discard ?", {
               title: "Confirm ",
               onClose: function (oAction) {
- 
+
                 if (oAction === MessageBox.Action.OK) {
                   that.resetView();
-                 
+
                 } else {
                   console.log("continue ..");
- 
+
                 }
               }
             }
@@ -763,9 +770,6 @@ sap.ui.define(
           });
         }
       },
-
-
-
 
       resetView: function () {
         // Reset view to initial state
@@ -786,40 +790,41 @@ sap.ui.define(
         this.getView().byId("deleteBtn").setEnabled(true);
         this.getView().byId("copyBtn").setEnabled(true);
         this.getView().byId("entryBtn").setEnabled(true);
+        this.byId("createTypeTable").setMode("MultiSelect");
       },
 
 
       onDeletePress: function () {
- 
+
         let oTable = this.byId("createTypeTable");
         let aItems = oTable.getSelectedItems();
         if (!aItems.length) {
- 
+
           MessageToast.show("Please Select  Items ");
           return;
         }
- 
+
         const that = this;  // creatinh reference for use in Dialog
         sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
           MessageBox.confirm(
             "Are you sure ,you want  to delete ?", {
- 
+
             title: "Confirm ",
             onClose: function (oAction) {
               if (oAction === MessageBox.Action.OK) {
- 
+
                 that.deleteSelectedItems(aItems);
               } else {
- 
+
                 oTable.removeSelections();
                 sap.m.MessageToast.show("Deletion canceled");
- 
+
               }
             }
           }
           );
         });
- 
+
       },
 
       deleteSelectedItems: function (aItems) {
@@ -830,7 +835,6 @@ sap.ui.define(
             // Successful deletion
             MessageToast.show("Record deleted sucessfully");
 
-            console.log("Succesfully Deleted");
             aSelectedIds = []
           }).catch(function (oError) {
             // Handle deletion error
@@ -840,7 +844,7 @@ sap.ui.define(
       },
 
       pressCopy: function () {
- 
+
         if (aSelectedIds.length) {
           if (aSelectedIds.length > 1) {
             MessageToast.show("Please select one row");
@@ -851,22 +855,23 @@ sap.ui.define(
           return;
         }
         copyFlag = true;
- 
+
         this.getView().byId("deleteBtn").setEnabled(false);
         this.getView().byId("editBtn").setEnabled(false);
         this.getView().byId("entryBtn").setEnabled(false);
         this.getView().byId("createTypeTable").setVisible(false);
- 
+
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
         console.log(code, desc);
- 
+
         this.getView().byId('entryTypeTable').setVisible(true);
         this.getView().byId("voyCode").setValue(code);
         this.getView().byId("voyCodeDesc").setValue(desc);
         this.getView().byId("mainPageFooter").setVisible(true);
- 
- 
+        
+
+
       }
 
 

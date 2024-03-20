@@ -28,7 +28,7 @@
                         src="sap-icon://home"
                         class="size1"
                         color="#FFFFFF"
-                        press="onBackPressHome"
+                        press="onPressHome"
                     />
                     <Image
                          class="size1"
@@ -75,22 +75,22 @@
         <Bar id="_IDGenBar12" class="_IDGenBar1">
             <contentLeft>
                 <Button
-                    id="_IDGenButton12"
+                    id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
                 <Button
-                    id="_IDGenButton13"
+                    id="copyBtn"
                     text="Copy As"
                     press="pressCopy"
                 />
                 <Button
-                    id="_IDGenButton14"
+                    id= "deleteBtn"
                     text="Delete"
                     press="onDeletePress"
                 />
                 <Button
-                    id="_IDGenButton15"
+                    id= "editBtn"
                     text="Edit"
                     press="pressEdit"
                 />
@@ -104,23 +104,7 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    id="_IDGenIcon33"
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <Button
-                    id="_IDGenButton19"
-                    text="Display"
-                />
-                <Button
-                    id="_IDGenButton20"
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+            
         </Bar>
 
         <Label text="Vessel Type Master Table " class="masterheadings" />
@@ -132,6 +116,7 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            noDataText="Loading ..."
            
         >
             <columns>
@@ -156,10 +141,19 @@
                             id="_IDGenInput1"
                             text="{Carcd}"
                         />
-                        <Text
+                        <HBox >
+                        <Input
                             id="_IDGenInput2"
-                            text="{Cardes}"
+                            value="{Cardes}"
+                            editable="false"
+                            width="400px"
+                            maxLength="30"
+ 
                         />
+                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+
+                       </HBox>
                        
                     </cells>
                 </ColumnListItem>
@@ -184,8 +178,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="CARCD"  maxLength="4"/>
-                        <Input id="CARDES" />
+                        <Input id="Carcd"  maxLength="4" liveChange="onCodeLiveChange"/>
+                        <Input id="Cardes" />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -210,8 +204,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="CARCD1" editable="false" />
-                        <Input id="CARDES1"  editable="true"/>
+                        <Input id="Carcd1" value="" />
+                        <Input id="Cardes1"  editable="true"/>
                     </cells>
                 </ColumnListItem>
             </items>
