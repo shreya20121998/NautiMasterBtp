@@ -42,24 +42,18 @@
                     press="pressCopy"
                 />
                 <Button
-                    id="deleteBtn"
-                    text="Delete"
-                    press="onDeletePress"
-                />
-                <Button
                     id="editBtn"
                     text="Edit"
                     press="pressEdit"
                 />
-                
+
                 <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPressMore"
-                    ariaHasPopup="Menu"
+                    id="deleteBtn"
+                    text="Delete"
+                    press="onDeletePress"
                 />
+                
+                
             </contentLeft>
          
         </Bar>
@@ -96,25 +90,11 @@
                 <ColumnListItem id="_IDGenColumnListItem1">
                     <cells>
                      
-                        <Text
-                            id="_IDGenInput1"
-                            text="{ZfValue}"
-                        />
-                       
-                         <HBox >
-                        <Input
-                            id="_IDGenInput2"
-                            value="{ZfDesc}"
-                            editable="false"
-                            width="400px"
-                            maxLength="30"
-
-                        />
-                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
-                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
-                        </HBox>
+                        <Text  text="{ZfValue}" />
+                        <Text  text="{ZfDesc}"/>
                         
                     </cells>
+
                 </ColumnListItem>
             </items>
         </Table>
@@ -156,6 +136,7 @@
             width="100%"
             class="mastertables"
             visible="false"
+            enableBusyIndicator="true"
            
         >
             <columns>
@@ -169,16 +150,13 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="CLASSFIELD1" text=""/>
-                        <Input id="CLASSDESC1"  editable="true"/>
+                        <Text  text=""/>
+                        <Input  liveChange="onLiveChange"  editable="true"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-        <!-- <Button id="_IDGenButton2" text="Add Row" press="updateTableRefresh" /> -->
-        
-            <!-- footers for both pages are coded differently as save functionality is different in
-        both main page and new entries page  -->
+      
 
             <!-- main page footer -->
             <OverflowToolbar
@@ -206,6 +184,7 @@
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
+                class="updateTableFooter"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button

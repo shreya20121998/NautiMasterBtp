@@ -15,6 +15,7 @@ sap.ui.define(
     let aSelectedIds = [];
     let copyFlag = false;
     let editFlag = false;
+    let onEditInput = undefined;
     let newEntryFlag = false;
 
     let inputFieldObj = {};
@@ -32,59 +33,6 @@ sap.ui.define(
         oView.byId("mainPageFooter").setVisible(false);
         oView.byId("updateTypeTable").setVisible(false);
 
-      },
-
-      onAddRow1: function() {
-        var oTable = this.byId("entryTypeTable");
-        
-        // Create a new row
-        var oNewRow = new sap.m.ColumnListItem({
-          cells: [
-            new sap.m.Input({ value: "" }),
-            new sap.m.Input({ value: "" })
-          ]
-        });
-      
-        // Add the new row to the table
-        oTable.addItem(oNewRow);
-      },
-      
-      onDeleteRow1: function() {
-        var oTable = this.byId("entryTypeTable");
-        var aSelectedItems = oTable.getSelectedItems();
-      
-        // Remove selected rows
-        aSelectedItems.forEach(function(oSelectedItem) {
-          oTable.removeItem(oSelectedItem);
-        });
-      
-        // Clear selection after deletion
-        oTable.removeSelections();
-      },
-
-      onPressMore: function () {
-
-        var oView = oView,
-          oButton = oView.byId("button");
-
-        if (!this._oMenuFragment) {
-
-          this._oMenuFragment = Fragment.load({
-            name: "nauticalfe.fragments.MastOptionsDropDown",
-            id: oView.getId(),
-            controller: this
-
-          }).then(function (oMenu) {
-
-            oMenu.openBy(oButton);
-            this._oMenuFragment = oMenu;
-            return this._oMenuFragment;
-
-          }.bind(this));
-        }
-        else {
-          this._oMenuFragment.openBy(oButton);
-        }
       },
 
       selectedItems: function (oEvent) {
@@ -112,46 +60,6 @@ sap.ui.define(
         return aSelectedIds;
 
       },
-      pressEdit: function () {
-
-        if (editFlag) {
-          MessageToast.show("Already in edit mode");
-          return
-
-        }
-
-        if (aSelectedIds.length) {
-          if (aSelectedIds.length > 1) {
-            MessageToast.show("Please select one Item.");
-            return
-          }
-        } else {
-          MessageToast.show("Please select an Item.");
-          return;
-        }
-        editFlag = true;
-
-        this.byId("createTypeTable").setMode("SingleSelectMaster");
-
-        let oTable = this.byId("createTypeTable");
-        let aSelectedItems = oTable.getSelectedItems();
-
-        let cells = aSelectedItems[0].getCells();
-        inputFieldObj = cells[1].getAggregation('items')[0].setEditable(true);
-        saveObj = cells[1].getAggregation('items')[1].setVisible(true);
-        cancelObj = cells[1].getAggregation('items')[2].setVisible(true);
-  
-
-        inputFieldObj.setEditable(true);
-        saveObj.setVisible(true);
-        inputFieldObj.setEditable(true);
-
-        oView.byId("deleteBtn").setEnabled(false);
-        oView.byId("copyBtn").setEnabled(false);
-        oView.byId("entryBtn").setEnabled(false);
-
-      },
-
       newEntries: function () {
         newEntryFlag = true;
 
@@ -201,10 +109,10 @@ sap.ui.define(
             // If no changes then reset the view to initial state
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
-            setTimeout(()=>{
+            setTimeout(() => {
 
               that.resetView();
-            },1500);
+            }, 1500);
 
           } else {
             sap.m.MessageBox.confirm(
@@ -218,10 +126,10 @@ sap.ui.define(
                   // If user clicks OK, navigate to home screen
                   const oRouter = that.getOwnerComponent().getRouter();
                   oRouter.navTo("RouteHome");
-                  setTimeout(()=>{
+                  setTimeout(() => {
 
                     that.resetView();
-                  },1500);
+                  }, 1500);
 
                 } else {
                   //  continue...
@@ -245,10 +153,10 @@ sap.ui.define(
 
             const oRouter = that.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
-            setTimeout(()=>{
+            setTimeout(() => {
 
               that.resetView();
-            },1500);
+            }, 1500);
 
           } else {
             sap.m.MessageBox.confirm(
@@ -261,10 +169,10 @@ sap.ui.define(
                   // If user clicks OK, reset the view to its initial state
                   const oRouter = that.getOwnerComponent().getRouter();
                   oRouter.navTo("RouteHome");
-                  setTimeout(()=>{
+                  setTimeout(() => {
 
                     that.resetView();
-                  },1500);
+                  }, 1500);
                 } else {
                   //  continue...
                 }
@@ -274,56 +182,37 @@ sap.ui.define(
 
           }
 
-        } else if (editFlag) {
+        }
+        else if (editFlag) {
+          // If it's an edit action
+          let classCode = this.getView().byId("CLASSDESC1").getValue().trim();
+          let classCodeDesc = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
 
-          let desc = aSelectedIds[0][1];
-          let originalDesc = inputFieldObj.getValue();
-          // console.log(originalDesc, originalDesc.trim());
-
-          if (desc === originalDesc) {
-
-            that.onCancelPressBtn();
+          if (classCode === classCodeDesc) {
+            // If no changes have been made, reset the view to its initial state
             oRouter.navTo("RouteHome");
-            setTimeout(()=>{
+            setTimeout(() => {
 
               that.resetView();
-            },1500);
-
+            }, 1500);
           } else {
-
-            let oTable = this.byId("createTypeTable");
-            let aSelectedItems = oTable.getSelectedItems();
-
-            let cells = aSelectedItems[0].getCells();
-            // let valueEdited = cells[1].getAggregation('items')[0].getProperty("value").trim();
-            sap.m.MessageBox.confirm(
-
-              "Do you want to discard the changes?", {
-
+            // If changes have been made, prompt the user for confirmation
+            sap.m.MessageBox.confirm("Do you want to discard the changes?", {
               title: "Confirmation",
               onClose: function (oAction) {
                 if (oAction === sap.m.MessageBox.Action.OK) {
-
-                  // If user clicks OK, discard changes and reset view
-
-                  cells[1].getAggregation('items')[0].setProperty("value", aSelectedIds[0][1]);
-                  that.getView().getModel().refresh();
-                  inputFieldObj.setEditable(false);
-                  saveObj.setVisible(false);
-                  cancelObj.setVisible(false);
-                  
+                  // If the user confirms, reset the view to its initial state
                   oRouter.navTo("RouteHome");
-                  setTimeout(()=>{
+                  setTimeout(() => {
 
                     that.resetView();
-                  },1500);
-
+                  }, 1500);
+                } else {
+                  // If the user cancels, do nothing
                 }
               }
-            }
-            )
+            });
           }
-
         }
       },
       onBackPress: function () {
@@ -337,7 +226,7 @@ sap.ui.define(
           // If no items have been selected, navigate to "RouteMasterDashboard"
           oRouter.navTo("RouteMasterDashboard");
         }
-        else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
+        else if (aSelectedIds.length && !newEntryFlag && !copyFlag) {
 
           oRouter.navTo("RouteMasterDashboard");
           this.byId('createTypeTable').removeSelections();
@@ -367,7 +256,7 @@ sap.ui.define(
 
                 if (oAction === sap.m.MessageBox.Action.OK) {
 
-                // If  OK, reset the view to its initial state
+                  // If  OK, reset the view to its initial state
                   that.resetView();
                 } else {
                   // If  Cancel press, do nothing..
@@ -401,50 +290,14 @@ sap.ui.define(
             );
 
           }
-        }
-        else if (editFlag) {
+        } else if (editFlag) {
 
-          let desc = aSelectedIds[0][1];
-          let originalDesc = inputFieldObj.getValue();
-          console.log(originalDesc, originalDesc.trim());
-
-          if (desc === originalDesc) {
-
-            that.onCancelPressBtn();
-            that.resetView();
-
-          } else {
-            let oTable = this.byId("createTypeTable");
-            let aSelectedItems = oTable.getSelectedItems();
-            let cells = aSelectedItems[0].getCells();
-            // let valueEdited = cells[1].getAggregation('items')[0].getProperty("value").trim();
-
-            sap.m.MessageBox.confirm(
-
-              "Do you want to discard the changes?", {
-              title: "Confirmation",
-              onClose: function (oAction) {
-
-                if (oAction === sap.m.MessageBox.Action.OK) {
-
-                  // If OK, discard changes and reset view
-
-                  cells[1].getAggregation('items')[0].setProperty("value", aSelectedIds[0][1]);
-                  that.getView().getModel().refresh();
-                  inputFieldObj.setEditable(false);
-                  saveObj.setVisible(false);
-                  cancelObj.setVisible(false);
-                  that.resetView();
-                  
-
-                }
-              }
-             }
-            )
-          }
+          this.onCancelEdit();
+         
         }
 
       },
+      
       // validation for CLAss CODE to be Numeric
 
       onCodeLiveChange1: function (oEvent) {
@@ -469,71 +322,57 @@ sap.ui.define(
         }
       },
 
-      onCancel: function () {
 
-        if (editFlag) {
+      // onCancelPressBtn: function () {
 
-          this.onCancelEdit();
-        }
-        else if (newEntryFlag) {
+      //   let that = this;
+      //   console.log("cancel Clciked");
+      //   let description = aSelectedIds[0][1];
 
-          this.onCancelCopyOrEntry();
+      //   let oTable = this.byId("createTypeTable");
+      //   let aSelectedItems = oTable.getSelectedItems();
 
-        } else if (copyFlag) {
+      //   let cells = aSelectedItems[0].getCells();
+      //   let valueEdited = cells[1].getAggregation('items')[0].getProperty("value").trim();
 
-          this.onCancelCopyOrEntry();
-        }
-      },
-      onCancelPressBtn: function () {
+      //   if (valueEdited === description) {
 
-        let that = this;
-        console.log("cancel Clciked");
-        let description = aSelectedIds[0][1];
+      //     inputFieldObj.setEditable(false);
+      //     saveObj.setVisible(false);
+      //     cancelObj.setVisible(false);
+      //     this.resetView();
+      //     return;
 
-        let oTable = this.byId("createTypeTable");
-        let aSelectedItems = oTable.getSelectedItems();
+      //   } else {
+      //     sap.m.MessageBox.confirm(
 
-        let cells = aSelectedItems[0].getCells();
-        let valueEdited = cells[1].getAggregation('items')[0].getProperty("value").trim();
+      //       "Do you want to discard the changes?", {
+      //       title: "Confirmation",
 
-        if (valueEdited === description) {
+      //       onClose: function (oAction) {
 
-          inputFieldObj.setEditable(false);
-          saveObj.setVisible(false);
-          cancelObj.setVisible(false);
-          this.resetView();
-          return;
+      //         if (oAction === sap.m.MessageBox.Action.OK) {
 
-        } else {
-          sap.m.MessageBox.confirm(
+      //           // If user clicks OK, discard changes and reset view
 
-            "Do you want to discard the changes?", {
-            title: "Confirmation",
+      //           cells[1].getAggregation('items')[0].setProperty("value", description);
+      //           that.getView().getModel().refresh();
+      //           inputFieldObj.setEditable(false);
+      //           saveObj.setVisible(false);
+      //           cancelObj.setVisible(false);
+      //           that.resetView();
+      //         }
+      //       }
+      //     }
+      //     )
+      //   }
 
-            onClose: function (oAction) {
+      //   if (valueEdited == "") {
 
-              if (oAction === sap.m.MessageBox.Action.OK) {
+      //     MessageToast.show("Please Enter Description.");       return;
 
-                // If user clicks OK, discard changes and reset view
-
-                cells[1].getAggregation('items')[0].setProperty("value", description);
-                that.getView().getModel().refresh();
-                inputFieldObj.setEditable(false);
-                saveObj.setVisible(false);
-                cancelObj.setVisible(false);
-                that.resetView();
-              }
-            }
-          }
-          )
-        }
-
-        if (valueEdited == "") {
-
-          MessageToast.show("Please Enter Description.");       return;
-
-        }
-      },
+      //   }
+      // },
 
       onPatchSent: function (ev) {
 
@@ -550,91 +389,135 @@ sap.ui.define(
           oView.getModel().refresh();
           this.resetView();
 
-          saveObj.setVisible(false);
-          cancelObj.setVisible(false);
-          inputFieldObj.setEditable(false);
+          // saveObj.setVisible(false);
+          // cancelObj.setVisible(false);
+          // inputFieldObj.setEditable(false);
 
         } else {
           sap.m.MessageToast.show("Fail to Update.")
         }
       },
 
-      // updating the entry
-      onUpdatePressBtn: function () {
 
-        let code = aSelectedIds[0][0];
-        let description = aSelectedIds[0][1];
-      
-        let oTable = this.byId("createTypeTable");
-        let aSelectedItems = oTable.getSelectedItems();
+      pressEdit: function () {
 
-        let cells = aSelectedItems[0].getCells();
-        let valueEdited = cells[1].getAggregation('items')[0].getProperty("value").trim();
-        
-        if (valueEdited == description) {
+        // Get reference to the view
+        let oView = this.getView();
 
-          MessageToast.show("nothing to update "); return;
-
-        }
-
-        if (valueEdited == "") {
-          MessageToast.show("Please Enter Description."); return
-        }
-
-        let UpData = {
-          ZfValue: code,
-          ZfDesc: valueEdited
-
-        };
-        // console.log(data);
-
-        let oModel = oView.getModel();
-        oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
-
-        let oBindList = oModel.bindList("/ClassMasterSet", {
-          $$updateGroupId: "update"
+        // Get the createTypeTable
+        let oCreateTable = oView.byId("createTypeTable");
+        var oTable = this.byId("createTypeTable");
+        var aSelectedItems = oTable.getSelectedItems();
+        onEditInput = [];
+        // Iterating over selected items and printing values
+        aSelectedItems.forEach(function (oItem) {
+          var oBindingContext = oItem.getBindingContext();
+          var sValue = oBindingContext.getProperty("ZfValue");
+          var sDescription = oBindingContext.getProperty("ZfDesc");
+          onEditInput.push(sDescription);
         });
 
-        oBindList.attachPatchSent(this.onPatchSent, this);
-        oBindList.attachPatchCompleted(this.onPatchCompleted, this);
+        // Get all selected items from the createTypeTable
+        // let aSelectedItems = oCreateTable.getSelectedItems();
 
-        let oFilter = new sap.ui.model.Filter("ZfValue", sap.ui.model.FilterOperator.EQ, UpData.ZfValue);
-        oBindList.filter(oFilter);
+        // Check if any items are not selected
+        if (aSelectedItems.length === 0) {
+          sap.m.MessageToast.show("Please select at least one row");
+          return;
+        }
 
-        let that = this;
+        editFlag = true;
 
-        oBindList.requestContexts().then(function (aContexts) {
 
-          if (aContexts.length > 0) {
+        // Clear the updateTypeTable before adding new items
+        let oUpdateTable = oView.byId("updateTypeTable");
+        oUpdateTable.removeAllItems();
 
-            let aData = [];
-            aContexts.forEach(context => {
-              aData.push(context.getObject())
-            });
+        // Iterate over selected items to create new items in the updateTypeTable
+        aSelectedItems.forEach(function (oSelectedItem) {
+          // Get the selected item's binding context
+          let oContext = oSelectedItem.getBindingContext();
 
-            // console.log("addata", aData);
+          // Get the properties from the context
+          let sValue = oContext.getProperty("ZfValue");
+          let sDesc = oContext.getProperty("ZfDesc");
 
-            let data = aData.filter(item => item.ZfValue == UpData.ZfValue);
-            // console.log("fghj", data, UpData.ZfDesc);
+          // console.log(sValue, sDesc);
 
-            console.log("hello");
-            let path = `/ClassMasterSet('${UpData.ZfValue}')`;
+          // Add new item to updateTypeTable
+          let oColumnListItem = new sap.m.ColumnListItem({
+            cells: [
+              new sap.m.Text({ text: sValue }),
+              new sap.m.Input({ value: sDesc, editable: true })
+            ]
+          });
+          oUpdateTable.addItem(oColumnListItem);
+        });
 
-            let upContext = aContexts.filter(obj => obj.sPath === path);
 
-            inputFieldObj.setProperty("value", valueEdited.trim());
-            that.getView().getModel().refresh();
 
-            upContext[0].setProperty("ZfDesc", UpData.ZfDesc.trim());
+        // Show the updateTypeTable
+        oUpdateTable.setVisible(true);
 
+        // Hide the createTypeTable
+        oCreateTable.setVisible(false);
+
+        // Show the footer for the updateTypeTable
+        oView.byId("mainPageFooter2").setVisible(true);
+
+        // Disable other buttons
+        oView.byId("deleteBtn").setEnabled(false);
+        oView.byId("copyBtn").setEnabled(false);
+        oView.byId("entryBtn").setEnabled(false);
+      },
+
+      onUpdate: function () {
+        let oView = this.getView();
+        let oCreateTable = oView.byId("createTypeTable");
+        let oUpdateTable = oView.byId("updateTypeTable");
+
+        // Get all items from the updateTypeTable
+        let aItems = oUpdateTable.getItems();
+
+
+        // Iterate over the items to update the corresponding item in the createTypeTable
+        aItems.forEach(function (oItem) {
+          let sValue = oItem.getCells()[0].getText(); // Assuming Value is in the first cell
+          let sDesc = oItem.getCells()[1].getValue(); // Assuming Field Description is in the second cell
+
+          // Find the corresponding item in the createTypeTable
+          let oCreateItem = oCreateTable.getItems().find(function (oCreateItem) {
+            return oCreateItem.getCells()[0].getText() === sValue; // Assuming Value is in the first cell
+          });
+
+          // Update the corresponding item in the createTypeTable
+          if (oCreateItem) {
+            oCreateItem.getCells()[1].setText(sDesc); // Assuming Field Description is in the second cell
           }
         });
 
-        oModel.submitBatch("update");
+        // Show the createTypeTable
+        oCreateTable.setVisible(true).removeSelections();
 
+        // Hide the updateTypeTable
+        oUpdateTable.setVisible(false);
+
+        // Hide the footer for the updateTypeTable
+        oView.byId("mainPageFooter2").setVisible(false);
+
+        // Enable other buttons
+        oView.byId("deleteBtn").setEnabled(true);
+        oView.byId("copyBtn").setEnabled(true);
+        oView.byId("entryBtn").setEnabled(true);
+
+        // Clear the updateTypeTable after updating the createTypeTable
+        oUpdateTable.removeAllItems();
       },
 
-      
+
+
+
+
       onCreateSent: function (ev) {
 
         sap.m.MessageToast.show("Creating..")
@@ -661,29 +544,29 @@ sap.ui.define(
         var that = this;
         var value1 = oView.byId("CLASSFIELD").getValue();
         var valueEdited = oView.byId("CLASSDESC").getValue();
-        
+
         if (!value1 || !valueEdited) {
           MessageToast.show("Please enter both fields."); return;
         }
-        
+
         let data = {
-          
+
           ZfValue: value1,
           ZfDesc: valueEdited
         };
-        
+
         const oJsonModel = new sap.ui.model.json.JSONModel(data);
         oView.setModel(oJsonModel, "oJsonModel");
         let oModel = oView.getModel();
-        
+
         oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
 
         let oBindListSP = oModel.bindList("/ClassMasterSet");
         oBindListSP.attachCreateSent(this.onCreateSent, this);
         oBindListSP.attachCreateCompleted(this.onCreateCompleted, this);
-        
+
         oBindListSP.attachEventOnce("dataReceived", function () {
-          
+
           let existingEntries = oBindListSP.getContexts().map(function (context) {
             return context.getProperty("ZfValue");
           });
@@ -691,51 +574,102 @@ sap.ui.define(
           if (existingEntries.includes(value1)) {
             MessageToast.show("Entry already exists with the same code.");
           } else {
-            
+
             try {
-              
+
               oBindListSP.create(data);
               that.getView().getModel().refresh();
               that.resetView();
-              
+
             } catch (error) {
               MessageToast.show("Error while saving data");
             }
           }
         });
         oBindListSP.getContexts();
-       },
-      
-       onCancelEdit: function () {
-        const that = this;
-        let updatedValue = this.byId("CLASSDESC1").getValue().trim();
-        let selectedEntryDesc = aSelectedIds[0][1];
-        
-        if (selectedEntryDesc === updatedValue) {
-          
-          that.resetView();
+      },
 
-        } else {
+      onCancel: function () {
 
-          sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
-            MessageBox.confirm(
-              "Do you want to discard the changes ?", {
-              title: "Confirm ",
-              onClose: function (oAction) {
+        if (editFlag) {
 
-                if (oAction === MessageBox.Action.OK) {
-                  that.resetView();
-                } else {
-                  console.log("continue ..");
+          this.onCancelEdit();
+        }
+        else if (newEntryFlag) {
 
-                }
+          this.onCancelCopyOrEntry();
+
+        } else if (copyFlag) {
+
+          this.onCancelCopyOrEntry();
+        }
+      },
+
+      onCancelEdit: function () {
+        // let classCodeInput = this.getView().byId("CLASSDESC1");
+
+        var oTable = this.byId("updateTypeTable"); // Assuming you have the table reference
+        var aItems = oTable.getItems();
+        let flag = false;
+        for(let i = 0; i <aItems.length; i++){
+          var oCells = aItems[i].getCells();
+          var oInput = oCells[1]; // Index 1 corresponds to the Input field
+          var sValue = oInput.getValue();
+          if(onEditInput[i] !== sValue){
+              flag = true;
+              break;
+          }
+        }
+
+        if (flag) {
+          sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+            title: "Confirmation",
+            onClose: function (oAction) {
+              if (oAction === sap.m.MessageBox.Action.OK) {
+                // Reset the view to its initial state
+                this.resetView();
               }
-            }
-            );
+            }.bind(this) // Ensure access to outer scope
           });
+        } else {
+          // If no changes have been made, navigate to the initial screen immediately
+          this.resetView();
+          
+        }
 
-         }
-       },
+       
+
+        // aItems.forEach(function (oItem) {
+        //   var oCells = oItem.getCells();
+        //   // Assuming the Input field is the second cell in the ColumnListItem
+        //   var oInput = oCells[1]; // Index 1 corresponds to the Input field
+        //   var sValue = oInput.getValue(); // Get the value of the Input field
+        //   console.log("Value: " + sValue);
+        // });
+        // let classCode = classCodeInput.getValue().trim();
+        // let classCodeDesc = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
+        // console.log("classCode ", onEditInput);
+        // console.log("classCodeDesc ", classCodeDesc);
+
+        // if (onEditInput !== classCodeDesc) {
+        //   sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+        //     title: "Confirmation",
+        //     onClose: function (oAction) {
+        //       if (oAction === sap.m.MessageBox.Action.OK) {
+        //         // Reset the view to its initial state
+        //         this.resetView();
+        //       }
+        //     }.bind(this) // Ensure access to outer scope
+        //   });
+        // } else {
+        //   // If no changes have been made, navigate to the initial screen immediately
+        //   this.resetView();
+        // }
+
+
+
+      },
+
         onCancelCopyOrEntry: function () {
         let selectedEntryCode, selectedEntryDesc;
         const that = this;
@@ -743,7 +677,7 @@ sap.ui.define(
         let updatedValue = this.byId("CLASSDESC").getValue().trim();
 
         if (aSelectedIds.length) {
-          
+
           selectedEntryCode = aSelectedIds[0][0];
           selectedEntryDesc = aSelectedIds[0][1];
         }
@@ -752,7 +686,7 @@ sap.ui.define(
         if ((updatedCode == "" && updatedValue == "") && newEntryFlag) {
 
           that.resetView();
-          
+
         }
         else if ((selectedEntryDesc === updatedValue && updatedCode === selectedEntryCode) && copyFlag) {
 
@@ -777,21 +711,21 @@ sap.ui.define(
             );
           });
         }
-       },
+      },
 
-       resetView: function () {
+      resetView: function () {
 
         // Reset view to initial state
         oView.byId("updateTypeTable").setVisible(false);
         oView.byId("entryTypeTable").setVisible(false);
         oView.byId("mainPageFooter").setVisible(false);
         oView.byId("mainPageFooter2").setVisible(false);
-        
+
         aSelectedIds = [];
         editFlag = false;
         copyFlag = false;
         newEntryFlag = false;
-        
+
         oView.byId("createTypeTable").setVisible(true).removeSelections();
         oView.byId("CLASSFIELD1").setText("");
         oView.byId("CLASSDESC1").setValue("");
@@ -802,32 +736,32 @@ sap.ui.define(
         oView.byId("copyBtn").setEnabled(true);
         oView.byId("entryBtn").setEnabled(true);
         this.byId("createTypeTable").setMode("MultiSelect");
-        
-       },
-      
-       onDeletePress: function () {
-        
+
+      },
+
+      onDeletePress: function () {
+
         let oTable = this.byId("createTypeTable");
         let aItems = oTable.getSelectedItems();
         if (!aItems.length) {
-          
+
           MessageToast.show("Please Select  Items ");
           return;
         }
-        
+
         const that = this;  //  reference for controller  use in Dialog
         sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
-          
+
           MessageBox.confirm(
             "Are you sure ,you want  to delete ?", {
 
-              title: "Confirm ",
-              onClose: function (oAction) {
-                if (oAction === MessageBox.Action.OK) {
+            title: "Confirm ",
+            onClose: function (oAction) {
+              if (oAction === MessageBox.Action.OK) {
 
-                  that.deleteSelectedItems(aItems);
+                that.deleteSelectedItems(aItems);
               } else {
-                
+
                 oTable.removeSelections();
                 sap.m.MessageToast.show("Deletion canceled");
 
@@ -836,119 +770,64 @@ sap.ui.define(
           }
           );
         });
-        
-       },
-      
-       // fn is called by onDeletePress
-       deleteSelectedItems: function (aItems) {
-        
+
+      },
+
+      // fn is called by onDeletePress
+      deleteSelectedItems: function (aItems) {
+
         aItems.forEach(function (oItem) {
-          
+
           const oContext = oItem.getBindingContext();
           oContext.delete().then(function () {
-            
+
             // Successful deletion
             MessageToast.show("Record deleted sucessfully");
             console.log("Succesfully Deleted");
             aSelectedIds = []   // empty array
-            
+
           }).catch(function (oError) {
-            
+
             // Handle deletion error
             MessageBox.error("Error deleting item: " + oError.message);
           });
         });
-       },
-       // press function called on press
-       pressCopy: function () {
-        
+      },
+      // press function called on press
+      pressCopy: function () {
+
         if (aSelectedIds.length) {
-          
+
           if (aSelectedIds.length > 1) {
             MessageToast.show("Please select one row");
             return
           }
         } else {
-          
+
           MessageToast.show("Please select atleast row");
           return;
         }
-        
+
         copyFlag = true;
-        
+
         oView.byId("deleteBtn").setEnabled(false);
         oView.byId("editBtn").setEnabled(false);
         oView.byId("entryBtn").setEnabled(false);
         oView.byId("createTypeTable").setVisible(false);
-        
+
         let code = aSelectedIds[0][0];
         let desc = aSelectedIds[0][1];
         console.log(code, desc);
-        
+
         oView.byId('entryTypeTable').setVisible(true);
         oView.byId("CLASSFIELD").setValue(code);
         oView.byId("CLASSDESC").setValue(desc);
         oView.byId("mainPageFooter").setVisible(true);
-        
-       },
 
-       // onUpdateOldCode: function () {
-      //   let value1 = aSelectedIds[0][0];
-      //   let valueEdited = oView.byId("CLASSDESC1").getValue().trim();
+      },
 
-      //   if (valueEdited == "") {
-      //     MessageToast.show("Please Enter Description."); return
-      //   }
 
-      //   let UpData = {
-      //     ZfValue: value1,
-      //     ZfDesc: valueEdited
 
-      //   };
-      //   // console.log(data);
-
-      //   let oModel = oView.getModel();
-      //   let oBindList = oModel.bindList("/ClassMasterSet", {
-      //     $$updateGroupId: "update"
-      //   });
-
-      //   oBindList.attachPatchSent(this.onPatchSent, this);
-      //   oBindList.attachPatchCompleted(this.onPatchCompleted, this);
-
-      //   let oFilter = new sap.ui.model.Filter("ZfValue", sap.ui.model.FilterOperator.EQ, UpData.ZfValue);
-      //   oBindList.filter(oFilter);
-
-      //   oBindList.requestContexts().then(function (aContexts) {
-
-      //     if (aContexts.length > 0) {
-
-      //       let aData = [];
-      //       aContexts.forEach(context => {
-      //         aData.push(context.getObject())
-
-      //       });
-      //       console.log("addata", aData);
-
-      //       let data = aData.filter(item => item.ZfValue == UpData.ZfValue);
-      //       console.log("fghj", data, UpData.ZfDesc);
-
-      //       if (data[0]?.ZfDesc === UpData.ZfDesc) {
-
-      //         sap.m.MessageToast.show("Nothing to Update, make some changes.")
-      //       } else {
-
-      //         let path = `/ClassMasterSet('${UpData.ZfValue}')`;
-      //         console.log("acOntexts", aContexts, path);
-      //         let upContext = aContexts.filter(obj => obj.sPath === path);
-      //         console.log(path, upContext);
-      //         upContext[0].setProperty("ZfDesc", UpData.ZfDesc);
-      //       }
-      //     }
-      //   });
-
-      //   oModel.submitBatch("update");
-       // },
-      
     });
 
   });
