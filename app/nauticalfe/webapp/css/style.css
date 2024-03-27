@@ -1,17 +1,55 @@
-.page{
-    background-color: rgba(212, 232, 255, 0.898);
-    
-}
+
 .footerBar{
     background-color: rgb(193, 230, 252) !important;
 }
 .sapMLIBShowSeparator>td{
     border: 1px solid rgb(214, 211, 211);
  }
+ .mastertables th {
+    border: 1px solid rgb(214, 211, 211);
+}
+.entrytables th {
+    border: 1px solid rgb(214, 211, 211);
+}
+.mastertables{
+    height: 450px;
+}
+
+ 
 
  .stickyBar{
    margin-top: 1%;
  }
+ .headerbar{
+    height: 50px !important;
+    padding:0% 2% 0% 2% !important;
+}
+.headerBar2{
+    padding-bottom: 1%;
+    
+}
+
+.sapMBtnContent {
+    line-height: 2.125rem;
+    font-size: 16px;
+}
+.tablepanel{
+    padding :1% 2% 1% 2%;
+    
+}
+.scrollContainer {
+    border-bottom: 1px solid #ccc; /* Add a border to the bottom of the scroll container */
+}
+
+ 
+ .stickyBar{
+   margin-top: 1%;
+ }
+ .bar{
+    position: fixed;
+ }
+ 
+
 /************************************ For Home Screen **********************************************/
 
 
@@ -106,15 +144,25 @@
 }
 /************************************ For Master DashBoard Screen **********************************************/
 .masterFlexBox{
-    margin-bottom: 1%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
-.mastDash{
-    padding: 5%;
-}
+.icon{
+    font-size: 50px !important;
+   
+ }
+ .icon1{
+    font-size: 40px !important;
+   
+ }
+ .icon2{
+    font-size: 60px !important;
+   
+ }
+
 /**************************************** Nautical Dashboard Screen *********************************/
-/* .dashboardPanel{
-    margin: 3%;
-} */
+
 
 .headerTxt{
     font-weight: bold;
@@ -132,9 +180,22 @@
 
 /************************************** Transaction data Dashboard  **************************************/
 .iconBar{
-    position: fixed;
+    position: sticky;
     width: 100%;
   }
+
+.transactionDashboard{
+    margin: 2%;
+}
+.transactionFlexBox{
+    margin-bottom: 2%;
+}
+/* .transactiontoolHeader1{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+} */
+
 /*************************************Transaction Capture Voyage Plan Screen***********************************/
 .animation{
     display: none;

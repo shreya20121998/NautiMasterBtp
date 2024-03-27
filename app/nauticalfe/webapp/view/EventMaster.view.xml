@@ -8,67 +8,34 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1">
-       <headerContent>
-            <!-- Your header content goes here -->
-            <Bar class="customHeader">
-                <contentLeft>
-                    <core:Icon
-                        src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPress"
-                    />
-                    <core:Icon
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
-                    <Image
-                        class="size1"
-                        src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                        class="size1 textBid"                       
-                        text='Display View Event Master Table: Overview'
-                    />
-                </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
-            </Bar>
-        </headerContent>
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+    
+                <Image id="_IDGenImage1" class="size1"
+                    src="./images/ignxlogo.png"
+                    height="65%"/>
+
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                <Title text=" Event Master" wrapping="true" id="productName"/>
+                <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+        </tnt:ToolHeader>
+        <Panel class="tablepanel">
        <Bar
             id="_IDGenBar1"
-            class="_IDGenBar1"
+            class="headerBar2"
          >
             <contentLeft>
-                <Button
+                <Button id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button text="Copy As" press="pressCopy"/>
-                <Button text="Edit"  press="pressEdit"/>
-                <Button text="Delete" press="onDeletePress"/>
+                <Button id="copyBtn" text="Copy As" press="pressCopy"/>
+                <Button id="editBtn" text="Edit"  press="pressEdit"/>
+                <Button id="deleteBtn" text="Delete" press="onDeletePress"/>
                
                 <Button
                     id="button"
@@ -80,22 +47,17 @@
                 />
             </contentLeft>
             <contentRight>
-                <core:Icon
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
+                
                 <!-- <Button text="Display" /> -->
-                <Button
+                <Button id="_IDGenButton5"
                     text="Exit"
                     press="onExit"
                 />
             </contentRight>
         </Bar>
-        <Label
-            text="Event Master Table "
-            class="masterheadings"
-        />
+        <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
+
+        
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -104,6 +66,10 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            sticky="ColumnHeaders"
+            noDataText="Loading..."
+           
+           
         >
             <columns>
                 <Column id="_IDGenColumn1">
@@ -127,37 +93,51 @@
                             id="_IDGenInput1"
                             text="{Evtty}"
                         />
-                        <Text
+                        <HBox id="_IDGenHBox1" >
+                        <Input
                             id="_IDGenInput2"
-                            text="{Text}"
+                            value="{Text}"
+                            editable="false"
+                            maxLength="30"
+ 
                         />
+                            <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+                      
+                        </HBox>
+                       
+                        
+
+                       
                        
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
+        </ScrollContainer>
+        </Panel>
+
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
+            class="tablepanel entrytables"
             visible="false"
-            mode="MultiSelect"
         >
             <columns>
-                <Column>
-                    <Text text="Event Code" />
+                <Column id="_IDGenColumn3">
+                    <Text id="_IDGenText4" text="Event Code" />
                 </Column>
-                <Column>
-                    <Text text="Event Code Description" />
+                <Column id="_IDGenColumn4">
+                    <Text id="_IDGenText5" text="Event Code Description" />
                 </Column>
             </columns>
             <items>
-                <ColumnListItem>
+                <ColumnListItem id="_IDGenColumnListItem2">
                     <cells>
-                        <Input id="eventCode"  maxLength="4"/>
-                        <Input id="eventCodeDesc" />
+                        <Input id="eventCode"  maxLength="4"  liveChange="onCodeLiveChange"/>
+                        <Input id="eventCodeDesc"  liveChange="onLiveChange" />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -168,23 +148,25 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
+            class="tablepanel "
             visible="false"
            
         >
-            <columns>
-                <Column>
-                    <Text text="Cost Code" />
+         <columns>
+                <Column id="_IDGenColumn5">
+                    <Text id="_IDGenText6" text="Event Code" />
                 </Column>
-                <Column>
-                    <Text text="Cost Code Description" />
+                <Column id="_IDGenColumn6">
+                    <Text id="_IDGenText7" text="Event Code Description" />
                 </Column>
             </columns>
+
+
             <items>
-                <ColumnListItem>
+                <ColumnListItem id="_IDGenColumnListItem3">
                     <cells>
-                        <Input id="eventCode1" editable="false" />
-                        <Input id="eventCodeDesc1"  editable="true"/>
+                        <Text id="eventCode1"  />
+                        <Input id="eventCodeDesc1"  editable="true" liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -231,4 +213,3 @@
        
     </Page>
 </mvc:View>
-

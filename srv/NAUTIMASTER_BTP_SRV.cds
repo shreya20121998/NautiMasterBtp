@@ -22,6 +22,10 @@ service NAUTIMASTER_BTP_SRVSampleService {
     {        key ZfValue, ZfDesc     }    
 ;
     
+    entity CountrySet as projection on NAUTIMASTER_BTP_SRV.CountrySet
+    {        key Land1, Spras, Landx50     }    
+;
+    
     entity CurrencySet as projection on NAUTIMASTER_BTP_SRV.CurrencySet
     {        Waers, key Isocd     }    
 ;
@@ -40,6 +44,10 @@ service NAUTIMASTER_BTP_SRVSampleService {
     
     entity ReleaseStrategySet as projection on NAUTIMASTER_BTP_SRV.ReleaseStrategySet
     {        Rels, Voyty, Vesty, key Zgroup, key App1     }    
+;
+    
+    entity StandardCurrencySet as projection on NAUTIMASTER_BTP_SRV.StandardCurrencySet
+    {        Spras, key Waers, Ltext     }    
 ;
     
     entity VoyageRealeaseSet as projection on NAUTIMASTER_BTP_SRV.VoyageRealeaseSet

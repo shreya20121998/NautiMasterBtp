@@ -9,66 +9,33 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1">
-        <headerContent>
-            <!-- Your header content goes here -->
-            <Bar class="customHeader">
-                <contentLeft>
-                    <core:Icon
-                        src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPress"
-                    />
-                    <core:Icon
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onPressHome"
-                    />
-                    <Image
-                        class="size1"
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+
+       
+   
+            <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
                         src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                     
-                        class="textBid size1"
-                        text='Change View Refrence Voyage Type Search Help: Overview'
-                    />
-                </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
-            </Bar>
-        </headerContent>
-        <Bar
+                        height="65%"/>
+
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Maintain Voyage Type" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+            </tnt:ToolHeader>
+   
+       
+
+        <Panel class="tablepanel">
+            <Bar
             id="_IDGenBar1"
-            class="_IDGenBar1"
-         >
+            class="headerBar2"  >
             <contentLeft>
-                <Button
-                    id="entryBtn"
-                    text="New Entries"
-                    press="newEntries"
-                />
+                <Button id="entryBtn" text="New Entries" press="newEntries" />
                 <Button id="copyBtn" text="Copy As" press="pressCopy"/>
                 <Button  id= "editBtn" text="Edit"  press="pressEdit"/>
                 <Button id= "deleteBtn" text="Delete" press="onDeletePress"/>
@@ -84,11 +51,9 @@
             </contentLeft>
            
         </Bar>
-        <Label
-            text="Voyage Type Master Table "
-            class="masterheadings"
-        />
-        <Table
+      
+            <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
+            <Table 
             id="createTypeTable"
             mode="MultiSelect"
             items="{/VoyTypeSet}"
@@ -96,24 +61,30 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            noDataText="{'path' :'loading ...', formatter:'.hello'}"
-           
-        >
+            sticky="ColumnHeaders"
+            visible="true" 
+            noDataText="Loading....">
+            
             <columns>
                 <Column id="_IDGenColumn1" width="30%">
                     <Text
                         id="_IDGenText11"
                         text="Voyage Code"
                     />
+                  
                 </Column>
                 <Column id="_IDGenColumn2">
                     <Text
                         id="_IDGenText2"
-                        text="Voyage Code Description"
+                        text="Description"
                     />
                 </Column>
             </columns>
+            
+
             <items>
+
+
                 <ColumnListItem id="_IDGenColumnListItem1">
                     <cells>
                      
@@ -127,6 +98,7 @@
                             value="{Voydes}"
                             editable="false"
                             maxLength="30"
+                            width="300px"
  
                         />
                         <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
@@ -136,15 +108,23 @@
                        
                     </cells>
                 </ColumnListItem>
+            
             </items>
+        
         </Table>
+        </ScrollContainer>
+        </Panel>
+    
+
+       
+        
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
             visible="false"
+            class="tablepanel entrytables"
         
         >
             <columns>
@@ -152,7 +132,7 @@
                     <Text text="Voyage Code" />
                 </Column>
                 <Column>
-                    <Text text="Voyage Code Description" />
+                    <Text text="Description" />
                 </Column>
             </columns>
             <items>
@@ -164,14 +144,16 @@
                 </ColumnListItem>
             </items>
         </Table>
+      
+        
        
         <Table
             id="updateTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
             visible="false"
+            class="tablepanel "
            
         >
             <columns>
@@ -198,6 +180,7 @@
                 id="mainPageFooter"
                 design="Auto"
                 visible="false"
+                
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
                 <Button

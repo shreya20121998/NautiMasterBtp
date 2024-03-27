@@ -54,6 +54,12 @@ entity ZBTP_NAUTICAL_MariDistance as projection on ZBTP_NAUTICAL_MARIDISTANCE_CD
 entity ZBTP_NAUTICAL_CURRENCY as projection on NAUTIMASTER_BTP_SRV.ZBTP_NAUTICAL_CURRENCY
     {        key waers, isocd, spras, ltext, ktext     }    
 ;
+  entity CountrySet as projection on NAUTIMASTER_BTP_SRV.CountrySet
+    {        key Land1, Spras, Landx50     }    
+;
+entity StandardCurrencySet as projection on NAUTIMASTER_BTP_SRV.StandardCurrencySet
+    {        Spras, key Waers, Ltext     }    
+;
 
        
 }

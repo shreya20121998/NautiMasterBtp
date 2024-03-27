@@ -1,4 +1,4 @@
-/* checksum : 8a031952aac76585d68fb14a401691fc */
+/* checksum : 42dcabac3fa4e059354f751723eeb28c */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
 @sap.message.scope.supported : 'true'
@@ -384,6 +384,37 @@ entity NAUTIMASTER_BTP_SRV.VoyageRealeaseSet {
 @sap.deletable : 'false'
 @sap.pageable : 'false'
 @sap.content.version : '1'
+entity NAUTIMASTER_BTP_SRV.CountrySet {
+  @sap.unicode : 'false'
+  @sap.label : 'Country'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  key Land1 : String(3) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Language'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Spras : String(2) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Country'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Landx50 : String(50) not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.creatable : 'false'
+@sap.updatable : 'false'
+@sap.deletable : 'false'
+@sap.pageable : 'false'
+@sap.content.version : '1'
 entity NAUTIMASTER_BTP_SRV.CurrencySet {
   @sap.unicode : 'false'
   @sap.label : 'ISO code'
@@ -400,6 +431,38 @@ entity NAUTIMASTER_BTP_SRV.CurrencySet {
   @sap.filterable : 'false'
   @sap.semantics : 'currency-code'
   Waers : String(5) not null;
+};
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.creatable : 'false'
+@sap.updatable : 'false'
+@sap.deletable : 'false'
+@sap.pageable : 'false'
+@sap.content.version : '1'
+entity NAUTIMASTER_BTP_SRV.StandardCurrencySet {
+  @sap.unicode : 'false'
+  @sap.label : 'Currency'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  @sap.semantics : 'currency-code'
+  key Waers : String(5) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Language'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Spras : String(2) not null;
+  @sap.unicode : 'false'
+  @sap.label : 'Long Text'
+  @sap.creatable : 'false'
+  @sap.updatable : 'false'
+  @sap.sortable : 'false'
+  @sap.filterable : 'false'
+  Ltext : String(40) not null;
 };
 
 @cds.external : true

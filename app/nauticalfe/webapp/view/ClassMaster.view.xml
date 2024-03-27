@@ -8,92 +8,46 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1">
-        <headerContent>
-            <!-- Your header content goes here -->
-            <Bar
-                id="_IDGenBar1"
-                class="customHeader"
-            >
-                <contentLeft>
-                    <core:Icon
-                        id="_IDGenIcon1"
-                        src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPress"
-                    />
-                    <core:Icon
-                        id="_IDGenIcon2"
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
-                    <Image
-                         class="size1"
-                        id="_IDGenImage2"
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+        
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
                         src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                        id="_IDGenText1"
-                        class="textBid size1"
-                        text='Change View Class of Vessel Master: Overview'
-                    />
-                </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        id="_IDGenIcon3"
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData
-                                id="_IDGenFlexItemData1"
-                                growFactor="1"
-                            />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        id="_IDGenIcon4"
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData
-                                id="_IDGenFlexItemData2"
-                                growFactor="1"
-                            />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
-            </Bar>
-        </headerContent>
+                        height="65%"/>
+
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Maintain Class Master" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+        </tnt:ToolHeader>
+
+        <Panel class="tablepanel">
         <Bar
             id="_IDGenBar12"
-            class="_IDGenBar1"
+            class="headerBar2"
          >
             <contentLeft>
                 <Button
-                    id="_IDGenButton12"
+                    id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
                 <Button
-                    id="_IDGenButton13"
+                    id="copyBtn"
                     text="Copy As"
                     press="pressCopy"
                 />
                 <Button
-                    id="_IDGenButton14"
+                    id="deleteBtn"
                     text="Delete"
                     press="onDeletePress"
                 />
                 <Button
-                    id="_IDGenButton15"
+                    id="editBtn"
                     text="Edit"
                     press="pressEdit"
                 />
@@ -103,32 +57,15 @@
                     icon="sap-icon://slim-arrow-down"
                     iconFirst="false"
                     text="More"
-                    press="onPress"
+                    press="onPressMore"
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    id="_IDGenIcon33"
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <Button
-                    id="_IDGenButton19"
-                    text="Display"
-                />
-                <Button
-                    id="_IDGenButton20"
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+         
         </Bar>
-        <Label
-            text="Class of Vessel Master "
-            class="masterheadings"
-        />
+        <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
+
+        
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -137,6 +74,8 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            sticky="ColumnHeaders"
+            noDataText="loading ..."
             
         >
             <columns>
@@ -161,23 +100,34 @@
                             id="_IDGenInput1"
                             text="{ZfValue}"
                         />
-                        <Text
+                       
+                         <HBox >
+                        <Input
                             id="_IDGenInput2"
-                            text="{ZfDesc}"
+                            value="{ZfDesc}"
+                            editable="false"
+                            width="400px"
+                            maxLength="30"
+
                         />
+                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+                        </HBox>
                         
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
+        </ScrollContainer>
+        </Panel>
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
-            visible="false"
-        >
+             class="tablepanel entrytables"
+            visible="false" mode="MultiSelect" >
+
             <columns>
                 <Column>
                     <Text text="Value" />
@@ -189,12 +139,16 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="CLASSFIELD" maxLength="4"/>
+                        <Input id="CLASSFIELD" maxLength="1" liveChange="onCodeLiveChange"/>
                         <Input id="CLASSDESC"  />
                     </cells>
                 </ColumnListItem>
             </items>
+            
         </Table>
+
+
+
         <Table
             id="updateTypeTable"
             updateFinished="onTableUpdateFinished"
@@ -215,7 +169,7 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="CLASSFIELD1" editable="false"/>
+                        <Text id="CLASSFIELD1" text=""/>
                         <Input id="CLASSDESC1"  editable="true"/>
                     </cells>
                 </ColumnListItem>
@@ -233,6 +187,9 @@
                 visible="false"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button id="add" icon="sap-icon://sys-add" press=".onAddRow1" text="Add Row" type="Success"></Button>
+                <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow1" text="Delete Row" type="Reject"></Button>
+
                 <Button
                     id="mainPageSave"
                     text="Save"
@@ -243,6 +200,7 @@
                     text="Cancel"
                     press="onCancel"
                 />
+            
             </OverflowToolbar>
              <OverflowToolbar
                 id="mainPageFooter2"

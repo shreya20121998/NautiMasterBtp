@@ -9,68 +9,36 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1">
-       <headerContent>
-            <!-- Your header content goes here -->
-            <Bar class="customHeader">
-                <contentLeft>
-                    <core:Icon
-                        src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPress"
-                    />
-                    <core:Icon
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
-                    <Image
-                         class="size1"
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
                         src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                        
-                        class="textBid size1"
-                        text='UOM Master Table'
-                    />
-                </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
-            </Bar>
-        </headerContent>
-       <Bar
+                        height="65%"/>
+
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Maintain UOM Master" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+            </tnt:ToolHeader>
+
+        <Panel class="tablepanel">
+        <Bar
             id="_IDGenBar1"
-            class="_IDGenBar1"
+            class="headerBar2"
          >
             <contentLeft>
                 <Button
+                    id ="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button text="Copy As" press="pressCopy"/>
-                <Button text="Edit"  press="pressEdit"/>
-                <Button text="Delete" press="onDeletePress"/>
+                <Button id="copyBtn" text="Copy As" press="pressCopy"/>
+                <Button id="editBtn" text="Edit"  press="pressEdit"/>
+                <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
                
                 <Button
                     id="button"
@@ -81,23 +49,10 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <!-- <Button text="Display" /> -->
-                <Button
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+            
         </Bar>
-        <Label
-            text="UOM Master Table "
-            class="masterheadings"
-        />
+        <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
+
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -105,9 +60,11 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
+            sticky="ColumnHeaders"
             class="mastertables"
+             noDataText="Loading ..."
            
-        >
+         >
             <columns>
                 <Column id="_IDGenColumn1">
                     <Text
@@ -129,25 +86,37 @@
                         <Text
                             id="_IDGenInput1"
                             text="{Uom}"
+                            
                         />
-                        <Text
+                        <HBox >
+                        <Input
                             id="_IDGenInput2"
-                            text="{Uomdes}"
+                            value="{Uomdes}"
+                            editable="false"
+                           
+                            maxLength="30"
                         />
+                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+                        </HBox>
+                       
                        
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
+        </ScrollContainer>
+        </Panel>
+
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
+            class="tablepanel entrytables"
             visible="false"
-            mode="MultiSelect"
-        >
+           
+         >
             <columns>
                 <Column>
                     <Text text="UOM Code" />
@@ -159,8 +128,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="UOMCode"  maxLength="4"/>
-                        <Input id="UOMCodeDesc" />
+                        <Input id="UOMCode" liveChange="onCodeLiveChange"/>
+                        <Input id="UOMCodeDesc" liveChange="onLiveChange" />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -171,10 +140,10 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
+            class="tablepanel "
             visible="false"
            
-        >
+         >
             <columns>
                 <Column>
                     <Text text="UOM Code" />
@@ -187,17 +156,12 @@
                 <ColumnListItem>
                     <cells>
                         <Text id="UOMCode1" text="" />
-                        <Input id="UOMCodeDesc1"  editable="true"/>
+                        <Input id="UOMCodeDesc1"  editable="true"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-        <!-- <Button id="_IDGenButton2" text="Add Row" press="updateTableRefresh" /> -->
-       
-            <!-- footers for both pages are coded differently as save functionality is different in
-        both main page and new entries page  -->
- 
-            <!-- main page footer -->
+        
             <OverflowToolbar
                 id="mainPageFooter"
                 design="Auto"

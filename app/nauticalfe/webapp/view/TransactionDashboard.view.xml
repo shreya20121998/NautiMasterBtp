@@ -2,47 +2,24 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core"
     xmlns="sap.m" xmlns:tnt="sap.tnt" >
-    	<Page id="_IDGenPage1" class="page">
-        <headerContent>
-            <!-- Your header content goes here -->
-            <Bar id="_IDGenBar1" class="customHeader">
-                <contentLeft>
-                    <core:Icon id="_IDGenIcon1"
-                        src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPress"
-                    />
-                    <core:Icon id="_IDGenIcon2"
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
-                    <Image
-                         class="size1"
-                        src="./images/ignxlogo.png"
-                        height="75%" activeSrc="https://www.ingenxtec.com"
-                    
-                    />
-                    <Text id="_IDGenText1"
-                        class="textBid size1"
-                        text="Transaction Data Dashboard"
-                    />
-                </contentLeft>
-                <contentRight>
-                    <core:Icon id="_IDGenIcon3"
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                    <!-- <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/> -->
-                    </core:Icon>
-                </contentRight>
-            </Bar>
-        </headerContent>
+    	<Page id="_IDGenPage1" showFooter="false" showHeader="false">
 
-        <IconTabHeader id="iconTabHeaderId" mode="Inline" class="iconBar">
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin transactiontoolHeader1">
+            <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+            <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+
+            <Image id="_IDGenImage1" class="size1"
+                src="./images/ignxlogo.png"
+                height="65%"/>
+
+            <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+            <Title text="Transaction Dashboard" wrapping="true" id="productName"/>
+            <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+            <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+        </tnt:ToolHeader>
+
+        <IconTabHeader id="iconTabHeaderId" mode="Inline" class="transactiontoolHeader2" >
             <items>
                 <IconTabFilter id="voyageId" key="voyage" text="Voyage" />
                 <IconTabFilter id="freightsimulatorId" key="freightsimulator" text="Freight Simulator" />
@@ -55,10 +32,10 @@
 
         
  
-        <VBox   class="mastDash" >
+        <VBox   class="transactionDashboard" >
             
             <Title id="voyageTileId" text="Voyage" titleStyle="H4" />
-            <FlexBox  class="masterFlexBox">
+            <FlexBox  class="transactionFlexBox">
                 <GenericTile id="GenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Capture Voyage Details" press="onCaptureVoyage" >
                     <TileContent id="_IDGenTileContent1">
@@ -91,7 +68,7 @@
                 </GenericTile>
             </FlexBox>
             <Title id="freightSimulatorTileId" text="Freight Simulator" titleStyle="H4" />
-            <FlexBox  class="masterFlexBox">
+            <FlexBox  class="transactionFlexBox">
                 <GenericTile id="GenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Freight Simulator" press="onFrieghtPress" >
                     <TileContent >
@@ -101,7 +78,7 @@
             </FlexBox>
 
             <Title id="charteringTileId" text="Chartering" titleStyle="H4" />
-            <FlexBox  class="masterFlexBox">
+            <FlexBox  class="transactionFlexBox">
                 <GenericTile id="GenGenericTile7" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Create Chartering" press="onCreateChartering" >
                     <TileContent >
@@ -129,7 +106,7 @@
                 </FlexBox>
 
             <Title id="quotationTileId" text="Quotation" titleStyle="H4" />
-            <FlexBox  class="masterFlexBox">
+            <FlexBox  class="transactionFlexBox">
                 <GenericTile id="GenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Request For Quotation" press="onRequestForQuotation" >
                     <TileContent >
@@ -146,7 +123,7 @@
             </FlexBox>
 
             <Title text="Negotiation" titleStyle="H4" />
-            <FlexBox id="negotiationTileId" class="masterFlexBox">
+            <FlexBox id="negotiationTileId" class="transactionFlexBox">
                 <GenericTile id="GenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Invite For Live Freight Negotiation" press="onInviteForLiveFrieghtNegotiation" >
                     <TileContent >
@@ -163,7 +140,7 @@
             </FlexBox>
 
             <Title text="Reports" titleStyle="H4" />
-            <FlexBox id="reportTileId" class="masterFlexBox">
+            <FlexBox id="reportTileId" class="transactionFlexBox">
                 <GenericTile id="GenGenericTile15" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Contract Award Status Report" press="onContractAwardStatusReport" >
                     <TileContent >
@@ -180,27 +157,7 @@
 
         </VBox>
 
-          <!-- <VBox id="_IDGenVBox1"  class="vPanel" >
-
-            <Panel id="_IDGenPanel1"  class="dashboardPanel" width="800px" height="500px" >
-
-                <ObjectListItem id="_IDGenObjectListItem1"  intro=" voyage transaction data" class="headerTxt" ></ObjectListItem>
-
-                <Button id="VoyButton" class="two"  type="Reject" text="Voyage"   press="onVoyPress" ariaHasPopup="Menu"></Button>            
-                <Button id="FrieghtButton" class="two" type="Reject"  text="Freight Simulator"  press="onFrieghtPress" ></Button>
-                <Button id="ChartButton" class="two" type="Reject" text="Chartering" icon="sap-icon://bar-chart" press="onChartPress" ariaHasPopup="Menu"></Button>
-                <Button id="_IDGenButton7" class="two" type="Reject"  text="Request for Quotation" press="onReqQuotationPress"></Button>
-                <Button id="_IDGenButton8" class="two" type="Reject" text="Compare Request for Quotation" press="onCompareReqQuotPress" ></Button>               
-                <Button id="_IDGenButton10" class="two" type="Reject" text="Invite for Live Freight Negotiation" press="onInvitelivefrieghtNegoPress"></Button>
-                <Button id="_IDGenButton11" class="two" type="Reject"  text="Compare Live Freight Negotiation" press="onCompareLiveFrieghtReportPress" ></Button>
-                <Button id="RejectButton" class="two" type="Reject" text="Reports" press="onReportPress" ariaHasPopup="Menu" ></Button>
-            </Panel>   
-
-            <Panel id="_IDGenPanel2"  width="0px">
-                <Image id="_IDGenImage1" width="350px" class="nauticalimg1" src="./images/nautical.png" height="auto"></Image>
-            </Panel>
-        </VBox> -->
-
+          
       
 	</Page>
 

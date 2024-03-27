@@ -29,19 +29,38 @@ sap.ui.define(
       onCodeLiveChange: function (oEvent) {
         var oInput = oEvent.getSource();
         var sValue = oInput.getValue();
-
-        // Check if the input field is for cost code
-        if (oInput.getId() === this.getView().createId("voyCode")) {
-          // Validate if the entered value is a number
-          if (!(/^\d*$/.test(sValue))) {
-            // If not a number, remove the last character
-            var sNewValue = sValue.slice(0, -1);
-            oInput.setValue(sNewValue);
-            // Show an error message to the user
-            sap.m.MessageToast.show("Cost code should only contain numbers.");
-          }
+        var sId = oInput.getId();
+   
+        // Check if the input field is for 'Carcd'
+        if (sId === this.getView().createId("Carcd")) {
+            // Validate if the entered value is a number
+            if (!(/^\d*$/.test(sValue))) {
+                // If not a number, remove the last character
+                var sNewValue = sValue.slice(0, -1);
+                oInput.setValue(sNewValue);
+                // Show an error message to the user
+                sap.m.MessageToast.show("Cost code should only contain numbers.");
+            } else if (sValue.length > 4) {
+                // If the length of the entered value is greater than 4, truncate it
+                var sNewValue = sValue.slice(0, 4);
+                oInput.setValue(sNewValue);
+                // Show an error message to the user
+                sap.m.MessageToast.show("Maximum length for 'code' is 4 characters.");
+            }
         }
-      },
+   
+        // Check if the input field is for 'Cardes'
+        if (sId === this.getView().createId("Cardes")) {
+            // Check if the length of the entered value is greater than 35
+            if (sValue.length > 35) {
+                // If the length exceeds 35 characters, truncate it
+                var sNewValue = sValue.slice(0, 35);
+                oInput.setValue(sNewValue);
+                // Show an error message to the user
+                sap.m.MessageToast.show("Maximum length for 'description' is 35 characters.");
+            }
+        }
+    },
       onBackPress: function () {
         const that = this;
 
@@ -387,12 +406,14 @@ sap.ui.define(
 
           sap.m.MessageToast.show("Successfully Updated.");
 
-          oView.getModel().refresh();
           this.resetView();
-
           saveObj.setVisible(false);
           cancelObj.setVisible(false);
           inputFieldObj.setEditable(false);
+          setTimeout(() =>{
+            oView.getModel().refresh();
+
+          },1100);
 
         } else {
           sap.m.MessageToast.show("Fail to Update.")

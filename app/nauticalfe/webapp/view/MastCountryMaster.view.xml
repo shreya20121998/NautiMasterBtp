@@ -7,95 +7,37 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns:core="sap.ui.core"
+   
 >
-    <Page id="_IDGenPage1">
-        <headerContent>
-            <!-- Your header content goes here -->
-            <Bar
-                id="_IDGenBar1"
-                class="customHeader"
-            >
-                <contentLeft>
-                    <core:Icon
-                        id="_IDGenIcon1"
-                        src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPress"
-                    />
-                    <core:Icon
-                        id="_IDGenIcon2"
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-                    />
-                    <Image
-                         class="size1"
-                        id="_IDGenImage2"
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
                         src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                        id="_IDGenText1"
-                        class="textBid size1"
-                        text='Change View "Country Master tcode": Overview'
-                    />
-                </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        id="_IDGenIcon3"
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData
-                                id="_IDGenFlexItemData1"
-                                growFactor="1"
-                            />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        id="_IDGenIcon4"
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData
-                                id="_IDGenFlexItemData2"
-                                growFactor="1"
-                            />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
-            </Bar>
-        </headerContent>
+                        height="65%"/>
 
-        <Bar id="_IDGenBar12" class="_IDGenBar1" >
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Maintain Country Type" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+            </tnt:ToolHeader>
+        <Panel class="tablepanel">
+
+        <Bar
+            id="_IDGenBar12"
+            class="headerBar2" >
             <contentLeft>
-                <Button
-                    id="_IDGenButton12"
+                <Button id="entryBtn"
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button
-                    id="_IDGenButton13"
-                    text="Copy As"
-                    press="pressCopy"
-                />
-                <Button
-                    id="_IDGenButton14"
-                    text="Delete"
-                    press="onDeletePress"
-                />
-                <Button
-                    id="_IDGenButton15"
-                    text="Edit"
-                    press="pressEdit"
-                />
                 
+        
+                <Button  id="deleteBtn" text="Delete" press="onDeletePress"/>
+               
                 <Button
                     id="button"
                     icon="sap-icon://slim-arrow-down"
@@ -105,29 +47,11 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    id="_IDGenIcon33"
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <Button
-                    id="_IDGenButton19"
-                    text="Display"
-                />
-                <Button
-                    id="_IDGenButton20"
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
         </Bar>
+        <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
 
-        <Label
-            text="Country Master tCode"
-            class="masterheadings"
-        />
+ 
+        
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -135,62 +59,111 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables" >
-
+            class="mastertables"
+            noDataText="loading ..."
+            sticky="ColumnHeaders"
+            enableBusyIndicator="true"
+           
+         >
             <columns>
-                <Column>
-                    <Text text="Value" />
+                <Column id="_IDGenColumn1" width="300px">
+                    <Text
+                        id="_IDGenText11"
+                        text="Country"
+                    />
                 </Column>
-                <Column>
-                    <Text text="Field Description" />
+                <Column id="_IDGenColumn2">
+                    <Text
+                        id="_IDGenText2"
+                        text=" Description"
+                    />
                 </Column>
             </columns>
             <items>
-                <ColumnListItem id="_IDGenColumnListItem1">
+                <ColumnListItem id="_IDGenColumnListItem1" >
                     <cells>
                      
                         <Text
-                            id="_IDGenInput1"
+                            id="code"
                             text="{ZfValue}"
+                        
                         />
-                        <Text
-                            id="_IDGenInput2"
-                            text="{ZfDesc}"
+                        <HBox >
+                        <Input
+                            id="DescInput"
+                            value="{ZfDesc}"
+                            editable="false"
+                             maxLength="30"
+                             width="400px"
+                             
+                            
                         />
+                        
+                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+
+
+                        </HBox>
+                       
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-
+        </ScrollContainer>
+        </Panel>
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
+            growing="true"
             width="100%"
-            class="mastertables"
-            visible="false" >
+            class="tablepanel entrytables"
+            visible="false"
+         >
             <columns>
                 <Column>
-                    <Text text="Value" />
+                    <Text text="Country" />
                 </Column>
                 <Column>
-                    <Text text="Field Description" />
+                    <Text text="Description" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="value" value=""/>
-                        <Input id="fieldDesc" value="" />
+                        <Input id="ZfValue2" maxLength="3" showValueHelp="true" valueHelpRequest="showValueHelpCurrency" valueHelpOnly="true"/>
+                        <Input id="ZfDesc2" />
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-
-        
-
-            <!-- main page footer -->
-            <OverflowToolbar
+        <Table
+            id="updateTypeTable"
+            updateFinished="onTableUpdateFinished"
+            selectionChange="selectedItems"
+            width="100%"
+            class="mastertables"
+            visible="false"
+           
+         >
+            <columns>
+                <Column>
+                    <Text text="Country Code" />
+                </Column>
+                <Column>
+                    <Text text=" Description" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text id="ZfValue1" text="" />
+                        <Input id="ZfDesc1"  editable="true" liveChange="OndescriptionChanged"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <OverflowToolbar
                 id="mainPageFooter"
                 design="Auto"
                 visible="false"
@@ -204,13 +177,25 @@
                 <Button
                     id="_IDGenButton22"
                     text="Cancel"
-                    press="onCancel"
+                    press="onSaveCancel"
                 />
             </OverflowToolbar>
-
-            <!--new entries footer -->
-            
-        
+        <OverflowToolbar
+                id="mainPageFooter2"
+                design="Auto"
+                visible="false"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                <Button
+                    id="mainPageSave12"
+                    text="Update"
+                    press="onUpdate"
+                />
+                <Button
+                    id="_IDGenButton23"
+                    text="Cancel"
+                    press="onCancel"
+                />
+        </OverflowToolbar>
     </Page>
-
 </mvc:View>

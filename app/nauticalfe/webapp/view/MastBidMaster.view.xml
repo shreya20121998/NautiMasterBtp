@@ -1,4 +1,268 @@
 <mvc:View
+    xmlns:tnt="sap.tnt"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    controllerName="nauticalfe.controller.MastBidMaster"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+>
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
+                        src="./images/ignxlogo.png"
+                        height="65%"/>
+
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Master Details for Bidding" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+        </tnt:ToolHeader>
+
+        <Panel class="tablepanel">
+        <Bar id="_IDGenBar12" class="headerBar2">
+            <contentLeft>
+                <Button
+                    id="entryBtn"
+                    text="New Entries"
+                    press="newEntries"
+                />
+                <Button
+                    id="copyBtn"
+                    text="Copy As"
+                    press="pressCopy"
+                />
+                <Button
+                    id= "deleteBtn"
+                    text="Delete"
+                    press="onDeletePress"
+                />
+                <Button
+                    id= "editBtn"
+                    text="Edit"
+                    press="pressEdit"
+                />
+               
+                <Button
+                    id="button"
+                    icon="sap-icon://slim-arrow-down"
+                    iconFirst="false"
+                    text="More"
+                    press="onPress"
+                    ariaHasPopup="Menu"
+                />
+            </contentLeft>
+            
+        </Bar>
+
+        <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
+
+         <Table id="createTypeTable"
+            width="100%"
+            class="mastertables"
+            items="{/BidMasterSet}"
+            mode="MultiSelect"
+            selectionChange="selectedItems"
+            sticky="ColumnHeaders"
+            noDataText="Loading ..."
+            >
+
+            <columns>
+                <Column  width="200px">
+                    <Label text="User" />
+                </Column>
+                <Column width="100px">
+                    <Label text="Code" />
+                </Column>
+                <Column  width="100px">
+                    <Label text="Value" />
+                </Column>
+                <Column  width="100px">
+                    <Label text="Revaluation" />
+                </Column>
+                 <Column  width="100px" >
+                    <Label text="Crcy" />
+                </Column>
+                <Column  width="100px">
+                    <Label text="Data Type" />
+                </Column>
+                <Column  width="150px">
+                    <Label text="Table Name" />
+                </Column>
+                <Column >
+                    <Label text="Multiple Column" />
+                </Column>
+               
+            </columns>
+            <ColumnListItem id="_istItem1">
+                <cells>
+                    <Input id="_IDGenText3" value="{Bname}" editable="false" />
+                    <Text id="_IDGenText4" text="{Code}" />
+                    <Input id="_IDGenText5" value="{Value}" editable="false" />
+                    <Input id="_IDGenText6" value="{Cvalue}" editable="false"/>
+                    <Input id="_IDGenText7" value="{Cunit}"  editable="false"/>
+                    <Input id="_IDGenText8" value="{Datatype}" editable="false" />
+                    <Input id="_IDGenText9" value="{Tablename}" editable="false" />
+                   <HBox  >
+                    <CheckBox id="_IDGenText10" selected="{MultiChoice}"  editable="false"/>
+                    <Button id="update" class="sapUiTinyMarginBegin" text="Update" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
+                    <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" type="Reject" visible="false" press="onCancelPressBtn"></Button>
+                   </HBox>
+                </cells>
+            </ColumnListItem>
+        </Table>
+        </ScrollContainer>
+        </Panel>
+
+       
+        <Table
+            id="entryTypeTable"
+            updateFinished="onTableUpdateFinished"
+            selectionChange="selectedItems"
+            width="100%"
+            class="tablepanel entrytables"
+            visible="false"
+        >
+              <columns>
+                <Column id="User">
+                    <Label text="User" />
+                </Column>
+                <Column >
+                    <Label text="Code" />
+                </Column>
+                <Column >
+                    <Label text="Value" />
+                </Column>
+                <Column >
+                    <Label text="Revaluation" />
+                </Column>
+                 <Column  >
+                    <Label text="Crcy" />
+                </Column>
+                <Column >
+                    <Label text="Data Type" />
+                </Column>
+                <Column >
+                    <Label text="Table Name" />
+                </Column>
+                <Column >
+                    <Label text="Multiple Column" />
+                </Column>
+               
+            </columns>
+            <ColumnListItem id="istItem1">
+                <cells>
+                    <Input id="Bname"/>
+                    <Input id="Code" />
+                    <Input id="Value"/>
+                    <Input id="Cvalue"/>
+                    <Input id="Cunit"/>
+                    <Input id="Datatype" />
+                    <Input id="Tablename"/>
+                    <CheckBox id="MultiChoice"  />
+                </cells>
+            </ColumnListItem>
+        </Table>
+        <Table
+            id="updateTypeTable"
+            updateFinished="onTableUpdateFinished"
+            selectionChange="selectedItems"
+            width="100%"
+             class="tablepanel "
+            visible="false"
+           
+        >
+              <columns>
+                <Column >
+                    <Label text="User" />
+                </Column>
+                <Column >
+                    <Label text="Code" />
+                </Column>
+                <Column >
+                    <Label text="Value" />
+                </Column>
+                <Column >
+                    <Label text="Revaluation" />
+                </Column>
+                 <Column  >
+                    <Label text="Crcy" />
+                </Column>
+                <Column >
+                    <Label text="Data Type" />
+                </Column>
+                <Column >
+                    <Label text="Table Name" />
+                </Column>
+                <Column >
+                    <Label text="Multiple Column" />
+                </Column>
+               
+            </columns>
+            <ColumnListItem id="istItem2">
+                <cells>
+                    <Input id="Bname1"/>
+                    <Input id="Code1" editable="false"/>
+                    <Input id="Value1"/>
+                    <Input id="Cvalue1"/>
+                    <Input id="Cunit1"/>
+                    <Input id="Datatype1" />
+                    <Input id="Tablename1"/>
+                    <CheckBox id="MultiChoice1"  />
+                </cells>
+            </ColumnListItem>
+        </Table>
+        <OverflowToolbar
+                id="mainPageFooter2"
+                design="Auto"
+                visible="false"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                <Button
+                    id="mainPageSave12"
+                    text="Update"
+                    press="onUpdate"
+                />
+                <Button
+                    id="_IDGenButton23"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
+ 
+ 
+            <!-- main page footer -->
+            <OverflowToolbar
+                id="mainPageFooter"
+                design="Auto"
+                visible="false"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button
+                    id="mainPageSave"
+                    text="Save"
+                    press="onSave"
+                />
+                <Button
+                    id="_IDGenButton22"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
+ 
+            <!--new entries footer -->
+           
+       
+    </Page>
+ 
+   
+</mvc:View>
+<!-- <mvc:View
     xmlns:core="sap.ui.core"
     controllerName="nauticalfe.controller.MastBidMaster"
     xmlns:html="http://www.w3.org/1999/xhtml"
@@ -8,7 +272,7 @@
 >
     <Page id="page">
         <headerContent>
-            <!-- Your header content goes here -->
+            
             <Bar id="_IDGenBar2" class="customHeader">
                 <contentLeft>
                     <core:Icon id="_IDGenIcon1"
@@ -89,23 +353,7 @@
                     ariaHasPopup="Menu"
                 />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    id="_IDGenIcon33"
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <Button
-                    id="_IDGenButton19"
-                    text="Display"
-                />
-                <Button
-                    id="_IDGenButton20"
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+           
         </Bar>
 
         <Text id="_IDGenText2" text="Bid Master" class="masterheadings" />
@@ -152,9 +400,9 @@
                     <Text id="_IDGenText5" text="{Value}" />
                     <Text id="_IDGenText6" text="{Cvalue}" />
                     <Text id="_IDGenText7" text="{Cunit}" />
-                    <Text id="_IDGenText8" text="{DataType}" />
+                    <Text id="_IDGenText8" text="{Datatype}" />
                     <Text id="_IDGenText9" text="{Tablename}" />
-                    <CheckBox id="_IDGenText10" selected="{Multichoice}" />
+                    <CheckBox id="_IDGenText10" selected="{MultiChoice}" />
                 </cells>
             </ColumnListItem>
         </Table>
@@ -194,14 +442,14 @@
             </columns>
             <ColumnListItem id="istItem1">
                 <cells>
-                    <Input id="BNAME"/>
-                    <Input id="CODE" />
-                    <Input id="VALUE"/>
-                    <Input id="CVALUE"/>
-                    <Input id="CUNIT"/>
-                    <Input id="DATATYPE" />
-                    <Input id="TABLENAME"/>
-                    <CheckBox id="MULTI_CHOICE"  />
+                    <Input id="Bname"/>
+                    <Input id="Code" />
+                    <Input id="Value"/>
+                    <Input id="Cvalue"/>
+                    <Input id="Cunit"/>
+                    <Input id="Datatype" />
+                    <Input id="Tablename"/>
+                    <CheckBox id="MultiChoice"  />
                 </cells>
             </ColumnListItem>
         </Table>
@@ -242,14 +490,14 @@
             <items>
                 <ColumnListItem id="stItem1">
                     <cells>
-                        <Input id="bname" />
-                        <Input id="code" value="" editable="false"/>
-                        <Input id="value" />
-                        <Input id="cvalue" />
-                        <Input id="cunit" />
-                        <Input id="datatype" />
-                        <Input id="tablename" />
-                        <CheckBox id="multichoice"  />
+                        <Input id="Bname1" />
+                        <Input id="Code1" value="" editable="false"/>
+                        <Input id="Value1" />
+                        <Input id="Cvalue1" />
+                        <Input id="Cunit1" />
+                        <Input id="Datatype1" />
+                        <Input id="Tablename1" />
+                        <CheckBox id="MultiChoice1"  />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -272,7 +520,7 @@
             </OverflowToolbar>
  
  
-            <!-- main page footer -->
+        
             <OverflowToolbar
                 id="mainPageFooter"
                 design="Auto"
@@ -296,4 +544,4 @@
        
     </Page>
 </mvc:View>
- 
+  -->

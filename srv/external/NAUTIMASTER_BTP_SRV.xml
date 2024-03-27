@@ -143,12 +143,28 @@
                 <Property Name="App2" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="App3" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
+            <EntityType Name="Country" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx50" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
             <EntityType Name="Currency" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Isocd"/>
                 </Key>
                 <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
                 <Property Name="Isocd" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="ISO code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="StandardCurrency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Waers"/>
+                </Key>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Ltext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="ZBTP_NAUTICAL_CURRENCYType" sap:label="CDS View For Currency" sap:content-version="1">
                 <Key>
@@ -171,7 +187,9 @@
                 <EntitySet Name="BidMasterSet" EntityType="NAUTI.MASTER_BTP_SRV.BidMaster" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="PortmasterSetSet" EntityType="NAUTI.MASTER_BTP_SRV.Portmaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="VoyageRealeaseSet" EntityType="NAUTI.MASTER_BTP_SRV.VoyageRealease" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountrySet" EntityType="NAUTI.MASTER_BTP_SRV.Country" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="CurrencySet" EntityType="NAUTI.MASTER_BTP_SRV.Currency" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="StandardCurrencySet" EntityType="NAUTI.MASTER_BTP_SRV.StandardCurrency" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ZBTP_NAUTICAL_CURRENCY" EntityType="NAUTI.MASTER_BTP_SRV.ZBTP_NAUTICAL_CURRENCYType" sap:content-version="1"/>
             </EntityContainer>
             <Annotations Target="NAUTI.MASTER_BTP_SRV.NAUTI_MASTER_BTP_SRV_Entities"

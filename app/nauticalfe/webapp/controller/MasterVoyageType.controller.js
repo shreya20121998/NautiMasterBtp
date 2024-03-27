@@ -157,14 +157,11 @@ sap.ui.define(
 
 
                 }
-
               }
             }
             )
           }
-
         }
-
       },
 
       onPressHome: function () {
@@ -191,7 +188,10 @@ sap.ui.define(
 
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
-            this.resetView();
+            setTimeout(()=>{
+ 
+              that.resetView();
+            },1500);
           } else {
             sap.m.MessageBox.confirm(
               "Do you want to discard the changes?", {
@@ -201,7 +201,10 @@ sap.ui.define(
                   // If user clicks OK, navigate to home screen
                   const oRouter = that.getOwnerComponent().getRouter();
                   oRouter.navTo("RouteHome");
-                  that.resetView(); // Reset view if user clicked OK
+                  setTimeout(()=>{
+ 
+                    that.resetView();
+                  },1500); // Reset view if user clicked OK
                 } else {
                   // If user clicks Cancel, do nothing
                 }
@@ -221,7 +224,10 @@ sap.ui.define(
 
             const oRouter = that.getOwnerComponent().getRouter();
             oRouter.navTo("RouteHome");
-            that.resetView();
+            setTimeout(()=>{
+ 
+              that.resetView();
+            },1500);
 
           } else {
             sap.m.MessageBox.confirm(
@@ -232,7 +238,10 @@ sap.ui.define(
                   // If user clicks OK, reset the view to its initial state
                   const oRouter = that.getOwnerComponent().getRouter();
                   oRouter.navTo("RouteHome");
-                  that.resetView();
+                  setTimeout(()=>{
+ 
+                    that.resetView();
+                  },1500);
                 } else {
                   // If user clicks Cancel, do nothing
                 }
@@ -252,7 +261,10 @@ sap.ui.define(
             that.onCancelPressBtn();
 
             oRouter.navTo("RouteHome");
-            that.resetView();
+            setTimeout(()=>{
+ 
+              that.resetView();
+            },1500);
           } else {
 
             let oTable = this.byId("createTypeTable");
@@ -273,8 +285,12 @@ sap.ui.define(
                   inputFieldObj.setEditable(false);
                   saveObj.setVisible(false);
                   cancelObj.setVisible(false);
-                  that.resetView();
+                 
                   oRouter.navTo("RouteHome");
+                  setTimeout(()=>{
+ 
+                    that.resetView();
+                  },1500);``
 
 
                 }
@@ -411,12 +427,20 @@ sap.ui.define(
 
           sap.m.MessageToast.show("Successfully Updated.");
 
-          oView.getModel().refresh();
-          this.resetView();
+          // oView.getModel().refresh();
+          // this.resetView();
 
-          saveObj.setVisible(false);
-          cancelObj.setVisible(false);
-          inputFieldObj.setEditable(false);
+          // saveObj.setVisible(false);
+          // cancelObj.setVisible(false);
+          // inputFieldObj.setEditable(false);
+              this.resetView();
+              saveObj.setVisible(false);
+              cancelObj.setVisible(false);
+              inputFieldObj.setEditable(false);
+              setTimeout(() =>{
+                oView.getModel().refresh();
+    
+              },1100);
 
         } else {
           sap.m.MessageToast.show("Fail to Update.")
@@ -620,6 +644,9 @@ sap.ui.define(
         let isSuccess = ev.getParameter('success');
         if (isSuccess) {
           sap.m.MessageToast.show("Successfully Created.")
+
+          
+
           copyFlag = false;
         } else {
           sap.m.MessageToast.show("Fail to Create.")
@@ -671,6 +698,7 @@ sap.ui.define(
               that.getView().getModel().refresh();
               that.resetView();
 
+              
 
             } catch (error) {
               MessageToast.show("Error while saving data");
