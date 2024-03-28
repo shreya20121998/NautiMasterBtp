@@ -184,34 +184,42 @@ sap.ui.define(
 
         }
         else if (editFlag) {
-          // If it's an edit action
-          let classCode = this.getView().byId("CLASSDESC1").getValue().trim();
-          let classCodeDesc = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
 
-          if (classCode === classCodeDesc) {
-            // If no changes have been made, reset the view to its initial state
-            oRouter.navTo("RouteHome");
-            setTimeout(() => {
-
-              that.resetView();
-            }, 1500);
-          } else {
-            // If changes have been made, prompt the user for confirmation
+          var oTable = this.byId("updateTypeTable"); // Assuming you have the table reference
+          var aItems = oTable.getItems();
+          let flag = false;
+          for (let i = 0; i < aItems.length; i++) {
+            var oCells = aItems[i].getCells();
+            var oInput = oCells[1]; // Index 1 corresponds to the Input field
+            var sValue = oInput.getValue();
+            if (onEditInput[i] !== sValue) {
+              flag = true;
+              break;
+            }
+          }
+  
+          if (flag) {
             sap.m.MessageBox.confirm("Do you want to discard the changes?", {
               title: "Confirmation",
               onClose: function (oAction) {
                 if (oAction === sap.m.MessageBox.Action.OK) {
-                  // If the user confirms, reset the view to its initial state
+                  // Reset the view to its initial state
                   oRouter.navTo("RouteHome");
                   setTimeout(() => {
 
                     that.resetView();
                   }, 1500);
-                } else {
-                  // If the user cancels, do nothing
                 }
-              }
+              }.bind(this) // Ensure access to outer scope
             });
+          } else {
+            // If no changes have been made, navigate to the initial screen immediately
+            oRouter.navTo("RouteHome");
+            setTimeout(() => {
+
+              that.resetView();
+            }, 1500);
+  
           }
         }
       },
@@ -403,6 +411,7 @@ sap.ui.define(
       //   }
       // },
 
+      
       onPatchSent: function (ev) {
 
         sap.m.MessageToast.show("Updating..")
@@ -430,7 +439,6 @@ sap.ui.define(
 
 
       pressEdit: function () {
-
         // Get reference to the view
         let oView = this.getView();
 
@@ -444,6 +452,7 @@ sap.ui.define(
           var oBindingContext = oItem.getBindingContext();
           var sValue = oBindingContext.getProperty("ZfValue");
           var sDescription = oBindingContext.getProperty("ZfDesc");
+          console.log("desc",sDescription);
           onEditInput.push(sDescription);
         });
 
@@ -512,6 +521,7 @@ sap.ui.define(
 
         // Iterate over the items to update the corresponding item in the createTypeTable
         aItems.forEach(function (oItem) {
+        
           let sValue = oItem.getCells()[0].getText(); // Assuming Value is in the first cell
           let sDesc = oItem.getCells()[1].getValue(); // Assuming Field Description is in the second cell
 
@@ -520,7 +530,7 @@ sap.ui.define(
             return oCreateItem.getCells()[0].getText() === sValue; // Assuming Value is in the first cell
           });
 
-          // Update the corresponding item in the createTypeTable
+ 
           if (oCreateItem) {
             oCreateItem.getCells()[1].setText(sDesc); // Assuming Field Description is in the second cell
           }
@@ -529,29 +539,10 @@ sap.ui.define(
         // Show the createTypeTable
         oCreateTable.setVisible(true).removeSelections();
        
-        // let oModel = this.getView().getModel();
-        // oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
-
-        // let oBindList = oModel.bindList("/ClassMasterSet", {
-        //   $$updateGroupId: "update"
-        // });
-
-
-        // oBindList.attachPatchSent(this.onPatchSent, this);
-        // oBindList.attachPatchCompleted(this.onPatchCompleted, this);
-
-        // Hide the updateTypeTable
+     
         oUpdateTable.setVisible(false);
 
-        // Hide the footer for the updateTypeTable
-        // oView.byId("mainPageFooter2").setVisible(false);
-
-        // Enable other buttons
-        // oView.byId("deleteBtn").setEnabled(true);
-        // oView.byId("copyBtn").setEnabled(true);
-        // oView.byId("entryBtn").setEnabled(true);
-
-        // Clear the updateTypeTable after updating the createTypeTable
+       
         
         this.onPatchSent();
         setTimeout(() => {
