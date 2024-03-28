@@ -218,6 +218,7 @@ sap.ui.define(
       onBackPress: function () {
 
         const that = this;
+        var oupdateTable =  that.getView().byId(  "updateTypeTable" );
         const oRouter = this.getOwnerComponent().getRouter();
 
         // Check if any items have been selected
@@ -226,12 +227,13 @@ sap.ui.define(
           // If no items have been selected, navigate to "RouteMasterDashboard"
           oRouter.navTo("RouteMasterDashboard");
         }
-        else if (aSelectedIds.length && !newEntryFlag && !copyFlag) {
+        // else if (aSelectedIds.length && !newEntryFlag && !copyFlag) {
 
-          oRouter.navTo("RouteMasterDashboard");
-          this.byId('createTypeTable').removeSelections();
+        //   oRouter.navTo("RouteMasterDashboard");
+        //   this.byId('createTypeTable').removeSelections();
 
-        } else if (copyFlag) {
+        // }
+         else if (copyFlag) {
 
           // Get the values from the view
           let classCode = oView.byId("CLASSFIELD").getValue().trim();
@@ -290,14 +292,41 @@ sap.ui.define(
             );
 
           }
-        } else if (editFlag) {
+        }
+        else if (editFlag) {
 
-          this.onCancelEdit();
-         
+        var oTable = this.byId("updateTypeTable"); // Assuming you have the table reference
+        var aItems = oTable.getItems();
+        let flag = false;
+        for (let i = 0; i < aItems.length; i++) {
+          var oCells = aItems[i].getCells();
+          var oInput = oCells[1]; // Index 1 corresponds to the Input field
+          var sValue = oInput.getValue();
+          if (onEditInput[i] !== sValue) {
+            flag = true;
+            break;
+          }
         }
 
+        if (flag) {
+          sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+            title: "Confirmation",
+            onClose: function (oAction) {
+              if (oAction === sap.m.MessageBox.Action.OK) {
+                // Reset the view to its initial state
+                this.resetView();
+              }
+            }.bind(this) // Ensure access to outer scope
+          });
+        } else {
+          // If no changes have been made, navigate to the initial screen immediately
+          this.resetView();
+
+        }
+      }
+
       },
-      
+
       // validation for CLAss CODE to be Numeric
 
       onCodeLiveChange1: function (oEvent) {
@@ -381,8 +410,9 @@ sap.ui.define(
       },
 
       onPatchCompleted: function (ev) {
-
+        console.log(ev);
         let isSuccess = ev.getParameter('success');
+        
         if (isSuccess) {
 
           sap.m.MessageToast.show("Successfully Updated.");
@@ -495,23 +525,46 @@ sap.ui.define(
             oCreateItem.getCells()[1].setText(sDesc); // Assuming Field Description is in the second cell
           }
         });
-
+       
         // Show the createTypeTable
         oCreateTable.setVisible(true).removeSelections();
+       
+        // let oModel = this.getView().getModel();
+        // oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
+
+        // let oBindList = oModel.bindList("/ClassMasterSet", {
+        //   $$updateGroupId: "update"
+        // });
+
+
+        // oBindList.attachPatchSent(this.onPatchSent, this);
+        // oBindList.attachPatchCompleted(this.onPatchCompleted, this);
 
         // Hide the updateTypeTable
         oUpdateTable.setVisible(false);
 
         // Hide the footer for the updateTypeTable
-        oView.byId("mainPageFooter2").setVisible(false);
+        // oView.byId("mainPageFooter2").setVisible(false);
 
         // Enable other buttons
-        oView.byId("deleteBtn").setEnabled(true);
-        oView.byId("copyBtn").setEnabled(true);
-        oView.byId("entryBtn").setEnabled(true);
+        // oView.byId("deleteBtn").setEnabled(true);
+        // oView.byId("copyBtn").setEnabled(true);
+        // oView.byId("entryBtn").setEnabled(true);
 
         // Clear the updateTypeTable after updating the createTypeTable
-        oUpdateTable.removeAllItems();
+        
+        this.onPatchSent();
+        setTimeout(() => {
+          this.resetView();
+          oUpdateTable.removeAllItems();
+          this.onPatchCompleted({getParameter: () => ({success: true})});
+          
+          
+        }, 1500);
+        
+        
+
+        // oModel.submitBatch("update");
       },
 
 
@@ -611,13 +664,13 @@ sap.ui.define(
         var oTable = this.byId("updateTypeTable"); // Assuming you have the table reference
         var aItems = oTable.getItems();
         let flag = false;
-        for(let i = 0; i <aItems.length; i++){
+        for (let i = 0; i < aItems.length; i++) {
           var oCells = aItems[i].getCells();
           var oInput = oCells[1]; // Index 1 corresponds to the Input field
           var sValue = oInput.getValue();
-          if(onEditInput[i] !== sValue){
-              flag = true;
-              break;
+          if (onEditInput[i] !== sValue) {
+            flag = true;
+            break;
           }
         }
 
@@ -634,10 +687,10 @@ sap.ui.define(
         } else {
           // If no changes have been made, navigate to the initial screen immediately
           this.resetView();
-          
+
         }
 
-       
+
 
         // aItems.forEach(function (oItem) {
         //   var oCells = oItem.getCells();
@@ -670,7 +723,7 @@ sap.ui.define(
 
       },
 
-        onCancelCopyOrEntry: function () {
+      onCancelCopyOrEntry: function () {
         let selectedEntryCode, selectedEntryDesc;
         const that = this;
         let updatedCode = this.byId("CLASSFIELD").getValue();
@@ -728,7 +781,7 @@ sap.ui.define(
 
         oView.byId("createTypeTable").setVisible(true).removeSelections();
         oView.byId("CLASSFIELD1").setText("");
-        oView.byId("CLASSDESC1").setValue("");
+        // oView.byId("CLASSDESC1").setValue("");
         oView.byId("CLASSFIELD").setValue("");
         oView.byId("CLASSDESC").setValue("");
         oView.byId("editBtn").setEnabled(true);

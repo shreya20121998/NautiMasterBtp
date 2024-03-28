@@ -150,8 +150,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text  text=""/>
-                        <Input  liveChange="onLiveChange"  editable="true"/>
+                        <Text id="CLASSFIELD1"  text=""/>
+                        <Input id="CLASSDES1"  liveChange="onLiveChange"  editable="true"/>
                     </cells>
                 </ColumnListItem>
             </items>
