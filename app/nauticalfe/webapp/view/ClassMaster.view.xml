@@ -101,12 +101,13 @@
         </ScrollContainer>
         </Panel>
         <Table
+            mode="MultiSelect"
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
              class="tablepanel entrytables"
-            visible="false" mode="MultiSelect" >
+            visible="false"  >
 
             <columns>
                 <Column>
