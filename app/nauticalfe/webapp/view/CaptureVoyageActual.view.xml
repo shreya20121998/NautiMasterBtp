@@ -313,42 +313,42 @@
             <!-- start of vessel plan section -->
             <Panel id="p2" class="voyagePanel"  >
                         
-                        <ScrollContainer id="_IDGenScrollContainer2" horizontal="true"  vertical="false" class="scrollContainer">
-                        <Text id="_IDGenText3" text="Plan Info Details" class="vgheading"/>
-                        <HBox id="_IDHBox11" class="planOperations" >
-                        <FlexBox id="_IDGenFlexBox1" alignContent="Stretch" >
-                        <Button id="_IDGenButton10" icon="sap-icon://sys-minus"/>
-                        <FlexBox id="_IDGenFlexBox2" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel7" text="Plan Speed:" required="true"/>
-                        <Input id="_IDGenInput4" width="70px" class="inputfields"></Input>
-                        <Label id="_IDGenLabel8" text="NM/Hour"/>
-                        </FlexBox>
-                        </FlexBox>
-                        <FlexBox id="_IDGenFlexBox3" alignContent="Stretch" class="infoinputs">
-                            <Label id="_IDGenLabel9" text="Frieght Cost:"/>
-                            <Input id="_IDGenInput5" width="70px" class="inputfields"></Input>
-                        <FlexBox id="_IDGenFlexBox4" alignContent="Stretch" class="infoinputs">
-                            <Label id="_IDGenLabel10" text="Unit:"/>
-                            <Select id="_IDGenSelect2" width="150px">
-                            </Select>
-                        </FlexBox>
-                        <FlexBox id="_IDGenFlexBox5" alignContent="Stretch" class="infoinputs">
-                            <Label id="_IDGenLabel11" text="Total Cost:"/>
-                            <Input id="_IDGenInput6" width="80px" class="inputfields"></Input>
-                        </FlexBox>                          
-                        <FlexBox id="_IDGenFlexBox6" alignContent="Stretch" class="infoinputs">
-                            <Label id="_IDGenLabel12" text="Total Dist:"/>
-                            <Input id="_IDGenInput7" width="60px" class="inputfields"></Input>
-                        </FlexBox>                          
-                        <FlexBox id="_IDGenFlexBox7" alignContent="Stretch" class="infoinputs">
-                            <Label id="_IDGenLabel13" text="Total Days:"/>
-                            <Input id="_IDGenInput8" width="50px" class="inputfields"></Input>
-                        </FlexBox>                          
-                        </FlexBox>
-                        </HBox>
-                        <Table id="_IDGenTable10"   fixedLayout="false" >
+                <ScrollContainer id="_IDGenScrollContainer2" horizontal="true"  vertical="false" class="scrollContainer">
+                    <Text id="_IDGenText3" text="Plan Info Details" class="vgheading"/>
+                    <HBox id="_IDHBox11" class="planOperations" >
+                        <form:SimpleForm   labelSpanS="4">
+                            <Label text="Plan Speed"/>
+                            <Input/>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm   labelSpanS="4">
+                            <Label text="Freight Cost"/>
+                            <Input/>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm   labelSpanS="4">
+                            <Label text="Unit"/>
+                            <Input/>
+                        </form:SimpleForm>
+                    <form:SimpleForm   labelSpanS="3">
+                            <Label text="Total Cost"/>
+                            <Input/>
+                        </form:SimpleForm>
+                        <form:SimpleForm   labelSpanS="3">
+                            <Label text="Total Dist"/>
+                            <Input/>
+                        </form:SimpleForm>
+                        <form:SimpleForm   labelSpanS="3">
+                            <Label text="Total Days"/>
+                            <Input/>
+                        </form:SimpleForm>
+
+                        
+                    </HBox>
+
+                    <Table id="_IDGenTble10"   fixedLayout="false" class="vesselDetailsTable">
                             <columns  >
-                               
+                            
                                 <Column id="_IDColum" >
                                     <Label id="_IDGel15" text="LegID" ></Label>
                                 </Column>
@@ -358,11 +358,11 @@
                                 <Column id="_IDGenComn7"  >
                                     <Label id="_IDGenbel16" text="Events" ></Label>
                                 </Column>
- 
+
                                 <Column id="_IDGenColn6" >
                                     <Label id="_IDGenLel15" text="Port name" ></Label>
                                 </Column>
-                               
+                            
                                 <Column id="_IDGenColn8"  >
                                     <Label id="_IDGenLal17" text="Other Cost" ></Label>
                                 </Column>
@@ -416,117 +416,116 @@
                                     </cells>
                                 </ColumnListItem>
                             </items>
-                        </Table>
-                        </ScrollContainer>
-                 <ScrollContainer id="_IDGenScrollContainer3" horizontal="true"  vertical="false" class="scrollContainer">
-                         
-                    <Text id="_IDGenText4" text="Actual Info Details" class="heading"/>
-                    <!-- for plan info header buttons  -->
-                    <HBox id="_IDHBox12" class="planOperations ">
-                           
-                    <FlexBox id="_IDGenFlexBox8" alignContent="Stretch">
-                    <Button id="_IDGenBton11" icon="sap-icon://sys-minus"/>
-                    <FlexBox id="_IDGenFlexBox9" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel28" text="Actual Speed:"/>
-                        <Input id="_IDGenInput9" width="70px" class="inputfields"></Input>
-                        <Label id="_IDGenLabel29" text="NM/Hour"/>
-                    </FlexBox>
-                    <FlexBox id="_IDGenFlexBox10" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel30" text="Frieght Cost:"/>
-                        <Input id="_IDGenInput10" width="70px" class="inputfields"></Input>
-                    </FlexBox>
-                    <FlexBox id="_IDGenFlexBox11" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel31" text="Unit:"/>
-                        <Select id="_IDGenSelect3" width="150px">
-                        </Select>
-                    </FlexBox>
-                    <FlexBox id="_IDGenFlexBox12" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel32" text="Total Cost:"/>
-                        <Input id="_IDGenput11" width="80px" class="inputfields"></Input>
-                    </FlexBox>                          
-                    <FlexBox id="_IDGenFlexBox13" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel33" text="Total Dist:"/>
-                        <Input id="_IDGenInput12" width="60px" class="inputfields"></Input>
-                    </FlexBox>                          
-                    <FlexBox id="_IDGenFlexBox14" alignContent="Stretch" class="infoinputs">
-                        <Label id="_IDGenLabel34" text="Total Days:"/>
-                        <Input id="_IDGenInput13" width="50px" class="inputfields"></Input>
-                    </FlexBox>                          
-                </FlexBox>
+                    </Table>
+                </ScrollContainer>
+
+                <ScrollContainer horizontal="true"  vertical="false" class="scrollContainer">
+                    <Text id="_IDGnText3" text="Actual Info Details" class="vgheading"/>
+                    <HBox >
+                        <form:SimpleForm   labelSpanS="4">
+                            <Label text="Plan Speed"/>
+                            <Input/>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm   labelSpanS="4">
+                            <Label text="Freight Cost"/>
+                            <Input/>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm   labelSpanS="4">
+                            <Label text="Unit"/>
+                            <Input/>
+                        </form:SimpleForm>
+                        <form:SimpleForm   labelSpanS="3">
+                            <Label text="Total Cost"/>
+                            <Input/>
+                        </form:SimpleForm>
+                        <form:SimpleForm   labelSpanS="3">
+                            <Label text="Total Dist"/>
+                            <Input/>
+                        </form:SimpleForm>
+                        <form:SimpleForm   labelSpanS="3">
+                            <Label text="Total Days"/>
+                            <Input/>
+                        </form:SimpleForm>
+
+                        
                     </HBox>
- 
-                    <Table id="_IDGenTable1"   fixedLayout="false" >
-                            <columns  >
-                               
-                                <Column id="_IDColumn6" >
-                                    <Label id="_IDGebel15" text="LegID" ></Label>
-                                </Column>
-                                <Column id="_IDGenlumn6"  >
-                                    <Label id="_IDGLabel15" text="Port Cost"  ></Label>
-                                </Column>
-                                <Column id="_IDGenColumn7"  >
-                                    <Label id="_IDGenLabel16" text="Events" ></Label>
-                                </Column>
- 
-                                <Column id="_IDGenColumn6" >
-                                    <Label id="_IDGenLabel15" text="Port name" ></Label>
-                                </Column>
-                               
-                                <Column id="_IDGenColumn8"  >
-                                    <Label id="_IDGenLabel17" text="Other Cost" ></Label>
-                                </Column>
-                                <Column id="_IDGenColumn9"  >
-                                    <Label id="_IDGenLabel18" text="Frieght Cost" ></Label>
-                                </Column>
-                                <Column id="_IDGenColumn10"  >
-                                    <Label id="_IDGenLabel19" text="Total Cost" ></Label>
-                                </Column>
-                                <Column id="_IDGenClumn11"  >
-                                    <Label id="_IDGnLabel20" text="Cargo Size" ></Label>
-                                </Column>
-                                <Column id="_IDGenCoumn12">
-                                    <Label id="_IDGnLabel21" text="Unit" ></Label>
-                                </Column>
-                                <Column id="_IDGenCoumn13" >
-                                    <Label id="_IDGenabel22" text="Distance"  ></Label>
-                                </Column>
-                                <Column id="_IDGenCoumn14" >
-                                    <Label id="_IDGeLabel23" text="UOM" ></Label>
-                                </Column>
-                                <Column id="_IDGenCoumn15" >
-                                    <Label id="_IDGenabel24" text="Port Days" ></Label>
-                                </Column>
-                                <Column id="_IDGenClumn16" >
-                                    <Label id="_IDGnLabel25" text="Weather" ></Label>
-                                </Column>
-                                <Column id="_IDGenClumn17"  >
-                                    <Label id="_IDGnLabel26" text="Sea Days" ></Label>
-                                </Column>
-                                <Column id="_IDGenColmn18"  >
-                                    <Label id="_IDGenLbel27" text="ETA" ></Label>
-                                </Column>
-                                <Column id="_IDGnColn18"  >
-                                    <Label id="_IDenLel27" text="Time" ></Label>
-                                </Column>
-                                <Column id="_IDl18"  >
-                                    <Label id="_nel27" text="ETD" ></Label>
-                                </Column>
-                                <Column id="Genoln18"  >
-                                    <Label id="GeLel27" text="Time" ></Label>
-                                </Column>
-                                <Column id="_on18"  >
-                                    <Label id="_Il27" text="Status" ></Label>
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem id="_IDGenCoumnListItem4">
-                                    <cells>
-                                        <CheckBox id="_IDGenChecBox1"></CheckBox>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                        </ScrollContainer>
+
+                    <Table id="_IDGenTable10"   fixedLayout="false" class="vesselDetailsTable">
+                        <columns  >
+                        
+                            <Column  >
+                                <Label  text="LegID" ></Label>
+                            </Column>
+                            <Column  >
+                                <Label  text="Port Cost"  ></Label>
+                            </Column>
+                            <Column  >
+                                <Label  text="Events" ></Label>
+                            </Column>
+
+                            <Column  >
+                                <Label  text="Port name" ></Label>
+                            </Column>
+                        
+                            <Column  >
+                                <Label  text="Other Cost" ></Label>
+                            </Column>
+                            <Column  >
+                                <Label text="Frieght Cost" ></Label>
+                            </Column>
+                            <Column id="_IDGeColmn10"  >
+                                <Label id="_IDGnabel19" text="Total Cost" ></Label>
+                            </Column>
+                            <Column id="_IDGenClumn11"  >
+                                <Label id="_IDGenabel20" text="Cargo Size" ></Label>
+                            </Column>
+                            <Column id="_IDGenClumn12">
+                                <Label id="_IDGenabel21" text="Unit" ></Label>
+                            </Column>
+                            <Column id="_IDGenClumn13" >
+                                <Label id="_IDGnLabel22" text="Distance"  ></Label>
+                            </Column>
+                            <Column id="_IDGenolumn14" >
+                                <Label id="_IDenLabel23" text="UOM" ></Label>
+                            </Column>
+                            <Column id="_IDGenolumn15" >
+                                <Label id="_IDGnLabel24" text="Port Days" ></Label>
+                            </Column>
+                            <Column id="_IDGenColmn16" >
+                                <Label id="_IDGenLael25" text="Weather" ></Label>
+                            </Column>
+                            <Column id="_IDGenColmn17"  >
+                                <Label id="_IDGenLbel26" text="Sea Days" ></Label>
+                            </Column>
+                            <Column id="_IDGenColun18"  >
+                                <Label id="_IDGeLabel27" text="ETA" ></Label>
+                            </Column>
+                            <Column id="_IDGenCon18"  >
+                                <Label id="_IDGenLl27" text="Time" ></Label>
+                            </Column>
+                            <Column id="_IDl18"  >
+                                <Label id="_nLe27" text="ETD" ></Label>
+                            </Column>
+                            <Column id="GenCol18"  >
+                                <Label id="GenLl27" text="Time" ></Label>
+                            </Column>
+                            <Column id="_ol18"  >
+                                <Label id="_Iel7" text="Status" ></Label>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="_IDGenColumListItem4">
+                                <cells>
+                                    <CheckBox id="_IDGenChekBox1"></CheckBox>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                </ScrollContainer>
+                       
  
             </Panel>
             

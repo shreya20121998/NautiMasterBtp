@@ -4,55 +4,22 @@ xmlns:f="sap.f" controllerName="nauticalfe.controller.BiddingController"
 xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
 
 
-  <Page class="page">
-    <headerContent>
-      <Bar class="customHeader">
-          <contentLeft>
-              <core:Icon
-                  src="sap-icon://nav-back"
-                  class="size1"
-                  color="#FFFFFF"
-                  press="onBackPress"
-              />
-              <core:Icon
-                        id="_IDGenIcon2"
-                        src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
-              />
-              <Image
-                   class="size1"
-                  src="./images/ignxlogo.png"
-                  height="75%"
-              />
-              <Text
-                  class="textBid size1"
-                  text="Bidding Controller Portal"
-              />
-          </contentLeft>
-          <contentRight>
-              <core:Icon
-                  src="sap-icon://search"
-                  class="size1"
-                  color="#FFFFFF"
-              >
-                  <core:layoutData>
-                      <FlexItemData growFactor="1" />
-                  </core:layoutData>
-              </core:Icon>
-              <core:Icon
-                  src="sap-icon://SAP-icons-TNT/user"
-                  class="size1"
-                  color="#FFFFFF"
-              >
-                  <core:layoutData>
-                      <FlexItemData growFactor="1" />
-                  </core:layoutData>
-              </core:Icon>
-          </contentRight>
-      </Bar>
-    </headerContent>
+  <Page class="page" showFooter="false" showHeader="false">
+          <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onBackPressHome" tooltip="Home"/>
+    
+                <Image id="_IDGenImage1" class="size1"
+                    src="./images/ignxlogo.png"
+                    height="65%"/>
+
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                <Title text=" Bidding Controller Portal " wrapping="true" id="productName"/>
+                <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+          </tnt:ToolHeader>
+   
 
     <Bar >
       <contentMiddle>
@@ -88,7 +55,7 @@ xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
     
     
     <Panel id="PanelId"  headerText="Ongoing Bids" class="ongoingPanel " width="auto">
-      <Table id="table" items="{bidData>/biddingData}" >
+      <Table id="table" items="{bidData>/biddingData}" class="mastertables"  >
               <columns >
               <Column id="bheading1" >
                 <Text id="text1" text="Chartering Req No."/>

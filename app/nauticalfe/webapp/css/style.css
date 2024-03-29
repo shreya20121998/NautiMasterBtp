@@ -2,10 +2,11 @@
 .footerBar{
     background-color: rgb(193, 230, 252) !important;
 }
+
 .sapMLIBShowSeparator>td{
     border: 1px solid rgb(214, 211, 211);
  }
- .mastertables th {
+.mastertables th {
     border: 1px solid rgb(214, 211, 211);
 }
 .entrytables th {
@@ -17,7 +18,13 @@
 .updateTableFooter{
     margin-top: -20%;
 }
- 
+
+ .vesselDetailsTable{
+    margin-top: 2%;
+ }
+ .vesselDetailsTable th{
+    border: 1px solid rgb(214, 211, 211);
+ }
 
  .stickyBar{
    margin-top: 1%;
@@ -51,6 +58,10 @@
     position: fixed;
  }
  
+/* .formPanel{
+    justify-content: space-around;
+} */
+
 
 /************************************ For Home Screen **********************************************/
 

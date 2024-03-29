@@ -303,39 +303,10 @@ sap.ui.define(
         // }
         else if (copyFlag) {
 
-          // Get the values from the view
-          let classCode = oView.byId("CLASSFIELD").getValue().trim();
-          console.log(classCode);
-          let classCodeDesc = oView.byId("CLASSDESC").getValue().trim();
-          let originalclassCode = aSelectedIds[0][0];
-          let originalclassCodeDesc = aSelectedIds[0][1];
-
-          // Check if the values are unchanged
-          if (classCode === originalclassCode && classCodeDesc === originalclassCodeDesc) {
-
-            // If no changes have been made, reset the view to its initial state
-            this.resetView();
-          }
-          // If changes have been made, prompt the user for confirmation
-          else {
-            sap.m.MessageBox.confirm(
-
-              "Do you want to discard the changes?", {
-              title: "Confirmation",
-              onClose: function (oAction) {
-
-                if (oAction === sap.m.MessageBox.Action.OK) {
-
-                  // If  OK, reset the view to its initial state
-                  that.resetView();
-                } else {
-                  // If  Cancel press, do nothing..
-                }
-              }
-            }
-            );
-          }
-        } else if (newEntryFlag) {
+          
+        }
+        
+        else if (newEntryFlag) {
 
           let classCode = oView.byId("CLASSFIELD").getValue().trim();
           let classCodeDesc = oView.byId("CLASSDESC").getValue().trim();
@@ -590,113 +561,54 @@ sap.ui.define(
         oView.byId("entryBtn").setEnabled(false);
       },
 
-      onUpdate1: function () {
-        let oView = this.getView();
-        let oCreateTable = oView.byId("createTypeTable");
-        let oUpdateTable = oView.byId("updateTypeTable");
- 
-        // Get all items from the updateTypeTable
-        let aItems = oUpdateTable.getItems();
- 
- 
-        // Iterate over the items to update the corresponding item in the createTypeTable
-        aItems.forEach(function (oItem) {
-          let sValue = oItem.getCells()[0].getText(); // Assuming Value is in the first cell
-          let sDesc = oItem.getCells()[1].getValue(); // Assuming Field Description is in the second cell
-          // console.log("DESC ", sDesc, sDesc.replace(/\s+/g, " ").trim());
- 
- 
-          // Find the corresponding item in the createTypeTable
-          let oCreateItem = oCreateTable.getItems().find(function (oCreateItem) {
-            return oCreateItem.getCells()[0].getText() === sValue; // Assuming Value is in the first cell
-          });
- 
-          // Update the corresponding item in the createTypeTable
-          if (oCreateItem) {
-            oCreateItem.getCells()[1].setText(sDesc.replace(/\s+/g, " ").trim()); // Assuming Field Description is in the second cell
-          }
-        });
-       
-        // Show the createTypeTable
-        oCreateTable.setVisible(true).removeSelections();
-       
-        // let oModel = this.getView().getModel();
-        // oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
- 
-        // let oBindList = oModel.bindList("/ClassMasterSet", {
-        //   $$updateGroupId: "update"
-        // });
- 
- 
-        // oBindList.attachPatchSent(this.onPatchSent, this);
-        // oBindList.attachPatchCompleted(this.onPatchCompleted, this);
- 
-        // Hide the updateTypeTable
-        oUpdateTable.setVisible(false);
- 
-        // Hide the footer for the updateTypeTable
-        // oView.byId("mainPageFooter2").setVisible(false);
- 
-        // Enable other buttons
-        // oView.byId("deleteBtn").setEnabled(true);
-        // oView.byId("copyBtn").setEnabled(true);
-        // oView.byId("entryBtn").setEnabled(true);
- 
-        // Clear the updateTypeTable after updating the createTypeTable
-       
-        this.onPatchSent();
-        setTimeout(() => {
-          this.resetView();
-          oUpdateTable.removeAllItems();
-          this.onPatchCompleted({getParameter: () => ({success: true})});
-         
-         
-        }, 1500);
-       
-       
- 
-        // oModel.submitBatch("update");
-      },
+      
 
       onUpdate: function () {
         let oView = this.getView();
         let oCreateTable = oView.byId("createTypeTable");
         let oUpdateTable = oView.byId("updateTypeTable");
-    
+ 
         // Get all items from the updateTypeTable
         let aItems = oUpdateTable.getItems();
-    
+ 
+ 
         // Iterate over the items to update the corresponding item in the createTypeTable
         aItems.forEach(function (oItem) {
-            let sValue = oItem.getCells()[0].getText(); // Assuming Value is in the first cell
-            let sDesc = oItem.getCells()[1].getValue().trim(); // Assuming Field Description is in the second cell and trimming leading/trailing spaces
-            let lowerCaseDesc = sDesc.toLowerCase(); // Convert to lowercase
-    
-            // Find the corresponding item in the createTypeTable
-            let oCreateItem = oCreateTable.getItems().find(function (oCreateItem) {
-                let createValue = oCreateItem.getCells()[0].getText().toLowerCase(); // Convert to lowercase for case-insensitive comparison
-                return createValue === sValue.toLowerCase(); // Assuming Value is in the first cell
-            });
-    
-            // Update the corresponding item in the createTypeTable
-            if (oCreateItem) {
-                oCreateItem.getCells()[1].setText(sDesc); // Update description
-            }
+          let sValue = oItem.getCells()[0].getText();
+          let sDesc = oItem.getCells()[1].getValue(); 
+ 
+          // Find the corresponding item in the createTypeTable
+          let oCreateItem = oCreateTable.getItems().find(function (oCreateItem) {
+            return oCreateItem.getCells()[0].getText() === sValue;
+          });
+ 
+          // Update the corresponding item in the createTypeTable
+          if (oCreateItem) {
+            oCreateItem.getCells()[1].setText(sDesc.replace(/\s+/g, " ").trim()); 
+          }
         });
-    
+       
         // Show the createTypeTable
         oCreateTable.setVisible(true).removeSelections();
-    
-        // Clear the updateTypeTable after updating the createTypeTable
-        oUpdateTable.removeAllItems();
-    
-        // Call resetView and onPatchCompleted after a delay
+ 
+        // Hide the updateTypeTable
+        oUpdateTable.setVisible(false);
+ 
+        this.onPatchSent();
+
         setTimeout(() => {
-            this.resetView();
-            this.onPatchCompleted({ getParameter: () => ({ success: true }) });
+          this.resetView();
+          oUpdateTable.removeAllItems();
+          this.onPatchCompleted({getParameter: () => ({success: true})});
         }, 1500);
-    }
-,    
+       
+
+      },
+
+      
+    
+    
+ 
 
 
 

@@ -26,6 +26,7 @@
         </tnt:ToolHeader>
 
         <Panel class="tablepanel">
+        
         <Bar
             id="_IDGenBar12"
             class="headerBar2"
@@ -69,8 +70,7 @@
             width="100%"
             class="mastertables"
             sticky="ColumnHeaders"
-            noDataText="loading ..."
-            
+            noDataText="loading ..."   
         >
             <columns>
                 <Column id="_IDGenColumn1">

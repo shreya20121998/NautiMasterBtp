@@ -23,6 +23,7 @@
                 <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
                 
         </tnt:ToolHeader>
+        
         <Panel class="tablepanel">
        <Bar
             id="_IDGenBar1"

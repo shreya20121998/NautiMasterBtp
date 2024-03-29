@@ -1,4 +1,3 @@
-
 <mvc:View
     xmlns:tnt="sap.tnt"
     xmlns:form="sap.ui.layout.form"
@@ -9,23 +8,24 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+    <Page id="_IDGenPage1" showFooter="false" showHeader="false">
         <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
-                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
-                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
-        
-                    <Image id="_IDGenImage1" class="size1"
-                        src="./images/ignxlogo.png"
-                        height="65%"/>
+                <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+    
+                <Image id="_IDGenImage1" class="size1"
+                    src="./images/ignxlogo.png"
+                    height="65%"/>
 
-                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
-                    <Title text=" Maintain UOM Master" wrapping="true" id="productName"/>
-                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
-                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                <Title text=" Maintain UOM Master " wrapping="true" id="productName"/>
+                <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
                 
-            </tnt:ToolHeader>
+        </tnt:ToolHeader>
 
         <Panel class="tablepanel">
+
         <Bar
             id="_IDGenBar1"
             class="headerBar2"
@@ -40,19 +40,14 @@
                 <Button id="editBtn" text="Edit"  press="pressEdit"/>
                 <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
                
-                <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPress"
-                    ariaHasPopup="Menu"
-                />
+                
             </contentLeft>
             
         </Bar>
+
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
 
+        
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -60,8 +55,8 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            sticky="ColumnHeaders"
             class="mastertables"
+            sticky="ColumnHeaders"
              noDataText="Loading ..."
            
          >
@@ -88,17 +83,15 @@
                             text="{Uom}"
                             
                         />
-                        <HBox >
-                        <Input
+                        
+                        <Text
                             id="_IDGenInput2"
-                            value="{Uomdes}"
-                            editable="false"
+                            text="{Uomdes}"
+                            
                            
-                            maxLength="30"
+                           
                         />
-                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
-                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
-                        </HBox>
+                        
                        
                        
                     </cells>
@@ -110,6 +103,7 @@
 
         <Table
             id="entryTypeTable"
+             mode="MultiSelect"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
@@ -128,13 +122,13 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="UOMCode" liveChange="onCodeLiveChange"/>
-                        <Input id="UOMCodeDesc" liveChange="onLiveChange" />
+                        <Input id="UOMCode"   />
+                        <Input id="UOMCodeDesc" liveChange="onCodeLiveChange" />
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-       
+      
         <Table
             id="updateTypeTable"
             updateFinished="onTableUpdateFinished"
@@ -168,6 +162,8 @@
                 visible="false"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button id="add" text="Add Row" icon="sap-icon://sys-add" press=".onAddRow1" type="Success"></Button>
+                <Button id="minus" text="Delete Row" icon="sap-icon://sys-minus" press=".onDeleteRow1" type="Reject"></Button>
                 <Button
                     id="mainPageSave"
                     text="Save"
