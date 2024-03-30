@@ -8,34 +8,28 @@
     displayBlock="true"
     xmlns:core="sap.ui.core"
 >
-    <Page id="_IDGenPage1" showFooter="false" showHeader="false">
+    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
         <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
-                <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
-                <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
-    
-                <Image id="_IDGenImage1" class="size1"
-                    src="./images/ignxlogo.png"
-                    height="65%"/>
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
+                        src="./images/ignxlogo.png"
+                        height="65%"/>
 
-                <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
-                <Title text=" Maintain UOM Master " wrapping="true" id="productName"/>
-                <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
-                <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Maintain UOM Type" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
                 
-        </tnt:ToolHeader>
-
-        <Panel class="tablepanel">
-
-        <Bar
+            </tnt:ToolHeader>
+    <Panel class="tablepanel">
+         <Bar
             id="_IDGenBar1"
-            class="headerBar2"
+            class="_IDGenBar1"
          >
             <contentLeft>
-                <Button
-                    id ="entryBtn"
-                    text="New Entries"
-                    press="newEntries"
-                />
+                <Button id="entryBtn"  text="New Entries" press="newEntries"/>
                 <Button id="copyBtn" text="Copy As" press="pressCopy"/>
                 <Button id="editBtn" text="Edit"  press="pressEdit"/>
                 <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
@@ -43,11 +37,10 @@
                 
             </contentLeft>
             
-        </Bar>
-
+         </Bar>
+        
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
 
-        
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -56,7 +49,6 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            sticky="ColumnHeaders"
              noDataText="Loading ..."
            
          >
@@ -99,8 +91,7 @@
             </items>
         </Table>
         </ScrollContainer>
-        </Panel>
-
+    </Panel>
         <Table
             id="entryTypeTable"
              mode="MultiSelect"
@@ -122,8 +113,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="UOMCode"   />
-                        <Input id="UOMCodeDesc" liveChange="onCodeLiveChange" />
+                        <Input id="UOMCode" liveChange="onCodeLiveChange"  />
+                        <Input id="UOMCodeDesc"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -134,7 +125,7 @@
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="tablepanel "
+            class="mastertables"
             visible="false"
            
          >
@@ -180,6 +171,7 @@
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
+                 class="updateTableFooter"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
@@ -193,6 +185,16 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
+             <!--scrollbar added-->
+    <ScrollContainer
+        id="_IDGenScrollContainer1"
+        height="100%"
+        width="100%"
+        vertical="true"
+        focusable="true"
+    >
+        <!--this is first page-->
+    </ScrollContainer>
  
             <!--new entries footer -->
            

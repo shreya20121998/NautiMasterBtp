@@ -50,7 +50,7 @@
                 />
             </contentLeft>
            
-        </Bar>
+           </Bar>
       
             <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
             <Table 
@@ -111,8 +111,8 @@
             
             </items>
         
-        </Table>
-        </ScrollContainer>
+          </Table>
+         </ScrollContainer>
         </Panel>
     
 
