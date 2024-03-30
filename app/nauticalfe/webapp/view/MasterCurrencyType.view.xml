@@ -123,10 +123,10 @@
          >
             <columns>
                 <Column>
-                    <Text text="Currency" />
+                    <Text text="Country" />
                 </Column>
                 <Column>
-                    <Text text="Currency Description" />
+                    <Text text="Country Description" />
                 </Column>
             </columns>
             <items>

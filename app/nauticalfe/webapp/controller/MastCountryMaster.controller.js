@@ -833,7 +833,7 @@ sap.ui.define(
             columns: [
               new sap.m.Column({
                 header: new sap.m.Text({
-                  text: "Currency Code"
+                  text: "Country Code"
                 })
               }),
               new sap.m.Column({
