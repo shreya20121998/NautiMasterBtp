@@ -17,6 +17,7 @@ sap.ui.define(
     let newEntryFlag = false;
     var duplicateKeyEntries = undefined;
     let onEditInput = undefined;
+    let onCopyInput = undefined;
 
 
     let oView;
@@ -758,63 +759,82 @@ sap.ui.define(
 
           // checking if new Entry section
         } else if (newEntryFlag) {
-          this.onCancelCopyOrEntry();
+          this.onCancelNewEntry();
 
           // checking if copy
         } else if (copyFlag) {
-          this.onCancelCopyOrEntry();
+          this.onCancelCopy();
         }
-        if (this.isDataChanged()) {
-          // If data has changed, prompt the user to confirm cancellation
-          sap.m.MessageBox.confirm("Are you sure you want to cancel? Your changes will be lost.", {
-            title: "Confirm Cancellation",
-            actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+       
+
+      },
+
+      onCancelNewEntry: function () {
+        var oTable = this.byId("entryTypeTable"); // Assuming you have the table reference
+        var aItems = oTable.getItems();
+        let flag = false;
+        for (let i = 0; i < aItems.length; i++) {
+          var oCells = aItems[i].getCells();
+          let code = oCells[0].getValue().trim();
+          var oInput = oCells[1]; // Index 1 corresponds to the Input field
+          var sValue = oInput.getValue().trim();
+
+          // console.log(onCopyInput[i] + ":" + sValue + ":");
+          if (sValue !== "" || code !== "") {
+            flag = true;
+            break;
+          }
+        }
+
+        if (flag) {
+          sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+            title: "Confirmation",
             onClose: function (oAction) {
-              
               if (oAction === sap.m.MessageBox.Action.OK) {
-                var oEntryTable = this.getView().byId("entryTypeTable");
-
-                oEntryTable.setVisible(false);
-
-                this.getView().byId("createTypeTable").setVisible(true).removeSelections();
-                this.getView().byId("UOMCode1").setText("");
-                this.getView().byId("UOMCodeDesc1").setValue("");
-                this.getView().byId("UOMCode").setValue("");
-                this.getView().byId("UOMCodeDesc").setValue("");
-                this.getView().byId("editBtn").setEnabled(true);
-                this.getView().byId("deleteBtn").setEnabled(true);
-                this.getView().byId("copyBtn").setEnabled(true);
-                this.getView().byId("entryBtn").setEnabled(true);
-                this.byId("createTypeTable").setMode("MultiSelect");
-
-                this.getView().byId("mainPageFooter").setVisible(false);
+                // Reset the view to its initial state
+                this.resetView();
               }
-            }.bind(this)
+            }.bind(this) // Ensure access to outer scope
           });
-        } 
-        else {
-          var oEntryTable = this.getView().byId("entryTypeTable");
+        } else {
+          // If no changes have been made, navigate to the initial screen immediately
+          this.resetView();
 
-          oEntryTable.setVisible(false);
+        }
+      },
 
-          this.getView().byId("createTypeTable").setVisible(true).removeSelections();
-          this.getView().byId("UOMCode1").setText("");
-          this.getView().byId("UOMCodeDesc1").setValue("");
-          this.getView().byId("UOMCode").setValue("");
-          this.getView().byId("UOMCodeDesc").setValue("");
-          this.getView().byId("editBtn").setEnabled(true);
-          this.getView().byId("deleteBtn").setEnabled(true);
-          this.getView().byId("copyBtn").setEnabled(true);
-          this.getView().byId("entryBtn").setEnabled(true);
-          this.byId("createTypeTable").setMode("MultiSelect");
+      onCancelCopy: function () {
 
-          this.getView().byId("mainPageFooter").setVisible(false);
+        var oTable = this.byId("entryTypeTable"); // Assuming you have the table reference
+        var aItems = oTable.getItems();
+        let flag = false;
+        for (let i = 0; i < aItems.length; i++) {
+          var oCells = aItems[i].getCells();
+          var oInput = oCells[1]; // Index 1 corresponds to the Input field
+          var sValue = this.removeExtraSpaces(oInput.getValue());
 
-          // If data has not changed, return to initial page
-          // this.onCancelAction();
-          console.log("continue ..");
+          console.log(onCopyInput[i] + ":" + sValue + ":");
+          if (onCopyInput[i] !== sValue.trim()) {
+            flag = true;
+            break;
+          }
         }
 
+        if (flag) {
+          sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+            title: "Confirmation",
+            onClose: function (oAction) {
+              if (oAction === sap.m.MessageBox.Action.OK) {
+                // Reset the view to its initial state
+                this.resetView();
+              }
+            }.bind(this) // Ensure access to outer scope
+          });
+        } else {
+          // If no changes have been made, navigate to the initial screen immediately
+          this.resetView();
+
+        }
       },
 
       isDataChanged: function () {
@@ -839,21 +859,7 @@ sap.ui.define(
       },
 
 
-      onCancel1: function () {
-        // checking if edit section
-        if (editFlag) {
-          this.onCancelEdit();
-
-          // checking if new Entry section
-        } else if (newEntryFlag) {
-          this.onCancelCopyOrEntry();
-
-          // checking if copy
-        } else if (copyFlag) {
-          this.onCancelCopyOrEntry();
-        }
-
-      },
+    
 
 
       onUpdate: function () {
@@ -1153,19 +1159,34 @@ sap.ui.define(
       },
 
       pressCopy: function () {
-        newEntryFlag = false;
 
         // Reset copyFlag and editFlag
-      
-        editFlag = false;
+
 
 
         if (aSelectedIds.length === 0) {
           MessageToast.show("Please select at least one row");
           return
         }
+        newEntryFlag = false;
+        editFlag = false;
 
         copyFlag = true;
+        let oView = this.getView();
+
+        // Get the createTypeTable
+        let oCreateTable = oView.byId("createTypeTable");
+        var oTable = this.byId("createTypeTable");
+        var aSelectedItems = oTable.getSelectedItems();
+        onCopyInput = [];
+        // Iterating over selected items and printing values
+        aSelectedItems.forEach(function (oItem) {
+          var oBindingContext = oItem.getBindingContext();
+          var sValue = oBindingContext.getProperty("Evtty");
+          var sDescription = oBindingContext.getProperty("Text");
+          console.log("desc", sDescription);
+          onCopyInput.push(sDescription);
+        });
 
         this.getView().byId("deleteBtn").setEnabled(false);
         this.getView().byId("editBtn").setEnabled(false);
@@ -1173,9 +1194,6 @@ sap.ui.define(
         this.getView().byId("createTypeTable").setVisible(false);
         this.getView().byId('entryTypeTable').setVisible(true);
         this.getView().byId("mainPageFooter").setVisible(true);
-
-
-
 
 
         let entryTable = this.getView().byId("entryTypeTable");
@@ -1199,7 +1217,7 @@ sap.ui.define(
           entryTable.addItem(newItem);
         }
 
-      }
+      },
 
 
 
