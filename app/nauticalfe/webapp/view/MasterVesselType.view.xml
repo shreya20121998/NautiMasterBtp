@@ -9,7 +9,6 @@
     xmlns:core="sap.ui.core"
 >
     <Page id="_IDGenPage1" showHeader="false" showFooter="false">
-        
         <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
                     <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
                     <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
@@ -23,45 +22,23 @@
                     <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
                     <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
                 
-        </tnt:ToolHeader>
-        
-        <Panel class="tablepanel">
-        <Bar id="_IDGenBar12" class="headerBar2">
+            </tnt:ToolHeader>
+    <Panel class="tablepanel">
+         <Bar
+            id="_IDGenBar1"
+            class="_IDGenBar1"
+         >
             <contentLeft>
-                <Button
-                    id="entryBtn"
-                    text="New Entries"
-                    press="newEntries"
-                />
-                <Button
-                    id="copyBtn"
-                    text="Copy As"
-                    press="pressCopy"
-                />
-                
-                <Button
-                    id= "editBtn"
-                    text="Edit"
-                    press="pressEdit"
-                />
-                <Button
-                    id= "deleteBtn"
-                    text="Delete"
-                    press="onDeletePress"
-                />
+                <Button id="entryBtn"  text="New Entries" press="newEntries"/>
+                <Button id="copyBtn" text="Copy As" press="pressCopy"/>
+                <Button id="editBtn" text="Edit"  press="pressEdit"/>
+                <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
                
-                <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPress"
-                    ariaHasPopup="Menu"
-                />
+                
             </contentLeft>
             
-        </Bar>
-
+         </Bar>
+        
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
 
         <Table
@@ -72,21 +49,20 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            sticky="ColumnHeaders"
-            noDataText="Loading ..."
+             noDataText="Loading ..."
            
-        >
+         >
             <columns>
                 <Column id="_IDGenColumn1">
                     <Text
                         id="_IDGenText11"
-                        text="Vessel Type"
+                        text=" Vessel Code"
                     />
                 </Column>
                 <Column id="_IDGenColumn2">
                     <Text
                         id="_IDGenText2"
-                        text="Vessel Type Description"
+                        text="Description"
                     />
                 </Column>
             </columns>
@@ -97,53 +73,53 @@
                         <Text
                             id="_IDGenInput1"
                             text="{Carcd}"
+                            
                         />
-                        <HBox >
-                        <Input
+                        
+                        <Text
                             id="_IDGenInput2"
-                            value="{Cardes}"
-                            editable="false"
-                            width="400px"
-                            maxLength="30"
- 
+                            text="{Cardes}"
+                            
+                           
+                           
                         />
-                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
-                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
-
-                       </HBox>
+                        
+                       
                        
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         </ScrollContainer>
-        </Panel>
-
+    </Panel>
         <Table
             id="entryTypeTable"
+             mode="MultiSelect"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            visible="false"
             class="tablepanel entrytables"
-        >
+            visible="false"
+           
+         >
             <columns>
                 <Column>
-                    <Text text="Vessel Type" />
+                    <Text text=" Vessel Code" />
                 </Column>
                 <Column>
-                    <Text text="Vessel Type Description" />
+                    <Text text=" Description" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="Carcd"   liveChange="onCodeLiveChange"/>
-                        <Input id="Cardes" liveChange="onCodeLiveChange" />
+                        <Input id="UOMCode" liveChange="onCodeLiveChange"  />
+                        <Input id="UOMCodeDesc"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
+      
         <Table
             id="updateTypeTable"
             updateFinished="onTableUpdateFinished"
@@ -152,28 +128,50 @@
             class="mastertables"
             visible="false"
            
-        >
+         >
             <columns>
                 <Column>
-                    <Text text="Vessel Type" />
+                    <Text text="Vessel Code" />
                 </Column>
                 <Column>
-                    <Text text="Vessel Type Description" />
+                    <Text text=" Description" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="Carcd1" value="" />
-                        <Input id="Cardes1"  editable="true"/>
+                        <Text id="UOMCode1" text="" />
+                        <Input id="UOMCodeDesc1"  editable="true"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-        <OverflowToolbar
+        
+            <OverflowToolbar
+                id="mainPageFooter"
+                design="Auto"
+                visible="false"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button id="add" text="Add Row" icon="sap-icon://sys-add" press=".onAddRow1" type="Success"></Button>
+                <Button id="minus" text="Delete Row" icon="sap-icon://sys-minus" press=".onDeleteRow1" type="Reject"></Button>
+                <Button
+                    id="mainPageSave"
+                    text="Save"
+                    press="onSave"
+                />
+                <Button
+                    id="_IDGenButton22"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
+
+            <OverflowToolbar
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
+                 class="updateTableFooter"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
@@ -187,31 +185,12 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
- 
- 
-            <!-- main page footer -->
-            <OverflowToolbar
-                id="mainPageFooter"
-                design="Auto"
-                visible="false"
-            >
-                <ToolbarSpacer id="_IDGenToolbarSpacer3" />
-                <Button
-                    id="mainPageSave"
-                    text="Save"
-                    press="onSave"
-                />
-                <Button
-                    id="_IDGenButton22"
-                    text="Cancel"
-                    press="onCancel"
-                />
-            </OverflowToolbar>
- 
-            <!--new entries footer -->
+             <!--scrollbar added-->
+    
            
        
     </Page>
  
-   
+    
+    
 </mvc:View>

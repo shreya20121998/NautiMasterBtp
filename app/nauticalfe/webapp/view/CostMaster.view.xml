@@ -9,47 +9,36 @@
     xmlns:core="sap.ui.core"
 >
     <Page id="_IDGenPage1" showHeader="false" showFooter="false">
-       
-       <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
-                <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
-                <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+                    <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
+                    <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
+        
+                    <Image id="_IDGenImage1" class="size1"
+                        src="./images/ignxlogo.png"
+                        height="65%"/>
 
-                <Image id="_IDGenImage1" class="size1"
-                    src="./images/ignxlogo.png"
-                    height="65%"/>
-
-                <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
-                <Title text=" Maintain Cost Master" wrapping="true" id="productName"/>
-                <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
-                <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
-            
-        </tnt:ToolHeader>
-
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+                    <Title text=" Maintain Cost Master" wrapping="true" id="productName"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                    <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+                
+            </tnt:ToolHeader>
     <Panel class="tablepanel">
-       <Bar
+         <Bar
             id="_IDGenBar1"
-            class="headerBar2"
+            class="_IDGenBar1"
          >
             <contentLeft>
-                <Button id="entryBtn"
-                    text="New Entries"
-                    press="newEntries"
-                />
-                <Button  id="copyBtn" text="Copy As" press="pressCopy" />
-                <Button id="editBtn"  text="Edit"  press="pressEdit"/>
-                <Button  id="deleteBtn" text="Delete" press="onDeletePress"/>
+                <Button id="entryBtn"  text="New Entries" press="newEntries"/>
+                <Button id="copyBtn" text="Copy As" press="pressCopy"/>
+                <Button id="editBtn" text="Edit"  press="pressEdit"/>
+                <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
                
-                <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPress"
-                    ariaHasPopup="Menu"
-                />
+                
             </contentLeft>
-          
-        </Bar>
+            
+         </Bar>
+        
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
 
         <Table
@@ -60,22 +49,20 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
-            sticky="ColumnHeaders"
-            noDataText="loading ..."
+             noDataText="Loading ..."
            
-        >
+         >
             <columns>
-                <Column id="_IDGenColumn1" width="300px">
+                <Column id="_IDGenColumn1">
                     <Text
                         id="_IDGenText11"
-
                         text="Cost Code"
                     />
                 </Column>
                 <Column id="_IDGenColumn2">
                     <Text
                         id="_IDGenText2"
-                        text="Cost Code Description"
+                        text=" Description"
                     />
                 </Column>
             </columns>
@@ -86,54 +73,53 @@
                         <Text
                             id="_IDGenInput1"
                             text="{Costcode}"
+                            
                         />
-                        <HBox >
-                        <Input
+                        
+                        <Text
                             id="_IDGenInput2"
-                            value="{Cstcodes}"
-                            editable="false"
-                            width="400px"
-                            maxLength="30"
-
+                            text="{Cstcodes}"
+                            
+                           
+                           
                         />
-                        <Button id="update" class="sapUiTinyMarginBegin" text="Update" icon="sap-icon://save" type="Accept" visible="false"  press="onUpdatePressBtn"></Button>
-                        <Button id="delete" class="sapUiTinyMarginBegin" text="Cancel" icon="sap-icon://delete" type="Reject" visible="false" press="onCancelPressBtn"></Button>
-                        </HBox>
+                        
+                       
                        
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         </ScrollContainer>
-        </Panel>
+    </Panel>
         <Table
             id="entryTypeTable"
+             mode="MultiSelect"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
             class="tablepanel entrytables"
             visible="false"
-            
-    
-        >
+           
+         >
             <columns>
                 <Column>
                     <Text text="Cost Code" />
                 </Column>
                 <Column>
-                    <Text text="Cost Code Description" />
+                    <Text text=" Description" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="costCode"  liveChange="onCodeLiveChange"/>
-                        <Input id="costCodeDesc" liveChange="onCodeLiveChange"/>
+                        <Input id="UOMCode" liveChange="onCodeLiveChange"  />
+                        <Input id="UOMCodeDesc"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-       
+      
         <Table
             id="updateTypeTable"
             updateFinished="onTableUpdateFinished"
@@ -142,7 +128,7 @@
             class="mastertables"
             visible="false"
            
-        >
+         >
             <columns>
                 <Column>
                     <Text text="Cost Code" />
@@ -154,20 +140,21 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="costCode1" text="" />
-                        <Input id="costCodeDesc1"  editable="true" maxLength="35"  />
-                    
+                        <Text id="UOMCode1" text="" />
+                        <Input id="UOMCodeDesc1"  editable="true"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
-       
+        
             <OverflowToolbar
                 id="mainPageFooter"
                 design="Auto"
                 visible="false"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button id="add" text="Add Row" icon="sap-icon://sys-add" press=".onAddRow1" type="Success"></Button>
+                <Button id="minus" text="Delete Row" icon="sap-icon://sys-minus" press=".onDeleteRow1" type="Reject"></Button>
                 <Button
                     id="mainPageSave"
                     text="Save"
@@ -184,7 +171,7 @@
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false"
-                
+                 class="updateTableFooter"
             >
                 <ToolbarSpacer id="_IDGenToolbarSpacer4" />
                 <Button
@@ -198,8 +185,10 @@
                     press="onCancel"
                 />
             </OverflowToolbar>
+             <!--scrollbar added-->
+    
  
-            
+            <!--new entries footer -->
            
        
     </Page>
