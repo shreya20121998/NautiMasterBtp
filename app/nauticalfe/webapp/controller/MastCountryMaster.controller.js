@@ -119,7 +119,8 @@ sap.ui.define(
             }
             );
           }
-        } else if (newEntryFlag) {
+        } 
+        else if (newEntryFlag) {
           let voyCode = this.getView().byId("ZfValue2").getValue().trim();
           let voyCodeDesc = this.getView().byId("ZfDesc2").getValue().trim();
           if (voyCode == "" && voyCodeDesc == "") {
@@ -199,7 +200,8 @@ sap.ui.define(
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("RouteHome");
 
-        } else if (copyFlag) {
+        } 
+        else if (copyFlag) {
           let voyCode = this.getView().byId("costCode").getValue().trim();
           let voyCodeDesc = this.getView().byId("costCodeDesc").getValue().trim();
           let originalVoyCode = aSelectedIds[0][0];
@@ -239,7 +241,8 @@ sap.ui.define(
             );
           }
 
-        } else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
+        } 
+        else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
           oRouter.navTo("RouteHome");
           this.byId("createTypeTable").removeSelections();
         }

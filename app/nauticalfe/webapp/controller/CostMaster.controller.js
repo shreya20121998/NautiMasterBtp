@@ -312,27 +312,37 @@ sap.ui.define(
 
           // If no changes have been made, reset the view to its initial state
           if (!changesMade) {
+            const oRouter = this.getOwnerComponent().getRouter();
+           
+            oRouter.navTo("RouteHome");
+                  setTimeout(()=>{
 
-            this.resetView();
+                    that.resetView();
+                  },1600);
+            
           } else {
             // Prompt the user for confirmation only if changes have been made
             sap.m.MessageBox.confirm(
-              "Do you want to discard the changes?", {
+              "Do you want to Exit Copy Screen", {
               title: "Confirmation",
               onClose: function (oAction) {
                 if (oAction === sap.m.MessageBox.Action.OK) {
-                  // If user clicks OK, reset the view to its initial state
                   oEntryTable.setVisible(false);
                   // Clear input fields of the first row
                   oEntryTable.getItems()[0].getCells()[0].setValue("");
                   oEntryTable.getItems()[0].getCells()[1].setValue("");
+                 
 
-                  // Remove items except the first row
-                  var items = oEntryTable.getItems();
-                  for (var i = items.length - 1; i > 0; i--) {
-                    oEntryTable.removeItem(items[i]);
-                  }
-                  that.resetView();
+                  
+                  const oRouter = that.getOwnerComponent().getRouter();
+                  oRouter.navTo("RouteHome");
+                  setTimeout(() => {
+                    oEntryTable.setVisible(false);
+                    
+                    that.resetView();
+                  }, 1500);
+      
+                  // that.resetView();
                 } else {
                   // If user clicks Cancel, do nothing
                 }
