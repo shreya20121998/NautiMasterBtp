@@ -17,7 +17,7 @@ sap.ui.define(
     let newEntryFlag = false;
     var duplicateKeyEntries = undefined;
     let onEditInput = undefined;
-
+    let onCopyInput = undefined;
 
     let oView;
 
@@ -762,60 +762,94 @@ sap.ui.define(
 
           // checking if copy
         } else if (copyFlag) {
-          this.onCancelCopyOrEntry();
+          this.onCancelCopy();
         }
-        if (this.isDataChanged()) {
-          // If data has changed, prompt the user to confirm cancellation
-          sap.m.MessageBox.confirm("Are you sure you want to cancel? Your changes will be lost.", {
-            title: "Confirm Cancellation",
-            actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-            onClose: function (oAction) {
+        // if (this.isDataChanged()) {
+        //   // If data has changed, prompt the user to confirm cancellation
+        //   sap.m.MessageBox.confirm("Are you sure you want to cancel? Your changes will be lost.", {
+        //     title: "Confirm Cancellation",
+        //     actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+        //     onClose: function (oAction) {
               
-              if (oAction === sap.m.MessageBox.Action.OK) {
-                var oEntryTable = this.getView().byId("entryTypeTable");
+        //       if (oAction === sap.m.MessageBox.Action.OK) {
+        //         var oEntryTable = this.getView().byId("entryTypeTable");
 
-                oEntryTable.setVisible(false);
+        //         oEntryTable.setVisible(false);
 
-                this.getView().byId("createTypeTable").setVisible(true).removeSelections();
-                this.getView().byId("UOMCode1").setText("");
-                this.getView().byId("UOMCodeDesc1").setValue("");
-                this.getView().byId("UOMCode").setValue("");
-                this.getView().byId("UOMCodeDesc").setValue("");
-                this.getView().byId("editBtn").setEnabled(true);
-                this.getView().byId("deleteBtn").setEnabled(true);
-                this.getView().byId("copyBtn").setEnabled(true);
-                this.getView().byId("entryBtn").setEnabled(true);
-                this.byId("createTypeTable").setMode("MultiSelect");
+        //         this.getView().byId("createTypeTable").setVisible(true).removeSelections();
+        //         this.getView().byId("UOMCode1").setText("");
+        //         this.getView().byId("UOMCodeDesc1").setValue("");
+        //         this.getView().byId("UOMCode").setValue("");
+        //         this.getView().byId("UOMCodeDesc").setValue("");
+        //         this.getView().byId("editBtn").setEnabled(true);
+        //         this.getView().byId("deleteBtn").setEnabled(true);
+        //         this.getView().byId("copyBtn").setEnabled(true);
+        //         this.getView().byId("entryBtn").setEnabled(true);
+        //         this.byId("createTypeTable").setMode("MultiSelect");
 
-                this.getView().byId("mainPageFooter").setVisible(false);
-              }
-            }.bind(this)
-          });
-        } 
-        else {
-          var oEntryTable = this.getView().byId("entryTypeTable");
+        //         this.getView().byId("mainPageFooter").setVisible(false);
+        //       }
+        //     }.bind(this)
+        //   });
+        // } 
+        // else {
+        //   var oEntryTable = this.getView().byId("entryTypeTable");
 
-          oEntryTable.setVisible(false);
+        //   oEntryTable.setVisible(false);
 
-          this.getView().byId("createTypeTable").setVisible(true).removeSelections();
-          this.getView().byId("UOMCode1").setText("");
-          this.getView().byId("UOMCodeDesc1").setValue("");
-          this.getView().byId("UOMCode").setValue("");
-          this.getView().byId("UOMCodeDesc").setValue("");
-          this.getView().byId("editBtn").setEnabled(true);
-          this.getView().byId("deleteBtn").setEnabled(true);
-          this.getView().byId("copyBtn").setEnabled(true);
-          this.getView().byId("entryBtn").setEnabled(true);
-          this.byId("createTypeTable").setMode("MultiSelect");
+        //   this.getView().byId("createTypeTable").setVisible(true).removeSelections();
+        //   this.getView().byId("UOMCode1").setText("");
+        //   this.getView().byId("UOMCodeDesc1").setValue("");
+        //   this.getView().byId("UOMCode").setValue("");
+        //   this.getView().byId("UOMCodeDesc").setValue("");
+        //   this.getView().byId("editBtn").setEnabled(true);
+        //   this.getView().byId("deleteBtn").setEnabled(true);
+        //   this.getView().byId("copyBtn").setEnabled(true);
+        //   this.getView().byId("entryBtn").setEnabled(true);
+        //   this.byId("createTypeTable").setMode("MultiSelect");
 
-          this.getView().byId("mainPageFooter").setVisible(false);
+        //   this.getView().byId("mainPageFooter").setVisible(false);
 
-          // If data has not changed, return to initial page
-          // this.onCancelAction();
-          console.log("continue ..");
-        }
+        //   // If data has not changed, return to initial page
+        //   // this.onCancelAction();
+        //   console.log("continue ..");
+        // }
 
       },
+      
+ onCancelCopy : function(){
+ 
+        var oTable = this.byId("entryTypeTable"); // Assuming you have the table reference
+        var aItems = oTable.getItems();
+        let flag = false;
+        for (let i = 0; i < aItems.length; i++) {
+          var oCells = aItems[i].getCells();
+          var oInput = oCells[1]; // Index 1 corresponds to the Input field
+          var sValue = this.removeExtraSpaces(oInput.getValue());
+ 
+          console.log(onCopyInput[i] + ":" + sValue + ":");
+          if (onCopyInput[i] !== sValue.trim()) {
+            flag = true;
+            break;
+          }
+        }
+ 
+        if (flag) {
+          sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+            title: "Confirmation",
+            onClose: function (oAction) {
+              if (oAction === sap.m.MessageBox.Action.OK) {
+                // Reset the view to its initial state
+                this.resetView();
+              }
+            }.bind(this) // Ensure access to outer scope
+          });
+        } else {
+          // If no changes have been made, navigate to the initial screen immediately
+          this.resetView();
+ 
+        }
+      },      
 
       isDataChanged: function () {
         var aInputItems = this.getView().byId("entryTypeTable").getItems();
@@ -1019,60 +1053,7 @@ sap.ui.define(
 
 
 
-      onCancelCopyOrEntry1: function () {
-        var oEntryTable = this.getView().byId("entryTypeTable");
-        const that = this;
-
-        let voyCode = this.getView().byId("UOMCode").getValue().trim();
-        let voyCodeDesc = this.getView().byId("UOMCodeDesc").getValue().trim();
-
-        // Check if there are any changes made
-        if (voyCode !== "" || voyCodeDesc !== "") {
-
-          sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
-            MessageBox.confirm(
-              "Changes were made , do you want to Discard ?", {
-              title: "Confirm ",
-              onClose: function (oAction) {
-
-                if (oAction === MessageBox.Action.OK) {
-                  oEntryTable.setVisible(false);
-                  // Clear input fields of the first row
-                  oEntryTable.getItems()[0].getCells()[0].setValue("");
-                  oEntryTable.getItems()[0].getCells()[1].setValue("");
-
-                  // Remove items except the first row
-                  var items = oEntryTable.getItems();
-                  for (var i = items.length - 1; i > 0; i--) {
-                    oEntryTable.removeItem(items[i]);
-                  }
-                  that.resetView();
-
-                } else {
-                  console.log("continue ..");
-
-                }
-              }
-            }
-            );
-          });
-
-        } else {
-          // If no changes made, simply reset the view
-          oEntryTable.setVisible(false);
-          // Clear input fields of the first row
-          oEntryTable.getItems()[0].getCells()[0].setValue("");
-          oEntryTable.getItems()[0].getCells()[1].setValue("");
-
-          // Remove items except the first row
-          var items = oEntryTable.getItems();
-          for (var i = items.length - 1; i > 0; i--) {
-            oEntryTable.removeItem(items[i]);
-          }
-
-          that.resetView();
-        }
-      },
+     
 
       onCancelCopyOrEntry: function () {
         var oEntryTable = this.getView().byId("entryTypeTable");
@@ -1204,39 +1185,51 @@ sap.ui.define(
           });
         });
       },
-
-      pressCopy: function () {
-        newEntryFlag = false;
-
-        // Reset copyFlag and editFlag
       
-        editFlag = false;
-
-
+ pressCopy: function () {
+       
+        // Reset copyFlag and editFlag
+       
+       
+       
         if (aSelectedIds.length === 0) {
           MessageToast.show("Please select at least one row");
           return
         }
-
+        newEntryFlag = false;
+        editFlag = false;
+ 
         copyFlag = true;
-
+        let oView = this.getView();
+ 
+        // Get the createTypeTable
+        let oCreateTable = oView.byId("createTypeTable");
+        var oTable = this.byId("createTypeTable");
+        var aSelectedItems = oTable.getSelectedItems();
+        onCopyInput = [];
+        // Iterating over selected items and printing values
+        aSelectedItems.forEach(function (oItem) {
+          var oBindingContext = oItem.getBindingContext();
+          var sValue = oBindingContext.getProperty("Uom");
+          var sDescription = oBindingContext.getProperty("Uomdes");
+          console.log("desc", sDescription);
+          onCopyInput.push(sDescription);
+        });
+ 
         this.getView().byId("deleteBtn").setEnabled(false);
         this.getView().byId("editBtn").setEnabled(false);
         this.getView().byId("entryBtn").setEnabled(false);
         this.getView().byId("createTypeTable").setVisible(false);
         this.getView().byId('entryTypeTable').setVisible(true);
         this.getView().byId("mainPageFooter").setVisible(true);
-
-
-
-
-
+ 
+ 
         let entryTable = this.getView().byId("entryTypeTable");
         entryTable.removeAllItems();
         for (let i = 0; i < aSelectedIds.length; i++) {
           let code = aSelectedIds[i][0];
           let desc = aSelectedIds[i][1];
-
+ 
           let newItem = new sap.m.ColumnListItem({
             cells: [
               new sap.m.Input({
@@ -1251,8 +1244,79 @@ sap.ui.define(
           });
           entryTable.addItem(newItem);
         }
+ 
+      },
 
-      }
+      pressCopy1: function () {
+        // Get the reference to the view
+        var oView = this.getView();
+    
+        // Get the createTypeTable
+        var oCreateTable = oView.byId("createTypeTable");
+    
+        // Get the selected items
+        var aSelectedItems = oCreateTable.getSelectedItems();
+    
+        // If no items are selected, show a message and return
+        if (aSelectedItems.length === 0) {
+            sap.m.MessageToast.show("Please select at least one row");
+            return;
+        }
+    
+        // Toggle button visibility and table visibility
+        oView.byId("deleteBtn").setEnabled(false);
+        oView.byId("editBtn").setEnabled(false);
+        oView.byId("entryBtn").setEnabled(false);
+        oView.byId("createTypeTable").setVisible(false);
+        oView.byId("entryTypeTable").setVisible(true);
+        oView.byId("mainPageFooter").setVisible(true);
+    
+        // Clear the entryTypeTable before adding new items
+        var oEntryTable = oView.byId("entryTypeTable");
+        oEntryTable.removeAllItems();
+    
+        // Store original values for comparison
+        var originalValues = aSelectedItems.map(function(oSelectedItem) {
+            var oBindingContext = oSelectedItem.getBindingContext();
+            return {
+                Uom: oBindingContext.getProperty("Uom"),
+                Uomdes: oBindingContext.getProperty("Uomdes")
+            };
+        });
+    
+        // Store original values in a property of your controller
+        this._originalValues = originalValues;
+    
+        // Iterate over selected items to create new items in the entryTypeTable
+        aSelectedItems.forEach(function (oSelectedItem) {
+            var oBindingContext = oSelectedItem.getBindingContext();
+            var sUom = oBindingContext.getProperty("Uom");
+            var sUomdes = oBindingContext.getProperty("Uomdes");
+    
+            // Create a new row for the entryTypeTable
+            var oUomInput = new sap.m.Input({
+                value: sUom,
+                editable: true,
+                liveChange: this.onCodeLiveChange.bind(this) // Bind the liveChange event to onCodeLiveChange function
+            });
+    
+            var oUomdesInput = new sap.m.Input({
+                value: sUomdes,
+                editable: true,
+                liveChange: this.onLiveChange.bind(this) // Bind the liveChange event to onCodeLiveChange function
+            });
+    
+            var oColumnListItem = new sap.m.ColumnListItem({
+                cells: [oUomInput, oUomdesInput]
+            });
+    
+            // Add the new row to the entryTypeTable
+            oEntryTable.addItem(oColumnListItem);
+        }.bind(this)); // Ensure correct 'this' context inside forEach
+    
+        // Enable the cancel button
+        oView.byId("cancelBtn").setEnabled(true);
+    },
 
 
 
