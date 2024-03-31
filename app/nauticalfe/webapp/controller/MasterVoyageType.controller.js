@@ -64,23 +64,35 @@ sap.ui.define(
       onCodeLiveChange: function (oEvent) {
         // Get the input control
         var oInput = oEvent.getSource();
-    
+        
         // Get the current value of the input
         var sValue = oInput.getValue();
-    
+        
+        // Check if the value contains any non-alphanumeric characters
+        if (/[^a-zA-Z0-9]/.test(sValue)) {
+            // Remove any non-alphanumeric characters
+            sValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
+            
+            // Update the value of the input
+            oInput.setValue(sValue);
+            
+            // Show a message to the user
+            sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
+        }
+        
         // Check if the length of the value exceeds 4
         if (sValue.length > 4) {
             // Truncate the value to keep only the first 4 characters
             sValue = sValue.substring(0, 4);
-    
+        
             // Update the value of the input
             oInput.setValue(sValue);
-    
+        
             // Show a message to the user
             sap.m.MessageToast.show("Maximum length is 4 characters.");
         }
     },
-      onLiveChange: function (oEvent) {
+       onLiveChange: function (oEvent) {
         // Get the input control
         var oInput = oEvent.getSource();
 
