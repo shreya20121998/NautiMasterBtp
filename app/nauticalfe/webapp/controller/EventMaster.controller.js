@@ -660,10 +660,92 @@ sap.ui.define(
         // Clear selection after deletion
         oTable.removeSelections();
       },
-
-
-
       onSave: function () {
+        var that = this;
+        var oTable = that.byId("entryTypeTable");
+        var totalEntries = oTable.getItems().length;
+        var entriesProcessed = 0;
+        var errors = [];
+        var duplicateEntries = []; // Array to store duplicate entry codes
+    
+        sap.m.MessageToast.show("Creating entries...");
+    
+        oTable.getItems().forEach(function (row) {
+            var value1 = row.getCells()[0].getValue().toUpperCase(); // Convert to lowercase
+            var value2 = row.getCells()[1].getValue();
+    
+            if (!value1 || !value2) {
+                errors.push("Please enter both fields for all rows.");
+                entriesProcessed++;
+                checkCompletion();
+                return;
+            }
+    
+            var oBindListSP = that.getView().getModel().bindList("/EventMasterSet");
+            oBindListSP.attachEventOnce("dataReceived", function () {
+                var existingEntries = oBindListSP.getContexts().map(function (context) {
+                    return context.getProperty("Evtty").toUpperCase(); // Convert to lowercase
+                });
+    
+                if (existingEntries.includes(value1)) {
+                    // Store duplicate entry code in the array
+                    duplicateEntries.push(value1);
+                }
+    
+                entriesProcessed++;
+                checkCompletion();
+            });
+    
+            oBindListSP.getContexts();
+        });
+    
+        function checkCompletion() {
+            if (entriesProcessed === totalEntries) {
+                if (errors.length === 0 && duplicateEntries.length === 0) {
+                    createEntries();
+                } else {
+                    var errorMessage = "Errors occurred while saving entries:\n";
+                    if (errors.length > 0) {
+                        errorMessage += errors.join("\n") + "\n";
+                    }
+                    if (duplicateEntries.length > 0) {
+                        errorMessage += "Duplicate entries found with the same code: " + duplicateEntries.join(", ") + "\n";
+                    }
+                    sap.m.MessageToast.show(errorMessage);
+                }
+            }
+        }
+    
+        function createEntries() {
+            oTable.getItems().forEach(function (row) {
+                var value1 = row.getCells()[0].getValue();
+                var value2 = row.getCells()[1].getValue();
+    
+                // Format Uomdes value
+                var formattedUomdes = that.formatUomdes(value2);
+    
+                var oBindListSP = that.getView().getModel().bindList("/VoyTypeSet");
+    
+                try {
+                    oBindListSP.create({
+                      Evtty: value1,
+                      Text: formattedUomdes
+                    });
+                    that.getView().getModel().refresh();
+                    that.resetView();
+                } catch (error) {
+                    sap.m.MessageToast.show("Error while saving data");
+                }
+            });
+    
+            sap.m.MessageToast.show("All entries saved successfully.");
+        }
+    },
+
+
+
+
+      onSave1: function () {
         var that = this;
         var oTable = that.byId("entryTypeTable");
         var totalEntries = oTable.getItems().length;
