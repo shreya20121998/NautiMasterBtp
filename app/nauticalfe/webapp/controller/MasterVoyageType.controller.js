@@ -92,38 +92,38 @@ sap.ui.define(
             sap.m.MessageToast.show("Maximum length is 4 characters.");
         }
     },
-       onLiveChange: function (oEvent) {
-        // Get the input control
-        var oInput = oEvent.getSource();
-
-        // Get the current value of the input
-        var sValue = oInput.getValue();
-
-        // Remove any characters that are not numbers, alphabets, or special characters
-        var sNewValue = sValue.replace(/[^a-zA-Z0-9\W]/g, '');
-
-        // Check if the input value has changed after removing unwanted characters
-        if (sNewValue !== sValue) {
+    onLiveChange: function (oEvent) {
+      // Get the input control
+      var oInput = oEvent.getSource();
+  
+      // Get the current value of the input
+      var sValue = oInput.getValue();
+  
+      // Remove any characters that are not alphanumeric
+      var sNewValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
+  
+      // Check if the input value has changed after removing unwanted characters
+      if (sNewValue !== sValue) {
           // Update the value of the input to only contain allowed characters
           oInput.setValue(sNewValue);
-
+  
           // Show a message to the user
-          sap.m.MessageToast.show("Only numbers, alphabets, and special characters are allowed.");
-        }
-
-        // Check if the length of the value exceeds 30
-        if (sNewValue.length > 30) {
+          sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
+      }
+  
+      // Check if the length of the value exceeds 30
+      if (sNewValue.length > 30) {
           // Truncate the value to keep only the first 30 characters
           sNewValue = sNewValue.substring(0, 30);
-
+  
           // Update the value of the input
           oInput.setValue(sNewValue);
-
+  
           // Show a message to the user
           sap.m.MessageToast.show("Maximum length is 30 characters.");
-        }
-      },
-
+      }
+  },
+  
 
 
       onBackPress: function () {
