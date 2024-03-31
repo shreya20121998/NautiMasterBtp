@@ -659,7 +659,7 @@ sap.ui.define(
         // Clear selection after deletion
         oTable.removeSelections();
       },
-      onSave1: function () {
+      onSave: function () {
         var that = this;
         var oTable = that.byId("entryTypeTable");
         var totalEntries = oTable.getItems().length;
