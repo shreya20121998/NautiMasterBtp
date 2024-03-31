@@ -647,16 +647,13 @@ sap.ui.define(
         // Clear selection after deletion
         oTable.removeSelections();
       },
-
-
-
-      onSave: function () {
+      onSave1: function () {
         var that = this;
         var oTable = that.byId("entryTypeTable");
         var totalEntries = oTable.getItems().length;
         var entriesProcessed = 0;
         var errors = [];
-        duplicateKeyEntries = [];
+
         sap.m.MessageToast.show("Creating entries...");
 
         oTable.getItems().forEach(function (row) {
@@ -673,11 +670,10 @@ sap.ui.define(
           var oBindListSP = that.getView().getModel().bindList("/VoyTypeSet");
           oBindListSP.attachEventOnce("dataReceived", function () {
             var existingEntries = oBindListSP.getContexts().map(function (context) {
-              return context.getProperty("Voycd").toUpperCase();
+              return context.getProperty("Voycd").toUpperCase(); // Convert to lowercase
             });
 
             if (existingEntries.includes(value1)) {
-              duplicateKeyEntries.push(value1);
               errors.push("Entry already exists with the same code: " + value1);
             }
 
@@ -693,14 +689,10 @@ sap.ui.define(
             if (errors.length === 0) {
               createEntries();
             } else {
-              let entriesDupl = "";
-              let errorMessage = duplicateKeyEntries.length === 1 ? "Entry" : "Entries";
-              for (let i = 0; i < duplicateKeyEntries.length - 1; i++) {
-                entriesDupl = entriesDupl + " " + duplicateKeyEntries[i] + ","
-              }
-              errorMessage = `${errorMessage} already exits with Key Id: ${entriesDupl}` + " " + duplicateKeyEntries[duplicateKeyEntries.length - 1];
               sap.m.MessageToast.show("Errors occurred while saving entries.");
-              sap.m.MessageToast.show(errorMessage);
+              errors.forEach(function (error) {
+                sap.m.MessageToast.show(error);
+              });
             }
           }
         }
@@ -717,7 +709,7 @@ sap.ui.define(
 
             try {
               oBindListSP.create({
-                Voycd: value1.toUpperCase(),
+                Voycd: value1,
                 Voydes: formattedUomdes
               });
               that.getView().getModel().refresh();
@@ -730,7 +722,15 @@ sap.ui.define(
           sap.m.MessageToast.show("All entries saved successfully.");
         }
       },
+      
+     
 
+      
+
+
+
+
+     
 
       // Function to format Uomdes
       formatUomdes: function (Voydes) {
