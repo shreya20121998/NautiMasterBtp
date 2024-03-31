@@ -63,68 +63,68 @@ sap.ui.define(
       },
 
       onCodeLiveChange: function (oEvent) {
-        // Get the input control
+       
         var oInput = oEvent.getSource();
-
-        // Get the current value of the input
+        
+      
         var sValue = oInput.getValue();
-
-        // Remove any non-alphabetic characters
-        var sNewValue = sValue.replace(/[^a-zA-Z]/g, '');
-
-        // Check if the input value has changed after removing non-alphabetic characters
-        if (sNewValue !== sValue) {
-          // Update the value of the input to only contain alphabetic characters
-          oInput.setValue(sNewValue);
-
-          // Show a message to the user
-          sap.m.MessageToast.show("Only alphabetic characters are allowed.");
+        
+       
+        if (/[^a-zA-Z0-9]/.test(sValue)) {
+           
+            sValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
+            
+           
+            oInput.setValue(sValue);
+            
+            sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
         }
-
-        // Check if the length of the value exceeds 3
-        if (sNewValue.length > 3) {
-          // Truncate the value to keep only the first 3 characters
-          sNewValue = sNewValue.substring(0, 3);
-
-          // Update the value of the input
-          oInput.setValue(sNewValue);
-
-          // Show a message to the user
-          sap.m.MessageToast.show("Maximum length is 3 characters.");
+        
+       
+        if (sValue.length > 3) {
+           
+            sValue = sValue.substring(0, 3);
+        
+           
+            oInput.setValue(sValue);
+        
+           
+            sap.m.MessageToast.show("Maximum length is 3 characters.");
         }
-      },
-      onLiveChange: function (oEvent) {
-        // Get the input control
-        var oInput = oEvent.getSource();
-
-        // Get the current value of the input
-        var sValue = oInput.getValue();
-
-        // Remove any characters that are not numbers, alphabets, or special characters
-        var sNewValue = sValue.replace(/[^a-zA-Z0-9\W]/g, '');
-
-        // Check if the input value has changed after removing unwanted characters
-        if (sNewValue !== sValue) {
+    },
+    
+    onLiveChange: function (oEvent) {
+      // Get the input control
+      var oInput = oEvent.getSource();
+  
+      // Get the current value of the input
+      var sValue = oInput.getValue();
+  
+      // Remove any characters that are not alphanumeric
+      var sNewValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
+  
+      // Check if the input value has changed after removing unwanted characters
+      if (sNewValue !== sValue) {
           // Update the value of the input to only contain allowed characters
           oInput.setValue(sNewValue);
-
+  
           // Show a message to the user
-          sap.m.MessageToast.show("Only numbers, alphabets, and special characters are allowed.");
-        }
-
-        // Check if the length of the value exceeds 30
-        if (sNewValue.length > 40) {
+          sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
+      }
+  
+      // Check if the length of the value exceeds 30
+      if (sNewValue.length > 40) {
           // Truncate the value to keep only the first 30 characters
           sNewValue = sNewValue.substring(0, 40);
-
+  
           // Update the value of the input
           oInput.setValue(sNewValue);
-
+  
           // Show a message to the user
           sap.m.MessageToast.show("Maximum length is 40 characters.");
-        }
-      },
-
+      }
+  },
+  
 
 
       onBackPress: function () {

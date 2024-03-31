@@ -65,55 +65,67 @@ sap.ui.define(
       onCodeLiveChange: function (oEvent) {
         // Get the input control
         var oInput = oEvent.getSource();
-    
+        
         // Get the current value of the input
         var sValue = oInput.getValue();
-    
+        
+        // Check if the value contains any non-alphanumeric characters
+        if (/[^a-zA-Z0-9]/.test(sValue)) {
+            // Remove any non-alphanumeric characters
+            sValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
+            
+            // Update the value of the input
+            oInput.setValue(sValue);
+            
+            // Show a message to the user
+            sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
+        }
+        
         // Check if the length of the value exceeds 4
         if (sValue.length > 4) {
             // Truncate the value to keep only the first 4 characters
             sValue = sValue.substring(0, 4);
-    
+        
             // Update the value of the input
             oInput.setValue(sValue);
-    
+        
             // Show a message to the user
             sap.m.MessageToast.show("Maximum length is 4 characters.");
         }
     },
     
-      onLiveChange: function (oEvent) {
-        // Get the input control
-        var oInput = oEvent.getSource();
-
-        // Get the current value of the input
-        var sValue = oInput.getValue();
-
-        // Remove any characters that are not numbers, alphabets, or special characters
-        var sNewValue = sValue.replace(/[^a-zA-Z0-9\W]/g, '');
-
-        // Check if the input value has changed after removing unwanted characters
-        if (sNewValue !== sValue) {
+    onLiveChange: function (oEvent) {
+      // Get the input control
+      var oInput = oEvent.getSource();
+  
+      // Get the current value of the input
+      var sValue = oInput.getValue();
+  
+      // Remove any characters that are not alphanumeric
+      var sNewValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
+  
+      // Check if the input value has changed after removing unwanted characters
+      if (sNewValue !== sValue) {
           // Update the value of the input to only contain allowed characters
           oInput.setValue(sNewValue);
-
+  
           // Show a message to the user
-          sap.m.MessageToast.show("Only numbers, alphabets, and special characters are allowed.");
-        }
-
-        // Check if the length of the value exceeds 30
-        if (sNewValue.length > 35) {
+          sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
+      }
+  
+      // Check if the length of the value exceeds 30
+      if (sNewValue.length > 30) {
           // Truncate the value to keep only the first 30 characters
-          sNewValue = sNewValue.substring(0, 35);
-
+          sNewValue = sNewValue.substring(0, 30);
+  
           // Update the value of the input
           oInput.setValue(sNewValue);
-
+  
           // Show a message to the user
-          sap.m.MessageToast.show("Maximum length is 35 characters.");
-        }
-      },
-
+          sap.m.MessageToast.show("Maximum length is 30 characters.");
+      }
+  },
+  
 
 
       onBackPress: function () {
