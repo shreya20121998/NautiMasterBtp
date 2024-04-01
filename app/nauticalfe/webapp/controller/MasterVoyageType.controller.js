@@ -1,4 +1,3 @@
-
 sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
@@ -12,7 +11,7 @@ sap.ui.define(
   function (Controller, History, Fragment, MessageToast, MessageBox, bufferedEventHandler) {
     "use strict";
     let aSelectedIds = [];
-    let copyFlag = false;
+    // let copyFlag = false;
     let editFlag = false;
     let newEntryFlag = false;
     var duplicateKeyEntries = undefined;
@@ -36,11 +35,12 @@ sap.ui.define(
         this.initSearchField();
 
       },
+      
       onChange: function () {
         debugger;
       },
       initSearchField: function () {
-        var searchField = this.byId('UOMCode');
+        var searchField = this.byId('Code');
         bufferedEventHandler.bufferEvents(
           // event provider
           searchField,
@@ -91,40 +91,18 @@ sap.ui.define(
             // Show a message to the user
             sap.m.MessageToast.show("Maximum length is 4 characters.");
         }
-    },
-    onLiveChange: function (oEvent) {
-      // Get the input control
-      var oInput = oEvent.getSource();
-  
-      // Get the current value of the input
-      var sValue = oInput.getValue();
-  
-      // Remove any characters that are not alphanumeric
-      var sNewValue = sValue.replace(/[^a-zA-Z0-9]/g, '');
-  
-      // Check if the input value has changed after removing unwanted characters
-      if (sNewValue !== sValue) {
-          // Update the value of the input to only contain allowed characters
-          oInput.setValue(sNewValue);
-  
-          // Show a message to the user
-          sap.m.MessageToast.show("Only alphanumeric characters are allowed.");
-      }
-  
-      // Check if the length of the value exceeds 30
-      if (sNewValue.length > 30) {
-          // Truncate the value to keep only the first 30 characters
-          sNewValue = sNewValue.substring(0, 30);
-  
-          // Update the value of the input
-          oInput.setValue(sNewValue);
-  
-          // Show a message to the user
-          sap.m.MessageToast.show("Maximum length is 30 characters.");
-      }
-  },
-  
+      },
 
+      onLiveChange: function(oEvent) {
+        var oInput = oEvent.getSource();
+        var sValue = oInput.getValue();
+  
+        if (sValue.length > 30) {
+            sValue = sValue.substring(0, 30);
+            oInput.setValue(sValue);
+            sap.m.MessageToast.show("Maximum length is 30 characters.");
+        }
+      },
 
       onBackPress: function () {
         const that = this;
@@ -138,62 +116,48 @@ sap.ui.define(
           // If no items have been selected, navigate to "RouteMasterDashboard"
           oRouter.navTo("RouteMasterDashboard");
         }
-        else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
+        else if (aSelectedIds.length && !newEntryFlag && !editFlag) {
           oRouter.navTo("RouteMasterDashboard");
           this.byId('createTypeTable').removeSelections();
 
         }
-        else if (copyFlag) {
-          // Get the values from the view
-          let voyCode = this.getView().byId("UOMCode").getValue().trim();
-          let voyCodeDesc = this.getView().byId("UOMCodeDesc").getValue().trim();
-          let changesMade = false;
+        // else if (copyFlag) {
+        //   var oTable = this.byId("entryTypeTable"); // Assuming you have the table reference
+        //   var aItems = oTable.getItems();
+        //   let flag = false;
+        //   for (let i = 0; i < aItems.length; i++) {
+        //     var oCells = aItems[i].getCells();
+        //     var oInput = oCells[1]; // Index 1 corresponds to the Input field
+        //     var sValue = this.removeExtraSpaces(oInput.getValue());
 
-          // Check if any changes have been made
-          for (let i = 0; i < aSelectedIds.length; i++) {
-            let originalVoyCode = aSelectedIds[i][0];
-            let originalVoyCodeDesc = aSelectedIds[i][1];
-            if (voyCode !== originalVoyCode || voyCodeDesc !== originalVoyCodeDesc) {
-              changesMade = true;
-              break;
-            }
-          }
+        //     console.log(onCopyInput[i] + ":" + sValue + ":");
+        //     if (onCopyInput[i] !== sValue.trim()) {
+        //       flag = true;
+        //       break;
+        //     }
+        //   }
 
-          // If no changes have been made, reset the view to its initial state
-          if (!changesMade) {
-            this.resetView();
-          } else {
-            // Prompt the user for confirmation only if changes have been made
-            sap.m.MessageBox.confirm(
-              "Do you want to Exit Copy Screen", {
-              title: "Confirmation",
-              onClose: function (oAction) {
-                if (oAction === sap.m.MessageBox.Action.OK) {
-                  // If user clicks OK, reset the view to its initial state
-                  oEntryTable.setVisible(false);
-                  // Clear input fields of the first row
-                  oEntryTable.getItems()[0].getCells()[0].setValue("");
-                  oEntryTable.getItems()[0].getCells()[1].setValue("");
+        //   if (flag) {
+        //     sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+        //       title: "Confirmation",
+        //       onClose: function (oAction) {
+        //         if (oAction === sap.m.MessageBox.Action.OK) {
+        //           // Reset the view to its initial state
+        //           this.resetView();
+        //         }
+        //       }.bind(this) // Ensure access to outer scope
+        //     });
+        //   } else {
+        //     // If no changes have been made, navigate to the initial screen immediately
+        //     this.resetView();
 
-                  // Remove items except the first row
-                  var items = oEntryTable.getItems();
-                  for (var i = items.length - 1; i > 0; i--) {
-                    oEntryTable.removeItem(items[i]);
-                  }
-                  that.resetView();
-                } else {
-                  // If user clicks Cancel, do nothing
-                }
-              }
-            }
-            );
-          }
-        }
+        //   }
+        // }
 
 
         else if (newEntryFlag) {
-          let voyCode = this.getView().byId("UOMCode").getValue().trim();
-          let voyCodeDesc = this.getView().byId("UOMCodeDesc").getValue().trim();
+          let voyCode = this.getView().byId("Code").getValue().trim();
+          let voyCodeDesc = this.getView().byId("Desc").getValue().trim();
           if (voyCode == "" && voyCodeDesc == "") {
             oEntryTable.setVisible(false);
             // Clear input fields of the first row
@@ -271,29 +235,7 @@ sap.ui.define(
         }
 
       },
-      // for more fragment
 
-      onPress: function () {
-
-        var oView = this.getView(),
-          oButton = oView.byId("button");
-
-        if (!this._oMenuFragment) {
-
-          this._oMenuFragment = Fragment.load({
-            name: "nauticalfe.fragments.MastOptionsDropDown",
-            id: oView.getId(),
-            controller: this
-          }).then(function (oMenu) {
-            oMenu.openBy(oButton);
-            this._oMenuFragment = oMenu;
-            return this._oMenuFragment;
-          }.bind(this));
-        }
-        else {
-          this._oMenuFragment.openBy(oButton);
-        }
-      },
       onPressHome: function () {
         const that = this;
         var oEntryTable = that.getView().byId("entryTypeTable");
@@ -305,70 +247,54 @@ sap.ui.define(
           oRouter.navTo("RouteHome");
 
         }
-        else if (copyFlag) {
-          // Get the values from the view
-          let voyCode = this.getView().byId("UOMCode").getValue().trim();
-          let voyCodeDesc = this.getView().byId("UOMCodeDesc").getValue().trim();
-          let changesMade = false;
+        // else if (copyFlag) {
+        //   var oTable = this.byId("entryTypeTable"); // Assuming you have the table reference
+        //   var aItems = oTable.getItems();
+        //   let flag = false;
+        //   for (let i = 0; i < aItems.length; i++) {
+        //     var oCells = aItems[i].getCells();
+        //     var oInput = oCells[1]; // Index 1 corresponds to the Input field
+        //     var sValue = this.removeExtraSpaces(oInput.getValue());
 
-          // Check if any changes have been made
-          for (let i = 0; i < aSelectedIds.length; i++) {
-            let originalVoyCode = aSelectedIds[i][0];
-            let originalVoyCodeDesc = aSelectedIds[i][1];
-            if (voyCode !== originalVoyCode || voyCodeDesc !== originalVoyCodeDesc) {
-              changesMade = true;
-              break;
-            }
-          }
+        //     console.log(onCopyInput[i] + ":" + sValue + ":");
+        //     if (onCopyInput[i] !== sValue.trim()) {
+        //       flag = true;
+        //       break;
+        //     }
+        //   }
 
-          // If no changes have been made, reset the view to its initial state
-          if (!changesMade) {
-            const oRouter = this.getOwnerComponent().getRouter();
+        //   if (flag) {
+        //     sap.m.MessageBox.confirm("Do you want to discard the changes?", {
+        //       title: "Confirmation",
+        //       onClose: function (oAction) {
+        //         if (oAction === sap.m.MessageBox.Action.OK) {
+        //           // Reset the view to its initial state
+        //           oRouter.navTo("RouteHome");
+        //             setTimeout(() => {
 
-            oRouter.navTo("RouteHome");
-            setTimeout(() => {
+        //               that.resetView();
+        //             }, 1600);
+        //         }
+        //       }.bind(this) // Ensure access to outer scope
+        //     });
+        //   } else {
+        //     // If no changes have been made, navigate to the initial screen immediately
+        //     oRouter.navTo("RouteHome");
+        //     setTimeout(() => {
 
-              that.resetView();
-            }, 1600);
+        //       that.resetView();
+        //     }, 1600);
 
-          } else {
-            // Prompt the user for confirmation only if changes have been made
-            sap.m.MessageBox.confirm(
-              "Do you want to Exit Copy Screen", {
-              title: "Confirmation",
-              onClose: function (oAction) {
-                if (oAction === sap.m.MessageBox.Action.OK) {
-                  oEntryTable.setVisible(false);
-                  // Clear input fields of the first row
-                  oEntryTable.getItems()[0].getCells()[0].setValue("");
-                  oEntryTable.getItems()[0].getCells()[1].setValue("");
+        //   }
+        // }
 
-
-
-                  const oRouter = that.getOwnerComponent().getRouter();
-                  oRouter.navTo("RouteHome");
-                  setTimeout(() => {
-                    oEntryTable.setVisible(false);
-
-                    that.resetView();
-                  }, 1500);
-
-                  // that.resetView();
-                } else {
-                  // If user clicks Cancel, do nothing
-                }
-              }
-            }
-            );
-          }
-        }
-        else if (aSelectedIds.length && !newEntryFlag && !copyFlag && !editFlag) {
+        else if (aSelectedIds.length && !newEntryFlag && !editFlag) {
           oRouter.navTo("RouteHome");
           this.byId("createTypeTable").removeSelections();
         }
         else if (newEntryFlag) {
-          let voyCode = this.getView().byId("UOMCode").getValue().trim();
-          let voyCodeDesc = this.getView().byId("UOMCodeDesc").getValue().trim();
+          let voyCode = this.getView().byId("Code").getValue().trim();
+          let voyCodeDesc = this.getView().byId("Desc").getValue().trim();
           if (voyCode == "" && voyCodeDesc == "") {
 
             const oRouter = that.getOwnerComponent().getRouter();
@@ -463,7 +389,6 @@ sap.ui.define(
 
       },
 
-
       selectedItems: function (oEvent) {
         // console.log("hello");
         let oTable = oEvent.getSource();
@@ -497,7 +422,7 @@ sap.ui.define(
         newEntryFlag = true;
 
         // Reset copyFlag and editFlag
-        copyFlag = false;
+        // copyFlag = false;
         editFlag = false;
 
         // Clear selected items if any
@@ -524,10 +449,6 @@ sap.ui.define(
         this.getView().byId("deleteBtn").setEnabled(false);
         this.getView().byId("copyBtn").setEnabled(false);
       },
-
-
-
-
       pressEdit: function () {
         // Get reference to the view
         let oView = this.getView();
@@ -596,7 +517,7 @@ sap.ui.define(
 
         // Disable other buttons
         oView.byId("deleteBtn").setEnabled(false);
-        oView.byId("copyBtn").setEnabled(false);
+        // oView.byId("copyBtn").setEnabled(false);
         oView.byId("entryBtn").setEnabled(false);
       },
 
@@ -627,9 +548,6 @@ sap.ui.define(
 
 
       onAddRow1: function () {
-        // let oAddModel = this.getView().getModel("newentrymodel")
-        // oAddModel.getData().addData.push(tempAddObj)
-        // oAddModel.refresh();
         var oTable = this.byId("entryTypeTable");
 
         // Create a new row
@@ -659,82 +577,7 @@ sap.ui.define(
         // Clear selection after deletion
         oTable.removeSelections();
       },
-      onSave1: function () {
-        var that = this;
-        var oTable = that.byId("entryTypeTable");
-        var totalEntries = oTable.getItems().length;
-        var entriesProcessed = 0;
-        var errors = [];
-
-        sap.m.MessageToast.show("Creating entries...");
-
-        oTable.getItems().forEach(function (row) {
-          var value1 = row.getCells()[0].getValue().toUpperCase(); // Convert to lowercase
-          var value2 = row.getCells()[1].getValue();
-
-          if (!value1 || !value2) {
-            errors.push("Please enter both fields for all rows.");
-            entriesProcessed++;
-            checkCompletion();
-            return;
-          }
-
-          var oBindListSP = that.getView().getModel().bindList("/VoyTypeSet");
-          oBindListSP.attachEventOnce("dataReceived", function () {
-            var existingEntries = oBindListSP.getContexts().map(function (context) {
-              return context.getProperty("Voycd").toUpperCase(); // Convert to lowercase
-            });
-
-            if (existingEntries.includes(value1)) {
-              errors.push("Entry already exists with the same code: " + value1);
-            }
-
-            entriesProcessed++;
-            checkCompletion();
-          });
-
-          oBindListSP.getContexts();
-        });
-
-        function checkCompletion() {
-          if (entriesProcessed === totalEntries) {
-            if (errors.length === 0) {
-              createEntries();
-            } else {
-              sap.m.MessageToast.show("Errors occurred while saving entries.");
-              errors.forEach(function (error) {
-                sap.m.MessageToast.show(error);
-              });
-            }
-          }
-        }
-
-        function createEntries() {
-          oTable.getItems().forEach(function (row) {
-            var value1 = row.getCells()[0].getValue();
-            var value2 = row.getCells()[1].getValue();
-
-            // Format Uomdes value
-            var formattedUomdes = that.formatUomdes(value2);
-
-            var oBindListSP = that.getView().getModel().bindList("/VoyTypeSet");
-
-            try {
-              oBindListSP.create({
-                Voycd: value1,
-                Voydes: formattedUomdes
-              });
-              that.getView().getModel().refresh();
-              that.resetView();
-            } catch (error) {
-              sap.m.MessageToast.show("Error while saving data");
-            }
-          });
-
-          sap.m.MessageToast.show("All entries saved successfully.");
-        }
-      },
-         onSave: function () {
+      onSave: function () {
       var that = this;
       var oTable = that.byId("entryTypeTable");
       var totalEntries = oTable.getItems().length;
@@ -814,20 +657,8 @@ sap.ui.define(
   
           sap.m.MessageToast.show("All entries saved successfully.");
       }
-  },
+      },
   
-    
-      
-      
-     
-
-      
-
-
-
-
-     
-
       // Function to format Uomdes
       formatUomdes: function (Voydes) {
         return Voydes.toLowerCase().replace(/\b\w/g, function (char) {
@@ -941,8 +772,6 @@ sap.ui.define(
         return false; // Data has not changed
       },
 
-
-      
       onUpdate: function () {
         let oView = this.getView();
         let oCreateTable = oView.byId("createTypeTable");
@@ -1069,41 +898,7 @@ sap.ui.define(
           this.resetView();
 
         }
-
-
-
-        // aItems.forEach(function (oItem) {
-        //   var oCells = oItem.getCells();
-        //   // Assuming the Input field is the second cell in the ColumnListItem
-        //   var oInput = oCells[1]; // Index 1 corresponds to the Input field
-        //   var sValue = oInput.getValue(); // Get the value of the Input field
-        //   console.log("Value: " + sValue);
-        // });
-        // let classCode = classCodeInput.getValue().trim();
-        // let classCodeDesc = aSelectedIds[0][1]; // Assuming aSelectedIds is accessible here
-        // console.log("classCode ", onEditInput);
-        // console.log("classCodeDesc ", classCodeDesc);
-
-        // if (onEditInput !== classCodeDesc) {
-        //   sap.m.MessageBox.confirm("Do you want to discard the changes?", {
-        //     title: "Confirmation",
-        //     onClose: function (oAction) {
-        //       if (oAction === sap.m.MessageBox.Action.OK) {
-        //         // Reset the view to its initial state
-        //         this.resetView();
-        //       }
-        //     }.bind(this) // Ensure access to outer scope
-        //   });
-        // } else {
-        //   // If no changes have been made, navigate to the initial screen immediately
-        //   this.resetView();
-        // }
-
-
-
       },
-
-
 
       resetView: function () {
         // Reset view to initial state
@@ -1113,16 +908,16 @@ sap.ui.define(
         this.getView().byId("mainPageFooter2").setVisible(false);
         aSelectedIds = [];
         editFlag = false;
-        copyFlag = false;
+        // copyFlag = false;
         newEntryFlag = false;
         this.getView().byId("createTypeTable").setVisible(true).removeSelections();
-        this.getView().byId("UOMCode1").setText("");
-        this.getView().byId("UOMCodeDesc1").setValue("");
-        this.getView().byId("UOMCode").setValue("");
-        this.getView().byId("UOMCodeDesc").setValue("");
+        this.getView().byId("Code1").setText("");
+        this.getView().byId("Desc1").setValue("");
+        this.getView().byId("Code").setValue("");
+        this.getView().byId("Desc").setValue("");
         this.getView().byId("editBtn").setEnabled(true);
         this.getView().byId("deleteBtn").setEnabled(true);
-        this.getView().byId("copyBtn").setEnabled(true);
+        // this.getView().byId("copyBtn").setEnabled(true);
         this.getView().byId("entryBtn").setEnabled(true);
         this.byId("createTypeTable").setMode("MultiSelect");
       },
@@ -1238,12 +1033,6 @@ sap.ui.define(
         }
 
       },
-
-   
-
-
-
-
 
     });
 

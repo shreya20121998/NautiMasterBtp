@@ -30,7 +30,7 @@
          >
             <contentLeft>
                 <Button id="entryBtn"  text="New Entries" press="newEntries"/>
-                <Button id="copyBtn" text="Copy As" press="pressCopy"/>
+                <!-- <Button id="copyBtn" text="Copy As" press="pressCopy"/> -->
                 <Button id="editBtn" text="Edit"  press="pressEdit"/>
                 <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
                
@@ -113,8 +113,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="UOMCode" liveChange="onCodeLiveChange"  />
-                        <Input id="UOMCodeDesc"  liveChange="onLiveChange"/>
+                        <Input id="Code" liveChange="onCodeLiveChange"  />
+                        <Input id="Desc"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -140,8 +140,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="UOMCode1" text="" />
-                        <Input id="UOMCodeDesc1"  editable="true"  liveChange="onLiveChange"/>
+                        <Text id="Code1" text="" />
+                        <Input id="Desc1"  editable="true"  liveChange="onLiveChange"/>
                     </cells>
                 </ColumnListItem>
             </items>

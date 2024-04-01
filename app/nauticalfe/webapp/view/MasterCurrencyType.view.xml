@@ -40,14 +40,6 @@
         
                 <Button  id="deleteBtn" text="Delete" press="onDeletePress"/>
                
-                <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPress"
-                    ariaHasPopup="Menu"
-                />
             </contentLeft>
         </Bar>
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">

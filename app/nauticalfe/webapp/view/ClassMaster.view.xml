@@ -37,11 +37,11 @@
                     text="New Entries"
                     press="newEntries"
                 />
-                <Button
+                <!-- <Button
                     id="copyBtn"
                     text="Copy As"
                     press="pressCopy"
-                />
+                /> -->
                 <Button
                     id="editBtn"
                     text="Edit"
@@ -120,8 +120,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Input id="CLASSFIELD" maxLength="1" liveChange="onCodeLiveChange"/>
-                        <Input id="CLASSDESC"  />
+                        <Input id="Code" liveChange="onCodeLiveChange"/>
+                        <Input id="Desc"  />
                     </cells>
                 </ColumnListItem>
             </items>
@@ -151,8 +151,8 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text id="CLASSFIELD1"  text=""/>
-                        <Input id="CLASSDES1"  liveChange="onLiveChange"  editable="true" />
+                        <Text id="Code1"  text=""/>
+                        <Input id="Desc1"  liveChange="onLiveChange"  editable="true" />
                     </cells>
                 </ColumnListItem>
             </items>
