@@ -863,7 +863,7 @@ sap.ui.define(
 
           // Create Dialog
           this._oDialog2 = new sap.m.Dialog({
-            title: "Select Project",
+            title: "Select Currency",
             contentWidth: "60vw",
             contentHeight: "80vh",
             content: [this._oSearchField, this._oTable],

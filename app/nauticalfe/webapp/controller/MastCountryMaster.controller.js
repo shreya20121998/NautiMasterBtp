@@ -824,7 +824,7 @@ sap.ui.define(
           this._oSearchField = new sap.m.SearchField({
             width: "30%",
             selectOnFocus: true,
-            placeholder: "Search your currency",
+            placeholder: "Search your country",
             liveChange: this.onSearch.bind(this),
           });
 
@@ -866,7 +866,7 @@ sap.ui.define(
 
           // Create Dialog
           this._oDialog2 = new sap.m.Dialog({
-            title: "Select Project",
+            title: "Select Country",
             contentWidth: "60vw",
             contentHeight: "80vh",
             content: [this._oSearchField, this._oTable],
