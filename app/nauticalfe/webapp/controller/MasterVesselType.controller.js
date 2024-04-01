@@ -704,7 +704,7 @@ sap.ui.define(
                 if (errors.length === 0 && duplicateEntries.length === 0) {
                     createEntries();
                 } else {
-                    var errorMessage = "Errors occurred while saving entries:\n";
+                    var errorMessage = "Errors:\n";
                     if (errors.length > 0) {
                         errorMessage += errors.join("\n") + "\n";
                     }
