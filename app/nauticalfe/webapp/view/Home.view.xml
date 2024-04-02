@@ -28,28 +28,31 @@ xmlns:form="sap.ui.layout.form"
         <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
          header="Nautical" subheader="Create Voyage" press=".onPress1" >
             <TileContent id="_IDGenTileContent1">
-            <ImageContent id="_IDGenImageContent1" src="./images/voyage.png"></ImageContent>
+                                <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-vessel" />
+
             </TileContent>
         </GenericTile>
     
         <GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
          header="Nautical" subheader="Live Bidding Controller" press=".onPress2">
             <TileContent id="_IDGenTileContent2" >
-            <ImageContent id="IDGenImageContent1" src="./images/compareReqForQuotation.png"></ImageContent>
+                    <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-change-analysis" />
             </TileContent>
         </GenericTile>
 
         <GenericTile id="GenGenericTile23" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
          header="Transaction" subheader="Dashboard" press=".onPress3">
             <TileContent id="GenTileContent4">
-            <ImageContent id="GenImageContent3" src="./images/voyage.png"></ImageContent>
+            <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-vessel" />
+
             </TileContent>
         </GenericTile>
 
         <GenericTile id="GenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
          header="Master" subheader="Dashboard" press=".onPress4">
             <TileContent id="GenTileContent5">
-            <ImageContent id="GenImageContent4" src="./images/voyage.png"></ImageContent>
+            <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-vessel" />
+
             </TileContent>
         </GenericTile>
  
