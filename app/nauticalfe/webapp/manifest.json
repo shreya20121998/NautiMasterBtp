@@ -257,26 +257,27 @@
           ]
       },
       {
-          "name": "RouteMastApiUrl",
-          "pattern": "MastApiUrl",
+          "name": "RouteApiUrl",
+          "pattern": "ApiUrl",
           "target": [
-              "TargetMastApiUrl"
+              "TargetApiUrl"
+          ]
+      },
+     
+      {
+          "name": "RouteVoyageType",
+          "pattern": "VoyageType",
+          "target": [
+              "TargetVoyageType"
           ]
       },
       {
-          "name": "RouteVesselType",
-          "pattern": "VesselType",
-          "target": [
-              "TargetVesselType"
-          ]
-      },
-      {
-          "name": "RouteMasterVoyageType",
-          "pattern": "MasteVoyageType",
-          "target": [
-              "TargetMasterVoyageType"
-          ]
-      },
+        "name": "RouteVesselType",
+        "pattern": "VesselType",
+        "target": [
+            "TargetVesselType"
+        ]
+    },
       {
           "name": "RouteMasterCurrencyType",
           "pattern": "MasterCurrencyType",
@@ -291,13 +292,7 @@
               "TargetClassMaster"
           ]
       },
-      {
-          "name": "RouteMasterVesselType",
-          "pattern": "MasterVesselType",
-          "target": [
-              "TargetMasterVesselType"
-          ]
-      },
+     
       {
           "name": "RouteUoM",
           "pattern": "UoM",
@@ -320,10 +315,10 @@
           ]
       },
       {
-          "name": "RouteCountryMasterUpd",
-          "pattern": "CountryMasterUpd",
+          "name": "RouteCountryMasterUpload",
+          "pattern": "CountryMasterUpload",
           "target": [
-              "TargetCountryMasterUpd"
+              "TargetCountryMasterUpload"
           ]
       },
       {
@@ -334,17 +329,17 @@
           ]
       },
       {
-          "name": "RouteMarinePathUpd",
-          "pattern": "MarinePathUpd",
+          "name": "RouteMarinePathUpload",
+          "pattern": "MarinePathUpload",
           "target": [
-              "TargetMarinePathUpd"
+              "TargetMarinePathUpload"
           ]
       },
       {
-          "name": "RouteMarineDisUpd",
-          "pattern": "MarineDisUpd",
+          "name": "RouteMarineDistanceUpload",
+          "pattern": "MarineDistanceUpload",
           "target": [
-              "TargetMarineDisUpd"
+              "TargetMarineDistanceUpload"
           ]
       },
       {
@@ -651,20 +646,14 @@
           "viewId": "ConfigChartering",
           "viewName": "ConfigChartering"
       },
-      "TargetMastApiUrl": {
+      "TargetApiUrl": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "MastApiUrl",
-          "viewName": "MastApiUrl"
+          "viewId": "ApiUrl",
+          "viewName": "ApiUrl"
       },
-      "TargetMasterVoyageType":{
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "MasterVoyageType",
-          "viewName": "MasterVoyageType"
-      },
+      
      
       "TargetMasterCurrencyType":{
           "viewType": "XML",
@@ -680,13 +669,20 @@
           "viewId": "ClassMaster",
           "viewName": "ClassMaster"
       },
-      "TargetMasterVesselType":{
+      "TargetVesselType":{
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "MasterVesselType",
-          "viewName": "MasterVesselType"
+          "viewId": "VesselType",
+          "viewName": "VesselType"
       },
+      "TargetVoyageType":{
+        "viewType": "XML",
+        "transition": "slide",
+        "clearControlAggregation": false,
+        "viewId": "VoyageType",
+        "viewName": "VoyageType"
+    },
       "TargetBidMaster": {
           "viewType": "XML",
           "transition": "slide",
@@ -716,33 +712,34 @@
           "viewId": "MastCountryMaster",
           "viewName": "MastCountryMaster"
       },
-            "TargetCountryMasterUpd": {
+    "TargetCountryMasterUpload": {
+        "viewType": "XML",
+        "transition": "slide",
+        "clearControlAggregation": false,
+        "viewId": "CountryMasterUpload",
+        "viewName": "CountryMasterUpload"
+    },
+    
+            "TargetMarineDistanceUpload": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "MastCountryMasterUpload",
-                "viewName": "MastCountryMasterUpload"
+                "viewId": "MarineDistanceUpload",
+                "viewName": "MarineDistanceUpload"
             },
-            "TargetMarineDisUpd": {
+            "TargetMarinePathUpload": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "MastMarineDisUpd",
-                "viewName": "MastMarineDisUpd"
-            },
-            "TargetMarinePathUpd": {
-                "viewType": "XML",
-                "transition": "slide",
-                "clearControlAggregation": false,
-                "viewId": "MastMarinePathUpd",
-                "viewName": "MastMarinePathUpd"
+                "viewId": "MarinePathUpload",
+                "viewName": "MarinePathUpload"
             },
             "TargetPortUpload": {
                 "viewType": "XML",
                 "transition": "slide",
                 "clearControlAggregation": false,
-                "viewId": "MastPortUpload",
-                "viewName": "MastPortUpload"
+                "viewId": "PortUpload",
+                "viewName": "PortUpload"
             },
             "TargetSaveAsVariant": {
                 "viewType": "XML",

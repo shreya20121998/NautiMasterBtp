@@ -314,10 +314,10 @@ sap.ui.define(
       const oRouter = this.getOwnerComponent().getRouter();
       if (aSelectedIds.length === 0 && !newEntryFlag) {
  
-        oRouter.navTo("RouteMasterDashboard");
+        oRouter.navTo("RouteConfigReleaseDashboard");
       }
       else if (aSelectedIds.length && !newEntryFlag  && !editFlag) {
-        oRouter.navTo("RouteMasterDashboard");
+        oRouter.navTo("RouteConfigReleaseDashboard");
         this.byId('createTypeTable').removeSelections();
  
       }

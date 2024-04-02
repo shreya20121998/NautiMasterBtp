@@ -155,6 +155,10 @@
 .vgNoText{
     float: right;
 }
+.upload{
+    margin-left: 30%;
+    margin-top: 5%;
+ }
 /************************************ For Master DashBoard Screen **********************************************/
 .masterFlexBox{
     flex-wrap: wrap;

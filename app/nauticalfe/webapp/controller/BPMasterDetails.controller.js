@@ -10,6 +10,14 @@ sap.ui.define(
       return BaseController.extend("nauticalfe.controller.BPMasterDetails", {
         onInit() {
         },
+        onBackPress: function() {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteBusinessPartnerDashboard");
+        },
+        onPressHome: function() {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteHome");
+        },
         onPress: function () {
           var oView = this.getView(),
             oButton = oView.byId("button");
@@ -27,18 +35,12 @@ sap.ui.define(
             this._oMenuFragment.openBy(oButton);
           }
         },
-        onBackPressHome: function () {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("Routedash");
-        },
+       
         onExit: function () {
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("RouteHome");
         },
-        onBackPress: function () {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("MastView");
-        },
+       
        onSaveAs:function(){
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteSaveAsVariant");

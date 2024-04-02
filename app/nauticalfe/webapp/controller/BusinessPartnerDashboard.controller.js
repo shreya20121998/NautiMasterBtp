@@ -8,6 +8,14 @@ sap.ui.define(
       return BaseController.extend("nauticalfe.controller.BusinessPartnerDashboard", {
         onInit() {
         },
+        onBackPress: function() {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteMasterDashboard");
+        },
+        onPressHome: function() {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteHome");
+        },
         onBPDetailpress: function(){
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("RouteBPMasterDetails")

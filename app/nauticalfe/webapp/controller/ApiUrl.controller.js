@@ -12,7 +12,7 @@ sap.ui.define(
     "use strict";
     let aSelectedIds=[];
  
-    return Controller.extend("nauticalfe.controller.MastApiUrl", {
+    return Controller.extend("nauticalfe.controller.ApiUrl", {
  
       onInit: function () {
         this.getView().byId("createTypeTable").setVisible(true);
@@ -24,9 +24,12 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteMasterDashboard");
       },
-      // for more fragment
+      onPressHome: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHome");
+      },
 
       onPress: function () {
 
@@ -49,14 +52,7 @@ sap.ui.define(
           this._oMenuFragment.openBy(oButton);
         }
       },
-      onBackPressHome: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
-      },
-      onExit: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteHome");
-      },
+
       selectedItems: function (oEvent) {
         // console.log("hello");
         let oTable = oEvent.getSource();

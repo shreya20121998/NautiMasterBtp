@@ -1,7 +1,7 @@
 <mvc:View xmlns:form="sap.ui.layout.form"
     xmlns:table="sap.ui.table"
     xmlns:cards="sap.f.cards"
-    controllerName="nauticalfe.controller.PortLocUpload"
+    controllerName="nauticalfe.controller.CountryMasterUpload"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -25,7 +25,7 @@
                    
                     <Text id="_IDGenText1"
                         class="text1"
-                        text="Port Location Upload"
+                        text="Country Master Upload"
                     />
                 </contentLeft>
                

@@ -39,21 +39,16 @@ sap.ui.define(
         onExit: function () {
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.navTo("MastView");
-        },onBackPressHome: function () {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("RouteView1");
         },
-        backPress:function(){
-          const oHistory = History.getInstance();
-          const sPreviousHash = oHistory.getPreviousHash();
- 
-          if (sPreviousHash !== undefined) {
-            window.history.go(-1);
-          } else {
+        onBackPress: function() {
             const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("MastView", {}, true);
-          }
-       },
+            oRouter.navTo("RouteBusinessPartnerDashboard");
+          },
+          onPressHome: function() {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteHome");
+          },
+        
  
        showVendorNoDialog:function () {
     var oView = this.getView();

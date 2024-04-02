@@ -2,7 +2,7 @@
     xmlns:tnt="sap.tnt"
     xmlns:form="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
-    controllerName="nauticalfe.controller.MasVesselType"
+    controllerName="nauticalfe.controller.VesselType"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"

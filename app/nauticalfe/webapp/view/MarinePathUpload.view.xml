@@ -1,7 +1,7 @@
-<mvc:View
+<mvc:View xmlns:form="sap.ui.layout.form"
     xmlns:table="sap.ui.table"
     xmlns:cards="sap.f.cards"
-    controllerName="nauticalfe.controller.MastPortUpload"
+    controllerName="nauticalfe.controller.MarinePathUpload"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -11,7 +11,7 @@
     xmlns:tnt="sap.tnt"
 >
     <Page id="page">
-        <headerContent>
+       <headerContent>
             <Bar id="_IDGenBar2">
                 <contentLeft>
                     <core:Icon id="_IDGenIcon1"
@@ -25,10 +25,10 @@
                    
                     <Text id="_IDGenText1"
                         class="text1"
-                        text="Port Upload"
+                        text="Marine Path Upload"
                     />
                 </contentLeft>
-                
+               
             </Bar>
         </headerContent>
         <Bar
@@ -36,29 +36,20 @@
             class="_IDGenBar1"
         >
             <contentLeft>
-                <!-- <Button
-                    id="_IDGenButton1"
-                    text="Save as Variant"
-                    press="onSaveAs"
-                /> -->
+                
                 <Button
                     id="_IDGenButton2"
                     text="Download as Template"
                     press="onDownloadPress"
                 />
-                <!-- <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPress"
-                    ariaHasPopup="Menu"
-                /> -->
+                
             </contentLeft>
            
         </Bar>
- 
-        <HBox alignContent="Stretch">
+        
+        <HBox  class="upload">
+        
+           <Label text="File Name :" class="uploadlabel"/>
             <unified:FileUploader
                 id="fileUploader"
                 uploadUrl="/"
@@ -66,6 +57,7 @@
                 fileType="xlsx"
                 uploadComplete="onUploadComplete"
                 change="onFileChange"
+               class="uploadInput"
             />
             <Button
                 text="Upload"
@@ -77,16 +69,7 @@
             />
         </HBox>
  
-        <footer>
-            <OverflowToolbar design="Solid">
-                <ToolbarSpacer />
-                <Button
-                    text="Execute"
-                    type="Negative"
-                    icon="none"
-                />
-            </OverflowToolbar>
-        </footer>
+        
     </Page>
 </mvc:View>
  

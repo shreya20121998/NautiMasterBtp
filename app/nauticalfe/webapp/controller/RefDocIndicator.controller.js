@@ -17,7 +17,11 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteMasterDashboard");
+      },
+      onPressHome: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHome");
       },
       onCreatePress: function() {
         // Get the reference to the table by its ID
@@ -63,18 +67,7 @@ sap.ui.define(
             this._oMenuFragment.openBy(oButton);
           }
         },
-        onExit: function () {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("RouteHome");
-        },
-        onBackPressHome: function () {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("Routedash");
-        },
-        onBackPress: function () {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("MastView");
-        },
+        
     
 
     });

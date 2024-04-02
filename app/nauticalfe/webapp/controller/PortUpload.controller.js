@@ -12,11 +12,13 @@ sap.ui.define(
   function (Controller, Fragment, History, MessageToast, Spreadsheet) {
     "use strict";
  
-    return Controller.extend("nauticalfe.controller.MastPortUpload", {
+    return Controller.extend("nauticalfe.controller.PortUpload", {
       onInit: function () {},
      
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
+        const oFileUploader = this.getView().byId("fileUploader");
+          oFileUploader.clear();
         oRouter.navTo("RouteMasterDashboard");
       },
       onBackPressHome: function () {

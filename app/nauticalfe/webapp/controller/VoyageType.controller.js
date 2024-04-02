@@ -25,7 +25,7 @@ sap.ui.define(
     let saveObj = {};
     let cancelObj = {}
 
-    return Controller.extend("nauticalfe.controller.MasterVoyageType", {
+    return Controller.extend("nauticalfe.controller.VoyageType", {
 
       onInit: function () {
         this.getView().byId("createTypeTable").setVisible(true);

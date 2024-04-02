@@ -37,7 +37,7 @@ sap.ui.define(
       onBusinessPartnerPress: function () {
 
         const oRouter = this.getOwnerComponent().getRouter();
-              oRouter.navTo("RouteBusinessPartnerDashboard");
+        oRouter.navTo("RouteBusinessPartnerDashboard");
         
       },
      
@@ -49,15 +49,16 @@ sap.ui.define(
      
       onApiurl:function(){
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteMastApiUrl");
+        oRouter.navTo("RouteApiUrl");
+      },
+      
+      navToVoyageType: function(){
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteVoyageType" ,{}, true)
       },
       onVesselPress:function(){
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteVesselType");
-      },
-      navToVoyageType: function(){
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteMasterVoyageType" ,{}, true)
       },
       navToCurrencyType: function(){
         const oRouter = this.getOwnerComponent().getRouter();
@@ -91,15 +92,15 @@ sap.ui.define(
       },
       onCountryMasterUpd:function(){
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteCountryMasterUpd");
+        oRouter.navTo("RouteCountryMasterUpload");
       },
       onMarinePathUpd:function(){
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteMarinePathUpd");
+        oRouter.navTo("RouteMarinePathUpload");
       },
       onMarineDisUpd:function(){
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteMarineDisUpd");
+        oRouter.navTo("RouteMarineDistanceUpload");
       },
       onPortUpload:function(){
         const oRouter = this.getOwnerComponent().getRouter();

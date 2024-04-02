@@ -47,7 +47,7 @@ sap.ui.define(
       },
       onBackPress: function () {
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("MastView");
+        oRouter.navTo("RouteConfigReleaseDashboard");
       },
       // for more fragment
       onPress: function () {
@@ -67,11 +67,7 @@ sap.ui.define(
           this._oMenuFragment.openBy(oButton);
         }
       },
-      onBackPressHome: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Routedash");
-      },
-      onExit: function () {
+      onPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
       },
