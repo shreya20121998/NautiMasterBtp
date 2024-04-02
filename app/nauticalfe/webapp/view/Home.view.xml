@@ -7,39 +7,20 @@ xmlns:form="sap.ui.layout.form"
     <Page id="page" class="page">
 
         <headerContent>
-            <!-- Your header content goes here -->
-            <Bar class="customHeader">
+            <Bar id="_IDGenBar2">
                 <contentLeft>
-                    <Image
-                         class="size1"
-                        src="./images/ignxlogo.png"
-                        height="75%"
+                    
+                    <core:Icon id="_IDGenIcon2"
+                        src="sap-icon://home"
+                        press="onPressHome"
                     />
-                    <Text
-                        class="textBid size1"
+                   
+                    <Text id="_IDGenText1"
+                        class="text1"
                         text="Home"
                     />
                 </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
+                
             </Bar>
         </headerContent>
 

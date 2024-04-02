@@ -10,92 +10,40 @@
 >
     <Page id="_IDGenPage1">
        <headerContent>
-            <!-- Your header content goes here -->
-            <Bar class="customHeader">
+            <Bar id="_IDGenBar2">
                 <contentLeft>
-                    <core:Icon
+                    <core:Icon id="_IDGenIcon1"
                         src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
                         press="onBackPress"
                     />
-                    <core:Icon
+                    <core:Icon id="_IDGenIcon2"
                         src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
+                        press="onPressHome"
                     />
-                    <Image
-                        class="size1"
-                        src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                        class="size1 textBid"                      
-                        text='Change View Release Strategy master table for Voyage Release:Overview'
+                   
+                    <Text id="_IDGenText1"
+                        class="text1"
+                        text="Config Voyage Details"
                     />
                 </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
+                
             </Bar>
         </headerContent>
+        <Panel id="_IDGenPanel1" class="tablepanel">
        <Bar
             id="_IDGenBar1"
-            class="_IDGenBar1"
+            class="headerBar2"
          >
             <contentLeft>
-                <Button
-                    text="New Entries"
-                    press="newEntries"
-                />
+                <Button text="New Entries" press="newEntries" />
                 <Button text="Copy As" press="pressCopy"/>
                 <Button text="Edit"  press="pressEdit"/>
                 <Button text="Delete" press="onDeletePress"/>
-               
-                <Button
-                    id="button"
-                    icon="sap-icon://slim-arrow-down"
-                    iconFirst="false"
-                    text="More"
-                    press="onPress"
-                    ariaHasPopup="Menu"
-                />
             </contentLeft>
-            <contentRight>
-                <core:Icon
-                    src="sap-icon://print"
-                    class="size1"
-                    color="#FF0000"
-                />
-                <!-- <Button text="Display" /> -->
-                <Button
-                    text="Exit"
-                    press="onExit"
-                />
-            </contentRight>
+            
         </Bar>
-        <Label
-            text="Event Master Table "
-            class="masterheadings"
-        />
+        <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
+
         <Table
             id="createTypeTable"
             mode="MultiSelect"
@@ -104,6 +52,7 @@
             selectionChange="selectedItems"
             width="100%"
             class="mastertables"
+            sticky="ColumnHeaders"
            
         >
             <columns>
@@ -167,12 +116,15 @@
                 </ColumnListItem>
             </items>
         </Table>
+        </ScrollContainer>
+        </Panel>
+
         <Table
             id="entryTypeTable"
             updateFinished="onTableUpdateFinished"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
+            class="tablepanel entrytables"
             visible="false"
             mode="MultiSelect"
         >
@@ -252,7 +204,11 @@
                 design="Auto"
                 visible="false"
             >
+            
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button id="add" icon="sap-icon://sys-add" press=".onAddRow1" text="Add Row" type="Success"></Button>
+                <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow1" text="Delete Row" type="Reject"></Button>
+
                 <Button
                     id="mainPageSave"
                     text="Save"

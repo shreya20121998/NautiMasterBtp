@@ -5,62 +5,30 @@ xmlns="sap.m" >
 
     <Page>
         <headerContent>
-            <!-- Your header content goes here -->
-            <Bar class="customHeader">
+            <Bar id="_IDGenBar2">
                 <contentLeft>
-                    <core:Icon
+                    <core:Icon id="_IDGenIcon1"
                         src="sap-icon://nav-back"
-                        class="size1"
-                        color="#FFFFFF"
                         press="onBackPress"
                     />
-                    <core:Icon
+                    <core:Icon id="_IDGenIcon2"
                         src="sap-icon://home"
-                        class="size1"
-                        color="#FFFFFF"
-                        press="onBackPressHome"
+                        press="onPressHome"
                     />
-                    <Image
-                         class="size1"
-                        src="./images/ignxlogo.png"
-                        height="75%"
-                    />
-                    <Text
-                        class="textBid size1"
+                   
+                    <Text id="_IDGenText1"
+                        class="text1"
                         text="BP Master Details"
                     />
                 </contentLeft>
-                <contentRight>
-                    <core:Icon
-                        src="sap-icon://search"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                    <core:Icon
-                        src="sap-icon://SAP-icons-TNT/user"
-                        class="size1"
-                        color="#FFFFFF"
-                    >
-                        <core:layoutData>
-                            <FlexItemData growFactor="1" />
-                        </core:layoutData>
-                    </core:Icon>
-                </contentRight>
+                
             </Bar>
         </headerContent>
 
         <Bar id="_IDGenBar1" class="_IDGenBar1">
             <contentLeft>
                 <Button id="_IDGenButton1" text="Save as Variant" press="onSaveAs"></Button>
-                <Button id="button" icon="sap-icon://slim-arrow-down" iconFirst="false" text="More" ariaHasPopup="Menu" press="onPress"/>
             </contentLeft>
-            <contentRight>
-                <Button id="_IDGenButton2" text="Exit" press="onExit"></Button>
-            </contentRight>
         </Bar>
         
         <Text id="EnterDetailsId" text="Enter Details" class="vgheading"></Text>
@@ -71,10 +39,11 @@ xmlns="sap.m" >
         </HBox>
        
         <footer>
-            <OverflowToolbar id="_IDGenOverflowToolbar1" design="Solid">
-                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
-                <Button id="_IDGenButton11" text="Execute" type="Negative" icon="none" ></Button>
-            </OverflowToolbar>
+            <Bar>
+                <contentRight>
+                    <Button id="_IDGenButton11" text="Execute" icon="none" ></Button>
+                </contentRight>                
+            </Bar>
         </footer>
 
     </Page>

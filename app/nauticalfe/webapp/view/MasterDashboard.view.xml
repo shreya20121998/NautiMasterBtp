@@ -3,22 +3,28 @@ xmlns:html="http://www.w3.org/1999/xhtml"
 xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core"
 xmlns="sap.m" xmlns:tnt="sap.tnt">
  
-    <Page id="_IDGenPage1" showHeader="false" showFooter="false">
+    <Page id="_IDGenPage1">
        
-        <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin toolHeader">
-            <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onBackPress" tooltip="Backpress"/>
-            <Button visible="true" icon="sap-icon://home" type="Transparent" id="_IDGenButton3" press="onPressHome" tooltip="Home"/>
-
-            <Image id="_IDGenImage1" class="size1"
-                src="./images/ignxlogo.png"
-                height="65%"/>
-
-            <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
-            <Title text="Master Dashboard" wrapping="true" id="productName"/>
-            <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
-            <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+        <headerContent>
+            <Bar id="_IDGenBar2">
+                <contentLeft>
+                    <core:Icon id="_IDGenIcon1"
+                        src="sap-icon://nav-back"
+                        press="onBackPress"
+                    />
+                    <core:Icon id="_IDGenIcon2"
+                        src="sap-icon://home"
+                        press="onPressHome"
+                    />
+                   
+                    <Text id="_IDGenText1"
+                        class="text1"
+                        text="Master Dashboard"
+                    />
+                </contentLeft>
                 
-        </tnt:ToolHeader>
+            </Bar>
+        </headerContent>
  
         
             <FlexBox class="masterFlexBox">
@@ -101,7 +107,7 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                 </GenericTile>
 
                 <GenericTile id="GenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Port/Loc Master" press="onPortLoc">
+                    header="Port/Location Master" press="onPortLoc">
                     <TileContent >
                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-lighthouse" />
                     </TileContent>
@@ -129,21 +135,21 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                 </GenericTile>
 
                 <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Port/Loc Upload" press="onPortLocUpload">
+                    header="Port/Location Upload" press="onPortLocUpload">
                     <TileContent >
                     <ImageContent src="./images/portLocUpload.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
 
                 <GenericTile id="GenGenericTile16" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Port Upd" press="onPortUpload">
+                    header="Port Upload" press="onPortUpload">
                     <TileContent >
                     <ImageContent src="./images/portLocUpload.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
 
                 <GenericTile id="GenGenericTile17" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Country Master Upd" press="onCountryMasterUpd">
+                    header="Country Master Upload" press="onCountryMasterUpd">
                     <TileContent >
                     <ImageContent src="./images/countryMasterUpload.png"></ImageContent>
                     </TileContent>
@@ -157,14 +163,14 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                 </GenericTile>
 
                 <GenericTile id="GenGenericTile20" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Marine Path Upd" press="onMarinePathUpd">
+                    header="Marine Path Upload" press="onMarinePathUpd">
                     <TileContent >
                     <ImageContent src="./images/marinePath.png"></ImageContent>
                     </TileContent>
                 </GenericTile>
 
                 <GenericTile id="GenGenericTile21" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Marine Distance Upd" press="onMarineDisUpd">
+                    header="Marine Distance Upload" press="onMarineDisUpd">
                     <TileContent >
                     <ImageContent src="./images/marinePath.png"></ImageContent>
                     </TileContent>

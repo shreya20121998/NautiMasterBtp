@@ -5,11 +5,10 @@ sap.ui.define(
     "sap/ui/core/Fragment",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
-    "sap/ui/model/Sorter",
     "nauticalfe/utils/bufferedEventHandler"
 
   ],
-  function (Controller, History, Fragment, MessageToast, MessageBox, bufferedEventHandler,Sorter) {
+  function (Controller, History, Fragment, MessageToast, MessageBox, bufferedEventHandler) {
     "use strict";
     let aSelectedIds = [];
     // let copyFlag = false;
@@ -62,10 +61,6 @@ sap.ui.define(
         );
       },
 
-      
-    
-
-        
 
       onCodeLiveChange: function (oEvent) {
         // Get the input control
