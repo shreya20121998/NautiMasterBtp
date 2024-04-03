@@ -13,9 +13,9 @@ module.exports = async (srv) =>
       srv.on('READ', 'CurrencySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'EventMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
-      srv.on('READ', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'RefrenceDocumentSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'StandardCurrencySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
-      srv.on('READ', 'VoyageRealeaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
-      srv.on('READ', 'ZBTP_NAUTICAL_CURRENCY', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'UOMSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 }

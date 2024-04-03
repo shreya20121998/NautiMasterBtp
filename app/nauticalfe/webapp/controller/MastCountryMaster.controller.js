@@ -378,6 +378,16 @@ sap.ui.define(
           this.getView().byId("mainPageFooter").setVisible(true)
 
           this.getView().byId("deleteBtn").setEnabled(false);
+          var oEntryTable = this.getView().byId("entryTypeTable");
+        var items = oEntryTable.getItems();
+        for (var i = items.length - 1; i > 0; i--) {
+          oEntryTable.removeItem(items[i]);
+        }
+ 
+        // Clear input fields of the first row
+        var firstItemCells = items[0].getCells();
+        firstItemCells[0].setValue("");
+        firstItemCells[1].setValue("");
 
 
 

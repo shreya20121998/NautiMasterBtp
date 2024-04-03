@@ -7,7 +7,8 @@
     xmlns="sap.m"
 >
     <Page id="page">
-        <headerContent>
+         <headerContent>
+            <!-- Your header content goes here -->
             <Bar id="_IDGenBar2">
                 <contentLeft>
                     <core:Icon id="_IDGenIcon1"
@@ -21,48 +22,38 @@
                    
                     <Text id="_IDGenText1"
                         class="text1"
-                        text="Port Location Master"
+                        text="Change View :Master Details for Biding: Overview"
                     />
                 </contentLeft>
-                
+               
             </Bar>
         </headerContent>
+ 
+        <Panel class="tablepanel">
 
-        <Panel id="_IDGenPanel1" class="tablepanel">
         <Bar id="_IDGenBar12" class="headerBar2">
             <contentLeft>
-                <Button
-                    id="_IDGenButton12"
-                    text="New Entries"
-                    press="newEntries"
-                />
-                <Button
-                    id="_IDGenButton13"
-                    text="Copy As"
-                    press="pressCopy"
-                />
-                <Button
-                    id="_IDGenButton14"
-                    text="Delete"
-                    press="onDeletePress"
-                />
-                <Button
-                    id="_IDGenButton15"
-                    text="Edit"
-                    press="pressEdit"
-                />
-               
+             <Button id="entryBtn" text="New Entries" press="newEntries" />
+                <!-- <Button id="copyBtn" text="Copy As" press="pressCopy"/> -->
+                <Button  id= "editBtn" text="Edit"  press="pressEdit"/>
+                <Button id= "deleteBtn" text="Delete" press="onDeletePress"/>
             </contentLeft>
+           
         </Bar>
 
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
 
-        <Table id="createTypeTable"
+        <Table 
+            id="createTypeTable"
             width="100%"
             class="mastertables"
-            items="{/PORTLOC}"
+            items="{/PortmasterSetSet}"
+            updateFinished="onTableUpdateFinished"
             mode="MultiSelect"
-            selectionChange="selectedItems">
+            sticky="ColumnHeaders"
+            selectionChange="selectedItems"
+            noDataText="Loading...."
+            >
 
             <columns>
                 <Column >
@@ -97,19 +88,19 @@
             <ColumnListItem id="_istItem1">
                 <cells>
                    
-                    <Text id="_IDGenText3" text="{COUNTRY}" />
-                    <Text id="_IDGenText4" text="{PORTC}" />
-                    <Text id="_IDGenText5" text="{PORTN}" />
-                    <Text id="_IDGenText6" text="{REANCHO}" />
-                    <Text id="_IDGenText7" text="{LATITUDE}" />
-                    <Text id="_IDGenText8" text="{LONGITUDE}" />
-                    <Text id="_IDGenText9" text="{COUNTRYN}" />
-                    <Text id="_IDGenText10" text="{LOCID}" />
-                    <Text id="_IDGenText11" text="{IND}" />
+                    <Text id="_IDGenText3" text="{Country}" />
+                    <Text id="_IDGenText4" text="{Portc}" />
+                    <Text id="_IDGenText5" text="{Portn}" />
+                    <Text id="_IDGenText6" text="{Reancho}" />
+                    <Text id="_IDGenText7" text="{Latitude}" />
+                    <Text id="_IDGenText8" text="{Longitude}" />
+                    <Text id="_IDGenText9" text="{Countryn}" />
+                    <Text id="_IDGenText10" text="{Locid}" />
+                    <Text id="_IDGenText11" text="{Ind}" />
                 </cells>
             </ColumnListItem>
         </Table>
-        </ScrollContainer>
+         </ScrollContainer>
         </Panel>
 
         <Table id="entryTypeTable"
@@ -117,6 +108,7 @@
             width="100%"
             class="tablepanel entrytables"
             visible="false"
+            mode="MultiSelect"
         >
             <columns>
                 <Column >
@@ -167,7 +159,7 @@
             id="updateTypeTable"
             selectionChange="selectedItems"
             width="100%"
-            class="mastertables"
+            class="tablepanel "
             visible="false" >
             <columns>
                 <Column >
@@ -218,7 +210,8 @@
                 id="mainPageFooter2"
                 design="Auto"
                 visible="false" >
-                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                  <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+               
                 <Button
                     id="mainPageSave12"
                     text="Update"
@@ -240,7 +233,6 @@
                 <ToolbarSpacer id="_IDGenToolbarSpacer3" />
                 <Button id="add" icon="sap-icon://sys-add" press=".onAddRow1" text="Add Row" type="Success"></Button>
                 <Button id="minus" icon="sap-icon://sys-minus" press=".onDeleteRow1" text="Delete Row" type="Reject"></Button>
-
                 <Button
                     id="mainPageSave"
                     text="Save"
@@ -254,9 +246,17 @@
             </OverflowToolbar>
        
         
-       
  
        
     </Page>
+     <ScrollContainer
+        id="_IDGenScrollContainer1"
+        height="100%"
+        width="100%"
+        vertical="true"
+        focusable="true"
+    >
+        <!--this is first page-->
+    </ScrollContainer>
 </mvc:View>
  

@@ -60,6 +60,8 @@ entity ZBTP_NAUTICAL_CURRENCY as projection on NAUTIMASTER_BTP_SRV.ZBTP_NAUTICAL
 entity StandardCurrencySet as projection on NAUTIMASTER_BTP_SRV.StandardCurrencySet
     {        Spras, key Waers, Ltext     }    
 ;
-
+ entity PortmasterSetSet as projection on NAUTIMASTER_BTP_SRV.PortmasterSetSet
+    {        key Country, key Portc, Portn, Reancho, Latitude, Longitude, Countryn, Locid, Ind     }    
+;
        
 }

@@ -38,8 +38,8 @@
                 <Key>
                     <PropertyRef Name="Voycd"/>
                 </Key>
-                <Property Name="Voycd" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Voyage Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Voydes" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Voyage Code Descript" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Voycd" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Voyage Code" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Voydes" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Voyage Code Descript" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="GtTab" sap:content-version="1">
                 <Key>
@@ -55,9 +55,9 @@
                 <Property Name="Vspeed" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:unicode="false" sap:label="Speed" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Ppdays" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:unicode="false" sap:label="Port Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vsdays" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="3" sap:unicode="false" sap:label="Sea Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Vetad" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="ETA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vetad" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:unicode="false" sap:label="ETA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vetat" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Vetdd" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="ETD" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vetdd" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:unicode="false" sap:label="ETD" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vetdt" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vwead" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Weather Delay .Sea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Pstat" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -90,9 +90,9 @@
                 <Property Name="Vspeed" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:unicode="false" sap:label="Speed" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Ppdays" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:unicode="false" sap:label="Port Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vsdays" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="3" sap:unicode="false" sap:label="Sea Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Vetad" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="ETA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vetad" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:unicode="false" sap:label="ETA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vetat" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Vetdd" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="ETD" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vetdd" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:unicode="false" sap:label="ETD" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vetdt" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Vwead" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Weather Delay .Sea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Pstat" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -151,9 +151,9 @@
                     <End EntitySet="GtPlanSet" Role="ToRole_ZCreatePlanAsso"/>
                 </AssociationSet>
             </EntityContainer>
-            <atom:link rel="self" href="http://myodataservice:7001/sap/opu/odata/nauti/NAUTICALCV_SRV/$metadata"
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/nauti/NAUTICALCV_SRV/$metadata"
                 xmlns:atom="http://www.w3.org/2005/Atom"/>
-                <atom:link rel="latest-version" href="http://myodataservice:7001/sap/opu/odata/nauti/NAUTICALCV_SRV/$metadata"
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/nauti/NAUTICALCV_SRV/$metadata"
                     xmlns:atom="http://www.w3.org/2005/Atom"/>
                 </Schema>
             </edmx:DataServices>

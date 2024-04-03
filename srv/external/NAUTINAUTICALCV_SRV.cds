@@ -1,4 +1,4 @@
-/* checksum : 18624bbeb713553e9eb257f67589d572 */
+/* checksum : c6f0e5dcf794dcd6032b45146e177c33 */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
 @sap.supported.formats : 'atom json xlsx'
@@ -112,14 +112,12 @@ entity NAUTINAUTICALCV_SRV.VoyTypeSet {
   @sap.label : 'Voyage Code'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
-  @sap.sortable : 'false'
   @sap.filterable : 'false'
   key Voycd : String(4) not null;
   @sap.unicode : 'false'
   @sap.label : 'Voyage Code Descript'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
-  @sap.sortable : 'false'
   @sap.filterable : 'false'
   Voydes : String(40) not null;
 };
@@ -203,15 +201,14 @@ entity NAUTINAUTICALCV_SRV.GtTabSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   Vsdays : Decimal(7, 3) not null;
-  @odata.Type : 'Edm.DateTime'
-  @odata.Precision : 7
+  @sap.display.format : 'Date'
   @sap.unicode : 'false'
   @sap.label : 'ETA'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
   @sap.sortable : 'false'
   @sap.filterable : 'false'
-  Vetad : Timestamp not null;
+  Vetad : Date not null;
   @sap.unicode : 'false'
   @sap.label : 'Time'
   @sap.creatable : 'false'
@@ -219,15 +216,14 @@ entity NAUTINAUTICALCV_SRV.GtTabSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   Vetat : Time not null;
-  @odata.Type : 'Edm.DateTime'
-  @odata.Precision : 7
+  @sap.display.format : 'Date'
   @sap.unicode : 'false'
   @sap.label : 'ETD'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
   @sap.sortable : 'false'
   @sap.filterable : 'false'
-  Vetdd : Timestamp not null;
+  Vetdd : Date not null;
   @sap.unicode : 'false'
   @sap.label : 'Time'
   @sap.creatable : 'false'
@@ -399,15 +395,14 @@ entity NAUTINAUTICALCV_SRV.GtPlanSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   Vsdays : Decimal(7, 3) not null;
-  @odata.Type : 'Edm.DateTime'
-  @odata.Precision : 7
+  @sap.display.format : 'Date'
   @sap.unicode : 'false'
   @sap.label : 'ETA'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
   @sap.sortable : 'false'
   @sap.filterable : 'false'
-  Vetad : Timestamp not null;
+  Vetad : Date not null;
   @sap.unicode : 'false'
   @sap.label : 'Time'
   @sap.creatable : 'false'
@@ -415,15 +410,14 @@ entity NAUTINAUTICALCV_SRV.GtPlanSet {
   @sap.sortable : 'false'
   @sap.filterable : 'false'
   Vetat : Time not null;
-  @odata.Type : 'Edm.DateTime'
-  @odata.Precision : 7
+  @sap.display.format : 'Date'
   @sap.unicode : 'false'
   @sap.label : 'ETD'
   @sap.creatable : 'false'
   @sap.updatable : 'false'
   @sap.sortable : 'false'
   @sap.filterable : 'false'
-  Vetdd : Timestamp not null;
+  Vetdd : Date not null;
   @sap.unicode : 'false'
   @sap.label : 'Time'
   @sap.creatable : 'false'

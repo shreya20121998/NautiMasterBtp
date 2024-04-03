@@ -64,6 +64,7 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('READ', 'ZBTP_NAUTICAL_CURRENCY', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'CountrySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'StandardCurrencySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       srv.on('CREATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
@@ -74,6 +75,7 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('CREATE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('CREATE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       srv.on('UPDATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('UPDATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
@@ -84,6 +86,7 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('UPDATE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('UPDATE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('UPDATE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('UPDATE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       srv.on('DELETE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('DELETE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
@@ -94,6 +97,7 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('DELETE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('DELETE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('DELETE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('DELETE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       const NAUTIMARINE_TRAFFIC_API_SRV = await cds.connect.to("NAUTIMARINE_TRAFFIC_API_SRV"); 
       srv.on('READ', 'EsPathCollection', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
