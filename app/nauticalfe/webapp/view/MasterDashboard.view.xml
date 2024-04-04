@@ -8,12 +8,13 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
         <headerContent>
             <Bar id="_IDGenBar2">
                 <contentLeft>
-                    <core:Icon id="_IDGenIcon1"
-                        src="sap-icon://nav-back"
+                    <Button id="_IDGenIcon1"
+                        icon="sap-icon://nav-back"
                         press="onBackPress"
                     />
-                    <core:Icon id="_IDGenIcon2"
-                        src="sap-icon://home"
+
+                    <Button id="_IDGenIcon2"
+                        icon="sap-icon://home"
                         press="onPressHome"
                     />
                    
@@ -134,27 +135,6 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                     </TileContent>
                 </GenericTile>
 
-                <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Port/Location Upload" press="onPortLocUpload">
-                    <TileContent >
-                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
-                    </TileContent>
-                </GenericTile>
-
-                <GenericTile id="GenGenericTile16" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Port Upload" press="onPortUpload">
-                    <TileContent >
-                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
-                    </TileContent>
-                </GenericTile>
-
-                <GenericTile id="GenGenericTile17" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                    header="Country Master Upload" press="onCountryMasterUpd">
-                    <TileContent >
-                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
-                    </TileContent>
-                </GenericTile>
-                
                 <GenericTile id="GenGenericTile19" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="API URL" press="onApiurl">
                     <TileContent >
@@ -162,19 +142,49 @@ xmlns="sap.m" xmlns:tnt="sap.tnt">
                     </TileContent>
                 </GenericTile>
 
-                <GenericTile id="GenGenericTile20" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                <GenericTile id="GenGenericTile101" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port/Marine Upload" press="onUpload">
+                    <TileContent>
+                    <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
+                    </TileContent>
+                </GenericTile>
+
+
+                <!-- <GenericTile id="GenGenericTile14" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port/Location Upload" press="onPortLocUpload">
+                    <TileContent >
+                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
+                    </TileContent>
+                </GenericTile> -->
+
+                <!-- <GenericTile id="GenGenericTile16" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Port Upload" press="onPortUpload">
+                    <TileContent >
+                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
+                    </TileContent>
+                </GenericTile> -->
+
+                <!-- <GenericTile id="GenGenericTile17" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Country Master Upload" press="onCountryMasterUpd">
+                    <TileContent >
+                     <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
+                    </TileContent>
+                </GenericTile> -->
+                
+
+                <!-- <GenericTile id="GenGenericTile20" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Marine Path Upload" press="onMarinePathUpd">
                     <TileContent >
                      <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
                     </TileContent>
-                </GenericTile>
+                </GenericTile> -->
 
-                <GenericTile id="GenGenericTile21" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                <!-- <GenericTile id="GenGenericTile21" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     header="Marine Distance Upload" press="onMarineDisUpd">
                     <TileContent >
                      <core:Icon class="icon" src="sap-icon://BusinessSuiteInAppSymbols/icon-source" />
                     </TileContent>
-                </GenericTile>
+                </GenericTile> -->
                 
             </FlexBox>
       

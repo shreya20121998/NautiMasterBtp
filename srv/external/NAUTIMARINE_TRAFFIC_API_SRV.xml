@@ -70,9 +70,9 @@
                     <End EntitySet="EsPathCollection" Role="ToRole_route"/>
                 </AssociationSet>
             </EntityContainer>
-            <atom:link rel="self" href="http://35.185.33.183:8001/sap/opu/odata/nauti/MARINE_TRAFFIC_API_SRV/$metadata"
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/nauti/MARINE_TRAFFIC_API_SRV/$metadata"
                 xmlns:atom="http://www.w3.org/2005/Atom"/>
-                <atom:link rel="latest-version" href="http://35.185.33.183:8001/sap/opu/odata/nauti/MARINE_TRAFFIC_API_SRV/$metadata"
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/nauti/MARINE_TRAFFIC_API_SRV/$metadata"
                     xmlns:atom="http://www.w3.org/2005/Atom"/>
                 </Schema>
             </edmx:DataServices>

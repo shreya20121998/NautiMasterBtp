@@ -488,6 +488,13 @@
         "target": [
             "TargetBusinessPartnerDashboard"
         ]
+      },
+      {
+        "name": "RouteUpload",
+        "pattern": "Upload",
+        "target": [
+            "TargetUpload"
+        ]
       }
       
 
@@ -881,6 +888,13 @@
                 "clearControlAggregation": false,
                 "viewId": "businessPartnerDashboard",
                 "viewName": "BusinessPartnerDashboard"
+            },
+            "TargetUpload": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "UploadSection",
+                "viewName": "UploadSection"
             }
                
       }

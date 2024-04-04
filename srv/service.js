@@ -14,6 +14,9 @@ module.exports = cds.service.impl(async function (srv) {
     const ZBTP_NAUTICAL_MARIDISTANCE_CDS = await cds.connect.to("ZBTP_NAUTICAL_MARIDISTANCE_CDS"); 
       srv.on('READ', 'ZBTP_NAUTICAL_MariDistance', req => ZBTP_NAUTICAL_MARIDISTANCE_CDS.run(req.query)); 
 
+    
+    
+
       const NAUTINAUTICALCV_SRV = await cds.connect.to("NAUTINAUTICALCV_SRV"); 
       srv.on('READ', 'BidTypeSet', req => NAUTINAUTICALCV_SRV.run(req.query)); 
       srv.on('READ', 'CarTypeSet', req => NAUTINAUTICALCV_SRV.run(req.query)); 
@@ -65,6 +68,9 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('READ', 'CountrySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'StandardCurrencySet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('READ', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('READ', 'xNAUTIxVOY', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('READ', 'RefrenceDocumentSet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('READ', 'xNAUTIxMASBID', req => NAUTIMASTER_BTP_SRV.run(req.query));  
 
       srv.on('CREATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
@@ -75,7 +81,10 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('CREATE', 'MaintainGroupSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('CREATE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
-      srv.on('CREATE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('CREATE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('CREATE', 'RefrenceDocumentSet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('CREATE', 'xNAUTIxMASBID', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+       
 
       srv.on('UPDATE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('UPDATE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
@@ -87,6 +96,8 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('UPDATE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('UPDATE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
       srv.on('UPDATE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('UPDATE', 'RefrenceDocumentSet', req => NAUTIMASTER_BTP_SRV.run(req.query));
+      srv.on('UPDATE', 'xNAUTIxMASBID', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       srv.on('DELETE', 'BidMasterSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('DELETE', 'BusinessPartnerSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
@@ -98,12 +109,14 @@ module.exports = cds.service.impl(async function (srv) {
       srv.on('DELETE', 'VoyageReleaseSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
       srv.on('DELETE', 'ReleaseStrategySet', req => NAUTIMASTER_BTP_SRV.run(req.query));
       srv.on('DELETE', 'PortmasterSetSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'RefrenceDocumentSet', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
+      srv.on('DELETE', 'xNAUTIxMASBID', req => NAUTIMASTER_BTP_SRV.run(req.query)); 
 
       const NAUTIMARINE_TRAFFIC_API_SRV = await cds.connect.to("NAUTIMARINE_TRAFFIC_API_SRV"); 
-      srv.on('READ', 'EsPathCollection', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
-      srv.on('READ', 'PortMasterSet', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
+      srv.on('READ', 'EsPathCollection', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query));
       srv.on('READ', 'es_port_master', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
       srv.on('READ', 'es_route_map', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
+      srv.on('READ', 'PortMasterSet', req => NAUTIMARINE_TRAFFIC_API_SRV.run(req.query)); 
 
       try {
         srv.before('CREATE', 'NAVOYGH', async (req,res) => {

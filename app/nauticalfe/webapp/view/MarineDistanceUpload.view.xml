@@ -31,18 +31,9 @@
                
             </Bar>
         </headerContent>
-        <Bar
-            id="_IDGenBar1"
-            class="_IDGenBar1"
-        >
+        <Bar id="_IDGenBar1" class="_IDGenBar1" >
             <contentLeft>
-                
-                <Button
-                    id="_IDGenButton2"
-                    text="Download as Template"
-                    press="onDownloadPress"
-                />
-                
+                <Button id="_IDGenButton2" text="Download as Template" press="onDownloadPress" />
             </contentLeft>
            
         </Bar>

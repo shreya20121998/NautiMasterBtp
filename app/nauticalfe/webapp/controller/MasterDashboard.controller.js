@@ -106,6 +106,10 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RoutePortUpload");
       },
+      onUpload:function(){
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteUpload");
+      },
       onPressHome: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");

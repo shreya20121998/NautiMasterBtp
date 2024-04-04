@@ -40,7 +40,7 @@
             </items>
         </Table>
         <beginButton>
-            <Button press="onPreviewDialogClose" text="Close"  type="Back"></Button>
+            <Button press="onPortUploadPreviewDialogClose" text="Close"  type="Back"></Button>
         </beginButton>
     </Dialog>
 </core:FragmentDefinition>

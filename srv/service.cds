@@ -37,7 +37,9 @@ service Nautical{
    entity EsPathCollection as projection on NAUTIMARINE_TRAFFIC_API_SRV.EsPathCollection;
    entity es_route_map as projection on NAUTIMARINE_TRAFFIC_API_SRV.es_route_map;
    entity es_port_master as projection on NAUTIMARINE_TRAFFIC_API_SRV.es_port_master;
-   entity PortMasterSet as projection on NAUTIMARINE_TRAFFIC_API_SRV.PortMasterSet;
+   entity PortMasterSet as projection on NAUTIMARINE_TRAFFIC_API_SRV.PortMasterSet
+    {        Country, Portc, key Portn, Reancho, Latitude, Longitude, Countryn, key Locid     }    
+;
    
     entity ZBTP_NAUTI_CreateVoyage as projection on ZBTP_NAUTI_CREATEVOYAGE_CDS.ZBTP_NAUTI_CreateVoyage
     {        key Vlegn, Portc, Portn, Pdist, Medst, Vspeed, Ppdays, Vsdays, Vetad, Vetat, Vetdd, Vetdt, Vwead, Pstat, Matnr, Maktx, Cargs, Cargu, Othco, Frcost, Totco     }    
@@ -63,5 +65,18 @@ entity StandardCurrencySet as projection on NAUTIMASTER_BTP_SRV.StandardCurrency
  entity PortmasterSetSet as projection on NAUTIMASTER_BTP_SRV.PortmasterSetSet
     {        key Country, key Portc, Portn, Reancho, Latitude, Longitude, Countryn, Locid, Ind     }    
 ;
+ entity xNAUTIxVOY as projection on NAUTIMASTER_BTP_SRV.xNAUTIxVOY
+    {        key voycd, voydes     }    
+;
        
+
+entity RefrenceDocumentSet as projection on NAUTIMASTER_BTP_SRV.RefrenceDocumentSet
+    {        key Docind, Docdesc     }    
+;
+    
+
+    
+    entity xNAUTIxMASBID as projection on NAUTIMASTER_BTP_SRV.xNAUTIxMASBID
+    {        key Bname, key Code, Value, Cvalue, Cunit, Datatype, Tablename, Multi_Choice     }    
+;
 }

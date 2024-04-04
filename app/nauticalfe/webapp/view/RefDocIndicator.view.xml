@@ -1,10 +1,16 @@
 <mvc:View controllerName="nauticalfe.controller.RefDocIndicator"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+     xmlns:tnt="sap.tnt"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"  
     xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
     xmlns:core="sap.ui.core">
-   <Page id="page">
+ 
+ 
+<Page id="_IDGenPage1">
         <headerContent>
+            <!-- Your header content goes here -->
             <Bar id="_IDGenBar2">
                 <contentLeft>
                     <core:Icon id="_IDGenIcon1"
@@ -21,74 +27,182 @@
                         text="Ref Doc Indicator"
                     />
                 </contentLeft>
-                
+               
             </Bar>
         </headerContent>
-        <Panel id="_IDGenPanel1" class="tablepanel">
-        <Bar id="_IDGenBar1" class="headerBar2" >
+       
+    <Panel class="tablepanel">
+         <Bar
+            id="_IDGenBar1"
+            class="_IDGenBar1"
+         >
             <contentLeft>
-                <Button id="_IDGenButto1"
-                    text="New Entries"
-                    press="onCreatePress"
-                />
-                <Button id="_IDGenButton2" text="Copy As" />
-                <Button id="_IDGenButton3" text="Delete" />
-                <Button id="_IDGenButton4" text="Undo Change" />
+                <Button id="entryBtn"  text="New Entries" press="newEntries"/>
+                <!-- <Button id="copyBtn" text="Copy As" press="pressCopy"/> -->
+                <Button id="editBtn" text="Edit"  press="pressEdit"/>
+                <Button  id ="deleteBtn" text="Delete" press="onDeletePress"/>
+               
+               
             </contentLeft>
-        </Bar>
-        
+           
+         </Bar>
+       
         <ScrollContainer id="scrollContainer" height="calc(100% - 50px)" vertical="true" class="scrollContainer">
-
-        <Table width="100%" class="mastertables" visible="true" mode="MultiSelect" sticky="ColumnHeaders"
-            id="firstTableId">
+ 
+        <Table
+            id="createTypeTable"
+            mode="MultiSelect"
+            items="{/RefrenceDocumentSet}"
+            updateFinished="onTableUpdateFinished"
+            selectionChange="selectedItems"
+            width="100%"
+            class="mastertables"
+             noDataText="Loading ..."
+           
+         >
             <columns>
-                <!-- <Column id="_IDGenColumn1" width="30px">
-                    <Label id="_IDGenLabel1" text="" />
-                </Column> -->
-                <Column id="_IDGenColumn2" width="20%">
-                    <Label id="_IDGenLabel2" text="Ref Doc. Index" />
+                <Column id="_IDGenColumn1">
+                    <Text
+                        id="_IDGenText11"
+                        text="Docind"
+                    />
                 </Column>
-                <Column id="_IDGenColumn3" width="15%">
-                    <Label id="_IDGenLabel3" text="Doc Desc" />
-                </Column>
-                <Column id="_IDGenColumn4">
-                    <Label id="_IDGenLabel4" text="" />
+                <Column id="_IDGenColumn2">
+                    <Text
+                        id="_IDGenText2"
+                        text="Description"
+                    />
                 </Column>
             </columns>
-            <ColumnListItem id="_IDGenColumnLiItem1"  >
-                                    <cells>
-                                       
-                                        <Select id="_IDGenSelect5" width="200px">
-                                            <items>
-                                                
-                                                <core:Item id="_IDGenItem9"  text="SALES CONTRACT"></core:Item>
-                                                <core:Item id="_IDGenItem10"  text="PURCHASE CONTRACT"></core:Item>
-                                                <core:Item id="_IDGenItem11"  text="PURCHASE ORDER"></core:Item>
-                                                <core:Item id="_IDGenItem12"  text="SALES ORDER"></core:Item>
-                                                <core:Item id="_IDGenItem13"  text="NOMINATION KEY"></core:Item>
-                                            </items>
-                                        </Select>
-                                        <Text id="_IDText6" text=""></Text>
-                                        <Text id="_IDText8" text=""></Text>
-
-                                    </cells>
-            </ColumnListItem>
-                      
-            
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1">
+                    <cells>
+                     
+                        <Text
+                            id="_IDGenInput1"
+                            text="{Docind}"
+                           
+                        />
+                       
+                        <Text
+                            id="_IDGenInput2"
+                            text="{Docdesc}"
+                           
+                           
+                           
+                        />
+                       
+                       
+                       
+                    </cells>
+                </ColumnListItem>
+            </items>
         </Table>
         </ScrollContainer>
-        </Panel>
-        
-        <footer>
-                <OverflowToolbar id="_IDGenOverflowToolbar1" design="Auto">
-                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
-                <Button id="_IDGenButton11" text="Save" ></Button>
-                <Button id="_IDGenButton12" text="Cancel"  ></Button>
-                </OverflowToolbar>
-            </footer>
-        
-        
-
+    </Panel>
+        <Table
+            id="entryTypeTable"
+             mode="MultiSelect"
+            updateFinished="onTableUpdateFinished"
+            selectionChange="selectedItems"
+            width="100%"
+            class="tablepanel entrytables"
+            visible="false"
+           
+         >
+            <columns>
+                <Column>
+                    <Text text="Doc Id " />
+                </Column>
+                <Column>
+                    <Text text=" Description" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input id="Code" liveChange="onCodeLiveChange"  />
+                        <Input id="Desc"  liveChange="onLiveChange"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+     
+        <Table
+            id="updateTypeTable"
+            updateFinished="onTableUpdateFinished"
+            selectionChange="selectedItems"
+            width="100%"
+            class="mastertables"
+            visible="false"
+           
+         >
+            <columns>
+                <Column>
+                    <Text text="Document Id" />
+                </Column>
+                <Column>
+                    <Text text=" Description" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text id="Code1" text="" />
+                        <Input id="Desc1"  editable="true"  liveChange="onLiveChange"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+       
+            <OverflowToolbar
+                id="mainPageFooter"
+                design="Auto"
+                visible="false"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                <Button id="add" text="Add Row" icon="sap-icon://sys-add" press=".onAddRow1" type="Success"></Button>
+                <Button id="minus" text="Delete Row" icon="sap-icon://sys-minus" press=".onDeleteRow1" type="Reject"></Button>
+                <Button
+                    id="mainPageSave"
+                    text="Save"
+                    press="onSave"
+                />
+                <Button
+                    id="_IDGenButton22"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
+ 
+            <OverflowToolbar
+                id="mainPageFooter2"
+                design="Auto"
+                visible="false"
+                 class="updateTableFooter"
+            >
+                <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                <Button
+                    id="mainPageSave12"
+                    text="Update"
+                    press="onUpdate"
+                />
+                <Button
+                    id="_IDGenButton23"
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </OverflowToolbar>
+             <!--scrollbar added-->
+   
+           
+       
     </Page>
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 </mvc:View>
