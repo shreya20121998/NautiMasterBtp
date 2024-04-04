@@ -13,12 +13,12 @@
         <headerContent>
             <Bar id="_IDGenBar2">
                 <contentLeft>
-                    <core:Icon id="_IDGenIcon1"
-                        src="sap-icon://nav-back"
+                    <Button id="_IDGenIcon1"
+                        icon="sap-icon://nav-back"
                         press="onBackPress"
                     />
-                    <core:Icon id="_IDGenIcon2"
-                        src="sap-icon://home"
+                    <Button id="_IDGenIcon2"
+                        icon="sap-icon://home"
                         press="onPressHome"
                     />
                    

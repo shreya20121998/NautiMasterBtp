@@ -20,7 +20,6 @@
                         icon="sap-icon://nav-back"
                         press="onBackPress"
                     />
-
                     <Button id="_IDGenIcon2"
                         icon="sap-icon://home"
                         press="onPressHome"
