@@ -13,13 +13,13 @@
             <!-- Columns -->
             <columns >
                 <Column width="120px" hAlign="Begin" vAlign="Middle" >
-                    <Label text="Country"/>
+                    <Label text="Country ID"/>
                 </Column>
                 <Column width="120px" hAlign="Begin" vAlign="Middle">
-                    <Label text="Portc"/>
+                    <Label text="Port Code"/>
                 </Column>
                 <Column width="120px" hAlign="Begin" vAlign="Middle">
-                    <Label text="Portn"/>
+                    <Label text="Port Name"/>
                 </Column>
                 <Column width="120px" hAlign="Begin" vAlign="Middle">
                     <Label text="Reancho"/>
@@ -31,7 +31,7 @@
                     <Label text="Longitude"/>
                 </Column>
                 <Column width="120px" hAlign="Begin" vAlign="Middle">
-                    <Label text="Countryn"/>
+                    <Label text="CountryName"/>
                 </Column>
                 <Column width="120px" hAlign="Begin" vAlign="Middle">
                     <Label text="LocID"/>
@@ -44,13 +44,13 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text text="{Country}"/>
-                        <Text text="{Portc}"/>
-                        <Text text="{Portn}"/>
+                        <Text text="{CountryID}"/>
+                        <Text text="{PortCode}"/>
+                        <Text text="{PortName}"/>
                         <Text text="{Reancho}"/>
                         <Text text="{Latitude}"/>
                         <Text text="{Longitude}"/>
-                        <Text text="{Countryn}"/>
+                        <Text text="{CountryName}"/>
                         <Text text="{LocID}"/>
                         <Text text="{IND}"/>
                     </cells>

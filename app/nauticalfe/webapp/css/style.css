@@ -61,7 +61,9 @@
 /* .formPanel{
     justify-content: space-around;
 } */
-
+.uploadlabel{
+    margin-top: 10% !important;
+}
 
 /************************************ For Home Screen **********************************************/
 

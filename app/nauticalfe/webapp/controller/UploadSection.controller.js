@@ -110,13 +110,13 @@ sap.ui.define([
             _onPortLoccreateColumnListItem: function () {
               return new sap.m.ColumnListItem({
                 cells: [
-                  new sap.m.Text({ text: "{Country}" }),
-                  new sap.m.Text({ text: "{Portc}" }),
-                  new sap.m.Text({ text: "{Portn}" }),
+                  new sap.m.Text({ text: "{CountryID}" }),
+                  new sap.m.Text({ text: "{PortCode}" }),
+                  new sap.m.Text({ text: "{PortName}" }),
                   new sap.m.Text({ text: "{Reancho}" }),
                   new sap.m.Text({ text: "{Latitude}" }),
                   new sap.m.Text({ text: "{Longitude}" }),
-                  new sap.m.Text({ text: "{Countryn}" }),
+                  new sap.m.Text({ text: "{CountryName}" }),
                   new sap.m.Text({ text: "{LocID}" }),
                   new sap.m.Text({ text: "{IND}" }),
                 ],
@@ -145,13 +145,13 @@ sap.ui.define([
           
                       // Check if column headers match the expected headers
                       var expectedHeaders = [
-                          "Country",
-                          "Portc",
-                          "Portn",
+                          "CountryID",
+                          "PortCode",
+                          "PortName",
                           "Reancho",
                           "Latitude",
                           "Longitude",
-                          "Countryn",
+                          "CountryName",
                           "LocID",
                           "IND",
                       ];
@@ -179,7 +179,7 @@ sap.ui.define([
                       var errorFields = [];
                       jsonData.forEach(function (rowData, rowIndex) {
                           Object.keys(rowData).forEach(function (field) {
-                              if (field === "Country" || field === "Portc" || field === "Portn" || field === "Reancho" || field === "Countryn" ) {
+                              if (field === "CountryID" || field === "PortCode" || field === "PortName" || field === "Reancho" || field === "CountryName" ) {
                                   if (!/^[a-zA-Z]+$/.test(rowData[field])) {
                                       errorFields.push({ row: rowIndex + 1, field: field });
                                   }
@@ -249,8 +249,7 @@ sap.ui.define([
               };
           
               reader.readAsArrayBuffer(file);
-          },
-          
+            },
           
             _onPortLocopenPreviewDialog: function (jsonData) {
               // Create a JSON model and set the data
@@ -287,17 +286,17 @@ sap.ui.define([
               const oFileUploader = this.getView().byId("fileUploader");
               oFileUploader.clear();
 
-              let sFileName =  "PortLocUpload"
+              let sFileName =  "PortUpload"
               // Create dummy data for the template (replace with your actual template data)
               var templateData = [
                 [
-                  "Country",
-                  "Portc",
-                  "Portn",
+                  "CountryID",
+                  "PortCode",
+                  "PortName",
                   "Reancho",
                   "Latitude",
                   "Longitude",
-                  "Countryn",
+                  "CountryName",
                   "LocID",
                   "IND",
                 ],
@@ -309,13 +308,13 @@ sap.ui.define([
                 workbook: {
                   columns: [
                     // Define columns for the spreadsheet
-                    { label: "Country", property: "Country" },
-                    { label: "Portc", property: "Portc" },
-                    { label: "Portn", property: "Portn" },
+                    { label: "CountryID", property: "CountryID" },
+                    { label: "PortCode", property: "PortCode" },
+                    { label: "PortName", property: "PortName" },
                     { label: "Reancho", property: "Reancho" },
                     { label: "Latitude", property: "Latitude" },
                     { label: "Longitude", property: "Longitude" },
-                    { label: "Countryn", property: "Countryn" },
+                    { label: "CountryName", property: "CountryName" },
                     { label: "LocID", property: "LocID" },
                     { label: "IND", property: "IND" },
                   ],
@@ -332,234 +331,6 @@ sap.ui.define([
               oSpreadsheet.build();
             }, 
 
-
-          // For Port Upload
-
-            onPortUploadPress: function () {
-            var fileUploader = this.getView().byId("fileUploader2");
-            var file = fileUploader.oFileUpload.files[0];
-    
-            // Check if a file is selected
-            if (!file) {
-              // Show an error message to the user using MessageToast
-              sap.m.MessageToast.show("Please select a file to upload.");
-              return; // Exit the function
-            }
-    
-            // Proceed with file upload logic
-            fileUploader.upload();
-            },
-    
-            onPortUploadComplete: function (oEvent) {
-              var fileUploader = this.getView().byId("fileUploader2");
-              var file = fileUploader.oFileUpload.files[0];
-      
-              // Check if a file is selected
-              if (!file) {
-                // Show an error message to the user using MessageToast
-                sap.m.MessageToast.show("No file uploaded.");
-                return; // Exit the function
-              }
-      
-              var reader = new FileReader();
-              var that = this; // Preserve the reference to the controller for use inside the FileReader's onload function
-      
-              reader.onload = function (e) {
-                try {
-                  var data = new Uint8Array(e.target.result);
-                  var workbook = XLSX.read(data, { type: "array" });
-                  var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                  var jsonData = XLSX.utils.sheet_to_json(worksheet);
-      
-                  // Create a JSON model and set the data
-                  var oModel = new sap.ui.model.json.JSONModel();
-                  oModel.setData(jsonData);
-      
-                  // Set the model to the view
-                  var oView = that.getView();
-                  oView.setModel(oModel);
-                  console.log("Excelsheet Data ", jsonData);
-      
-                  // Show success message
-                  sap.m.MessageToast.show(
-                    "Excel file uploaded and parsed successfully"
-                  );
-                  fileUploader.clear();
-                } catch (error) {
-                  // Log the error
-                  console.error("Error parsing Excel file:", error);
-                  // Show error message to the user
-                  sap.m.MessageToast.show(
-                    "Error parsing Excel file. Please upload a valid Excel file."
-                  );
-                }
-              };
-      
-              reader.readAsArrayBuffer(file);
-            },
-    
-            _onPortUploadcreateColumnListItem: function () {
-              return new sap.m.ColumnListItem({
-                cells: [
-                  new sap.m.Text({ text: "{Value}" }),
-                  new sap.m.Text({ text: "{Description}" }),
-                  new sap.m.Text({ text: "{Country}" }),
-                  new sap.m.Text({ text: "{Countryn}" }),
-                
-                ],
-              });
-            },
-
-            onPortUploadPreviewPress: function (oEvent) {
-              var fileUploader = this.getView().byId("fileUploader2");
-              var file = fileUploader.oFileUpload.files[0];
-              // Check if a file is selected
-              if (!file) {
-                  // Show an error message to the user using MessageToast
-                  sap.m.MessageToast.show("No file uploaded.");
-                  fileUploader.clear();
-                  return; // Exit the function
-              }
-          
-              var reader = new FileReader();
-              var that = this; // Preserve the reference to the controller for use inside the FileReader's onload function
-          
-              reader.onload = function (e) {
-                  try {
-                      var data = new Uint8Array(e.target.result);
-                      var workbook = XLSX.read(data, { type: "array" });
-                      var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                      var jsonData = XLSX.utils.sheet_to_json(worksheet);
-          
-                      // Check if column headers match the expected headers
-                      var expectedHeaders = [
-                          "Value",
-                          "Description",
-                          "Country",
-                          "Countryn",
-                      ];
-                      var actualHeaders = Object.keys(jsonData[0]);
-          
-                      // Compare the expected headers with the actual headers
-                      var invalidColumns = [];
-                      expectedHeaders.forEach(function (header) {
-                          if (actualHeaders.indexOf(header) === -1) {
-                              invalidColumns.push(header);
-                          }
-                      });
-          
-                      // If any invalid columns found, show error message
-                      if (invalidColumns.length > 0) {
-                          var errorMessage =
-                              "The following columns are missing in the uploaded file: " +
-                              invalidColumns.join(", ");
-                          sap.m.MessageToast.show(errorMessage);
-                          fileUploader.clear();
-                          return; // Exit the function
-                      }
-          
-                      // Validate each field for alphabetic characters
-                      var errorRows = [];
-                      jsonData.forEach(function (rowData, rowIndex) {
-                          Object.keys(rowData).forEach(function (field) {
-                              if (!/^[a-zA-Z]+$/.test(rowData[field])) {
-                                  errorRows.push(rowIndex + 1); // Push the row index for the error message
-                              }
-                          });
-                      });
-                      if (errorRows.length > 0) {
-                          var errorMessage =
-                              "Non-alphabetic value found in one or more fields for rows: " +
-                              errorRows.join(", ");
-                          sap.m.MessageToast.show(errorMessage);
-                          // Clear file uploader
-                          fileUploader.clear();
-                          return; // Exit the function
-                      }
-          
-                      // Proceed with opening the preview dialog
-                      that._onPortUploadopenPreviewDialog(jsonData);
-                  } catch (error) {
-                      // Log and handle any errors
-                      console.error("Error processing Excel file:", error);
-                      sap.m.MessageToast.show(
-                          "Error processing Excel file. Please upload a valid Excel file."
-                      );
-                  }
-              };
-          
-              reader.readAsArrayBuffer(file);
-            },
-          
-            _onPortUploadopenPreviewDialog: function (jsonData) {
-              // Create a JSON model and set the data
-              var oModel = new sap.ui.model.json.JSONModel();
-              oModel.setData(jsonData);
-          
-              // Set the model to the view
-              var oView = this.getView();
-          
-              // Instantiate the dialog fragment if it's not already instantiated
-              if (!this._oPortUpdPreviewDialog) {
-                  this._oPortUpdPreviewDialog = sap.ui.xmlfragment(
-                      oView.getId(),
-                      "nauticalfe.fragments.portUpdSheetDialog",
-                      this
-                  );
-                  oView.addDependent(this._oPortUpdPreviewDialog);
-              }
-          
-              // Bind data to the table in the dialog
-              var oTable = this._oPortUpdPreviewDialog.getContent()[0];
-              oTable.setModel(oModel);
-              oTable.bindAggregation("items", "/", this._onPortUploadcreateColumnListItem());
-          
-              // Open dialog
-              this._oPortUpdPreviewDialog.open();
-            },
-
-            onPortUploadPreviewDialogClose: function () {
-              this._oPortUpdPreviewDialog.close();
-            },
-    
-            onPortUploadDownloadPress: function () {
-              const oFileUploader = this.getView().byId("fileUploader2");
-              oFileUploader.clear();
-              let sFileName =  "PortUpload"
-              // Create dummy data for the template (replace with your actual template data)
-              var templateData = [
-                [
-                  "Value",
-                  "Description",
-                  "Country",
-                  "Countryn",
-                            ],
-                // Add more rows as needed
-              ];
-      
-              // Create spreadsheet
-              var oSpreadsheet = new sap.ui.export.Spreadsheet({
-                workbook: {
-                  columns: [
-                    // Define columns for the spreadsheet
-                    { label: "Value", property: "Value" },
-                    { label: "Description", property: "Description" },
-                    { label: "Country", property: "Country" },
-                    { label: "Countryn", property: "Countryn" },
-                  
-                  ],
-                  rows: {
-                    // Bind data rows to the template data
-                    path: "/",
-                  },
-                },
-                dataSource: templateData,
-                fileName: sFileName
-              });
-      
-              // Download the spreadsheet
-              oSpreadsheet.build();
-            },
 
           // Marine path Upload
 
@@ -633,76 +404,13 @@ sap.ui.define([
                   new sap.m.Text({ text: "{LocationID}" }),
                   new sap.m.Text({ text: "{Latitude}" }),
                   new sap.m.Text({ text: "{Longitude}" }),
+                  new sap.m.Text({ text: "{Distance}" }),
                   
                 ],
               });
             },
-            
-           
-            onMarinePathPreviewPress1: function (oEvent) {
-              var fileUploader = this.getView().byId("fileUploader3");
-              var file = fileUploader.oFileUpload.files[0];
-              // Check if a file is selected
-              if (!file) {
-                // Show an error message to the user using MessageToast
-                sap.m.MessageToast.show("No file uploaded.");
-                return; // Exit the function
-              }
-              
-       
-              var reader = new FileReader();
-              var that = this; // Preserve the reference to the controller for use inside the FileReader's onload function
-       
-              reader.onload = function (e) {
-                try {
-                  var data = new Uint8Array(e.target.result);
-                  var workbook = XLSX.read(data, { type: "array" });
-                  var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                  var jsonData = XLSX.utils.sheet_to_json(worksheet);
-       
-                  // Check if column headers match the expected headers
-                  var expectedHeaders = [
-                    "StartPort",
-                    "EndPort",
-                    "RouteID",
-                    "LocationID",
-                    "Latitude",
-                    "Longitude",
-                   
-                  ];
-                  var actualHeaders = Object.keys(jsonData[0]); // Get the actual headers from the first row of data
-       
-                  // Compare the expected headers with the actual headers
-                  var invalidColumns = [];
-                  expectedHeaders.forEach(function (header) {
-                    if (actualHeaders.indexOf(header) === -1) {
-                      invalidColumns.push(header);
-                    }
-                  });
-       
-                  // If any invalid columns found, show error message
-                  if (invalidColumns.length > 0) {
-                    var errorMessage =
-                      "The following columns are missing in the uploaded file: " +
-                      invalidColumns.join(", ");
-                    sap.m.MessageToast.show(errorMessage);
-                    return; // Exit the function
-                  }
-       
-                  // Proceed with opening the preview dialog
-                  that._onMarinePathopenPreviewDialog(jsonData);
-                } catch (error) {
-                  // Log and handle any errors
-                  console.error("Error processing Excel file:", error);
-                  sap.m.MessageToast.show(
-                    "Error processing Excel file. Please upload a valid Excel file."
-                  );
-                }
-              };
-       
-              reader.readAsArrayBuffer(file);
-            },
-            onMarinePathPreviewPress: function (oEvent) {
+
+            onMarinePathPreviewPress8: function (oEvent) {
               var fileUploader = this.getView().byId("fileUploader3");
               var file = fileUploader.oFileUpload.files[0];
               // Check if a file is selected
@@ -731,6 +439,7 @@ sap.ui.define([
                           "LocationID",
                           "Latitude",
                           "Longitude",
+                          "Distance",
                       ];
                       var actualHeaders = Object.keys(jsonData[0]); // Get the actual headers from the first row of data
           
@@ -757,7 +466,7 @@ sap.ui.define([
                       jsonData.forEach(function (rowData, rowIndex) {
                           Object.keys(rowData).forEach(function (field) {
                               // Check if the field is "Latitude" or "Longitude"
-                              if (field === "Latitude" || field === "Longitude") {
+                              if (field === "Latitude" || field === "Longitude" || field === "Distance") {
                                   // Check if the value is not a number
                                   if (isNaN(rowData[field])) {
                                       errorFields.push({ row: rowIndex + 1, field: field });
@@ -797,9 +506,106 @@ sap.ui.define([
               };
           
               reader.readAsArrayBuffer(file);
-          },
+            },
+
+            onMarinePathPreviewPress: function (oEvent) {
+              var fileUploader = this.getView().byId("fileUploader3");
+              var file = fileUploader.oFileUpload.files[0];
+              // Check if a file is selected
+              if (!file) {
+                  // Show an error message to the user using MessageToast
+                  sap.m.MessageToast.show("No file uploaded.");
+                  fileUploader.clear();
+                  return; // Exit the function
+              }
+              
+              var reader = new FileReader();
+              var that = this; // Preserve the reference to the controller for use inside the FileReader's onload function
+              
+              reader.onload = function (e) {
+                  try {
+                      var data = new Uint8Array(e.target.result);
+                      var workbook = XLSX.read(data, { type: "array" });
+                      var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                      var jsonData = XLSX.utils.sheet_to_json(worksheet);
+              
+                      // Check if column headers match the expected headers
+                      var expectedHeaders = [
+                          "StartPort",
+                          "EndPort",
+                          "RouteID",
+                          "LocationID",
+                          "Latitude",
+                          "Longitude",
+                          "Distance",
+                      ];
+                      var actualHeaders = Object.keys(jsonData[0]); // Get the actual headers from the first row of data
+              
+                      // Compare the expected headers with the actual headers
+                      var invalidColumns = [];
+                      expectedHeaders.forEach(function (header) {
+                          if (actualHeaders.indexOf(header) === -1) {
+                              invalidColumns.push(header);
+                          }
+                      });
+              
+                      // If any invalid columns found, show error message
+                      if (invalidColumns.length > 0) {
+                          var errorMessage =
+                              "The following columns are missing in the uploaded file: " +
+                              invalidColumns.join(", ");
+                          sap.m.MessageToast.show(errorMessage);
+                          fileUploader.clear();
+                          return; // Exit the function
+                      }
+              
+                      // Validate each field
+                      var errorFields = [];
+                      jsonData.forEach(function (rowData, rowIndex) {
+                          Object.keys(rowData).forEach(function (field) {
+                              // Check if the field is "Latitude" or "Longitude" or "Distance"
+                              if (field === "Latitude" || field === "Longitude" || field === "Distance") {
+                                  // Check if the value is not a number
+                                  if (isNaN(rowData[field])) {
+                                      errorFields.push({ row: rowIndex + 1, field: field });
+                                  }
+                              } else {
+                                  // Check if the value is not alphabetic
+                                  if (!/^[a-zA-Z]+$/.test(rowData[field])) {
+                                      errorFields.push({ row: rowIndex + 1, field: field });
+                                  }
+                              }
+                          });
+                      });
+              
+                      // If any fields contain non-alphabetic characters (except "Latitude" and "Longitude" and "Distance"), show error message
+                      if (errorFields.length > 0) {
+                          var errorMessage = "";
+                          errorFields.forEach(function (error) {
+                              errorMessage += "Invalid value found in '" + error.field + "' field for row " + error.row + "\n";
+                          });
+                          sap.m.MessageToast.show(errorMessage);
+                          // Clear file uploader
+                          fileUploader.clear();
+                          return; // Exit the function
+                      }
+              
+                      // Proceed with opening the preview dialog
+                      that._onMarinePathopenPreviewDialog(jsonData);
+                  } catch (error) {
+                      // Log and handle any errors
+                      console.error("Error processing Excel file:", error);
+                      sap.m.MessageToast.show(
+                          "Error processing Excel file. Please upload a valid Excel file."
+                      );
+                      // Clear file uploader
+                      fileUploader.clear();
+                  }
+              };
+              
+              reader.readAsArrayBuffer(file);
+            },        
           
-       
             _onMarinePathopenPreviewDialog: function (jsonData) {
               // Create a JSON model and set the data
               var oModel = new sap.ui.model.json.JSONModel();
@@ -834,7 +640,7 @@ sap.ui.define([
             onMarinePathDownloadPress: function () {
               const oFileUploader = this.getView().byId("fileUploader3");
               oFileUploader.clear();
-              let sFileName =  "MarinePathUpload"
+              let sFileName =  "MarineUpload"
               // Create dummy data for the template (replace with your actual template data)
               var templateData = [
                 [
@@ -844,6 +650,7 @@ sap.ui.define([
                   "LocationID",
                   "Latitude",
                   "Longitude",
+                  "Distance",
                  
                 ],
                 // Add more rows as needed
@@ -860,6 +667,7 @@ sap.ui.define([
                     { label: "LocationID", property: "LocationID" },
                     { label: "Latitude", property: "Latitude" },
                     { label: "Longitude", property: "Longitude" },
+                    { label: "Distance", property: "Distance" },
                     
                   ],
                   rows: {
@@ -874,6 +682,23 @@ sap.ui.define([
               // Download the spreadsheet
               oSpreadsheet.build();
             },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          // These two is not taking right now
 
           // Marine Distance Upload
 
@@ -1179,6 +1004,236 @@ sap.ui.define([
               // Download the spreadsheet
               oSpreadsheet.build();
             },
+
+
+
+            // For Port Upload
+
+            onPortUploadPress: function () {
+              var fileUploader = this.getView().byId("fileUploader2");
+              var file = fileUploader.oFileUpload.files[0];
+      
+              // Check if a file is selected
+              if (!file) {
+                // Show an error message to the user using MessageToast
+                sap.m.MessageToast.show("Please select a file to upload.");
+                return; // Exit the function
+              }
+      
+              // Proceed with file upload logic
+              fileUploader.upload();
+              },
+      
+              onPortUploadComplete: function (oEvent) {
+                var fileUploader = this.getView().byId("fileUploader2");
+                var file = fileUploader.oFileUpload.files[0];
+        
+                // Check if a file is selected
+                if (!file) {
+                  // Show an error message to the user using MessageToast
+                  sap.m.MessageToast.show("No file uploaded.");
+                  return; // Exit the function
+                }
+        
+                var reader = new FileReader();
+                var that = this; // Preserve the reference to the controller for use inside the FileReader's onload function
+        
+                reader.onload = function (e) {
+                  try {
+                    var data = new Uint8Array(e.target.result);
+                    var workbook = XLSX.read(data, { type: "array" });
+                    var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet);
+        
+                    // Create a JSON model and set the data
+                    var oModel = new sap.ui.model.json.JSONModel();
+                    oModel.setData(jsonData);
+        
+                    // Set the model to the view
+                    var oView = that.getView();
+                    oView.setModel(oModel);
+                    console.log("Excelsheet Data ", jsonData);
+        
+                    // Show success message
+                    sap.m.MessageToast.show(
+                      "Excel file uploaded and parsed successfully"
+                    );
+                    fileUploader.clear();
+                  } catch (error) {
+                    // Log the error
+                    console.error("Error parsing Excel file:", error);
+                    // Show error message to the user
+                    sap.m.MessageToast.show(
+                      "Error parsing Excel file. Please upload a valid Excel file."
+                    );
+                  }
+                };
+        
+                reader.readAsArrayBuffer(file);
+              },
+      
+              _onPortUploadcreateColumnListItem: function () {
+                return new sap.m.ColumnListItem({
+                  cells: [
+                    new sap.m.Text({ text: "{Value}" }),
+                    new sap.m.Text({ text: "{Description}" }),
+                    new sap.m.Text({ text: "{Country}" }),
+                    new sap.m.Text({ text: "{Countryn}" }),
+                  
+                  ],
+                });
+              },
+  
+              onPortUploadPreviewPress: function (oEvent) {
+                var fileUploader = this.getView().byId("fileUploader2");
+                var file = fileUploader.oFileUpload.files[0];
+                // Check if a file is selected
+                if (!file) {
+                    // Show an error message to the user using MessageToast
+                    sap.m.MessageToast.show("No file uploaded.");
+                    fileUploader.clear();
+                    return; // Exit the function
+                }
+            
+                var reader = new FileReader();
+                var that = this; // Preserve the reference to the controller for use inside the FileReader's onload function
+            
+                reader.onload = function (e) {
+                    try {
+                        var data = new Uint8Array(e.target.result);
+                        var workbook = XLSX.read(data, { type: "array" });
+                        var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                        var jsonData = XLSX.utils.sheet_to_json(worksheet);
+            
+                        // Check if column headers match the expected headers
+                        var expectedHeaders = [
+                            "Value",
+                            "Description",
+                            "Country",
+                            "Countryn",
+                        ];
+                        var actualHeaders = Object.keys(jsonData[0]);
+            
+                        // Compare the expected headers with the actual headers
+                        var invalidColumns = [];
+                        expectedHeaders.forEach(function (header) {
+                            if (actualHeaders.indexOf(header) === -1) {
+                                invalidColumns.push(header);
+                            }
+                        });
+            
+                        // If any invalid columns found, show error message
+                        if (invalidColumns.length > 0) {
+                            var errorMessage =
+                                "The following columns are missing in the uploaded file: " +
+                                invalidColumns.join(", ");
+                            sap.m.MessageToast.show(errorMessage);
+                            fileUploader.clear();
+                            return; // Exit the function
+                        }
+            
+                        // Validate each field for alphabetic characters
+                        var errorRows = [];
+                        jsonData.forEach(function (rowData, rowIndex) {
+                            Object.keys(rowData).forEach(function (field) {
+                                if (!/^[a-zA-Z]+$/.test(rowData[field])) {
+                                    errorRows.push(rowIndex + 1); // Push the row index for the error message
+                                }
+                            });
+                        });
+                        if (errorRows.length > 0) {
+                            var errorMessage =
+                                "Non-alphabetic value found in one or more fields for rows: " +
+                                errorRows.join(", ");
+                            sap.m.MessageToast.show(errorMessage);
+                            // Clear file uploader
+                            fileUploader.clear();
+                            return; // Exit the function
+                        }
+            
+                        // Proceed with opening the preview dialog
+                        that._onPortUploadopenPreviewDialog(jsonData);
+                    } catch (error) {
+                        // Log and handle any errors
+                        console.error("Error processing Excel file:", error);
+                        sap.m.MessageToast.show(
+                            "Error processing Excel file. Please upload a valid Excel file."
+                        );
+                    }
+                };
+            
+                reader.readAsArrayBuffer(file);
+              },
+            
+              _onPortUploadopenPreviewDialog: function (jsonData) {
+                // Create a JSON model and set the data
+                var oModel = new sap.ui.model.json.JSONModel();
+                oModel.setData(jsonData);
+            
+                // Set the model to the view
+                var oView = this.getView();
+            
+                // Instantiate the dialog fragment if it's not already instantiated
+                if (!this._oPortUpdPreviewDialog) {
+                    this._oPortUpdPreviewDialog = sap.ui.xmlfragment(
+                        oView.getId(),
+                        "nauticalfe.fragments.portUpdSheetDialog",
+                        this
+                    );
+                    oView.addDependent(this._oPortUpdPreviewDialog);
+                }
+            
+                // Bind data to the table in the dialog
+                var oTable = this._oPortUpdPreviewDialog.getContent()[0];
+                oTable.setModel(oModel);
+                oTable.bindAggregation("items", "/", this._onPortUploadcreateColumnListItem());
+            
+                // Open dialog
+                this._oPortUpdPreviewDialog.open();
+              },
+  
+              onPortUploadPreviewDialogClose: function () {
+                this._oPortUpdPreviewDialog.close();
+              },
+      
+              onPortUploadDownloadPress: function () {
+                const oFileUploader = this.getView().byId("fileUploader2");
+                oFileUploader.clear();
+                let sFileName =  "PortUpload"
+                // Create dummy data for the template (replace with your actual template data)
+                var templateData = [
+                  [
+                    "Value",
+                    "Description",
+                    "Country",
+                    "Countryn",
+                              ],
+                  // Add more rows as needed
+                ];
+        
+                // Create spreadsheet
+                var oSpreadsheet = new sap.ui.export.Spreadsheet({
+                  workbook: {
+                    columns: [
+                      // Define columns for the spreadsheet
+                      { label: "Value", property: "Value" },
+                      { label: "Description", property: "Description" },
+                      { label: "Country", property: "Country" },
+                      { label: "Countryn", property: "Countryn" },
+                    
+                    ],
+                    rows: {
+                      // Bind data rows to the template data
+                      path: "/",
+                    },
+                  },
+                  dataSource: templateData,
+                  fileName: sFileName
+                });
+        
+                // Download the spreadsheet
+                oSpreadsheet.build();
+              },
 
         });
     });

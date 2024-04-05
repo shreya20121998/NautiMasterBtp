@@ -30,6 +30,9 @@
                 <Column width="120px" hAlign="Begin" vAlign="Middle">
                     <Label text="Longitude"/>
                 </Column>
+                <Column width="120px" hAlign="Begin" vAlign="Middle">
+                    <Label text="Distance"/>
+                </Column>
                 
             </columns>
             <!-- Items -->
@@ -42,6 +45,7 @@
                         <Text text="{LocationID}"/>
                         <Text text="{Latitude}"/>
                         <Text text="{Longitude}"/>
+                        <Text text="{Distance}"/>
                         
                     </cells>
                 </ColumnListItem>

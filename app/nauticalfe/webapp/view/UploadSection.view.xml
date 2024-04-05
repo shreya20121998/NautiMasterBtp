@@ -35,7 +35,7 @@ xmlns:form="sap.ui.layout.form"
                     <Panel height="400px">
                         <Bar id="_IDGenBar1" class="_IDGenBar1" >
                             <contentLeft>
-                                <Button id="_IDGenButton2" text="PortLoc Download as Template" press="onPortLocDownloadPress" />
+                                <Button id="_IDGenButton2" text="Port Download Template" press="onPortLocDownloadPress" />
                             </contentLeft>
                     
                         </Bar>
@@ -65,7 +65,47 @@ xmlns:form="sap.ui.layout.form"
                     </Panel>
                 </IconTabFilter>
 
-                <IconTabFilter text="Port Upload" key="portUpload">
+                <IconTabFilter text="Marine Path Upload">
+                    <Panel height="400px">
+                        <Bar id="IDGeBar1" class="_IDGenBar1" >
+                            <contentLeft>
+                                
+                                <Button
+                                    id="IDGnButton2"
+                                    text="Marine Download Template"
+                                    press="onMarinePathDownloadPress"
+                                />
+                                
+                            </contentLeft>
+                        
+                        </Bar>
+        
+                        <HBox  class="upload">
+                        
+                        <Label text="File Name : " class="uploadlabel"/>
+                            <unified:FileUploader
+                                id="fileUploader3"
+                                uploadUrl="/"
+                                buttonText="Choose File"
+                                fileType="xlsx"
+                                uploadComplete="onMarinePathUploadComplete"
+                                change="onMarinePathFileChange"
+                                class="uploadInput"
+                                
+                            />
+                            <Button
+                                text="Upload"
+                                press="onMarinePathUploadPress"
+                            />
+                            <Button
+                                text="Preview"
+                                press="onMarinePathPreviewPress"
+                            />
+                        </HBox>
+                    </Panel>
+                </IconTabFilter>
+
+                <!-- <IconTabFilter text="Port Upload" key="portUpload">
                     <Panel height="400px">
                         <Bar id="IDGenBar1" class="_IDGenBar1" >
                             <contentLeft>
@@ -97,48 +137,11 @@ xmlns:form="sap.ui.layout.form"
                             />
                         </HBox>
                     </Panel>
-                </IconTabFilter>
+                </IconTabFilter> -->
 
-                <IconTabFilter text="Marine Path Upload">
-                    <Panel height="400px">
-                        <Bar id="IDGeBar1" class="_IDGenBar1" >
-                            <contentLeft>
-                                
-                                <Button
-                                    id="IDGnButton2"
-                                    text="MarinePath Download as Template"
-                                    press="onMarinePathDownloadPress"
-                                />
-                                
-                            </contentLeft>
-                        
-                        </Bar>
-        
-                        <HBox  class="upload">
-                        
-                        <Label text="File Name :" class="uploadlabel"/>
-                            <unified:FileUploader
-                                id="fileUploader3"
-                                uploadUrl="/"
-                                buttonText="Choose File"
-                                fileType="xlsx"
-                                uploadComplete="onMarinePathUploadComplete"
-                                change="onMarinePathFileChange"
-                                class="uploadInput"
-                            />
-                            <Button
-                                text="Upload"
-                                press="onMarinePathUploadPress"
-                            />
-                            <Button
-                                text="Preview"
-                                press="onMarinePathPreviewPress"
-                            />
-                        </HBox>
-                    </Panel>
-                </IconTabFilter>
+                
 
-                <IconTabFilter text="Marine Distance Upload">
+                <!-- <IconTabFilter text="Marine Distance Upload">
                     <Panel height="400px">
                         <Bar id="_IDGeBar1" class="_IDGenBar1" >
                             <contentLeft>
@@ -169,7 +172,7 @@ xmlns:form="sap.ui.layout.form"
                             />
                         </HBox>
                     </Panel>
-                </IconTabFilter>
+                </IconTabFilter> -->
             </items>
            
 				
