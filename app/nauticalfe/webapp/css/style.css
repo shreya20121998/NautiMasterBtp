@@ -65,6 +65,7 @@
     margin-top: 10% !important;
 }
 
+
 /************************************ For Home Screen **********************************************/
 
 
@@ -164,8 +165,9 @@
 /************************************ For Master DashBoard Screen **********************************************/
 .masterFlexBox{
     flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 100px;
+    justify-content: left;
+    margin-bottom: 5%;
+    margin-left: 3%;
     
 }
 .icon{
