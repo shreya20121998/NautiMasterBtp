@@ -30,9 +30,9 @@ sap.ui.define([
               const oFileUploader3 = this.getView().byId("fileUploader3");
               const oFileUploader4 = this.getView().byId("fileUploader4");
               oFileUploader.clear();
-              oFileUploader2.clear();
+              // oFileUploader2.clear();
               oFileUploader3.clear();
-              oFileUploader4.clear();
+              // oFileUploader4.clear();
               oRouter.navTo("RouteMasterDashboard");
             },
             onPressHome: function () {
